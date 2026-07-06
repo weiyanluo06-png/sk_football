@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="学院足球队纪念站，记录比赛、队员、照片、荣誉与留言。">
+    <title>学院足球队纪念站 | Matchday Archive</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=featured-card-fix">
+</head>
+<body>
+    <div class="site-bg" aria-hidden="true"></div>
+
+    <header class="header" id="header">
+        <a class="header__logo" href="#hero" aria-label="回到首页">
+            <i class="fa-solid fa-shield-heart"></i>
+            <span>学院足球队纪念站</span>
+        </a>
+
+        <button class="header__menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mainNav">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav class="header__nav" id="mainNav">
+            <ul class="header__nav-list">
+                <li><a class="header__nav-link header__nav-link--active" href="#hero">首页</a></li>
+                <li><a class="header__nav-link" href="#memory">本赛季</a></li>
+                <li><a class="header__nav-link" href="#squad">队员档案</a></li>
+                <li><a class="header__nav-link" href="#gallery">影像墙</a></li>
+                <li><a class="header__nav-link" href="#honors">荣誉瞬间</a></li>
+                <li><a class="header__nav-link" href="#messages">留言墙</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section hero" id="hero">
+            <div class="hero__slide hero__slide--active" style="background-image: linear-gradient(rgba(7,11,19,0.2), rgba(7,11,19,0.72)), url('https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=1920');">
+                <div class="hero__content">
+                    <span class="hero__eyebrow">2024-2026 / CAMPUS FOOTBALL MEMORY</span>
+                    <h1 class="hero__title">把一起奔跑过的下午，认真留下来</h1>
+                    <p class="hero__desc">这里不只是比分和名单，也是训练后的笑声、雨战后的合照、毕业前最后一脚球，以及每个队员在场上留下的痕迹。</p>
+                </div>
+            </div>
+
+            <div class="hero__slide" style="background-image: linear-gradient(rgba(7,11,19,0.18), rgba(7,11,19,0.72)), url('https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=1920');">
+                <div class="hero__content">
+                    <span class="hero__eyebrow">TRAINING DAY / SOUTH PITCH</span>
+                    <h1 class="hero__title">训练日常，也值得被写进队史</h1>
+                    <p class="hero__desc">每一次热身、抢圈、折返跑和分组对抗，都是我们后来能在比赛里多跑一步的原因。</p>
+                </div>
+            </div>
+
+            <div class="hero__slide" style="background-image: linear-gradient(rgba(7,11,19,0.18), rgba(7,11,19,0.75)), url('https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1920');">
+                <div class="hero__content">
+                    <span class="hero__eyebrow">MATCHDAY / ARCHIVE</span>
+                    <h1 class="hero__title">比分会过去，记忆会留下</h1>
+                    <p class="hero__desc">用时间轴、照片、队员卡和一句句留言，给这支学院球队做一本可以继续翻下去的纪念册。</p>
+                </div>
+            </div>
+
+            <div class="hero__actions">
+                <a href="#memory" class="hero__cta hero__cta--primary">翻看本赛季</a>
+                <a href="#gallery" class="hero__cta">打开影像墙</a>
+            </div>
+
+            <div class="hero__stats" aria-label="球队记忆坐标">
+                <div class="hero__stat"><span>2024</span><small>建队年份</small></div>
+                <div class="hero__stat"><span>17</span><small>球员档案</small></div>
+                <div class="hero__stat"><span>阳光校区</span><small>最熟悉的主场</small></div>
+            </div>
+
+            <button class="hero__btn hero__btn--prev" id="carouselPrev" aria-label="上一张"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="hero__btn hero__btn--next" id="carouselNext" aria-label="下一张"><i class="fa-solid fa-chevron-right"></i></button>
+            <div class="hero__dots" id="carouselDots"></div>
+        </section>
+
+        <section class="section reveal story" id="story">
+            <div class="section__heading">
+                <span class="section__kicker">TEAM STORY</span>
+                <h2 class="section__title">这不是公告栏，是我们的队史开头</h2>
+                <p class="section__subtitle">学院足球队由一群愿意稳定训练、认真比赛、赛后还会继续聊球的人组成。我们把每一场比赛、每一次合照和每个队员的高光时刻都整理在这里。</p>
+            </div>
+
+            <div class="story__grid">
+                <article class="story__card story__card--wide">
+                    <span class="story__label"><i class="fa-solid fa-location-dot"></i> 记忆坐标</span>
+                    <h3>南操场、周末下午、换好球鞋后的第一声集合。</h3>
+                    <p>网站的重点不再是通知，而是把球队从组建到比赛、从训练到毕业告别的片段串起来。以后每一届队员都能从这里看见自己，也看见前面的人。</p>
+                </article>
+                <article class="story__note">
+                    <strong>记录原则</strong>
+                    <span>真实照片优先</span>
+                    <span>每场比赛留一句话</span>
+                    <span>每名队员都有档案</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="section reveal memory" id="memory">
+            <div class="section__heading">
+                <span class="section__kicker">SEASON MEMORY</span>
+                <h2 class="section__title">本赛季比赛记忆</h2>
+                <p class="section__subtitle">不只记录胜平负，也记录对手、进球者、场地、照片和那场球最值得记住的一句话。</p>
+            </div>
+
+            <div class="season-switch" id="seasonSwitch" aria-label="选择赛季"></div>
+            <div class="match-filters" id="matchFilters" aria-label="筛选比赛"></div>
+            <div class="match-timeline" id="matchTimeline"></div>
+        </section>
+
+        <section class="section reveal squad-section" id="squad">
+            <div class="section__heading">
+                <span class="section__kicker">PLAYER CARDS</span>
+                <h2 class="section__title">队员档案与战术板</h2>
+                <p class="section__subtitle">点场上位置，再点右侧队员可以换人；直接点队员卡，可以查看他的数据、绰号、代表瞬间和队友评价。</p>
+            </div>
+
+            <div class="squad">
+                <div class="pitch" id="pitch">
+                    <div class="pitch__area pitch__area--top"></div>
+                    <div class="pitch__area pitch__area--bottom"></div>
+                </div>
+
+                <div class="squad__pool" id="squadPool">
+                    <div class="squad__pool-hint"><i class="fa-solid fa-lightbulb"></i> 这个区域像一本队员卡册：保留数据，但让每个人也有自己的故事。</div>
+                    <div class="squad__pool-group-title">前锋 FW</div>
+                    <div class="squad__pool-grid" id="pool-FW"></div>
+                    <div class="squad__pool-group-title">中场 MF</div>
+                    <div class="squad__pool-grid" id="pool-MF"></div>
+                    <div class="squad__pool-group-title">后卫 DF</div>
+                    <div class="squad__pool-grid" id="pool-DF"></div>
+                    <div class="squad__pool-group-title">门将 GK</div>
+                    <div class="squad__pool-grid" id="pool-GK"></div>
+                </div>
+            </div>
+
+            <div class="cards-showcase" id="featuredPlayers"></div>
+        </section>
+
+        <section class="section reveal" id="gallery">
+            <div class="section__heading">
+                <span class="section__kicker">PHOTO WALL</span>
+                <h2 class="section__title">影像墙</h2>
+                <p class="section__subtitle">按训练、比赛、合照、告别和场边花絮整理。点击照片可以打开完整记忆卡片。</p>
+            </div>
+
+            <div class="gallery-tabs" id="galleryTabs" aria-label="影像分类"></div>
+            <div class="gallery" id="galleryGrid"></div>
+        </section>
+
+        <section class="section reveal honors" id="honors">
+            <div class="section__heading">
+                <span class="section__kicker">MOMENTS</span>
+                <h2 class="section__title">荣誉与瞬间</h2>
+                <p class="section__subtitle">不只写奖杯，也写第一次赢球、最大比分、雨战、点球和毕业生最后一场。</p>
+            </div>
+            <div class="honors__grid" id="honorsGrid"></div>
+        </section>
+
+        <section class="section reveal messages" id="messages">
+            <div class="section__heading">
+                <span class="section__kicker">MESSAGE WALL</span>
+                <h2 class="section__title">写给球队的一句话</h2>
+                <p class="section__subtitle">留言墙比公告栏更适合这个网站。这里可以放队员、毕业生、队长和场边朋友的话。</p>
+            </div>
+
+            <div class="messages__layout">
+                <div class="messages__wall" id="messageWall"></div>
+                <form class="message-form" id="messageForm">
+                    <label>你的名字<input type="text" name="name" placeholder="例如：小王 / 2024级边后卫" required></label>
+                    <label>想说的话<textarea name="message" rows="5" placeholder="写一段关于训练、比赛、队友或毕业前最后一场球的记忆" required></textarea></label>
+                    <button type="submit">贴到留言墙 <i class="fa-solid fa-paper-plane"></i></button>
+                    <p class="message-form__status" id="messageFormStatus" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer__text">&copy; 2026 学院足球队纪念站。为每一次奔跑、传球和拥抱留下页面。</p>
+    </footer>
+
+    <div class="modal" id="playerModal" aria-hidden="true">
+        <div class="modal__backdrop" data-modal-close></div>
+        <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="playerModalTitle">
+            <button class="modal__close" data-modal-close aria-label="关闭队员档案"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal__body" id="playerModalBody"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="photoModal" aria-hidden="true">
+        <div class="modal__backdrop" data-photo-close></div>
+        <div class="modal__panel modal__panel--photo" role="dialog" aria-modal="true" aria-labelledby="photoModalTitle">
+            <button class="modal__close" data-photo-close aria-label="关闭照片"><i class="fa-solid fa-xmark"></i></button>
+            <div class="photo-modal__body" id="photoModalBody"></div>
+        </div>
+    </div>
+
+    <script src="js/team-data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
