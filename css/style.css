@@ -286,12 +286,13 @@ textarea:focus-visible {
 .hero__stats {
     position: absolute;
     z-index: 14;
-    top: clamp(110px, 14vh, 148px);
-    right: 7%;
+    right: 50%;
+    bottom: 58px;
+    transform: translateX(50%);
     display: grid;
     grid-template-columns: repeat(3, minmax(130px, 1fr));
     gap: 12px;
-    width: min(500px, 38vw);
+    width: min(620px, 90%);
 }
 
 .hero__stat {
