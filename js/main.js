@@ -1,71 +1,14 @@
 (function () {
     'use strict';
 
-    var allPlayers = [
-        { id: 101, name: '张伟', nickname: '禁区捕手', number: 9, pos: 'FW', apps: 12, goals: 14, asts: 3, role: 'ST', tackles: 9, interceptions: 4, saves: 0, cleanSheets: 0, motm: 4, rating: 8.9, featured: true, avatarIcon: 'fa-crosshairs', traits: ['门前终结', '头球', '反击'], memory: '雨战补时头球绝杀', quote: '只要还有一次传中，他就会冲到门前。', bio: '球队锋线支点，擅长门前抢点和背身拿球，是关键比赛里最稳定的得分点。' },
-        { id: 102, name: '王强', nickname: '左路风', number: 7, pos: 'FW', apps: 10, goals: 8, asts: 2, role: 'LW', tackles: 12, interceptions: 5, saves: 0, cleanSheets: 0, motm: 2, rating: 8.2, featured: false, avatarIcon: 'fa-person-running', traits: ['速度', '内切', '冲刺'], memory: '半场奔袭破门', quote: '他一起速，边线就像突然变短了。', bio: '左路爆点型队员，擅长用速度制造纵深，也能回撤参与防守。' },
-        { id: 103, name: '刘洋', nickname: '右路传中机', number: 11, pos: 'FW', apps: 11, goals: 5, asts: 4, role: 'RW', tackles: 10, interceptions: 6, saves: 0, cleanSheets: 0, motm: 1, rating: 7.9, featured: false, avatarIcon: 'fa-bolt', traits: ['传中', '前插', '跑位'], memory: '后点包抄锁定胜局', quote: '他总能在最合适的地方出现。', bio: '右路稳定输出，传中质量高，经常在后点和肋部找到机会。' },
-        { id: 104, name: '陈实', nickname: '替补奇兵', number: 18, pos: 'FW', apps: 6, goals: 2, asts: 1, role: 'CF', tackles: 5, interceptions: 3, saves: 0, cleanSheets: 0, motm: 0, rating: 7.1, featured: false, avatarIcon: 'fa-fire', traits: ['策应', '对抗'], memory: '替补登场制造点球', quote: '不一定首发，但上来就能改变节奏。', bio: '能在前场提供身体对抗和二点球争夺，是替补席上的重要变化。' },
-        { id: 105, name: '林峰', nickname: '新同学', number: 19, pos: 'FW', apps: 3, goals: 0, asts: 0, role: 'ST', tackles: 3, interceptions: 1, saves: 0, cleanSheets: 0, motm: 0, rating: 6.8, featured: false, avatarIcon: 'fa-shoe-prints', traits: ['潜力', '跑动'], memory: '第一次代表球队登场', quote: '刚来不久，但每次训练都到得很早。', bio: '新加入的前锋，正在适应球队节奏，训练态度积极。' },
-        { id: 201, name: '李默', nickname: '节拍器', number: 8, pos: 'MF', apps: 12, goals: 4, asts: 11, role: 'CAM', tackles: 18, interceptions: 11, saves: 0, cleanSheets: 0, motm: 3, rating: 8.7, featured: true, avatarIcon: 'fa-compass', traits: ['组织', '直塞', '定位球'], memory: '任意球直接破门', quote: '他拿球时，大家都会开始向前跑。', bio: '球队前场节拍器，能用最后一传改变比赛，也是定位球的主要主罚者。' },
-        { id: 202, name: '赵磊', nickname: '中场马达', number: 6, pos: 'MF', apps: 11, goals: 1, asts: 0, role: 'CM', tackles: 24, interceptions: 14, saves: 0, cleanSheets: 0, motm: 1, rating: 7.6, featured: false, avatarIcon: 'fa-gauge-high', traits: ['覆盖', '平衡'], memory: '全场最高跑动距离', quote: '他不一定最显眼，但哪里都能看到他。', bio: '中场覆盖面积大，负责连接攻防和保护后防线前沿。' },
-        { id: 203, name: '周鹏', nickname: '防线闸门', number: 14, pos: 'MF', apps: 9, goals: 0, asts: 0, role: 'CDM', tackles: 28, interceptions: 20, saves: 0, cleanSheets: 0, motm: 1, rating: 7.8, featured: false, avatarIcon: 'fa-anchor', traits: ['拦截', '卡位'], memory: '连续三次关键拦截', quote: '他在后腰位置，像给球队上了一道锁。', bio: '防守型中场，擅长预判线路和完成第一时间破坏。' },
-        { id: 204, name: '郑智', nickname: '老队长', number: 20, pos: 'MF', apps: 7, goals: 2, asts: 3, role: 'CM', tackles: 13, interceptions: 9, saves: 0, cleanSheets: 0, motm: 1, rating: 7.4, featured: false, avatarIcon: 'fa-chess-knight', traits: ['经验', '节奏'], memory: '毕业前最后一场助攻', quote: '他会提醒大家站位，也会在赛后请大家喝水。', bio: '经验丰富，能在比赛后段帮助球队稳住节奏。' },
-        { id: 205, name: '马明', nickname: '拼抢专家', number: 23, pos: 'MF', apps: 5, goals: 0, asts: 0, role: 'CDM', tackles: 11, interceptions: 8, saves: 0, cleanSheets: 0, motm: 0, rating: 6.9, featured: false, avatarIcon: 'fa-person-rays', traits: ['拼抢', '替补'], memory: '替补登场后追回三次球权', quote: '他上场之后，对手会明显踢得更难受。', bio: '替补登场时能提供强度，训练出勤稳定。' },
-        { id: 301, name: '孙悦', nickname: '后场指挥官', number: 4, pos: 'DF', apps: 11, goals: 1, asts: 0, role: 'CB', tackles: 21, interceptions: 28, saves: 0, cleanSheets: 4, motm: 2, rating: 8.1, featured: true, avatarIcon: 'fa-shield-halved', traits: ['解围', '盯人', '领袖'], memory: '门线解围守住胜利', quote: '他喊一声，后防线就会一起往前压。', bio: '后防核心，争顶和补位稳定，经常承担场上指挥职责。' },
-        { id: 302, name: '冯涛', nickname: '铁闸', number: 5, pos: 'DF', apps: 10, goals: 0, asts: 0, role: 'CB', tackles: 19, interceptions: 18, saves: 0, cleanSheets: 3, motm: 1, rating: 7.7, featured: false, avatarIcon: 'fa-lock', traits: ['对抗', '补位'], memory: '禁区内关键封堵', quote: '他在身后，大家心里会稳一点。', bio: '中卫搭档，身体对抗强，能在禁区内完成关键封堵。' },
-        { id: 303, name: '姜浩', nickname: '边路勤务员', number: 2, pos: 'DF', apps: 8, goals: 0, asts: 2, role: 'LB', tackles: 17, interceptions: 13, saves: 0, cleanSheets: 2, motm: 0, rating: 7.3, featured: false, avatarIcon: 'fa-arrow-left', traits: ['边路', '助攻'], memory: '下底传中助攻绝平', quote: '他跑的是边路，做的是苦活。', bio: '左后卫，攻守转换积极，能套边送出传中。' },
-        { id: 304, name: '张琦', nickname: '右路保险', number: 3, pos: 'DF', apps: 9, goals: 0, asts: 1, role: 'RB', tackles: 18, interceptions: 12, saves: 0, cleanSheets: 2, motm: 0, rating: 7.2, featured: false, avatarIcon: 'fa-arrow-right', traits: ['回追', '传中'], memory: '终场前回追铲断', quote: '最累的回追，他经常第一个到。', bio: '右后卫，回追速度快，能在边路提供稳定出球点。' },
-        { id: 305, name: '高准', nickname: '替补中卫', number: 12, pos: 'DF', apps: 6, goals: 0, asts: 0, role: 'CB', tackles: 12, interceptions: 9, saves: 0, cleanSheets: 1, motm: 0, rating: 6.9, featured: false, avatarIcon: 'fa-road', traits: ['轮换', '防空'], memory: '第一次首发零封', quote: '机会来的时候，他能顶上去。', bio: '中卫轮换，防空能力不错，适合对抗高球较多的比赛。' },
-        { id: 306, name: '李清', nickname: '速度边卫', number: 16, pos: 'DF', apps: 4, goals: 0, asts: 0, role: 'LB', tackles: 8, interceptions: 5, saves: 0, cleanSheets: 1, motm: 0, rating: 6.7, featured: false, avatarIcon: 'fa-forward', traits: ['速度', '替补'], memory: '替补出场完成首秀', quote: '还在适应，但速度已经够用了。', bio: '边后卫替补，速度条件好，仍在提升防守站位。' },
-        { id: 401, name: '曾诚', nickname: '最后一道门', number: 1, pos: 'GK', apps: 11, goals: 0, asts: 0, role: 'GK', tackles: 0, interceptions: 0, saves: 36, cleanSheets: 4, motm: 2, rating: 8.0, featured: false, avatarIcon: 'fa-hands', traits: ['扑救', '出击'], memory: '点球扑救后全队冲向他', quote: '他扑出点球那一刻，替补席比进球还激动。', bio: '主力门将，反应快，擅长近距离封堵和指挥后防。' },
-        { id: 402, name: '颜骏', nickname: '稳稳接住', number: 22, pos: 'GK', apps: 4, goals: 0, asts: 0, role: 'GK', tackles: 0, interceptions: 0, saves: 12, cleanSheets: 1, motm: 0, rating: 7.0, featured: false, avatarIcon: 'fa-mitten', traits: ['轮换', '稳定'], memory: '杯赛首发完成零封', quote: '他说话不多，但手很稳。', bio: '替补门将，基本功扎实，训练中进步明显。' }
-    ];
-
-    var startingLineup = {
-        GK: { top: '88%', left: '50%', playerId: 401 }, LB: { top: '66%', left: '15%', playerId: 303 }, CB1: { top: '72%', left: '37%', playerId: 301 }, CB2: { top: '72%', left: '63%', playerId: 302 }, RB: { top: '66%', left: '85%', playerId: 304 },
-        CDM: { top: '48%', left: '50%', playerId: 203 }, CM: { top: '36%', left: '28%', playerId: 202 }, CAM: { top: '34%', left: '72%', playerId: 201 }, LW: { top: '15%', left: '18%', playerId: 102 }, ST: { top: '12%', left: '50%', playerId: 101 }, RW: { top: '15%', left: '82%', playerId: 103 }
-    };
-
-    var matchItems = [
-        { season: '2026', result: 'win', score: '3 : 1', opponent: '计算机学院足球队', date: '2026-06-20', venue: '校本部南操场', competition: '周末联赛', scorers: '张伟 2球 / 李默 1球', quote: '雨停之后，我们终于把上一场没踢完的遗憾追回来了。' },
-        { season: '2026', result: 'draw', score: '2 : 2', opponent: '自动化老友队', date: '2026-06-13', venue: '经开区体育公园', competition: '友谊赛', scorers: '王强 / 刘洋', quote: '最后十分钟连续压上，那种全队一起追平的感觉很难忘。' },
-        { season: '2026', result: 'loss', score: '0 : 2', opponent: '教工元老队', date: '2026-06-06', venue: '校本部北操场', competition: '杯赛热身', scorers: '无', quote: '输球之后大家没有马上散，围在中圈聊了二十分钟。' },
-        { season: '2026', result: 'win', score: '4 : 0', opponent: '材料学院联队', date: '2026-05-28', venue: '校本部南操场', competition: '训练赛', scorers: '张伟 / 王强 / 郑智 / 乌龙球', quote: '这是本赛季第一次踢出完整的高位压迫。' },
-        { season: '2025', result: 'draw', score: '1 : 1', opponent: '研究生博士联队', date: '2025-12-18', venue: '校本部南操场', competition: '积分赛', scorers: '孙悦', quote: '队长最后一场，他用头球给自己留了一个结尾。' },
-        { season: '2025', result: 'win', score: '2 : 0', opponent: '新生混编队', date: '2025-10-09', venue: '学院球场', competition: '迎新赛', scorers: '李默 / 陈实', quote: '那天来了很多新面孔，后来真的有几个人留了下来。' }
-    ];
-
-    var galleryItems = [
-        { title: '周末联赛开场前', date: '2026-06-20', category: '比赛', tag: 'MATCHDAY', height: 270, image: 'https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=900', story: '开球前队长把大家叫到一起，提醒第一脚传球要稳。那天我们从第一分钟就踢得很坚决。' },
-        { title: '全队更衣室合影', date: '2026-06-14', category: '合照', tag: 'TEAM', height: 330, image: 'https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=900', story: '没有正式摄影，只有一台手机和挤在一起的大家。照片有点糊，但每张脸都很亮。' },
-        { title: '队长捧起院杯', date: '2025-12-30', category: '荣誉', tag: 'TROPHY', height: 280, image: 'https://images.unsplash.com/photo-1527871369852-eb58cb2b54e2?q=80&w=900', story: '奖杯不大，但那天我们把它传了很多圈。每个人都想和它拍一张。' },
-        { title: '体能训练日', date: '2026-05-18', category: '训练', tag: 'TRAINING', height: 240, image: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=900', story: '最累的是最后三组折返跑，最快乐的是跑完之后一起坐在草地上吹风。' },
-        { title: '新赛季球衣发布', date: '2026-05-01', category: '合照', tag: 'KIT', height: 310, image: 'https://images.unsplash.com/photo-1556056504-5c7696c4c28d?q=80&w=900', story: '号码选定的那天，大家都认真得像在签职业合同。' },
-        { title: '毕业生最后一场', date: '2026-04-15', category: '告别', tag: 'FAREWELL', height: 260, image: 'https://images.unsplash.com/photo-1577223625816-7546f13df25d?q=80&w=900', story: '终场以后没有马上收球，毕业生又多罚了几脚点球，好像这样时间就能慢一点。' }
-    ];
-
-    var honors = [
-        { icon: 'fa-trophy', title: '院杯四强', date: '2025-12-30', text: '一路踢到半决赛，第一次让这支队伍在学院杯里被更多人记住。' },
-        { icon: 'fa-cloud-rain', title: '雨战绝杀', date: '2026-06-20', text: '补时阶段的头球绝杀，是本赛季目前最值得反复播放的瞬间。' },
-        { icon: 'fa-chart-line', title: '最大比分胜利', date: '2026-05-28', text: '4:0 战胜材料学院联队，前场压迫和边路推进都踢出了训练效果。' },
-        { icon: 'fa-hands-holding-circle', title: '毕业生最后一场', date: '2026-04-15', text: '不是冠军，也不是决赛，但很多人说这是最舍不得结束的一场。' }
-    ];
-
-    var messages = [
-        { name: '老队长 郑智', text: '希望下一届继续把训练坚持下去。很多默契不是比赛当天才出现的，是平时一次次传球传出来的。' },
-        { name: '门将 曾诚', text: '最想记住的是点球扑出去以后，大家从半场冲过来抱我的那一下。' },
-        { name: '2024级边卫', text: '刚入队时谁都不认识，后来发现每周最期待的就是周末下午那两个小时。' },
-        { name: '场边朋友', text: '你们踢得不一定每次都漂亮，但每次都很认真，这就是我愿意来拍照的原因。' }
-    ];
-
-    if (window.PONYTAIL_DATA) {
-        allPlayers = window.PONYTAIL_DATA.players || allPlayers;
-        startingLineup = window.PONYTAIL_DATA.startingLineup || startingLineup;
-        matchItems = window.PONYTAIL_DATA.matches || matchItems;
-        honors = window.PONYTAIL_DATA.honors || honors;
-    }
-
+    var teamData = window.PONYTAIL_DATA || {};
+    var allPlayers = teamData.players || [];
+    var startingLineup = teamData.startingLineup || {};
+    var matchItems = teamData.matches || [];
+    var galleryItems = teamData.gallery || [];
+    var honors = teamData.honors || [];
+    var messages = teamData.messages || [];
+    var fallbackPhotos = teamData.fallbackPhotos || [];
     var selectedNodeKey = null;
     var activeSeason = '全部';
     var activeResult = '全部';
@@ -77,17 +20,6 @@
         DF: { title: 'Defenders', subtitle: '后防四人组', slots: ['LB', 'CB1', 'CB2', 'RB'] },
         GK: { title: 'Goalkeeper', subtitle: '最后一道门', slots: ['GK'] }
     };
-    var demoPhotos = [
-        'https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=600',
-        'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600',
-        'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?q=80&w=600',
-        'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=600',
-        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600',
-        'https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=600',
-        'https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=600',
-        'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=600'
-    ];
-
     function $(id) { return document.getElementById(id); }
     function escapeHtml(str) { return String(str).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
     function getPlayerById(id) { return allPlayers.find(function (p) { return p.id === id; }) || null; }
@@ -95,7 +27,7 @@
     function getMetricLabel(player) { return player.pos === 'GK' ? '扑救' : '抢断'; }
     function getLineupPlayerIds() { return Object.keys(startingLineup).map(function (key) { return startingLineup[key].playerId; }); }
     function resultName(result) { return { win: '胜', draw: '平', loss: '负' }[result] || result; }
-    function getPlayerPhoto(player) { return player.photo || demoPhotos[player.id % demoPhotos.length]; }
+    function getPlayerPhoto(player) { return player.photo || fallbackPhotos[player.id % fallbackPhotos.length] || ''; }
     function getLineupGroupForSlot(slotKey) {
         if (lineupGroupMeta.FW.slots.indexOf(slotKey) !== -1) return 'FW';
         if (lineupGroupMeta.MF.slots.indexOf(slotKey) !== -1) return 'MF';
@@ -147,6 +79,7 @@
         var experience = $('lineupExperience');
         if (!experience) return;
         var groups = ['FW', 'MF', 'DF', 'GK'];
+        var animationFrame = null;
         function syncLineupGroup() {
             var rect = experience.getBoundingClientRect();
             var travel = Math.max(1, rect.height - window.innerHeight);
@@ -154,13 +87,19 @@
             var index = Math.min(groups.length - 1, Math.floor(progress * groups.length));
             updateLineupFocus(groups[index]);
         }
+        function scheduleLineupSync() {
+            if (animationFrame) return;
+            animationFrame = window.requestAnimationFrame(function () {
+                animationFrame = null;
+                syncLineupGroup();
+            });
+        }
         window.__syncLineupGroup = syncLineupGroup;
-        window.addEventListener('scroll', syncLineupGroup, { passive: true });
-        window.addEventListener('resize', syncLineupGroup);
-        window.setInterval(function () {
-            var rect = experience.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) syncLineupGroup();
-        }, 180);
+        window.addEventListener('scroll', scheduleLineupSync, { passive: true });
+        window.addEventListener('resize', scheduleLineupSync);
+        if ('ResizeObserver' in window) {
+            new ResizeObserver(scheduleLineupSync).observe(experience);
+        }
         syncLineupGroup();
     }
 
