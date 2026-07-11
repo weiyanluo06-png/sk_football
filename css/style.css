@@ -226,7 +226,7 @@ textarea:focus-visible {
 .hero__content {
     position: relative;
     z-index: 10;
-    width: min(620px, 52vw);
+    width: 86%;
     text-align: left;
 }
 
@@ -242,9 +242,10 @@ textarea:focus-visible {
 
 .hero__title {
     margin-top: 14px;
-    font-size: clamp(1.8rem, 3.45vw, 3.9rem);
+    font-size: clamp(2.25rem, 4.25vw, 4.8rem);
     line-height: 1.08;
     font-weight: 900;
+    white-space: nowrap;
     text-shadow: 0 12px 32px rgba(0,0,0,0.45);
 }
 
@@ -1292,6 +1293,7 @@ textarea:focus-visible {
     .hero__slide { padding: 72px 6% 0; }
     .hero__content { width: min(620px, 100%); }
     .hero__title { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+    .hero__title { white-space: normal; }
     .hero__stats { display: none; }
     .hero__btn { display: none; }
     .match-card { grid-template-columns: 1fr; }
