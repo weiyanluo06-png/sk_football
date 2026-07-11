@@ -366,8 +366,6 @@ textarea:focus-visible {
 .flip-card__face,
 .gallery__item,
 .honor-card,
-.message-card,
-.message-form,
 .modal__panel {
     background: rgba(255,253,248,0.9);
     border: 1px solid rgba(31,122,77,0.14);
@@ -1088,70 +1086,6 @@ textarea:focus-visible {
 .honor-card p { margin-top: 8px; color: var(--muted); font-size: 0.9rem; }
 .honor-card time { color: var(--green); font-weight: 900; font-size: 0.84rem; }
 
-.messages__layout {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 24px;
-    width: min(1120px, 100%);
-    margin: 0 auto;
-}
-
-.messages__wall {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-}
-
-.message-card {
-    min-height: 150px;
-    padding: 20px;
-    border-radius: var(--radius-md);
-    transform: rotate(var(--tilt));
-}
-
-.message-card p { color: var(--ink); font-size: 1rem; }
-.message-card strong { display: block; margin-top: 16px; color: var(--green); }
-
-.message-form {
-    display: grid;
-    gap: 14px;
-    align-self: start;
-    padding: 24px;
-    border-radius: var(--radius-lg);
-}
-
-.message-form label {
-    display: grid;
-    gap: 7px;
-    color: var(--muted);
-    font-size: 0.88rem;
-    font-weight: 700;
-}
-
-.message-form input,
-.message-form textarea {
-    width: 100%;
-    border: 1px solid rgba(31,122,77,0.18);
-    border-radius: var(--radius-sm);
-    padding: 12px 13px;
-    color: var(--ink);
-    background: #fff;
-    outline: 0;
-}
-
-.message-form input:focus,
-.message-form textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(31,122,77,0.12); }
-
-.message-form button {
-    min-height: 44px;
-    border-radius: var(--radius-full);
-    color: #fff;
-    background: var(--green);
-    font-weight: 900;
-}
-
-.message-form__status { min-height: 22px; color: var(--green); font-size: 0.86rem; }
-
 .modal {
     position: fixed;
     inset: 0;
@@ -1258,8 +1192,7 @@ textarea:focus-visible {
 
 @media screen and (max-width: 1080px) {
     .squad,
-    .story__grid,
-    .messages__layout { grid-template-columns: 1fr; }
+    .story__grid { grid-template-columns: 1fr; }
     .cards-showcase { grid-template-columns: repeat(2, 1fr); }
     .honors__grid { grid-template-columns: repeat(2, 1fr); }
     .match-card { grid-template-columns: 130px 1fr; }
@@ -1355,8 +1288,7 @@ textarea:focus-visible {
         transform: translate(-50%, -50%) scale(0.5);
     }
     .cards-showcase,
-    .honors__grid,
-    .messages__wall { grid-template-columns: 1fr; }
+    .honors__grid { grid-template-columns: 1fr; }
     .gallery { columns: 2 160px; }
     .modal__stats { grid-template-columns: repeat(2, 1fr); }
 }

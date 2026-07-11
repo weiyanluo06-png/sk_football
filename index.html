@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="武汉纺织大学生物医学工程与健康学院足球队纪念站，记录比赛、队员、照片、荣誉与留言。">
+    <meta name="description" content="武汉纺织大学生物医学工程与健康学院足球队纪念站，记录比赛、队员、照片与荣誉。">
     <meta name="theme-color" content="#1f7a4d">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
@@ -36,7 +36,6 @@
                 <li><a class="header__nav-link" href="#squad">队员档案</a></li>
                 <li><a class="header__nav-link" href="#gallery">影像墙</a></li>
                 <li><a class="header__nav-link" href="#honors">荣誉瞬间</a></li>
-                <li><a class="header__nav-link" href="#messages">留言墙</a></li>
             </ul>
         </nav>
     </header>
@@ -63,7 +62,7 @@
                 <div class="hero__content">
                     <span class="hero__eyebrow">MATCHDAY / ARCHIVE</span>
                     <h1 class="hero__title">比分会过去，记忆会留下</h1>
-                    <p class="hero__desc">用时间轴、照片、队员卡和一句句留言，给这支学院球队做一本可以继续翻下去的纪念册。</p>
+                    <p class="hero__desc">用时间轴、照片和队员卡，给这支学院球队做一本可以继续翻下去的纪念册。</p>
                 </div>
             </div>
 
@@ -186,7 +185,7 @@
             <div class="section__heading">
                 <span class="section__kicker">PHOTO WALL</span>
                 <h2 class="section__title">影像墙</h2>
-                <p class="section__subtitle">按训练、比赛、合照、告别和场边花絮整理。点击照片可以打开完整记忆卡片。</p>
+                <p class="section__subtitle">从雨战、围圈和赛后合影，到奖杯、毕业与球场之外的夜晚。点击照片可以打开完整记忆卡片。</p>
             </div>
 
             <div class="gallery-tabs" id="galleryTabs" aria-label="影像分类"></div>
@@ -202,23 +201,6 @@
             <div class="honors__grid" id="honorsGrid"></div>
         </section>
 
-        <section class="section reveal messages" id="messages">
-            <div class="section__heading">
-                <span class="section__kicker">MESSAGE WALL</span>
-                <h2 class="section__title">写给球队的一句话</h2>
-                <p class="section__subtitle">留言墙比公告栏更适合这个网站。这里可以放队员、毕业生、队长和场边朋友的话。</p>
-            </div>
-
-            <div class="messages__layout">
-                <div class="messages__wall" id="messageWall"></div>
-                <form class="message-form" id="messageForm">
-                    <label>你的名字<input type="text" name="name" placeholder="例如：小王 / 2024级边后卫" required></label>
-                    <label>想说的话<textarea name="message" rows="5" placeholder="写一段关于训练、比赛、队友或毕业前最后一场球的记忆" required></textarea></label>
-                    <button type="submit">贴到留言墙 <i class="fa-solid fa-paper-plane"></i></button>
-                    <p class="message-form__status" id="messageFormStatus" aria-live="polite"></p>
-                </form>
-            </div>
-        </section>
     </main>
 
     <footer class="footer">
@@ -242,7 +224,7 @@
     </div>
 
     <script src="js/team-data.js?v=site-images-1"></script>
-    <script src="js/gallery-data.js?v=site-optimisation-1"></script>
+    <script src="js/gallery-data.js?v=gallery-memories-1"></script>
     <script src="js/main.js?v=site-optimisation-1"></script>
 </body>
 </html>

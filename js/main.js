@@ -7,7 +7,6 @@
     var matchItems = teamData.matches || [];
     var galleryItems = window.PONYTAIL_GALLERY || [];
     var honors = teamData.honors || [];
-    var messages = teamData.messages || [];
     var fallbackPhotos = teamData.fallbackPhotos || [];
     var selectedNodeKey = null;
     var activeSeason = '全部';
@@ -240,28 +239,6 @@
         }).join('');
     }
 
-    function renderMessages() {
-        var wall = $('messageWall'); if (!wall) return;
-        wall.innerHTML = messages.map(function (m, i) {
-            var tilt = [-1.2, 0.8, -0.5, 1.1, -0.9][i % 5];
-            return '<article class="message-card" style="--tilt:' + tilt + 'deg"><p>' + escapeHtml(m.text) + '</p><strong>' + escapeHtml(m.name) + '</strong></article>';
-        }).join('');
-    }
-
-    function initMessageForm() {
-        var form = $('messageForm');
-        var status = $('messageFormStatus');
-        if (!form || !status) return;
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            var data = new FormData(form);
-            messages.unshift({ name: data.get('name'), text: data.get('message') });
-            renderMessages();
-            form.reset();
-            status.textContent = '已经贴到留言墙了。刷新页面后会恢复示例数据。';
-        });
-    }
-
     function toggleCardHighlight(playerId, highlight) {
         var card = $('card-' + playerId);
         if (card) card.style.borderColor = highlight ? 'rgba(216,166,58,0.85)' : '';
@@ -461,10 +438,8 @@
         renderGalleryTabs();
         renderGallery();
         renderHonors();
-        renderMessages();
         buildDots();
         initLikeButtons();
-        initMessageForm();
         initModals();
         initMobileMenu();
         initNavScroll();

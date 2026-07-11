@@ -54,13 +54,6 @@ window.PONYTAIL_DATA = {
         { icon: 'fa-route', title: '首次进入淘汰赛', date: '2025-12-17', text: '八人制新生杯进入淘汰赛，虽然 0:1 惜败计智学院，但这是队史节点。' }
     ],
 
-    messages: [
-        { name: '老队长 郑智', text: '希望下一届继续把训练坚持下去。很多默契不是比赛当天才出现的，是平时一次次传球传出来的。' },
-        { name: '门将 曾诚', text: '最想记住的是点球扑出去以后，大家从半场冲过来抱我的那一下。' },
-        { name: '2024级边卫', text: '刚入队时谁都不认识，后来发现每周最期待的就是周末下午那两个小时。' },
-        { name: '场边朋友', text: '你们踢得不一定每次都漂亮，但每次都很认真，这就是我愿意来拍照的原因。' }
-    ],
-
     fallbackPhotos: [
         'https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=600',
         'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600',
