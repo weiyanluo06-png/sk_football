@@ -1212,6 +1212,12 @@ textarea:focus-visible {
 
 @media screen and (max-width: 760px) {
     .section { min-height: auto; padding: 70px 4%; }
+    .hero {
+        min-height: 100svh;
+        height: 100svh;
+        padding: 0;
+    }
+    .hero__slide { min-height: 100svh; }
     .header__menu-toggle { display: inline-grid; place-items: center; }
     .header__nav { display: none; }
     .header__nav--open {
