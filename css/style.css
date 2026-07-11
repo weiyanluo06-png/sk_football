@@ -202,11 +202,12 @@ textarea:focus-visible {
     position: absolute;
     inset: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: clamp(58px, 9vh, 96px) 7% 0;
     opacity: 0;
     background-size: cover;
-    background-position: center;
+    background-position: center 52%;
     transform: scale(1.04);
     transition: opacity 0.9s ease, transform 5.5s ease;
 }
@@ -218,16 +219,15 @@ textarea:focus-visible {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(90deg, rgba(5, 20, 12, 0.55), rgba(5,20,12,0.12), rgba(5,20,12,0.58)),
-        radial-gradient(circle at center, transparent, rgba(0,0,0,0.38));
+        linear-gradient(180deg, rgba(5,20,12,0.52), rgba(5,20,12,0.14) 42%, rgba(5,20,12,0.3)),
+        linear-gradient(90deg, rgba(5,20,12,0.32), transparent 58%);
 }
 
 .hero__content {
     position: relative;
     z-index: 10;
-    width: min(980px, 92%);
-    text-align: center;
-    padding-top: 48px;
+    width: min(620px, 52vw);
+    text-align: left;
 }
 
 .hero__eyebrow {
@@ -241,30 +241,28 @@ textarea:focus-visible {
 }
 
 .hero__title {
-    margin-top: 18px;
-    font-size: clamp(2.4rem, 6vw, 5.5rem);
-    line-height: 1.04;
+    margin-top: 14px;
+    font-size: clamp(1.8rem, 3.45vw, 3.9rem);
+    line-height: 1.08;
     font-weight: 900;
     text-shadow: 0 12px 32px rgba(0,0,0,0.45);
 }
 
 .hero__desc {
-    width: min(760px, 100%);
-    margin: 20px auto 0;
-    color: rgba(255,255,255,0.9);
+    width: min(580px, 100%);
+    margin: 16px 0 0;
+    display: none;
     font-size: clamp(1rem, 2vw, 1.22rem);
 }
 
 .hero__actions {
     position: absolute;
     z-index: 14;
-    left: 50%;
-    bottom: 170px;
-    transform: translateX(-50%);
-    display: flex;
+    display: none;
+    left: 7%;
     gap: 12px;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .hero__cta {
@@ -288,13 +286,12 @@ textarea:focus-visible {
 .hero__stats {
     position: absolute;
     z-index: 14;
-    left: 50%;
-    bottom: 62px;
-    transform: translateX(-50%);
+    top: clamp(110px, 14vh, 148px);
+    right: 7%;
     display: grid;
     grid-template-columns: repeat(3, minmax(130px, 1fr));
     gap: 12px;
-    width: min(620px, 90%);
+    width: min(500px, 38vw);
 }
 
 .hero__stat {
@@ -1291,8 +1288,10 @@ textarea:focus-visible {
         border-bottom: 1px solid rgba(31,122,77,0.14);
     }
     .header__nav--open .header__nav-list { flex-direction: column; gap: 15px; }
-    .hero__stats { grid-template-columns: 1fr; bottom: 70px; width: min(280px, 82%); }
-    .hero__actions { bottom: 210px; width: 92%; }
+    .hero__slide { padding: 72px 6% 0; }
+    .hero__content { width: min(620px, 100%); }
+    .hero__title { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+    .hero__stats { display: none; }
     .hero__btn { display: none; }
     .match-card { grid-template-columns: 1fr; }
     .match-card__date { min-height: 120px; }
@@ -1360,8 +1359,7 @@ textarea:focus-visible {
 }
 
 @media screen and (max-width: 480px) {
-    .hero__stats { display: none; }
-    .hero__actions { bottom: 70px; }
+    .hero__actions { bottom: 58px; }
     .gallery { columns: 1; }
     .pitch { height: 380px; }
     .pitch__player { width: 40px; height: 40px; font-size: 0.78rem; }
