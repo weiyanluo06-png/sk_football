@@ -5,7 +5,7 @@
     var allPlayers = teamData.players || [];
     var startingLineup = teamData.startingLineup || {};
     var matchItems = teamData.matches || [];
-    var galleryItems = teamData.gallery || [];
+    var galleryItems = window.PONYTAIL_GALLERY || [];
     var honors = teamData.honors || [];
     var messages = teamData.messages || [];
     var fallbackPhotos = teamData.fallbackPhotos || [];
@@ -14,6 +14,7 @@
     var activeResult = '全部';
     var activeGallery = '全部';
     var activeLineupGroup = 'FW';
+    var lastModalTrigger = null;
     var lineupGroupMeta = {
         FW: { title: 'Forwards', subtitle: '锋线三人组', slots: ['LW', 'ST', 'RW'] },
         MF: { title: 'Midfield', subtitle: '中场连接线', slots: ['CAM', 'CM', 'CDM'] },
@@ -282,9 +283,7 @@
         if (!player || !modal || !body) return;
         var tags = player.traits.map(function (t) { return '<span class="tag">' + escapeHtml(t) + '</span>'; }).join('');
         body.innerHTML = '<div class="modal__hero"><div class="modal__number">' + player.number + '</div><div><h3 class="modal__title" id="playerModalTitle">' + escapeHtml(player.name) + '</h3><p class="modal__subtitle">' + player.pos + ' / ' + player.role + ' / ' + escapeHtml(player.nickname) + ' / 评分 ' + player.rating + '</p></div></div><div class="modal__stats"><div class="modal__stat"><strong>' + player.apps + '</strong><span>出场</span></div><div class="modal__stat"><strong>' + player.goals + '</strong><span>进球</span></div><div class="modal__stat"><strong>' + player.asts + '</strong><span>助攻</span></div><div class="modal__stat"><strong>' + player.motm + '</strong><span>MVP</span></div><div class="modal__stat"><strong>' + getMetric(player) + '</strong><span>' + getMetricLabel(player) + '</span></div><div class="modal__stat"><strong>' + player.interceptions + '</strong><span>拦截</span></div><div class="modal__stat"><strong>' + player.cleanSheets + '</strong><span>零封</span></div><div class="modal__stat"><strong>' + player.rating + '</strong><span>评分</span></div></div><p class="modal__bio"><strong>代表瞬间：</strong>' + escapeHtml(player.memory) + '</p><p class="modal__bio"><strong>队友评价：</strong>' + escapeHtml(player.quote) + '</p><p class="modal__bio">' + escapeHtml(player.bio) + '</p><div class="modal__tags">' + tags + '</div>';
-        modal.classList.add('modal--open');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('body--modal-open');
+        openModal(modal);
     }
 
     function openPhotoModal(photo) {
@@ -292,9 +291,16 @@
         var body = $('photoModalBody');
         if (!modal || !body || !photo) return;
         body.innerHTML = '<div class="photo-modal__image" style="background-image:url(\'' + photo.image + '\');"></div><div class="photo-modal__content"><div class="photo-modal__meta">' + photo.date + ' / ' + photo.category + ' / ' + photo.tag + '</div><h3 id="photoModalTitle">' + escapeHtml(photo.title) + '</h3><p>' + escapeHtml(photo.story) + '</p></div>';
+        openModal(modal);
+    }
+
+    function openModal(modal) {
+        lastModalTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
         modal.classList.add('modal--open');
         modal.setAttribute('aria-hidden', 'false');
         document.body.classList.add('body--modal-open');
+        var closeButton = modal.querySelector('.modal__close');
+        if (closeButton) closeButton.focus();
     }
 
     function closeModals() {
@@ -303,6 +309,8 @@
             modal.setAttribute('aria-hidden', 'true');
         });
         document.body.classList.remove('body--modal-open');
+        if (lastModalTrigger && document.contains(lastModalTrigger)) lastModalTrigger.focus();
+        lastModalTrigger = null;
     }
 
     function initModals() {
@@ -313,6 +321,26 @@
             if (e.key === 'Escape') {
                 closeModals();
                 closeMobileMenu();
+                return;
+            }
+            if (e.key !== 'Tab') return;
+            var modal = document.querySelector('.modal--open');
+            if (!modal) return;
+            var focusable = Array.from(modal.querySelectorAll('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])')).filter(function (element) {
+                return !element.hasAttribute('disabled') && element.getClientRects().length > 0;
+            });
+            if (!focusable.length) {
+                e.preventDefault();
+                return;
+            }
+            var first = focusable[0];
+            var last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
             }
         });
     }
