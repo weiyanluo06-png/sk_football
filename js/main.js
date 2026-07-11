@@ -70,6 +70,23 @@
     var activeSeason = '全部';
     var activeResult = '全部';
     var activeGallery = '全部';
+    var activeLineupGroup = 'FW';
+    var lineupGroupMeta = {
+        FW: { title: 'Forwards', subtitle: '锋线三人组', slots: ['LW', 'ST', 'RW'] },
+        MF: { title: 'Midfield', subtitle: '中场连接线', slots: ['CAM', 'CM', 'CDM'] },
+        DF: { title: 'Defenders', subtitle: '后防四人组', slots: ['LB', 'CB1', 'CB2', 'RB'] },
+        GK: { title: 'Goalkeeper', subtitle: '最后一道门', slots: ['GK'] }
+    };
+    var demoPhotos = [
+        'https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=600',
+        'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600',
+        'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?q=80&w=600',
+        'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=600',
+        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600',
+        'https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=600',
+        'https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=600',
+        'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=600'
+    ];
 
     function $(id) { return document.getElementById(id); }
     function escapeHtml(str) { return String(str).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -78,6 +95,74 @@
     function getMetricLabel(player) { return player.pos === 'GK' ? '扑救' : '抢断'; }
     function getLineupPlayerIds() { return Object.keys(startingLineup).map(function (key) { return startingLineup[key].playerId; }); }
     function resultName(result) { return { win: '胜', draw: '平', loss: '负' }[result] || result; }
+    function getPlayerPhoto(player) { return player.photo || demoPhotos[player.id % demoPhotos.length]; }
+    function getLineupGroupForSlot(slotKey) {
+        if (lineupGroupMeta.FW.slots.indexOf(slotKey) !== -1) return 'FW';
+        if (lineupGroupMeta.MF.slots.indexOf(slotKey) !== -1) return 'MF';
+        if (lineupGroupMeta.DF.slots.indexOf(slotKey) !== -1) return 'DF';
+        return 'GK';
+    }
+
+    function renderLineupStage() {
+        var pitch = $('lineupPitch'); if (!pitch) return;
+        pitch.querySelectorAll('.lineup-card').forEach(function (node) { node.remove(); });
+        Object.keys(startingLineup).forEach(function (key) {
+            var slot = startingLineup[key];
+            var player = getPlayerById(slot.playerId);
+            if (!player) return;
+            var group = getLineupGroupForSlot(key);
+            var node = document.createElement('button');
+            node.type = 'button';
+            node.className = 'lineup-card lineup-card--' + group;
+            node.setAttribute('data-group', group);
+            node.setAttribute('data-number', player.number);
+            node.setAttribute('aria-label', player.name + ' 队员档案');
+            node.style.left = slot.left;
+            node.style.top = slot.top;
+            node.innerHTML =
+                '<span class="lineup-card__flag" aria-hidden="true"></span>' +
+                '<span class="lineup-card__photo" style="background-image:url(\'' + getPlayerPhoto(player) + '\');"></span>' +
+                '<span class="lineup-card__body"><strong>' + escapeHtml(player.name) + '</strong><span>' + player.number + '号 / ' + player.role + '</span></span>';
+            node.addEventListener('click', function () { openPlayerModal(player.id); });
+            pitch.appendChild(node);
+        });
+        updateLineupFocus(activeLineupGroup);
+    }
+
+    function updateLineupFocus(group) {
+        activeLineupGroup = group || activeLineupGroup;
+        var meta = lineupGroupMeta[activeLineupGroup] || lineupGroupMeta.FW;
+        var title = $('lineupGroupTitle');
+        var subtitle = $('lineupGroupSubtitle');
+        if (title) title.textContent = meta.title;
+        if (subtitle) subtitle.textContent = meta.subtitle;
+        document.querySelectorAll('.lineup-card').forEach(function (card) {
+            var isActive = card.getAttribute('data-group') === activeLineupGroup;
+            card.classList.toggle('lineup-card--active', isActive);
+            card.classList.toggle('lineup-card--dim', !isActive);
+        });
+    }
+
+    function initLineupScroll() {
+        var experience = $('lineupExperience');
+        if (!experience) return;
+        var groups = ['FW', 'MF', 'DF', 'GK'];
+        function syncLineupGroup() {
+            var rect = experience.getBoundingClientRect();
+            var travel = Math.max(1, rect.height - window.innerHeight);
+            var progress = Math.min(0.999, Math.max(0, -rect.top / travel));
+            var index = Math.min(groups.length - 1, Math.floor(progress * groups.length));
+            updateLineupFocus(groups[index]);
+        }
+        window.__syncLineupGroup = syncLineupGroup;
+        window.addEventListener('scroll', syncLineupGroup, { passive: true });
+        window.addEventListener('resize', syncLineupGroup);
+        window.setInterval(function () {
+            var rect = experience.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) syncLineupGroup();
+        }, 180);
+        syncLineupGroup();
+    }
 
     function renderPitchNodes() {
         var pitch = $('pitch'); if (!pitch) return;
@@ -395,6 +480,7 @@
     }
 
     function renderAllPlayers() {
+        renderLineupStage();
         renderPitchNodes();
         renderSquadPool();
         renderFeaturedPlayers();
@@ -415,6 +501,7 @@
         initModals();
         initMobileMenu();
         initNavScroll();
+        initLineupScroll();
 
         var prev = $('carouselPrev');
         var next = $('carouselNext');

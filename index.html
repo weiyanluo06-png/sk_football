@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=featured-card-fix">
+    <link rel="stylesheet" href="css/style.css?v=photo-lineup-card">
 </head>
 <body>
     <div class="site-bg" aria-hidden="true"></div>
@@ -113,30 +113,66 @@
 
         <section class="section reveal squad-section" id="squad">
             <div class="section__heading">
-                <span class="section__kicker">PLAYER CARDS</span>
-                <h2 class="section__title">队员档案与战术板</h2>
-                <p class="section__subtitle">点场上位置，再点右侧队员可以换人；直接点队员卡，可以查看他的数据、绰号、代表瞬间和队友评价。</p>
+                <span class="section__kicker">STARTING XI</span>
+                <h2 class="section__title">沉浸式首发阵容</h2>
+                <p class="section__subtitle">向下滚动时，阵容会依次聚焦前锋、中场、后卫和门将。照片先用占位人物图，之后可以替换成真实队员照片。</p>
             </div>
 
-            <div class="squad">
-                <div class="pitch" id="pitch">
-                    <div class="pitch__area pitch__area--top"></div>
-                    <div class="pitch__area pitch__area--bottom"></div>
+            <div class="lineup-experience" id="lineupExperience">
+                <div class="lineup-stage" id="lineupStage" aria-live="polite">
+                    <div class="lineup-stage__pitch" id="lineupPitch">
+                        <div class="lineup-stage__mark lineup-stage__mark--box-top"></div>
+                        <div class="lineup-stage__mark lineup-stage__mark--box-bottom"></div>
+                        <div class="lineup-stage__mark lineup-stage__mark--circle"></div>
+                    </div>
+
+                    <aside class="lineup-rail">
+                        <span class="lineup-rail__season">2025-2026</span>
+                        <strong id="lineupGroupTitle">FORWARDS</strong>
+                        <small id="lineupGroupSubtitle">锋线三人组</small>
+                    </aside>
                 </div>
 
-                <div class="squad__pool" id="squadPool">
-                    <div class="squad__pool-hint"><i class="fa-solid fa-lightbulb"></i> 这个区域像一本队员卡册：保留数据，但让每个人也有自己的故事。</div>
-                    <div class="squad__pool-group-title">前锋 FW</div>
-                    <div class="squad__pool-grid" id="pool-FW"></div>
-                    <div class="squad__pool-group-title">中场 MF</div>
-                    <div class="squad__pool-grid" id="pool-MF"></div>
-                    <div class="squad__pool-group-title">后卫 DF</div>
-                    <div class="squad__pool-grid" id="pool-DF"></div>
-                    <div class="squad__pool-group-title">门将 GK</div>
-                    <div class="squad__pool-grid" id="pool-GK"></div>
+                <div class="lineup-scroll-steps" aria-hidden="true">
+                    <div class="lineup-step" data-lineup-group="FW"></div>
+                    <div class="lineup-step" data-lineup-group="MF"></div>
+                    <div class="lineup-step" data-lineup-group="DF"></div>
+                    <div class="lineup-step" data-lineup-group="GK"></div>
                 </div>
             </div>
 
+            <div class="squad-tools">
+                <div class="section__heading section__heading--compact">
+                    <span class="section__kicker">LINEUP EDITOR</span>
+                    <h2 class="section__title">阵容调换</h2>
+                    <p class="section__subtitle">点场上位置，再点右侧候选队员即可换人；直接点队员卡可以查看详细档案。</p>
+                </div>
+
+                <div class="squad">
+                    <div class="pitch" id="pitch">
+                        <div class="pitch__area pitch__area--top"></div>
+                        <div class="pitch__area pitch__area--bottom"></div>
+                    </div>
+
+                    <div class="squad__pool" id="squadPool">
+                        <div class="squad__pool-hint"><i class="fa-solid fa-lightbulb"></i> 这个区域像一本队员卡册：保留数据，也方便临时预览换人。</div>
+                        <div class="squad__pool-group-title">前锋 FW</div>
+                        <div class="squad__pool-grid" id="pool-FW"></div>
+                        <div class="squad__pool-group-title">中场 MF</div>
+                        <div class="squad__pool-grid" id="pool-MF"></div>
+                        <div class="squad__pool-group-title">后卫 DF</div>
+                        <div class="squad__pool-grid" id="pool-DF"></div>
+                        <div class="squad__pool-group-title">门将 GK</div>
+                        <div class="squad__pool-grid" id="pool-GK"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section__heading section__heading--compact">
+                <span class="section__kicker">PLAYER ARCHIVE</span>
+                <h2 class="section__title">全队档案</h2>
+                <p class="section__subtitle">精选三张高光卡展示进攻贡献，点击任意卡片可以打开队员档案。</p>
+            </div>
             <div class="cards-showcase" id="featuredPlayers"></div>
         </section>
 
@@ -199,7 +235,7 @@
         </div>
     </div>
 
-    <script src="js/team-data.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/team-data.js?v=lineup-scroll-3"></script>
+    <script src="js/main.js?v=lineup-scroll-3"></script>
 </body>
 </html>

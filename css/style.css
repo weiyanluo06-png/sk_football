@@ -498,6 +498,288 @@ button { border: 0; cursor: pointer; }
     align-items: start;
 }
 
+.section__heading--compact {
+    margin-top: 70px;
+    margin-bottom: 24px;
+}
+
+.lineup-experience {
+    position: relative;
+    min-height: 420vh;
+    margin: 4px -5vw 0;
+}
+
+.lineup-stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    min-height: 720px;
+    overflow: hidden;
+    color: #fff;
+    background:
+        linear-gradient(90deg, rgba(7, 23, 15, 0.86), rgba(7, 23, 15, 0.24) 42%, rgba(7, 23, 15, 0.76)),
+        url("https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920") center / cover;
+    box-shadow: inset 0 -120px 120px rgba(247, 244, 237, 0.82);
+}
+
+.lineup-stage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 45% 38%, rgba(255,255,255,0.42), rgba(255,255,255,0.1) 42%, rgba(255,255,255,0.02) 68%),
+        linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.12));
+    backdrop-filter: blur(1px);
+}
+
+.lineup-stage__pitch {
+    position: absolute;
+    left: 7vw;
+    top: 50%;
+    width: min(70vw, 980px);
+    height: min(74vh, 690px);
+    transform: translateY(-50%) perspective(1100px) rotateX(16deg);
+    transform-origin: center;
+    border-radius: 32px;
+    background:
+        linear-gradient(rgba(255,255,255,0.18) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(255,255,255,0.16) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(255,255,255,0.06) 50%, transparent 50%),
+        rgba(248, 250, 246, 0.72);
+    background-size: 100% 12.5%, 12.5% 100%, 110px 110px, cover;
+    border: 2px solid rgba(255,255,255,0.78);
+    box-shadow: 0 34px 90px rgba(8, 28, 18, 0.28);
+}
+
+.lineup-stage__pitch::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255,255,255,0.44), rgba(255,255,255,0.08));
+    pointer-events: none;
+}
+
+.lineup-stage__mark {
+    position: absolute;
+    z-index: 1;
+    border: 3px solid rgba(18, 55, 36, 0.18);
+}
+
+.lineup-stage__mark--box-top,
+.lineup-stage__mark--box-bottom {
+    left: 50%;
+    width: 34%;
+    height: 18%;
+    transform: translateX(-50%);
+}
+
+.lineup-stage__mark--box-top { top: 7%; border-top: 0; }
+.lineup-stage__mark--box-bottom { bottom: 7%; border-bottom: 0; }
+
+.lineup-stage__mark--circle {
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.lineup-card {
+    position: absolute;
+    z-index: 4;
+    width: 96px;
+    height: 132px;
+    border: 0;
+    border-radius: 18px;
+    color: #fff;
+    overflow: hidden;
+    background: #123d2a;
+    box-shadow: 0 18px 44px rgba(7, 28, 17, 0.28);
+    transform: translate(-50%, -50%) scale(0.72);
+    transform-origin: center;
+    opacity: 0.42;
+    filter: saturate(0.78);
+    transition:
+        transform 0.72s cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 0.55s ease,
+        filter 0.55s ease,
+        box-shadow 0.55s ease;
+}
+
+.lineup-card::before {
+    content: attr(data-number);
+    position: absolute;
+    z-index: 2;
+    left: 10px;
+    top: 9px;
+    color: rgba(255,255,255,0.24);
+    font: 900 3rem/1 "Oswald", sans-serif;
+    text-shadow: 0 6px 18px rgba(0,0,0,0.22);
+}
+
+.lineup-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(180deg, rgba(8,28,17,0.05) 0%, rgba(8,28,17,0.08) 42%, rgba(8,28,17,0.78) 100%),
+        linear-gradient(90deg, rgba(31,122,77,0.3), transparent 42%);
+    pointer-events: none;
+}
+
+.lineup-card__photo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.04);
+    transition: transform 0.72s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.55s ease;
+}
+
+.lineup-card__body {
+    position: absolute;
+    z-index: 3;
+    left: 10px;
+    right: 10px;
+    bottom: 9px;
+    padding: 0;
+    text-align: center;
+}
+
+.lineup-card__body strong {
+    display: block;
+    width: 100%;
+    font-size: 0.84rem;
+    line-height: 1.12;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.58);
+}
+
+.lineup-card__body span {
+    display: block;
+    margin-top: 3px;
+    color: rgba(255,255,255,0.82);
+    font-size: 0.66rem;
+    line-height: 1.1;
+    white-space: nowrap;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.lineup-card__flag {
+    position: absolute;
+    z-index: 3;
+    left: 12px;
+    right: 12px;
+    bottom: 31px;
+    width: auto;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.95) 0 42%, rgba(31,122,77,0.95) 42% 64%, rgba(255,255,255,0.95) 64% 100%);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.28);
+    opacity: 0.92;
+}
+
+.lineup-card--active {
+    opacity: 1;
+    filter: saturate(1.1);
+    transform: translate(-50%, -50%) scale(1.42);
+    box-shadow: 0 30px 70px rgba(7, 28, 17, 0.42);
+}
+
+.lineup-card--active .lineup-card__photo {
+    transform: scale(1);
+}
+
+.lineup-card--dim {
+    opacity: 0.22;
+    transform: translate(-50%, -50%) scale(0.56);
+}
+
+.lineup-card--GK {
+    background: #12376a;
+}
+
+.lineup-card--FW {
+    background: #123d2a;
+}
+
+.lineup-card--MF {
+    background: #0e4144;
+}
+
+.lineup-card--DF {
+    background: #1d3426;
+}
+
+.lineup-rail {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    right: 7vw;
+    width: 150px;
+    min-height: 620px;
+    padding: 30px 18px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 34px;
+    color: #fff;
+    background: linear-gradient(180deg, rgba(31,122,77,0.96), rgba(13,58,38,0.96));
+    box-shadow: 0 30px 70px rgba(7,28,17,0.34);
+}
+
+.lineup-rail::before {
+    content: "生康足球队";
+    writing-mode: vertical-rl;
+    letter-spacing: 0.16em;
+    color: rgba(255,255,255,0.72);
+    font-weight: 900;
+}
+
+.lineup-rail strong {
+    writing-mode: vertical-rl;
+    font: 900 clamp(2.9rem, 6vw, 5.8rem)/0.9 "Oswald", sans-serif;
+    letter-spacing: 0.03em;
+}
+
+.lineup-rail small {
+    writing-mode: vertical-rl;
+    color: rgba(255,255,255,0.8);
+    font-weight: 800;
+}
+
+.lineup-rail__season {
+    font: 700 0.78rem/1 "Oswald", sans-serif;
+    letter-spacing: 0.08em;
+}
+
+.lineup-scroll-steps {
+    position: relative;
+    z-index: 0;
+}
+
+.lineup-step {
+    height: 105vh;
+}
+
+.lineup-step:last-child {
+    height: 120vh;
+}
+
+.squad-tools {
+    margin-top: 26px;
+}
+
 .pitch {
     position: relative;
     height: 620px;
@@ -976,6 +1258,17 @@ button { border: 0; cursor: pointer; }
     .honors__grid { grid-template-columns: repeat(2, 1fr); }
     .match-card { grid-template-columns: 130px 1fr; }
     .match-card__score { grid-column: 1 / -1; }
+    .lineup-stage__pitch {
+        left: 4vw;
+        width: 76vw;
+    }
+    .lineup-rail {
+        right: 3vw;
+        width: 118px;
+    }
+    .lineup-card--active {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
 }
 
 @media screen and (max-width: 760px) {
@@ -999,6 +1292,59 @@ button { border: 0; cursor: pointer; }
     .match-card__body { padding: 22px; }
     .pitch,
     .squad__pool { height: 460px; }
+    .lineup-experience {
+        margin-inline: -4vw;
+        min-height: 390vh;
+    }
+    .lineup-stage {
+        min-height: 640px;
+    }
+    .lineup-stage__pitch {
+        left: 50%;
+        top: 51%;
+        width: 94vw;
+        height: 72vh;
+        transform: translate(-50%, -50%) perspective(980px) rotateX(12deg);
+    }
+    .lineup-rail {
+        top: auto;
+        right: 50%;
+        bottom: 22px;
+        width: min(86vw, 420px);
+        min-height: 76px;
+        padding: 12px 18px;
+        transform: translateX(50%);
+        flex-direction: row;
+        border-radius: 22px;
+    }
+    .lineup-rail::before,
+    .lineup-rail strong,
+    .lineup-rail small {
+        writing-mode: horizontal-tb;
+    }
+    .lineup-rail strong {
+        font-size: 2rem;
+    }
+    .lineup-card {
+        width: 74px;
+        height: 104px;
+    }
+    .lineup-card__body {
+        left: 7px;
+        right: 7px;
+        bottom: 7px;
+    }
+    .lineup-card__flag {
+        left: 8px;
+        right: 8px;
+        bottom: 27px;
+    }
+    .lineup-card--active {
+        transform: translate(-50%, -50%) scale(1.06);
+    }
+    .lineup-card--dim {
+        transform: translate(-50%, -50%) scale(0.5);
+    }
     .cards-showcase,
     .honors__grid,
     .messages__wall { grid-template-columns: 1fr; }

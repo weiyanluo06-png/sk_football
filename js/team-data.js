@@ -27,7 +27,7 @@ window.PONYTAIL_DATA = {
         RB: { top: '66%', left: '85%', playerId: 11 },
         CDM: { top: '48%', left: '50%', playerId: 13 },
         CM: { top: '36%', left: '28%', playerId: 10 },
-        CAM: { top: '34%', left: '72%', playerId: 2 },
+        CAM: { top: '34%', left: '72%', playerId: 6 },
         LW: { top: '15%', left: '18%', playerId: 9 },
         ST: { top: '12%', left: '50%', playerId: 7 },
         RW: { top: '15%', left: '82%', playerId: 5 }
