@@ -759,7 +759,7 @@ textarea:focus-visible {
     transform: translateY(-50%);
     display: grid;
     grid-template-columns: 1fr auto;
-    grid-template-rows: auto minmax(118px, 1fr) auto auto auto;
+    grid-template-rows: auto auto auto 1fr auto;
     align-items: flex-start;
     gap: 0;
     border-radius: 26px;
@@ -795,18 +795,18 @@ textarea:focus-visible {
 .lineup-rail strong {
     grid-column: 1 / -1;
     grid-row: 2;
-    align-self: end;
-    padding-bottom: 22px;
-    font: 900 4.1rem/0.95 "Noto Serif SC", "Songti SC", serif;
-    letter-spacing: 0.04em;
+    align-self: start;
+    padding: 48px 0 18px;
+    font: 900 5.4rem/0.92 "Noto Serif SC", "Songti SC", serif;
+    letter-spacing: 0.06em;
 }
 
 .lineup-rail small {
     grid-column: 1 / -1;
     grid-row: 3;
-    padding-bottom: 20px;
+    padding-bottom: 24px;
     color: rgba(255,255,255,0.8);
-    font-size: 0.82rem;
+    font-size: 1rem;
     font-weight: 800;
 }
 
@@ -825,27 +825,28 @@ textarea:focus-visible {
     width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0 18px;
+    align-self: start;
 }
 
 .lineup-rail__roster span {
     display: flex;
     min-width: 0;
     flex-direction: column;
-    gap: 4px;
-    padding: 10px 0 9px;
+    gap: 5px;
+    padding: 12px 0 11px;
     border-top: 1px solid rgba(255,255,255,0.2);
 }
 
 .lineup-rail__roster b {
     color: rgba(255,255,255,0.58);
-    font: 700 0.66rem/1 "Oswald", sans-serif;
+    font: 700 0.74rem/1 "Oswald", sans-serif;
     letter-spacing: 0.1em;
 }
 
 .lineup-rail__roster em {
     overflow: hidden;
     color: #fff;
-    font-size: 0.88rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 800;
     text-overflow: ellipsis;
