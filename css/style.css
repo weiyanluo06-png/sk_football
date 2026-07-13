@@ -755,69 +755,97 @@ textarea:focus-visible {
     left: min(calc(clamp(24px, 5vw, 80px) + min(64vw, 1040px) + 30px), calc(100% - 410px));
     width: min(25vw, 380px);
     min-height: min(62vh, 520px);
-    padding: 30px 28px;
+    padding: 30px 28px 26px;
     transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto minmax(118px, 1fr) auto auto auto;
     align-items: flex-start;
-    justify-content: space-between;
-    gap: 16px;
+    gap: 0;
     border-radius: 26px;
+    overflow: hidden;
     color: #fff;
-    background: linear-gradient(180deg, rgba(31,122,77,0.96), rgba(13,58,38,0.96));
+    background: linear-gradient(150deg, rgba(35,133,83,0.98), rgba(11,63,43,0.98) 72%);
     box-shadow: 0 30px 70px rgba(7,28,17,0.34);
 }
 
 .lineup-rail::before {
-    content: "生康足球队";
+    content: "生康足球队 / LINEUP";
+    position: relative;
+    z-index: 1;
+    grid-column: 1;
+    grid-row: 1;
     letter-spacing: 0.12em;
     color: rgba(255,255,255,0.72);
     font-size: 0.78rem;
     font-weight: 800;
 }
 
+.lineup-rail::after {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 18px;
+    pointer-events: none;
+}
+
+.lineup-rail > * { position: relative; z-index: 1; }
+
 .lineup-rail strong {
-    font: 900 clamp(3rem, 4.2vw, 4.7rem)/0.95 "Noto Sans SC", sans-serif;
-    letter-spacing: 0;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    align-self: end;
+    padding-bottom: 22px;
+    font: 900 4.1rem/0.95 "Noto Serif SC", "Songti SC", serif;
+    letter-spacing: 0.04em;
 }
 
 .lineup-rail small {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    padding-bottom: 20px;
     color: rgba(255,255,255,0.8);
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     font-weight: 800;
 }
 
 .lineup-rail__season {
-    font: 700 0.9rem/1 "Oswald", sans-serif;
-    letter-spacing: 0.08em;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    font: 700 0.82rem/1 "Oswald", sans-serif;
+    letter-spacing: 0.06em;
 }
 
 .lineup-rail__roster {
+    grid-column: 1 / -1;
+    grid-row: 4;
     display: grid;
     width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    gap: 0 18px;
 }
 
 .lineup-rail__roster span {
     display: flex;
     min-width: 0;
     flex-direction: column;
-    gap: 3px;
-    padding: 8px 0 7px;
-    border-top: 1px solid rgba(255,255,255,0.22);
+    gap: 4px;
+    padding: 10px 0 9px;
+    border-top: 1px solid rgba(255,255,255,0.2);
 }
 
 .lineup-rail__roster b {
     color: rgba(255,255,255,0.58);
-    font: 700 0.62rem/1 "Oswald", sans-serif;
-    letter-spacing: 0.08em;
+    font: 700 0.66rem/1 "Oswald", sans-serif;
+    letter-spacing: 0.1em;
 }
 
 .lineup-rail__roster em {
     overflow: hidden;
     color: #fff;
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     font-style: normal;
     font-weight: 800;
     text-overflow: ellipsis;
@@ -825,9 +853,12 @@ textarea:focus-visible {
 }
 
 .lineup-rail__progress {
+    grid-column: 1 / -1;
+    grid-row: 5;
+    align-self: end;
     display: flex;
     gap: 6px;
-    margin-top: 8px;
+    margin-top: 20px;
 }
 
 .lineup-rail__progress i {
@@ -1336,6 +1367,7 @@ textarea:focus-visible {
         min-height: 440px;
         padding: 24px 18px;
     }
+    .lineup-rail strong { font-size: 3.2rem; }
     .lineup-rail__roster { grid-template-columns: 1fr; }
     .lineup-card--active {
         transform: translate(-50%, -50%) scale(1.2);
@@ -1406,14 +1438,16 @@ textarea:focus-visible {
         touch-action: pan-y;
     }
     .lineup-rail::before { grid-column: 1; grid-row: 1; }
+    .lineup-rail::after { inset: 7px; border-radius: 11px; }
     .lineup-rail__season { grid-column: 2; grid-row: 1; }
     .lineup-rail strong {
         grid-column: 1;
         grid-row: 2;
+        padding-bottom: 0;
         font-size: 1.8rem;
     }
-    .lineup-rail small { grid-column: 1; grid-row: 3; font-size: 0.7rem; }
-    .lineup-rail__progress { grid-column: 2; grid-row: 2 / span 2; justify-self: end; }
+    .lineup-rail small { grid-column: 1; grid-row: 3; padding-bottom: 0; font-size: 0.7rem; }
+    .lineup-rail__progress { grid-column: 2; grid-row: 2 / span 2; justify-self: end; margin-top: 0; }
     .lineup-rail__roster { display: none; }
     .lineup-rail__progress i { width: 10px; }
     .lineup-rail__progress i.is-active { width: 20px; }
