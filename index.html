@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="css/style.css?v=player-comments-horizontal-1">
+    <link rel="stylesheet" href="css/style.css?v=lineup-mobile-navigator-1">
 </head>
 <body>
     <div class="site-bg" aria-hidden="true"></div>
@@ -120,7 +120,7 @@
             <div class="section__heading">
                 <span class="section__kicker">STARTING XI</span>
                 <h2 class="section__title">沉浸式首发阵容</h2>
-                <p class="section__subtitle">固定 4-3-3 首发阵容。桌面端向下滚动时依次聚焦前锋、中场、后卫和门将；手机端可直接浏览整套阵容，不会卡住页面滚动。</p>
+                <p class="section__subtitle">固定 4-3-3 首发阵容。桌面端向下滚动时依次聚焦前锋、中场、后卫和门将；手机端可左右滑动球场或点按阵线标签切换，页面仍可正常上下滚动。</p>
             </div>
 
             <div class="lineup-experience" id="lineupExperience">
@@ -135,7 +135,20 @@
                         <span class="lineup-rail__season">2025-2026</span>
                         <strong id="lineupGroupTitle">FORWARDS</strong>
                         <small id="lineupGroupSubtitle">锋线三人组</small>
+                        <span class="lineup-rail__progress" aria-hidden="true">
+                            <i data-lineup-progress="FW"></i><i data-lineup-progress="MF"></i><i data-lineup-progress="DF"></i><i data-lineup-progress="GK"></i>
+                        </span>
                     </aside>
+
+                    <div class="lineup-swipe-nav" id="lineupSwipeNav" aria-label="阵线切换">
+                        <span class="lineup-swipe-nav__hint"><i class="fa-solid fa-arrows-left-right" aria-hidden="true"></i> 左右滑动切换阵线</span>
+                        <div class="lineup-swipe-nav__tabs" role="tablist" aria-label="首发阵线">
+                            <button type="button" data-lineup-control="FW" role="tab" aria-selected="true">前锋</button>
+                            <button type="button" data-lineup-control="MF" role="tab" aria-selected="false">中场</button>
+                            <button type="button" data-lineup-control="DF" role="tab" aria-selected="false">后卫</button>
+                            <button type="button" data-lineup-control="GK" role="tab" aria-selected="false">门将</button>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="lineup-scroll-steps" aria-hidden="true">
@@ -223,8 +236,8 @@
         </div>
     </div>
 
-    <script src="js/team-data.js?v=player-comments-horizontal-1"></script>
+    <script src="js/team-data.js?v=lineup-mobile-navigator-1"></script>
     <script src="js/gallery-data.js?v=real-photo-captions-1"></script>
-    <script src="js/main.js?v=player-comments-horizontal-1"></script>
+    <script src="js/main.js?v=lineup-mobile-navigator-1"></script>
 </body>
 </html>

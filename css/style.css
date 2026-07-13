@@ -563,9 +563,9 @@ textarea:focus-visible {
 
 .lineup-stage__pitch {
     position: absolute;
-    left: 7vw;
+    left: clamp(24px, 5vw, 80px);
     top: 50%;
-    width: min(70vw, 980px);
+    width: min(64vw, 1040px);
     height: min(74vh, 690px);
     transform: translateY(-50%) perspective(1100px) rotateX(16deg);
     transform-origin: center;
@@ -752,16 +752,17 @@ textarea:focus-visible {
     position: absolute;
     z-index: 10;
     top: 50%;
-    right: 7vw;
-    width: 150px;
-    min-height: 620px;
-    padding: 30px 18px;
+    left: min(calc(clamp(24px, 5vw, 80px) + min(64vw, 1040px) + 30px), calc(100% - 210px));
+    width: 180px;
+    min-height: 0;
+    padding: 22px 20px;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 34px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 18px;
     color: #fff;
     background: linear-gradient(180deg, rgba(31,122,77,0.96), rgba(13,58,38,0.96));
     box-shadow: 0 30px 70px rgba(7,28,17,0.34);
@@ -769,21 +770,20 @@ textarea:focus-visible {
 
 .lineup-rail::before {
     content: "生康足球队";
-    writing-mode: vertical-rl;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.12em;
     color: rgba(255,255,255,0.72);
-    font-weight: 900;
+    font-size: 0.72rem;
+    font-weight: 800;
 }
 
 .lineup-rail strong {
-    writing-mode: vertical-rl;
-    font: 900 clamp(2.9rem, 6vw, 5.8rem)/0.9 "Oswald", sans-serif;
-    letter-spacing: 0.03em;
+    font: 900 clamp(2.35rem, 3.4vw, 3.4rem)/0.95 "Noto Sans SC", sans-serif;
+    letter-spacing: 0;
 }
 
 .lineup-rail small {
-    writing-mode: vertical-rl;
     color: rgba(255,255,255,0.8);
+    font-size: 0.78rem;
     font-weight: 800;
 }
 
@@ -791,6 +791,28 @@ textarea:focus-visible {
     font: 700 0.78rem/1 "Oswald", sans-serif;
     letter-spacing: 0.08em;
 }
+
+.lineup-rail__progress {
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.lineup-rail__progress i {
+    display: block;
+    width: 16px;
+    height: 3px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.3);
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.lineup-rail__progress i.is-active {
+    width: 30px;
+    background: #fff;
+}
+
+.lineup-swipe-nav { display: none; }
 
 .lineup-scroll-steps {
     position: relative;
@@ -1270,6 +1292,7 @@ textarea:focus-visible {
         width: 76vw;
     }
     .lineup-rail {
+        left: auto;
         right: 3vw;
         width: 118px;
     }
@@ -1313,35 +1336,85 @@ textarea:focus-visible {
     .lineup-stage {
         position: relative;
         top: auto;
-        height: 660px;
-        min-height: 640px;
+        height: 710px;
+        min-height: 680px;
     }
     .lineup-scroll-steps { display: none; }
     .lineup-stage__pitch {
         left: 50%;
-        top: 51%;
-        width: 94vw;
-        height: 72vh;
+        top: 37%;
+        width: 92vw;
+        height: min(116vw, 460px);
         transform: translate(-50%, -50%) perspective(980px) rotateX(12deg);
     }
     .lineup-rail {
         top: auto;
-        right: 50%;
-        bottom: 22px;
+        right: auto;
+        left: 50%;
+        bottom: 94px;
         width: min(86vw, 420px);
-        min-height: 76px;
-        padding: 12px 18px;
-        transform: translateX(50%);
-        flex-direction: row;
-        border-radius: 22px;
+        min-height: 72px;
+        padding: 10px 16px;
+        transform: translateX(-50%);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto auto;
+        align-items: center;
+        gap: 2px 12px;
+        border-radius: 16px;
     }
-    .lineup-rail::before,
-    .lineup-rail strong,
-    .lineup-rail small {
-        writing-mode: horizontal-tb;
-    }
+    .lineup-rail::before { grid-column: 1; grid-row: 1; }
+    .lineup-rail__season { grid-column: 2; grid-row: 1; }
     .lineup-rail strong {
-        font-size: 2rem;
+        grid-column: 1;
+        grid-row: 2;
+        font-size: 1.8rem;
+    }
+    .lineup-rail small { grid-column: 1; grid-row: 3; font-size: 0.7rem; }
+    .lineup-rail__progress { grid-column: 2; grid-row: 2 / span 2; justify-self: end; }
+    .lineup-rail__progress i { width: 10px; }
+    .lineup-rail__progress i.is-active { width: 20px; }
+    .lineup-swipe-nav {
+        position: absolute;
+        z-index: 12;
+        left: 50%;
+        bottom: 18px;
+        display: flex;
+        width: min(86vw, 420px);
+        flex-direction: column;
+        gap: 7px;
+        transform: translateX(-50%);
+    }
+    .lineup-swipe-nav__hint {
+        color: rgba(9, 55, 35, 0.78);
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-align: center;
+    }
+    .lineup-swipe-nav__tabs {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        padding: 4px;
+        border: 1px solid rgba(19, 68, 45, 0.15);
+        border-radius: 12px;
+        background: rgba(255,255,255,0.72);
+        box-shadow: 0 10px 22px rgba(7, 28, 17, 0.12);
+    }
+    .lineup-swipe-nav__tabs button {
+        min-height: 30px;
+        padding: 4px 2px;
+        border: 0;
+        border-radius: 8px;
+        color: rgba(14, 56, 37, 0.72);
+        font: 800 0.73rem/1 "Noto Sans SC", sans-serif;
+        background: transparent;
+        transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+    }
+    .lineup-swipe-nav__tabs button.is-active {
+        color: #fff;
+        background: #1f7a4d;
+        box-shadow: 0 5px 12px rgba(20, 91, 54, 0.24);
     }
     .lineup-card {
         width: 74px;

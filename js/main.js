@@ -15,10 +15,10 @@
     var activeLineupGroup = 'FW';
     var lastModalTrigger = null;
     var lineupGroupMeta = {
-        FW: { title: 'Forwards', subtitle: '4-3-3 / 锋线三人组', slots: ['LW', 'ST', 'RW'] },
-        MF: { title: 'Midfield', subtitle: '4-3-3 / 中场三人组', slots: ['LCM', 'DM', 'RCM'] },
-        DF: { title: 'Defenders', subtitle: '4-3-3 / 后防四人组', slots: ['LB', 'CB1', 'CB2', 'RB'] },
-        GK: { title: 'Goalkeeper', subtitle: '4-3-3 / 门将', slots: ['GK'] }
+        FW: { title: '前锋', subtitle: '4-3-3 · 锋线三人组', slots: ['LW', 'ST', 'RW'] },
+        MF: { title: '中场', subtitle: '4-3-3 · 中场三人组', slots: ['LCM', 'DM', 'RCM'] },
+        DF: { title: '后卫', subtitle: '4-3-3 · 后防四人组', slots: ['LB', 'CB1', 'CB2', 'RB'] },
+        GK: { title: '门将', subtitle: '4-3-3 · 门将', slots: ['GK'] }
     };
     function $(id) { return document.getElementById(id); }
     function escapeHtml(str) { return String(str).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -77,6 +77,14 @@
         var subtitle = $('lineupGroupSubtitle');
         if (title) title.textContent = meta.title;
         if (subtitle) subtitle.textContent = meta.subtitle;
+        document.querySelectorAll('[data-lineup-control]').forEach(function (control) {
+            var isSelected = control.getAttribute('data-lineup-control') === activeLineupGroup;
+            control.classList.toggle('is-active', isSelected);
+            control.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+        });
+        document.querySelectorAll('[data-lineup-progress]').forEach(function (marker) {
+            marker.classList.toggle('is-active', marker.getAttribute('data-lineup-progress') === activeLineupGroup);
+        });
         document.querySelectorAll('.lineup-card').forEach(function (card) {
             var isActive = card.getAttribute('data-group') === activeLineupGroup;
             card.classList.toggle('lineup-card--active', isActive);
@@ -88,6 +96,7 @@
         var experience = $('lineupExperience');
         if (!experience) return;
         if (window.matchMedia('(max-width: 760px)').matches) {
+            initMobileLineupNavigator();
             updateLineupFocus('FW');
             return;
         }
@@ -114,6 +123,47 @@
             new ResizeObserver(scheduleLineupSync).observe(experience);
         }
         syncLineupGroup();
+    }
+
+    function initMobileLineupNavigator() {
+        var pitch = $('lineupPitch');
+        var nav = $('lineupSwipeNav');
+        if (!pitch || !nav) return;
+        var groups = ['FW', 'MF', 'DF', 'GK'];
+        var startX = 0;
+        var startY = 0;
+        var lastSwipeAt = 0;
+
+        nav.querySelectorAll('[data-lineup-control]').forEach(function (control) {
+            control.addEventListener('click', function () {
+                updateLineupFocus(control.getAttribute('data-lineup-control'));
+            });
+        });
+
+        pitch.addEventListener('touchstart', function (event) {
+            var touch = event.changedTouches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+        }, { passive: true });
+
+        pitch.addEventListener('touchend', function (event) {
+            var touch = event.changedTouches[0];
+            var deltaX = touch.clientX - startX;
+            var deltaY = touch.clientY - startY;
+            if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+            var index = groups.indexOf(activeLineupGroup);
+            var nextIndex = deltaX > 0 ? index + 1 : index - 1;
+            if (nextIndex < 0 || nextIndex >= groups.length) return;
+            lastSwipeAt = Date.now();
+            updateLineupFocus(groups[nextIndex]);
+        }, { passive: true });
+
+        pitch.addEventListener('click', function (event) {
+            if (Date.now() - lastSwipeAt < 420) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        }, true);
     }
 
     function renderPitchNodes() {
