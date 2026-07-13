@@ -1368,6 +1368,7 @@ textarea:focus-visible {
         align-items: center;
         gap: 2px 12px;
         border-radius: 16px;
+        touch-action: pan-y;
     }
     .lineup-rail::before { grid-column: 1; grid-row: 1; }
     .lineup-rail__season { grid-column: 2; grid-row: 1; }

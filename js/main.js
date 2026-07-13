@@ -128,10 +128,9 @@
     function initMobileLineupNavigator() {
         var pitch = $('lineupPitch');
         var nav = $('lineupSwipeNav');
-        if (!pitch || !nav) return;
+        var rail = document.querySelector('.lineup-rail');
+        if (!pitch || !nav || !rail) return;
         var groups = ['FW', 'MF', 'DF', 'GK'];
-        var startX = 0;
-        var startY = 0;
         var lastSwipeAt = 0;
 
         nav.querySelectorAll('[data-lineup-control]').forEach(function (control) {
@@ -140,23 +139,29 @@
             });
         });
 
-        pitch.addEventListener('touchstart', function (event) {
-            var touch = event.changedTouches[0];
-            startX = touch.clientX;
-            startY = touch.clientY;
-        }, { passive: true });
+        function bindSwipeSurface(surface) {
+            var startX = 0;
+            var startY = 0;
+            surface.addEventListener('touchstart', function (event) {
+                var touch = event.changedTouches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+            }, { passive: true });
+            surface.addEventListener('touchend', function (event) {
+                var touch = event.changedTouches[0];
+                var deltaX = touch.clientX - startX;
+                var deltaY = touch.clientY - startY;
+                if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+                var index = groups.indexOf(activeLineupGroup);
+                var nextIndex = deltaX > 0 ? index + 1 : index - 1;
+                if (nextIndex < 0 || nextIndex >= groups.length) return;
+                lastSwipeAt = Date.now();
+                updateLineupFocus(groups[nextIndex]);
+            }, { passive: true });
+        }
 
-        pitch.addEventListener('touchend', function (event) {
-            var touch = event.changedTouches[0];
-            var deltaX = touch.clientX - startX;
-            var deltaY = touch.clientY - startY;
-            if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
-            var index = groups.indexOf(activeLineupGroup);
-            var nextIndex = deltaX > 0 ? index + 1 : index - 1;
-            if (nextIndex < 0 || nextIndex >= groups.length) return;
-            lastSwipeAt = Date.now();
-            updateLineupFocus(groups[nextIndex]);
-        }, { passive: true });
+        bindSwipeSurface(pitch);
+        bindSwipeSurface(rail);
 
         pitch.addEventListener('click', function (event) {
             if (Date.now() - lastSwipeAt < 420) {
