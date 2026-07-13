@@ -1104,11 +1104,17 @@ textarea:focus-visible {
     border-radius: var(--radius-full);
     color: #fff;
     background: rgba(0,0,0,0.42);
+    transition: color 0.22s ease, background 0.22s ease, transform 0.22s ease;
 }
 
 .like-btn--liked,
 .like-btn:hover { color: #ff7474; }
-.particle { position: absolute; left: 18px; top: 18px; width: 6px; height: 6px; border-radius: var(--radius-full); pointer-events: none; background: #ff7474; animation: particle 0.65s ease forwards; }
+.like-btn--liked { background: rgba(119, 20, 39, 0.7); }
+.like-btn--burst { animation: like-heart-pop 0.48s cubic-bezier(0.2, 1.5, 0.42, 1); }
+.like-btn--burst::after { content: ""; position: absolute; inset: 50%; width: 12px; height: 12px; border: 2px solid rgba(255, 116, 116, 0.82); border-radius: 50%; transform: translate(-50%, -50%); animation: like-ring 0.56s ease-out forwards; }
+.particle { position: absolute; left: 18px; top: 18px; width: 7px; height: 7px; border-radius: var(--radius-full); pointer-events: none; background: #ff7474; box-shadow: 0 0 10px rgba(255,116,116,0.75); animation: particle 0.65s ease forwards; }
+@keyframes like-heart-pop { 45% { transform: scale(1.34) rotate(-8deg); } 72% { transform: scale(0.92) rotate(5deg); } }
+@keyframes like-ring { to { width: 56px; height: 56px; opacity: 0; } }
 @keyframes particle { to { opacity: 0; transform: translate(var(--px), var(--py)) scale(0); } }
 
 .honors__grid {

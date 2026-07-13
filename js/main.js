@@ -296,7 +296,8 @@
             return '<article class="gallery__item" data-photo="' + i + '"><button class="like-btn" type="button" aria-label="点赞"><i class="fa-solid fa-heart"></i></button><div class="gallery__img" style="height:' + g.height + 'px;background-image:url(\'' + g.image + '\');"></div><span class="gallery__tag">' + g.tag + '</span><div class="gallery__info"><h3>' + escapeHtml(g.title) + '</h3><p>' + g.date + ' / ' + g.category + '</p></div></article>';
         }).join('');
         grid.querySelectorAll('.gallery__item').forEach(function (item) {
-            item.addEventListener('click', function () {
+            item.addEventListener('click', function (event) {
+                if (event.target.closest('.like-btn')) return;
                 var visible = galleryItems.filter(function (g) { return activeGallery === '全部' || g.category === activeGallery; });
                 openPhotoModal(visible[parseInt(item.getAttribute('data-photo'), 10)]);
             });
@@ -406,6 +407,8 @@
             e.stopPropagation();
             btn.classList.toggle('like-btn--liked');
             if (btn.classList.contains('like-btn--liked')) {
+                btn.classList.remove('like-btn--burst');
+                window.requestAnimationFrame(function () { btn.classList.add('like-btn--burst'); });
                 for (var i = 0; i < 10; i++) createParticle(btn);
             }
         });
