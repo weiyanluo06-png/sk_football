@@ -75,8 +75,17 @@
         var meta = lineupGroupMeta[activeLineupGroup] || lineupGroupMeta.FW;
         var title = $('lineupGroupTitle');
         var subtitle = $('lineupGroupSubtitle');
+        var roster = $('lineupGroupRoster');
         if (title) title.textContent = meta.title;
         if (subtitle) subtitle.textContent = meta.subtitle;
+        if (roster) {
+            roster.innerHTML = meta.slots.map(function (slotKey) {
+                var slot = startingLineup[slotKey];
+                var player = slot && getPlayerById(slot.playerId);
+                if (!player) return '';
+                return '<span><b>' + slotKey.replace(/[0-9]/g, '') + '</b><em>' + escapeHtml(player.name) + '</em></span>';
+            }).join('');
+        }
         document.querySelectorAll('[data-lineup-control]').forEach(function (control) {
             var isSelected = control.getAttribute('data-lineup-control') === activeLineupGroup;
             control.classList.toggle('is-active', isSelected);

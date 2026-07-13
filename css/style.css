@@ -565,7 +565,7 @@ textarea:focus-visible {
     position: absolute;
     left: clamp(24px, 5vw, 80px);
     top: 50%;
-    width: min(72vw, 1200px);
+    width: min(64vw, 1040px);
     height: min(74vh, 690px);
     transform: translateY(-50%) perspective(1100px) rotateX(16deg);
     transform-origin: center;
@@ -752,17 +752,17 @@ textarea:focus-visible {
     position: absolute;
     z-index: 10;
     top: 50%;
-    left: min(calc(clamp(24px, 5vw, 80px) + min(72vw, 1200px) + 30px), calc(100% - 210px));
-    width: 180px;
-    min-height: 0;
-    padding: 22px 20px;
+    left: min(calc(clamp(24px, 5vw, 80px) + min(64vw, 1040px) + 30px), calc(100% - 410px));
+    width: min(25vw, 380px);
+    min-height: min(62vh, 520px);
+    padding: 30px 28px;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
-    gap: 10px;
-    border-radius: 18px;
+    justify-content: space-between;
+    gap: 16px;
+    border-radius: 26px;
     color: #fff;
     background: linear-gradient(180deg, rgba(31,122,77,0.96), rgba(13,58,38,0.96));
     box-shadow: 0 30px 70px rgba(7,28,17,0.34);
@@ -772,35 +772,67 @@ textarea:focus-visible {
     content: "生康足球队";
     letter-spacing: 0.12em;
     color: rgba(255,255,255,0.72);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 800;
 }
 
 .lineup-rail strong {
-    font: 900 clamp(2.35rem, 3.4vw, 3.4rem)/0.95 "Noto Sans SC", sans-serif;
+    font: 900 clamp(3rem, 4.2vw, 4.7rem)/0.95 "Noto Sans SC", sans-serif;
     letter-spacing: 0;
 }
 
 .lineup-rail small {
     color: rgba(255,255,255,0.8);
-    font-size: 0.78rem;
+    font-size: 0.88rem;
     font-weight: 800;
 }
 
 .lineup-rail__season {
-    font: 700 0.78rem/1 "Oswald", sans-serif;
+    font: 700 0.9rem/1 "Oswald", sans-serif;
     letter-spacing: 0.08em;
+}
+
+.lineup-rail__roster {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.lineup-rail__roster span {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 3px;
+    padding: 8px 0 7px;
+    border-top: 1px solid rgba(255,255,255,0.22);
+}
+
+.lineup-rail__roster b {
+    color: rgba(255,255,255,0.58);
+    font: 700 0.62rem/1 "Oswald", sans-serif;
+    letter-spacing: 0.08em;
+}
+
+.lineup-rail__roster em {
+    overflow: hidden;
+    color: #fff;
+    font-size: 0.82rem;
+    font-style: normal;
+    font-weight: 800;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .lineup-rail__progress {
     display: flex;
     gap: 6px;
-    margin-top: 4px;
+    margin-top: 8px;
 }
 
 .lineup-rail__progress i {
     display: block;
-    width: 16px;
+    width: 22px;
     height: 3px;
     border-radius: 999px;
     background: rgba(255,255,255,0.3);
@@ -808,7 +840,7 @@ textarea:focus-visible {
 }
 
 .lineup-rail__progress i.is-active {
-    width: 30px;
+    width: 40px;
     background: #fff;
 }
 
@@ -1300,8 +1332,11 @@ textarea:focus-visible {
     .lineup-rail {
         left: auto;
         right: 3vw;
-        width: 118px;
+        width: 154px;
+        min-height: 440px;
+        padding: 24px 18px;
     }
+    .lineup-rail__roster { grid-template-columns: 1fr; }
     .lineup-card--active {
         transform: translate(-50%, -50%) scale(1.2);
     }
@@ -1379,6 +1414,7 @@ textarea:focus-visible {
     }
     .lineup-rail small { grid-column: 1; grid-row: 3; font-size: 0.7rem; }
     .lineup-rail__progress { grid-column: 2; grid-row: 2 / span 2; justify-self: end; }
+    .lineup-rail__roster { display: none; }
     .lineup-rail__progress i { width: 10px; }
     .lineup-rail__progress i.is-active { width: 20px; }
     .lineup-swipe-nav {
