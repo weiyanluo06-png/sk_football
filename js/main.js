@@ -162,8 +162,7 @@
                 var deltaY = touch.clientY - startY;
                 if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
                 var index = groups.indexOf(activeLineupGroup);
-                var nextIndex = deltaX > 0 ? index + 1 : index - 1;
-                if (nextIndex < 0 || nextIndex >= groups.length) return;
+                var nextIndex = (index + (deltaX > 0 ? 1 : -1) + groups.length) % groups.length;
                 lastSwipeAt = Date.now();
                 updateLineupFocus(groups[nextIndex]);
             }, { passive: true });
