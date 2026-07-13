@@ -16,7 +16,7 @@ window.PONYTAIL_DATA = {
         { id: 14, name: '陈亿霏', nickname: '寝室长', number: 66, pos: 'DF', apps: 2, goals: 0, asts: 0, role: 'LB', saves: 0, cleanSheets: 0, motm: 0, rating: 6.7, avatarIcon: 'fa-shield-halved', traits: ['边后卫'], memory: '累计出场 2 场', reviews: ['寝室长？', '窝里横'], bio: '场上位置为左后卫。' },
         { id: 15, name: '何嗣承', nickname: '生康坎特', number: 12, pos: 'MF', apps: 7, goals: 1, asts: 1, role: 'DM/LB', saves: 0, cleanSheets: 0, motm: 0, rating: 7.5, avatarIcon: 'fa-compass', traits: ['扫荡型中场'], memory: '贡献 1 粒进球 / 送出 1 次助攻', reviews: ['身体最硬之人', '生康坎特'], bio: '场上可胜任后腰和左后卫。', photo: 'assets/players/hesicheng.jpg' },
         { id: 16, name: '曹志威', nickname: '活跃队员', number: 66, pos: 'GK', apps: 1, goals: 0, asts: 0, role: 'GK', saves: 0, cleanSheets: 0, motm: 0, rating: 6.7, avatarIcon: 'fa-hands', traits: ['门将'], memory: '累计出场 1 场', reviews: [], bio: '场上位置为门将。' },
-        { id: 17, name: '苗志梁', nickname: '足球文艺青年', number: 15, pos: 'DF', apps: 2, goals: 0, asts: 0, role: 'LB/LWB', saves: 0, cleanSheets: 0, motm: 0, rating: 6.8, avatarIcon: 'fa-shield-halved', traits: ['边后卫'], memory: '累计出场 2 场', reviews: ['唱歌有点好听的', '足球文艺青年', '生康门面', '生康KTV扛把子'], bio: '场上可胜任左后卫和左翼卫。' }
+        { id: 17, name: '苗志梁', nickname: '足球文艺青年', number: 15, pos: 'DF', apps: 2, goals: 0, asts: 0, role: 'LB/LWB', saves: 0, cleanSheets: 0, motm: 0, rating: 6.8, avatarIcon: 'fa-shield-halved', traits: ['边后卫'], memory: '累计出场 2 场', reviews: ['唱歌有点好听的', '足球文艺青年', '生康门面', '生康KTV扛把子'], bio: '场上可胜任左后卫和左翼卫。', photo: 'assets/players/miaozhiliang.png' }
     ],
 
     startingLineup: {
