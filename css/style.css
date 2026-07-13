@@ -1197,8 +1197,8 @@ textarea:focus-visible {
 
 .modal__reviews span {
     position: absolute;
-    left: var(--comment-left);
-    bottom: -42px;
+    top: var(--comment-top);
+    left: -58%;
     max-width: 76%;
     padding: 5px 9px;
     border-radius: var(--radius-full);
@@ -1213,9 +1213,9 @@ textarea:focus-visible {
 }
 
 @keyframes teammate-comment {
-    from { transform: translateY(44px); opacity: 0; }
+    from { transform: translateX(0); opacity: 0; }
     12%, 84% { opacity: 1; }
-    to { transform: translateY(-150px); opacity: 0; }
+    to { transform: translateX(180vw); opacity: 0; }
 }
 
 .modal__stats {
