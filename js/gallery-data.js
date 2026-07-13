@@ -1,4 +1,5 @@
 window.PONYTAIL_GALLERY = [
+    { title: '场边的两件球衣', date: '球队记忆', category: '比赛', tag: 'SIDELINE', height: 350, image: 'assets/photos/gallery-sideline-duo.jpg', story: '吴宇成和王伯函坐在场边，看着另一场比赛继续进行。' },
     { title: '雨天的球场', date: '球队记忆', category: '比赛', tag: 'RAIN MATCH', height: 330, image: 'assets/photos/gallery-rain-match.jpg', story: '场地积水时，队员仍在球门旁等待和训练。这张照片记录了雨天的球场。' },
     { title: '开球前围圈', date: '球队记忆', category: '比赛', tag: 'HUDDLE', height: 360, image: 'assets/photos/gallery-team-huddle.jpg', story: '比赛开始前，穿白色球衣的队员围在一起。' },
     { title: '赛后合照', date: '球队记忆', category: '合照', tag: 'TEAM', height: 300, image: 'assets/photos/gallery-post-match.jpg', story: '一场比赛结束后，队员和朋友在球场上合影。' },
