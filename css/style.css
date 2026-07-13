@@ -415,6 +415,31 @@ textarea:focus-visible {
 .season-switch { z-index: 2; margin-bottom: 24px; }
 .match-filters { z-index: 1; }
 
+.season-overview {
+    width: min(1120px, 100%);
+    margin: 0 auto 18px;
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: center;
+    border-left: 4px solid var(--green);
+    background: rgba(31,122,77,0.08);
+}
+
+.season-overview__label {
+    padding: 5px 9px;
+    border-radius: var(--radius-full);
+    color: #fff;
+    background: var(--green);
+    font-size: 0.75rem;
+    font-weight: 900;
+}
+
+.season-overview strong { display: block; color: var(--green-dark); font-size: 1.1rem; }
+.season-overview p { margin-top: 3px; color: var(--muted); font-size: 0.9rem; }
+.season-overview__count { color: var(--green-dark); font-weight: 900; white-space: nowrap; }
+
 .filter-btn {
     min-height: 38px;
     padding: 8px 15px;
@@ -1238,6 +1263,7 @@ textarea:focus-visible {
     .match-card { grid-template-columns: 1fr; }
     .match-card__date { min-height: 120px; }
     .match-card__body { padding: 22px; }
+    .season-overview { grid-template-columns: 1fr; gap: 8px; padding: 16px; }
     .pitch,
     .squad__pool { height: 460px; }
     .lineup-experience {

@@ -33,25 +33,31 @@ window.PONYTAIL_DATA = {
         RW: { top: '15%', left: '82%', playerId: 5 }
     },
 
+    competitions: [
+        { name: '八人制纺大杯', label: '2026 春季 · 八人制纺大杯', status: '最新赛事', description: '下学期唯一一项学院足球赛事。这里优先展示这一段比赛记录。' },
+        { name: '八人制新生杯', label: '2025 秋季 · 八人制新生杯', status: '首届新生杯', description: '紧密赛程里，球队最终获得第七名。这是第一届新生杯，也是很高的起点。' },
+        { name: '十一人制纺大杯', label: '2025 秋季 · 十一人制纺大杯', status: '建队后的首个赛事', description: '从临时凑齐队员、确定位置到真正踏上十一人制赛场，正式比赛从这里开始。' }
+    ],
+
     matches: [
-        { season: '2025-2026', result: 'loss', score: '0 : 3', opponent: '材料学院', date: '2026-04-16', venue: '阳光校区足球场', competition: '八人制纺大杯', scorers: '暂无进球记录', quote: '材料学院最终夺冠，这场比赛也留下了继续追赶的目标。' },
-        { season: '2025-2026', result: 'loss', score: '2 : 6', opponent: '机智学院', date: '2026-04-08', venue: '阳光校区足球场', competition: '八人制纺大杯', scorers: '周霄旭 20′ / 周霄旭 40′', quote: '周霄旭梅开二度，是这场比赛最亮的一笔。' },
-        { season: '2025-2026', result: 'loss', score: '2 : 3', opponent: '管理学院', date: '2026-03-30', venue: '阳光校区足球场', competition: '八人制纺大杯', scorers: '吴宇泽 12′ / 何嗣承 24′', quote: '一场情绪拉满的惜败，留给之后继续复盘。' },
-        { season: '2025-2026', result: 'win', score: '1 : 0', opponent: '管理学院', date: '2025-12-18', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '彭卓伦 40′', quote: '友谊战也认真踢，用一场零封胜利收尾。' },
-        { season: '2025-2026', result: 'loss', score: '0 : 1', opponent: '计智学院', date: '2025-12-17', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '暂无进球记录', quote: '首次进入淘汰赛，虽然惜败，但这一步很值得记住。' },
-        { season: '2025-2026', result: 'loss', score: '1 : 3', opponent: '南湖校区', date: '2025-12-16', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '周霄旭 62′', quote: '这场比赛留下了继续调整的空间。' },
-        { season: '2025-2026', result: 'win', score: '2 : 0', opponent: '化工学院', date: '2025-12-12', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '彭卓伦 30′ / 吴宇泽 42′', quote: '生康第二胜！' },
-        { season: '2025-2026', result: 'win', score: '1 : 0', opponent: '微电子学院', date: '2025-12-08', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '吴宇泽 18′', quote: '生康首胜！' },
-        { season: '2025-2026', result: 'loss', score: '0 : 5', opponent: '研究生', date: '2025-12-03', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '暂无进球记录', quote: '这场比赛留下了继续调整的空间。' },
-        { season: '2025-2026', result: 'loss', score: '2 : 5', opponent: '材料学院', date: '2025-10-28', venue: '阳光校区足球场', competition: '十一人制纺大杯', scorers: '吴宇泽 20′ / 吴宇泽 60′', quote: '吴宇泽双响，球队在十一人制纺大杯继续积累经验。' },
-        { season: '2025-2026', result: 'loss', score: '2 : 4', opponent: '管理学院', date: '2025-10-14', venue: '阳光校区足球场', competition: '十一人制纺大杯', scorers: '周霄旭 20′ / 吴宇泽 40′', quote: '生康首战，第一场正式记录从这里开始。' }
+        { season: '2025-2026', result: 'loss', score: '0 : 3', opponent: '材料学院', date: '2026-04-16', venue: '阳光校区足球场', competition: '八人制纺大杯', scorers: '暂无进球记录', quote: '八人制纺大杯对阵材料学院。' },
+        { season: '2025-2026', result: 'loss', score: '2 : 6', opponent: '机智学院', date: '2026-04-08', venue: '阳光校区足球场', competition: '八人制纺大杯', scorers: '周霄旭 20′ / 周霄旭 40′', quote: '周霄旭打入两球。' },
+        { season: '2025-2026', result: 'loss', score: '2 : 3', opponent: '管理学院', date: '2026-03-30', venue: '阳光校区足球场', competition: '八人制纺大杯', scorers: '吴宇泽 12′ / 何嗣承 24′', quote: '八人制纺大杯对阵管理学院。' },
+        { season: '2025-2026', result: 'win', score: '1 : 0', opponent: '管理学院', date: '2025-12-18', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '彭卓伦 40′', quote: '最后一场大家轮换到不熟悉的位置，也更理解了队友的难处。' },
+        { season: '2025-2026', result: 'loss', score: '0 : 1', opponent: '计智学院', date: '2025-12-17', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '暂无进球记录', quote: '首次进入淘汰赛，球队最终获得第七名。' },
+        { season: '2025-2026', result: 'loss', score: '1 : 3', opponent: '南湖校区', date: '2025-12-16', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '周霄旭 62′', quote: '紧密赛程中的一场比赛。' },
+        { season: '2025-2026', result: 'win', score: '2 : 0', opponent: '化工学院', date: '2025-12-12', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '彭卓伦 30′ / 吴宇泽 42′', quote: '小组赛第二场胜利。' },
+        { season: '2025-2026', result: 'win', score: '1 : 0', opponent: '微电子学院', date: '2025-12-08', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '吴宇泽 18′', quote: '球队在新生杯拿到首胜。' },
+        { season: '2025-2026', result: 'loss', score: '0 : 5', opponent: '研究生', date: '2025-12-03', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '暂无进球记录', quote: '八人制新生杯的第一场记录。' },
+        { season: '2025-2026', result: 'loss', score: '2 : 5', opponent: '材料学院', date: '2025-10-28', venue: '阳光校区足球场', competition: '十一人制纺大杯', scorers: '吴宇泽 20′ / 吴宇泽 60′', quote: '面对一直帮助球队的材料学院，继续在实战里学习。' },
+        { season: '2025-2026', result: 'loss', score: '2 : 4', opponent: '管理学院', date: '2025-10-14', venue: '阳光校区足球场', competition: '十一人制纺大杯', scorers: '周霄旭 20′ / 吴宇泽 40′', quote: '球队十一人制正式首战，雨中作战，比分并非一边倒。' }
     ],
 
     honors: [
-        { icon: 'fa-flag-checkered', title: '生康首战', date: '2025-10-14', text: '十一人制纺大杯对阵管理学院，这是 CSV 记录里的第一场正式比赛。' },
-        { icon: 'fa-star', title: '生康首胜', date: '2025-12-08', text: '八人制新生杯 1:0 战胜微电子学院，吴宇泽打入制胜球。' },
-        { icon: 'fa-shield-heart', title: '第二场胜利', date: '2025-12-12', text: '2:0 战胜化工学院，彭卓伦和吴宇泽分别进球。' },
-        { icon: 'fa-route', title: '首次进入淘汰赛', date: '2025-12-17', text: '八人制新生杯进入淘汰赛，虽然 0:1 惜败计智学院，但这是队史节点。' }
+        { icon: 'fa-people-group', title: '把队伍凑齐', date: '2025 秋季', text: '从不能联院、人数不够开始，队员们一起拉人报名、订队服，生康终于有了自己的足球队。' },
+        { icon: 'fa-flag-checkered', title: '十一人制首战', date: '2025-10-14', text: '雨中 2:4 对阵管理学院。虽然输了，但比赛并不难看，球队第一次打出了自己的风采。' },
+        { icon: 'fa-ranking-star', title: '首届新生杯第七名', date: '2025 秋季', text: '这不是运气，是一次次拼抢、解围和互相补位拼出来的成绩。' },
+        { icon: 'fa-handshake', title: '材料学院，兄弟学院', date: '一直以来', text: '从球队还没成立，到场边指导和加油，材料学院的学长给过球队很多帮助。' }
     ],
 
     fallbackPhotos: [

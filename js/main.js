@@ -9,8 +9,7 @@
     var honors = teamData.honors || [];
     var fallbackPhotos = teamData.fallbackPhotos || [];
     var selectedNodeKey = null;
-    var activeSeason = '全部';
-    var activeResult = '全部';
+    var activeCompetition = (teamData.competitions && teamData.competitions[0] && teamData.competitions[0].name) || (matchItems[0] && matchItems[0].competition) || '';
     var activeGallery = '全部';
     var activeLineupGroup = 'FW';
     var lastModalTrigger = null;
@@ -172,33 +171,41 @@
         });
     }
 
-    function renderSeasonSwitch() {
-        var wrap = $('seasonSwitch'); if (!wrap) return;
-        var seasons = ['全部'].concat(Array.from(new Set(matchItems.map(function (m) { return m.season; }))).sort().reverse());
-        wrap.innerHTML = seasons.map(function (season) {
-            return '<button class="filter-btn ' + (activeSeason === season ? 'filter-btn--active' : '') + '" type="button" data-season="' + season + '">' + season + '</button>';
-        }).join('');
-        wrap.querySelectorAll('button').forEach(function (btn) {
-            btn.addEventListener('click', function () { activeSeason = btn.getAttribute('data-season'); renderMatches(); renderSeasonSwitch(); });
+    function getCompetitionArchive() {
+        if (teamData.competitions && teamData.competitions.length) return teamData.competitions;
+        return Array.from(new Set(matchItems.map(function (m) { return m.competition; }))).map(function (name) {
+            return { name: name, label: name, description: '' };
         });
     }
 
-    function renderMatchFilters() {
-        var wrap = $('matchFilters'); if (!wrap) return;
-        var filters = [['全部', '全部'], ['胜场', 'win'], ['平局', 'draw'], ['失利', 'loss']];
-        wrap.innerHTML = filters.map(function (item) {
-            return '<button class="filter-btn ' + (activeResult === item[1] ? 'filter-btn--active' : '') + '" type="button" data-result="' + item[1] + '">' + item[0] + '</button>';
+    function getActiveCompetition() {
+        return getCompetitionArchive().find(function (competition) { return competition.name === activeCompetition; }) || { name: activeCompetition, label: activeCompetition, description: '' };
+    }
+
+    function renderSeasonSwitch() {
+        var wrap = $('seasonSwitch'); if (!wrap) return;
+        var competitions = getCompetitionArchive();
+        wrap.innerHTML = competitions.map(function (competition) {
+            return '<button class="filter-btn ' + (activeCompetition === competition.name ? 'filter-btn--active' : '') + '" type="button" data-competition="' + escapeHtml(competition.name) + '">' + escapeHtml(competition.label || competition.name) + '</button>';
         }).join('');
         wrap.querySelectorAll('button').forEach(function (btn) {
-            btn.addEventListener('click', function () { activeResult = btn.getAttribute('data-result'); renderMatches(); renderMatchFilters(); });
+            btn.addEventListener('click', function () {
+                activeCompetition = btn.getAttribute('data-competition');
+                renderSeasonSwitch();
+                renderMatches();
+            });
         });
     }
 
     function renderMatches() {
         var wrap = $('matchTimeline'); if (!wrap) return;
-        var filtered = matchItems.filter(function (m) {
-            return (activeSeason === '全部' || m.season === activeSeason) && (activeResult === '全部' || m.result === activeResult);
-        });
+        var competition = getActiveCompetition();
+        var filtered = matchItems.filter(function (m) { return m.competition === activeCompetition; })
+            .sort(function (a, b) { return b.date.localeCompare(a.date); });
+        var overview = $('seasonOverview');
+        if (overview) {
+            overview.innerHTML = '<span class="season-overview__label">' + escapeHtml(competition.status || '赛事档案') + '</span><div><strong>' + escapeHtml(competition.name) + '</strong><p>' + escapeHtml(competition.description || '记录这一段比赛里的对手、比分和进球。') + '</p></div><span class="season-overview__count">' + filtered.length + ' 场记录</span>';
+        }
         wrap.innerHTML = filtered.map(function (m) {
             var date = new Date(m.date + 'T00:00:00');
             var day = String(date.getDate()).padStart(2, '0');
@@ -433,7 +440,6 @@
     function init() {
         renderAllPlayers();
         renderSeasonSwitch();
-        renderMatchFilters();
         renderMatches();
         renderGalleryTabs();
         renderGallery();
