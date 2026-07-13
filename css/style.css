@@ -565,7 +565,7 @@ textarea:focus-visible {
     position: absolute;
     left: clamp(24px, 5vw, 80px);
     top: 50%;
-    width: min(64vw, 1040px);
+    width: min(72vw, 1200px);
     height: min(74vh, 690px);
     transform: translateY(-50%) perspective(1100px) rotateX(16deg);
     transform-origin: center;
@@ -752,7 +752,7 @@ textarea:focus-visible {
     position: absolute;
     z-index: 10;
     top: 50%;
-    left: min(calc(clamp(24px, 5vw, 80px) + min(64vw, 1040px) + 30px), calc(100% - 210px));
+    left: min(calc(clamp(24px, 5vw, 80px) + min(72vw, 1200px) + 30px), calc(100% - 210px));
     width: 180px;
     min-height: 0;
     padding: 22px 20px;
