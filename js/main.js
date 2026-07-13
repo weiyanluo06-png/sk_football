@@ -8,6 +8,7 @@
     var galleryItems = window.PONYTAIL_GALLERY || [];
     var honors = teamData.honors || [];
     var fallbackPhotos = teamData.fallbackPhotos || [];
+    var featuredPlayers = [];
     var selectedNodeKey = null;
     var activeCompetition = (teamData.competitions && teamData.competitions[0] && teamData.competitions[0].name) || (matchItems[0] && matchItems[0].competition) || '';
     var activeGallery = '全部';
@@ -32,6 +33,29 @@
         if (lineupGroupMeta.MF.slots.indexOf(slotKey) !== -1) return 'MF';
         if (lineupGroupMeta.DF.slots.indexOf(slotKey) !== -1) return 'DF';
         return 'GK';
+    }
+
+    function shuffled(items) {
+        var copy = items.slice();
+        for (var i = copy.length - 1; i > 0; i -= 1) {
+            var index = Math.floor(Math.random() * (i + 1));
+            var temp = copy[i];
+            copy[i] = copy[index];
+            copy[index] = temp;
+        }
+        return copy;
+    }
+
+    function randomizeStartingLineup() {
+        ['GK', 'DF', 'MF', 'FW'].forEach(function (position) {
+            var slots = Object.keys(startingLineup).filter(function (slotKey) {
+                return getLineupGroupForSlot(slotKey) === position;
+            });
+            var candidates = shuffled(allPlayers.filter(function (player) { return player.pos === position; }));
+            slots.forEach(function (slotKey, index) {
+                if (candidates[index]) startingLineup[slotKey].playerId = candidates[index].id;
+            });
+        });
     }
 
     function renderLineupStage() {
@@ -162,7 +186,7 @@
     function renderFeaturedPlayers() {
         var wrap = $('featuredPlayers'); if (!wrap) return;
         wrap.innerHTML = '';
-        allPlayers.filter(function (p) { return p.featured; }).slice(0, 3).forEach(function (p) {
+        featuredPlayers.forEach(function (p) {
             var tags = p.traits.map(function (t) { return '<span class="tag">' + escapeHtml(t) + '</span>'; }).join('');
             wrap.innerHTML += '<button class="flip-card" type="button" data-player-id="' + p.id + '"><span class="flip-card__inner"><span class="flip-card__face flip-card__face--front"><i class="fa-solid ' + p.avatarIcon + '"></i><h3>' + escapeHtml(p.name) + '</h3><p>' + p.role + ' / ' + p.number + '号 / ' + escapeHtml(p.nickname) + '</p><span class="flip-card__tags">' + tags + '</span></span><span class="flip-card__face flip-card__face--back"><h3>' + escapeHtml(p.memory) + '</h3><p>' + escapeHtml(p.quote) + '</p></span></span></button>';
         });
@@ -438,6 +462,8 @@
     }
 
     function init() {
+        randomizeStartingLineup();
+        featuredPlayers = shuffled(allPlayers).slice(0, 3);
         renderAllPlayers();
         renderSeasonSwitch();
         renderMatches();
