@@ -1175,6 +1175,49 @@ textarea:focus-visible {
 .modal__subtitle,
 .modal__bio { color: var(--muted); }
 
+.modal__reviews {
+    position: relative;
+    height: 118px;
+    margin: 18px 0;
+    overflow: hidden;
+    border-block: 1px solid rgba(31,122,77,0.14);
+    background: rgba(31,122,77,0.05);
+}
+
+.modal__reviews::before {
+    content: "队友评价";
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    z-index: 2;
+    color: var(--green-dark);
+    font-size: 0.72rem;
+    font-weight: 900;
+}
+
+.modal__reviews span {
+    position: absolute;
+    left: var(--comment-left);
+    bottom: -42px;
+    max-width: 76%;
+    padding: 5px 9px;
+    border-radius: var(--radius-full);
+    color: var(--green-dark);
+    background: rgba(255,253,248,0.9);
+    box-shadow: 0 4px 14px rgba(7,28,17,0.1);
+    font-size: 0.82rem;
+    font-weight: 700;
+    white-space: nowrap;
+    animation: teammate-comment 10s linear infinite;
+    animation-delay: var(--comment-delay);
+}
+
+@keyframes teammate-comment {
+    from { transform: translateY(44px); opacity: 0; }
+    12%, 84% { opacity: 1; }
+    to { transform: translateY(-150px); opacity: 0; }
+}
+
 .modal__stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1266,13 +1309,14 @@ textarea:focus-visible {
     .season-overview { grid-template-columns: 1fr; gap: 8px; padding: 16px; }
     .pitch,
     .squad__pool { height: 460px; }
-    .lineup-experience {
-        margin-inline: -4vw;
-        min-height: 390vh;
-    }
+    .lineup-experience { margin-inline: -4vw; min-height: 0; }
     .lineup-stage {
+        position: relative;
+        top: auto;
+        height: 660px;
         min-height: 640px;
     }
+    .lineup-scroll-steps { display: none; }
     .lineup-stage__pitch {
         left: 50%;
         top: 51%;
@@ -1316,9 +1360,7 @@ textarea:focus-visible {
     .lineup-card--active {
         transform: translate(-50%, -50%) scale(1.06);
     }
-    .lineup-card--dim {
-        transform: translate(-50%, -50%) scale(0.5);
-    }
+    .lineup-card--dim { opacity: 0.56; transform: translate(-50%, -50%) scale(0.7); }
     .cards-showcase,
     .honors__grid { grid-template-columns: 1fr; }
     .gallery { columns: 2 160px; }

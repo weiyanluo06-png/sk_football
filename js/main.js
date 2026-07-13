@@ -15,16 +15,14 @@
     var activeLineupGroup = 'FW';
     var lastModalTrigger = null;
     var lineupGroupMeta = {
-        FW: { title: 'Forwards', subtitle: '锋线三人组', slots: ['LW', 'ST', 'RW'] },
-        MF: { title: 'Midfield', subtitle: '中场连接线', slots: ['CAM', 'CM', 'CDM'] },
-        DF: { title: 'Defenders', subtitle: '后防四人组', slots: ['LB', 'CB1', 'CB2', 'RB'] },
-        GK: { title: 'Goalkeeper', subtitle: '最后一道门', slots: ['GK'] }
+        FW: { title: 'Forwards', subtitle: '4-3-3 / 锋线三人组', slots: ['LW', 'ST', 'RW'] },
+        MF: { title: 'Midfield', subtitle: '4-3-3 / 中场三人组', slots: ['LCM', 'DM', 'RCM'] },
+        DF: { title: 'Defenders', subtitle: '4-3-3 / 后防四人组', slots: ['LB', 'CB1', 'CB2', 'RB'] },
+        GK: { title: 'Goalkeeper', subtitle: '4-3-3 / 门将', slots: ['GK'] }
     };
     function $(id) { return document.getElementById(id); }
     function escapeHtml(str) { return String(str).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
     function getPlayerById(id) { return allPlayers.find(function (p) { return p.id === id; }) || null; }
-    function getMetric(player) { return player.pos === 'GK' ? player.saves : player.tackles; }
-    function getMetricLabel(player) { return player.pos === 'GK' ? '扑救' : '抢断'; }
     function getLineupPlayerIds() { return Object.keys(startingLineup).map(function (key) { return startingLineup[key].playerId; }); }
     function resultName(result) { return { win: '胜', draw: '平', loss: '负' }[result] || result; }
     function getPlayerPhoto(player) { return player.photo || fallbackPhotos[player.id % fallbackPhotos.length] || ''; }
@@ -44,18 +42,6 @@
             copy[index] = temp;
         }
         return copy;
-    }
-
-    function randomizeStartingLineup() {
-        ['GK', 'DF', 'MF', 'FW'].forEach(function (position) {
-            var slots = Object.keys(startingLineup).filter(function (slotKey) {
-                return getLineupGroupForSlot(slotKey) === position;
-            });
-            var candidates = shuffled(allPlayers.filter(function (player) { return player.pos === position; }));
-            slots.forEach(function (slotKey, index) {
-                if (candidates[index]) startingLineup[slotKey].playerId = candidates[index].id;
-            });
-        });
     }
 
     function renderLineupStage() {
@@ -101,6 +87,10 @@
     function initLineupScroll() {
         var experience = $('lineupExperience');
         if (!experience) return;
+        if (window.matchMedia('(max-width: 760px)').matches) {
+            updateLineupFocus('FW');
+            return;
+        }
         var groups = ['FW', 'MF', 'DF', 'GK'];
         var animationFrame = null;
         function syncLineupGroup() {
@@ -160,7 +150,7 @@
                 '<div class="player-card__name">' + escapeHtml(player.name) + '</div>' +
                 '<div class="player-card__info">' + player.number + '号 / ' + player.role + ' / ' + escapeHtml(player.nickname) + '</div>' +
                 '<div class="player-card__memory">' + escapeHtml(player.memory) + '</div>' +
-                '<div class="player-card__stats"><span>出场 ' + player.apps + '</span><span>进球 ' + player.goals + '</span><span>' + getMetricLabel(player) + ' ' + getMetric(player) + '</span></div>';
+                '<div class="player-card__stats"><span>出场 ' + player.apps + '</span><span>进球 ' + player.goals + '</span><span>助攻 ' + player.asts + '</span></div>';
             card.addEventListener('mouseenter', function () { toggleNodeHighlight(player.id, true); });
             card.addEventListener('mouseleave', function () { toggleNodeHighlight(player.id, false); });
             card.addEventListener('click', function () {
@@ -290,7 +280,11 @@
         var body = $('playerModalBody');
         if (!player || !modal || !body) return;
         var tags = player.traits.map(function (t) { return '<span class="tag">' + escapeHtml(t) + '</span>'; }).join('');
-        body.innerHTML = '<div class="modal__hero"><div class="modal__number">' + player.number + '</div><div><h3 class="modal__title" id="playerModalTitle">' + escapeHtml(player.name) + '</h3><p class="modal__subtitle">' + player.pos + ' / ' + player.role + ' / ' + escapeHtml(player.nickname) + ' / 评分 ' + player.rating + '</p></div></div><div class="modal__stats"><div class="modal__stat"><strong>' + player.apps + '</strong><span>出场</span></div><div class="modal__stat"><strong>' + player.goals + '</strong><span>进球</span></div><div class="modal__stat"><strong>' + player.asts + '</strong><span>助攻</span></div><div class="modal__stat"><strong>' + player.motm + '</strong><span>MVP</span></div><div class="modal__stat"><strong>' + getMetric(player) + '</strong><span>' + getMetricLabel(player) + '</span></div><div class="modal__stat"><strong>' + player.interceptions + '</strong><span>拦截</span></div><div class="modal__stat"><strong>' + player.cleanSheets + '</strong><span>零封</span></div><div class="modal__stat"><strong>' + player.rating + '</strong><span>评分</span></div></div><p class="modal__bio"><strong>代表瞬间：</strong>' + escapeHtml(player.memory) + '</p><p class="modal__bio"><strong>队友评价：</strong>' + escapeHtml(player.quote) + '</p><p class="modal__bio">' + escapeHtml(player.bio) + '</p><div class="modal__tags">' + tags + '</div>';
+        var reviews = (player.reviews || []).map(function (review, index) {
+            return '<span style="--comment-left:' + (8 + (index * 19) % 66) + '%;--comment-delay:' + (index * -1.25) + 's">' + escapeHtml(review) + '</span>';
+        }).join('') || '<span style="--comment-left:18%;--comment-delay:0s">队友评价待补充</span>';
+        var finalMetric = player.pos === 'GK' ? '<div class="modal__stat"><strong>' + player.saves + '</strong><span>扑救</span></div>' : '<div class="modal__stat"><strong>' + player.cleanSheets + '</strong><span>零封</span></div>';
+        body.innerHTML = '<div class="modal__hero"><div class="modal__number">' + player.number + '</div><div><h3 class="modal__title" id="playerModalTitle">' + escapeHtml(player.name) + '</h3><p class="modal__subtitle">' + player.pos + ' / ' + player.role + ' / ' + escapeHtml(player.nickname) + ' / 评分 ' + player.rating + '</p></div></div><div class="modal__stats"><div class="modal__stat"><strong>' + player.apps + '</strong><span>出场</span></div><div class="modal__stat"><strong>' + player.goals + '</strong><span>进球</span></div><div class="modal__stat"><strong>' + player.asts + '</strong><span>助攻</span></div><div class="modal__stat"><strong>' + player.motm + '</strong><span>MVP</span></div>' + finalMetric + '<div class="modal__stat"><strong>' + player.rating + '</strong><span>评分</span></div></div><p class="modal__bio"><strong>代表瞬间：</strong>' + escapeHtml(player.memory) + '</p><div class="modal__reviews" aria-label="队友评价弹幕">' + reviews + '</div><p class="modal__bio">' + escapeHtml(player.bio) + '</p><div class="modal__tags">' + tags + '</div>';
         openModal(modal);
     }
 
@@ -462,7 +456,6 @@
     }
 
     function init() {
-        randomizeStartingLineup();
         featuredPlayers = shuffled(allPlayers).slice(0, 3);
         renderAllPlayers();
         renderSeasonSwitch();
