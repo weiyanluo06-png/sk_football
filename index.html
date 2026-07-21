@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="css/style.css?v=lineup-rail-type-scale-1">
+    <link rel="stylesheet" href="css/style.css?v=season-year-index-1">
 </head>
 <body>
     <div class="site-bg" aria-hidden="true"></div>
@@ -108,10 +108,19 @@
             <div class="section__heading">
                 <span class="section__kicker">SEASON MEMORY</span>
                 <h2 class="section__title">赛事档案</h2>
-                <p class="section__subtitle">学校每学年有三段比赛：上学期的十一人制纺大杯、八人制新生杯，以及下学期的八人制纺大杯。默认展示最新赛事，点索引再翻看以前的比赛。</p>
+                <p class="section__subtitle">学校每学年有三段比赛：上学期的十一人制纺大杯、八人制新生杯，以及下学期的八人制纺大杯。先按年份查找，再选择对应杯赛。</p>
             </div>
 
-            <div class="season-switch" id="seasonSwitch" aria-label="选择赛事"></div>
+            <div class="season-index" aria-label="赛事索引">
+                <div class="season-index__row">
+                    <span class="season-index__label">年份</span>
+                    <div class="season-switch" id="yearSwitch" aria-label="选择年份"></div>
+                </div>
+                <div class="season-index__row">
+                    <span class="season-index__label">杯赛</span>
+                    <div class="season-switch" id="seasonSwitch" aria-label="选择杯赛"></div>
+                </div>
+            </div>
             <div class="season-overview" id="seasonOverview" aria-live="polite"></div>
             <div class="match-timeline" id="matchTimeline"></div>
         </section>
@@ -237,8 +246,8 @@
         </div>
     </div>
 
-    <script src="js/team-data.js?v=player-reviews-sheet-1"></script>
+    <script src="js/team-data.js?v=season-year-index-1"></script>
     <script src="js/gallery-data.js?v=player-photo-refresh-1"></script>
-    <script src="js/main.js?v=player-reviews-sheet-1"></script>
+    <script src="js/main.js?v=season-year-index-2"></script>
 </body>
 </html>

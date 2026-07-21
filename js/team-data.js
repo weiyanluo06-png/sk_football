@@ -33,10 +33,12 @@ window.PONYTAIL_DATA = {
         RW: { top: '15%', left: '82%', playerId: 5 }
     },
 
+    defaultCompetitionId: '2025-eleven-fangda',
+
     competitions: [
-        { name: '八人制纺大杯', label: '2026 春季 · 八人制纺大杯', status: '最新赛事', description: '下学期唯一一项学院足球赛事。这里优先展示这一段比赛记录。' },
-        { name: '八人制新生杯', label: '2025 秋季 · 八人制新生杯', status: '首届新生杯', description: '紧密赛程里，球队最终获得第七名。这是第一届新生杯，也是很高的起点。' },
-        { name: '十一人制纺大杯', label: '2025 秋季 · 十一人制纺大杯', status: '建队后的首个赛事', description: '从临时凑齐队员、确定位置到真正踏上十一人制赛场，正式比赛从这里开始。' }
+        { id: '2025-eleven-fangda', year: '2025', name: '十一人制纺大杯', label: '十一人制纺大杯', status: '建队后的首个赛事', description: '从临时凑齐队员、确定位置到真正踏上十一人制赛场，正式比赛从这里开始。' },
+        { id: '2025-freshmen-cup', year: '2025', name: '八人制新生杯', label: '八人制新生杯', status: '首届新生杯', description: '紧密赛程里，球队最终获得第七名。这是第一届新生杯，也是很高的起点。' },
+        { id: '2026-eight-fangda', year: '2026', name: '八人制纺大杯', label: '八人制纺大杯', status: '最新赛事', description: '下学期唯一一项学院足球赛事。这里保留这段比赛记录。' }
     ],
 
     matches: [

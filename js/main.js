@@ -10,7 +10,8 @@
     var fallbackPhotos = teamData.fallbackPhotos || [];
     var featuredPlayers = [];
     var selectedNodeKey = null;
-    var activeCompetition = (teamData.competitions && teamData.competitions[0] && teamData.competitions[0].name) || (matchItems[0] && matchItems[0].competition) || '';
+    var activeCompetition = teamData.defaultCompetitionId || (teamData.competitions && teamData.competitions[0] && teamData.competitions[0].id) || (matchItems[0] && matchItems[0].competition) || '';
+    var activeYear = '';
     var activeGallery = '全部';
     var activeLineupGroup = 'FW';
     var lastModalTrigger = null;
@@ -241,7 +242,7 @@
         wrap.innerHTML = '';
         featuredPlayers.forEach(function (p) {
             var tags = p.traits.map(function (t) { return '<span class="tag">' + escapeHtml(t) + '</span>'; }).join('');
-            wrap.innerHTML += '<button class="flip-card" type="button" data-player-id="' + p.id + '"><span class="flip-card__inner"><span class="flip-card__face flip-card__face--front"><i class="fa-solid ' + p.avatarIcon + '"></i><h3>' + escapeHtml(p.name) + '</h3><p>' + p.role + ' / ' + p.number + '号 / ' + escapeHtml(p.nickname) + '</p><span class="flip-card__tags">' + tags + '</span></span><span class="flip-card__face flip-card__face--back"><h3>' + escapeHtml(p.memory) + '</h3><p>' + escapeHtml(p.quote) + '</p></span></span></button>';
+            wrap.innerHTML += '<button class="flip-card" type="button" data-player-id="' + p.id + '"><span class="flip-card__inner"><span class="flip-card__face flip-card__face--front"><i class="fa-solid ' + p.avatarIcon + '"></i><h3>' + escapeHtml(p.name) + '</h3><p>' + p.role + ' / ' + p.number + '号 / ' + escapeHtml(p.nickname) + '</p><span class="flip-card__tags">' + tags + '</span></span><span class="flip-card__face flip-card__face--back"><h3>' + escapeHtml(p.memory) + '</h3><p>' + escapeHtml(p.bio) + '</p></span></span></button>';
         });
         wrap.querySelectorAll('.flip-card').forEach(function (card) {
             card.addEventListener('click', function () { openPlayerModal(parseInt(card.getAttribute('data-player-id'), 10)); });
@@ -251,21 +252,49 @@
     function getCompetitionArchive() {
         if (teamData.competitions && teamData.competitions.length) return teamData.competitions;
         return Array.from(new Set(matchItems.map(function (m) { return m.competition; }))).map(function (name) {
-            return { name: name, label: name, description: '' };
+            var match = matchItems.find(function (item) { return item.competition === name; });
+            return { id: name, year: match ? match.date.slice(0, 4) : '', name: name, label: name, description: '' };
         });
     }
 
+    function getCompetitionId(competition) { return competition.id || competition.name; }
+
     function getActiveCompetition() {
-        return getCompetitionArchive().find(function (competition) { return competition.name === activeCompetition; }) || { name: activeCompetition, label: activeCompetition, description: '' };
+        return getCompetitionArchive().find(function (competition) { return getCompetitionId(competition) === activeCompetition; }) || { id: activeCompetition, name: activeCompetition, label: activeCompetition, description: '' };
     }
 
     function renderSeasonSwitch() {
-        var wrap = $('seasonSwitch'); if (!wrap) return;
         var competitions = getCompetitionArchive();
-        wrap.innerHTML = competitions.map(function (competition) {
-            return '<button class="filter-btn ' + (activeCompetition === competition.name ? 'filter-btn--active' : '') + '" type="button" data-competition="' + escapeHtml(competition.name) + '">' + escapeHtml(competition.label || competition.name) + '</button>';
+        var active = getActiveCompetition();
+        var yearWrap = $('yearSwitch');
+        var competitionWrap = $('seasonSwitch');
+        if (!activeYear || !competitions.some(function (competition) { return competition.year === activeYear; })) {
+            activeYear = active.year || (competitions[0] && competitions[0].year) || '';
+        }
+        if (active.year !== activeYear) {
+            active = competitions.find(function (competition) { return competition.year === activeYear; }) || competitions[0] || active;
+            activeCompetition = getCompetitionId(active);
+        }
+        var years = Array.from(new Set(competitions.map(function (competition) { return competition.year; }).filter(Boolean)));
+        if (yearWrap) {
+            yearWrap.innerHTML = years.map(function (year) {
+                return '<button class="filter-btn ' + (activeYear === year ? 'filter-btn--active' : '') + '" type="button" data-year="' + escapeHtml(year) + '">' + escapeHtml(year) + '</button>';
+            }).join('');
+            yearWrap.querySelectorAll('button').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    activeYear = btn.getAttribute('data-year');
+                    var firstCompetition = competitions.find(function (competition) { return competition.year === activeYear; });
+                    activeCompetition = firstCompetition ? getCompetitionId(firstCompetition) : activeCompetition;
+                    renderSeasonSwitch();
+                    renderMatches();
+                });
+            });
+        }
+        if (!competitionWrap) return;
+        competitionWrap.innerHTML = competitions.filter(function (competition) { return competition.year === activeYear; }).map(function (competition) {
+            return '<button class="filter-btn ' + (activeCompetition === getCompetitionId(competition) ? 'filter-btn--active' : '') + '" type="button" data-competition="' + escapeHtml(getCompetitionId(competition)) + '">' + escapeHtml(competition.label || competition.name) + '</button>';
         }).join('');
-        wrap.querySelectorAll('button').forEach(function (btn) {
+        competitionWrap.querySelectorAll('button').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 activeCompetition = btn.getAttribute('data-competition');
                 renderSeasonSwitch();
@@ -277,7 +306,9 @@
     function renderMatches() {
         var wrap = $('matchTimeline'); if (!wrap) return;
         var competition = getActiveCompetition();
-        var filtered = matchItems.filter(function (m) { return m.competition === activeCompetition; })
+        var filtered = matchItems.filter(function (m) {
+            return m.competition === competition.name && (!competition.year || m.date.slice(0, 4) === competition.year);
+        })
             .sort(function (a, b) { return b.date.localeCompare(a.date); });
         var overview = $('seasonOverview');
         if (overview) {
@@ -287,7 +318,7 @@
             var date = new Date(m.date + 'T00:00:00');
             var day = String(date.getDate()).padStart(2, '0');
             var month = String(date.getMonth() + 1).padStart(2, '0') + '月';
-            return '<article class="match-card"><div class="match-card__date"><div><div class="match-card__day">' + day + '</div><div class="match-card__month">' + month + ' / ' + m.season + '</div></div></div><div class="match-card__body"><div class="match-card__meta">' + escapeHtml(m.competition) + ' / ' + escapeHtml(m.venue) + '</div><h3 class="match-card__opponent">VS ' + escapeHtml(m.opponent) + '</h3><p class="match-card__quote">' + escapeHtml(m.quote) + '</p><p class="match-card__scorers">进球：' + escapeHtml(m.scorers) + '</p></div><div class="match-card__score"><div class="scoreboard"><span class="result-' + m.result + '">' + resultName(m.result) + '</span><strong>' + m.score + '</strong><span>FINAL SCORE</span></div></div></article>';
+            return '<article class="match-card"><div class="match-card__date"><div><div class="match-card__day">' + day + '</div><div class="match-card__month">' + month + ' / ' + date.getFullYear() + '</div></div></div><div class="match-card__body"><div class="match-card__meta">' + escapeHtml(m.competition) + ' / ' + escapeHtml(m.venue) + '</div><h3 class="match-card__opponent">VS ' + escapeHtml(m.opponent) + '</h3><p class="match-card__quote">' + escapeHtml(m.quote) + '</p><p class="match-card__scorers">进球：' + escapeHtml(m.scorers) + '</p></div><div class="match-card__score"><div class="scoreboard"><span class="result-' + m.result + '">' + resultName(m.result) + '</span><strong>' + m.score + '</strong><span>FINAL SCORE</span></div></div></article>';
         }).join('');
     }
 
