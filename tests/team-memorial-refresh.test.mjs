@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+
+const html = readFileSync('index.html', 'utf8');
+const css = readFileSync('css/style.css', 'utf8');
+const js = readFileSync('js/main.js', 'utf8');
+
+assert.match(html, /class="hero__chapter"/);
+assert.match(html, /class="lineup-rail__header"/);
+assert.match(css, /\.hero__frame/);
+assert.match(css, /\.lineup-rail__group-number/);
+assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
+assert.match(css, /\.season-overview--archive/);
+assert.match(css, /\.gallery__item--loaded/);
+assert.match(js, /function syncLineupRail\(group\)/);
+assert.match(js, /function lazyLoadGalleryImages/);
+assert.match(js, /classList\.add\('gallery__item--loaded'\)/);

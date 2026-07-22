@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="css/style.css?v=hero-swipe-1">
+    <link rel="stylesheet" href="css/style.css?v=memorial-refresh-1">
 </head>
 <body>
     <div class="site-bg" aria-hidden="true"></div>
@@ -42,9 +42,10 @@
 
     <main>
         <section class="section hero" id="hero">
+            <div class="hero__frame" aria-hidden="true"></div>
             <div class="hero__slide hero__slide--active" data-image="assets/photos/hero-team-2026-01.webp" data-image-mobile="assets/photos/hero-team-2026-01-mobile.webp">
                 <div class="hero__content">
-                    <span class="hero__eyebrow">生康足球队 / 从凑齐一支队开始</span>
+                    <span class="hero__chapter"><span class="hero__eyebrow">生康足球队 / 从凑齐一支队开始</span></span>
                     <h1 class="hero__title">人是慢慢凑齐的，球队也是</h1>
                     <p class="hero__desc">从想让生康也有球踢，到报名、订队服、排阵容，这支队伍是在一声声回应里真正成立起来的。</p>
                 </div>
@@ -52,7 +53,7 @@
 
             <div class="hero__slide" data-image="assets/photos/hero-team-2026-02.webp" data-image-mobile="assets/photos/hero-team-2026-02-mobile.webp">
                 <div class="hero__content">
-                    <span class="hero__eyebrow">与材料学院的合照 / BROTHERHOOD</span>
+                    <span class="hero__chapter"><span class="hero__eyebrow">与材料学院的合照 / BROTHERHOOD</span></span>
                     <h1 class="hero__title">材料，永远是我们的兄弟学院</h1>
                     <p class="hero__desc">从还没有队伍的时候，到球队刚成立后的指导和加油，材料学院的学长一直在帮助我们。</p>
                 </div>
@@ -60,7 +61,7 @@
 
             <div class="hero__slide" data-image="assets/photos/hero-team-2026-03.webp" data-image-mobile="assets/photos/hero-team-2026-03-mobile.webp">
                 <div class="hero__content">
-                    <span class="hero__eyebrow">与材料学院的合照 / BROTHERHOOD</span>
+                    <span class="hero__chapter"><span class="hero__eyebrow">与材料学院的合照 / BROTHERHOOD</span></span>
                     <h1 class="hero__title">这份帮助，要一直传给新队员</h1>
                     <p class="hero__desc">以后有新生加入，也会知道材料是最铁的盟友，知道这支队伍是怎样一步步被大家带起来的。</p>
                 </div>
@@ -141,7 +142,10 @@
                     </div>
 
                     <aside class="lineup-rail">
-                        <span class="lineup-rail__season">2025-2026</span>
+                        <div class="lineup-rail__header">
+                            <span class="lineup-rail__season">生康足球队 / LINEUP</span>
+                            <span class="lineup-rail__group-number" id="lineupGroupNumber">01 / 04</span>
+                        </div>
                         <strong id="lineupGroupTitle">FORWARDS</strong>
                         <small id="lineupGroupSubtitle">锋线三人组</small>
                         <div class="lineup-rail__roster" id="lineupGroupRoster" aria-label="当前阵线首发队员"></div>
@@ -248,6 +252,6 @@
 
     <script src="js/team-data.js?v=media-optimisation-1"></script>
     <script src="js/gallery-data.js?v=media-optimisation-1"></script>
-    <script src="js/main.js?v=media-optimisation-1"></script>
+    <script src="js/main.js?v=memorial-refresh-1"></script>
 </body>
 </html>

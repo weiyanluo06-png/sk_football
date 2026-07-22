@@ -14,6 +14,7 @@
     var activeYear = '';
     var activeGallery = '全部';
     var activeLineupGroup = 'FW';
+    var lineupGroupOrder = ['FW', 'MF', 'DF', 'GK'];
     var lastModalTrigger = null;
     var lineupGroupMeta = {
         FW: { title: '前锋', subtitle: '4-3-3 · 锋线三人组', slots: ['LW', 'ST', 'RW'] },
@@ -71,14 +72,18 @@
         updateLineupFocus(activeLineupGroup);
     }
 
-    function updateLineupFocus(group) {
-        activeLineupGroup = group || activeLineupGroup;
-        var meta = lineupGroupMeta[activeLineupGroup] || lineupGroupMeta.FW;
+    function syncLineupRail(group) {
+        var meta = lineupGroupMeta[group] || lineupGroupMeta.FW;
         var title = $('lineupGroupTitle');
         var subtitle = $('lineupGroupSubtitle');
         var roster = $('lineupGroupRoster');
+        var groupNumber = $('lineupGroupNumber');
         if (title) title.textContent = meta.title;
         if (subtitle) subtitle.textContent = meta.subtitle;
+        if (groupNumber) {
+            var index = Math.max(0, lineupGroupOrder.indexOf(group));
+            groupNumber.textContent = String(index + 1).padStart(2, '0') + ' / 04';
+        }
         if (roster) {
             roster.innerHTML = meta.slots.map(function (slotKey) {
                 var slot = startingLineup[slotKey];
@@ -87,6 +92,11 @@
                 return '<span><b>' + slotKey.replace(/[0-9]/g, '') + '</b><em>' + escapeHtml(player.name) + '</em></span>';
             }).join('');
         }
+    }
+
+    function updateLineupFocus(group) {
+        activeLineupGroup = group || activeLineupGroup;
+        syncLineupRail(activeLineupGroup);
         document.querySelectorAll('[data-lineup-control]').forEach(function (control) {
             var isSelected = control.getAttribute('data-lineup-control') === activeLineupGroup;
             control.classList.toggle('is-active', isSelected);
@@ -110,7 +120,7 @@
             updateLineupFocus('FW');
             return;
         }
-        var groups = ['FW', 'MF', 'DF', 'GK'];
+        var groups = lineupGroupOrder;
         var animationFrame = null;
         function syncLineupGroup() {
             var rect = experience.getBoundingClientRect();
@@ -140,7 +150,7 @@
         var nav = $('lineupSwipeNav');
         var rail = document.querySelector('.lineup-rail');
         if (!pitch || !nav || !rail) return;
-        var groups = ['FW', 'MF', 'DF', 'GK'];
+        var groups = lineupGroupOrder;
         var lastSwipeAt = 0;
 
         nav.querySelectorAll('[data-lineup-control]').forEach(function (control) {
@@ -312,6 +322,7 @@
             .sort(function (a, b) { return b.date.localeCompare(a.date); });
         var overview = $('seasonOverview');
         if (overview) {
+            overview.classList.add('season-overview--archive');
             overview.innerHTML = '<span class="season-overview__label">' + escapeHtml(competition.status || '赛事档案') + '</span><div><strong>' + escapeHtml(competition.name) + '</strong><p>' + escapeHtml(competition.description || '记录这一段比赛里的对手、比分和进球。') + '</p></div><span class="season-overview__count">' + filtered.length + ' 场记录</span>';
         }
         wrap.innerHTML = filtered.map(function (m) {
@@ -339,6 +350,7 @@
             var source = image.getAttribute('data-bg');
             if (!source) return;
             image.style.backgroundImage = 'url("' + source + '")';
+            image.closest('.gallery__item').classList.add('gallery__item--loaded');
             image.removeAttribute('data-bg');
         }
         if (!('IntersectionObserver' in window)) {

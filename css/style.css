@@ -215,6 +215,14 @@ textarea:focus-visible {
 
 .hero__slide--active { opacity: 1; transform: scale(1); }
 
+.hero__frame {
+    position: absolute;
+    z-index: 7;
+    inset: 28px;
+    border: 1px solid rgba(255,255,255,0.16);
+    pointer-events: none;
+}
+
 .hero__slide::before {
     content: "";
     position: absolute;
@@ -239,6 +247,19 @@ textarea:focus-visible {
     border: 1px solid rgba(255,255,255,0.26);
     font: 700 0.78rem/1 "Oswald", sans-serif;
     letter-spacing: 0.12em;
+}
+
+.hero__chapter {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero__chapter::before {
+    content: "";
+    width: 34px;
+    height: 1px;
+    background: rgba(255,255,255,0.74);
 }
 
 .hero__title {
@@ -784,7 +805,7 @@ textarea:focus-visible {
     padding: 30px 28px 26px;
     transform: translateY(-50%);
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr;
     grid-template-rows: auto auto auto 1fr auto;
     align-items: flex-start;
     gap: 0;
@@ -795,17 +816,7 @@ textarea:focus-visible {
     box-shadow: 0 30px 70px rgba(7,28,17,0.34);
 }
 
-.lineup-rail::before {
-    content: "生康足球队 / LINEUP";
-    position: relative;
-    z-index: 1;
-    grid-column: 1;
-    grid-row: 1;
-    letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.72);
-    font-size: 0.78rem;
-    font-weight: 800;
-}
+.lineup-rail::before { content: none; }
 
 .lineup-rail::after {
     content: "";
@@ -818,31 +829,44 @@ textarea:focus-visible {
 
 .lineup-rail > * { position: relative; z-index: 1; }
 
+.lineup-rail__header {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: rgba(255,255,255,0.74);
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.11em;
+}
+
+.lineup-rail__group-number {
+    color: #fff;
+    font: 700 0.92rem/1 "Oswald", sans-serif;
+    letter-spacing: 0.08em;
+}
+
 .lineup-rail strong {
     grid-column: 1 / -1;
     grid-row: 2;
     align-self: start;
-    padding: 48px 0 18px;
-    font: 900 5.4rem/0.92 "Noto Serif SC", "Songti SC", serif;
-    letter-spacing: 0.06em;
+    padding: 34px 0 12px;
+    font: 900 clamp(4.2rem, 6vw, 5.6rem)/0.9 "Noto Serif SC", "Songti SC", serif;
+    letter-spacing: 0.08em;
 }
 
 .lineup-rail small {
     grid-column: 1 / -1;
     grid-row: 3;
-    padding-bottom: 24px;
+    padding-bottom: 18px;
     color: rgba(255,255,255,0.8);
     font-size: 1rem;
     font-weight: 800;
 }
 
-.lineup-rail__season {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: end;
-    font: 700 0.82rem/1 "Oswald", sans-serif;
-    letter-spacing: 0.06em;
-}
+.lineup-rail__season { font: inherit; }
 
 .lineup-rail__roster {
     grid-column: 1 / -1;
@@ -1554,4 +1578,167 @@ textarea:focus-visible {
     .pitch__player { width: 40px; height: 40px; font-size: 0.78rem; }
     .modal__hero { grid-template-columns: 1fr; text-align: center; }
     .modal__number { margin: 0 auto; }
+}
+
+/* 2026 memorial refresh: photo-led pages with quiet archive details. */
+.section__heading { max-width: 760px; }
+.section__heading::after {
+    content: "";
+    display: block;
+    width: 44px;
+    height: 2px;
+    margin: 18px auto 0;
+    background: var(--green);
+}
+
+.hero__content { width: min(1040px, 86%); }
+.hero__title { max-width: 980px; letter-spacing: 0.02em; }
+.hero__desc { display: block; max-width: 490px; color: rgba(255,255,255,0.82); }
+.hero__actions { display: flex; bottom: 154px; }
+.hero__stats { bottom: 64px; }
+.hero__stat { border-radius: 4px; }
+.hero__slide::before {
+    background:
+        linear-gradient(180deg, rgba(5,20,12,0.6), rgba(5,20,12,0.08) 44%, rgba(5,20,12,0.66)),
+        linear-gradient(90deg, rgba(5,20,12,0.5), transparent 64%);
+}
+
+.story__card,
+.story__note,
+.match-card,
+.squad__pool,
+.player-card,
+.flip-card__face,
+.gallery__item,
+.honor-card,
+.modal__panel { box-shadow: 0 14px 32px rgba(17,35,27,0.1); }
+
+.lineup-rail {
+    width: min(27vw, 400px);
+    min-height: min(64vh, 540px);
+    border-radius: 12px;
+    background: linear-gradient(155deg, #278a5a, #0d432e 75%);
+}
+
+.lineup-rail::after { border-radius: 6px; }
+.lineup-rail__roster { gap: 0 24px; }
+.lineup-rail__roster span { padding: 13px 0; }
+.lineup-rail__roster em { font-size: 1.02rem; }
+
+.season-overview--archive {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background: linear-gradient(110deg, rgba(14,61,42,0.98), rgba(24,112,75,0.95));
+    color: #fff;
+}
+
+.season-overview--archive::after {
+    content: "ARCHIVE";
+    position: absolute;
+    right: -6px;
+    bottom: -18px;
+    color: rgba(255,255,255,0.08);
+    font: 700 5rem/1 "Oswald", sans-serif;
+    letter-spacing: 0.04em;
+}
+
+.season-overview--archive .season-overview__label,
+.season-overview--archive p { color: rgba(255,255,255,0.72); }
+.season-overview--archive strong,
+.season-overview--archive .season-overview__count { color: #fff; }
+
+.gallery__item { border-radius: 6px; background: #dae2da; }
+.gallery__img { opacity: 0; transition: opacity 0.45s ease, transform 0.55s ease; }
+.gallery__item--loaded .gallery__img { opacity: 1; }
+.gallery__item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 38%, rgba(5,20,12,0.64));
+    opacity: 0.9;
+}
+.gallery__info { background: none; }
+.gallery__tag { border-radius: 4px; letter-spacing: 0.08em; }
+.like-btn { border-radius: 4px; }
+
+.honor-card { border-radius: 8px; border-top: 3px solid var(--green); }
+.flip-card__face { border-radius: 8px; }
+
+.story__card,
+.story__note { border-radius: 8px; }
+.story__card::before {
+    content: "01";
+    display: block;
+    margin-bottom: 12px;
+    color: rgba(31,122,77,0.5);
+    font: 700 0.78rem/1 "Oswald", sans-serif;
+    letter-spacing: 0.14em;
+}
+.story__note { border-left: 3px solid var(--green); }
+
+.season-index {
+    padding: 18px 20px;
+    border-radius: 8px;
+    background: rgba(255,253,248,0.84);
+    box-shadow: 0 10px 26px rgba(17,35,27,0.06);
+}
+.season-index__label { letter-spacing: 0.12em; }
+.filter-btn { border-radius: 4px; }
+.filter-btn--active { box-shadow: 0 6px 14px rgba(17,91,55,0.22); }
+.match-card { border-radius: 8px; }
+.match-card__date { background: #123e2b; }
+.match-card__score { background: #edf3eb; }
+.scoreboard { border-radius: 4px; background: #14251d; }
+.match-card__meta { color: var(--green); font-weight: 800; }
+
+.squad__pool { border-radius: 8px; }
+.player-card { border-radius: 6px; }
+.player-card:hover { background: #f8fbf6; }
+.modal__panel { border-radius: 10px; }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .hero__frame { inset: 18px 14px; }
+    .hero__slide { padding: 80px 6% 0; background-position: center; }
+    .hero__chapter::before { width: 24px; }
+    .hero__eyebrow { padding: 7px 10px; font-size: 0.68rem; }
+    .hero__title { max-width: 92%; margin-top: 13px; font-size: clamp(2rem, 8.4vw, 2.75rem); line-height: 1.16; }
+    .hero__desc { display: block; max-width: 88%; margin-top: 12px; font-size: 0.88rem; line-height: 1.7; }
+    .hero__actions { display: flex; left: 6%; bottom: 58px; gap: 8px; }
+    .hero__cta { min-height: 42px; padding: 9px 14px; font-size: 0.82rem; }
+    .hero__stats { display: none; }
+
+    .lineup-stage { height: 760px; min-height: 730px; }
+    .lineup-stage__pitch { top: 35%; }
+    .lineup-rail {
+        bottom: 112px;
+        width: min(90vw, 430px);
+        min-height: 130px;
+        padding: 14px 18px 12px;
+        border-radius: 12px;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+    }
+    .lineup-rail__header { grid-column: 1; grid-row: 1; }
+    .lineup-rail strong { grid-column: 1; grid-row: 2; padding: 7px 0 2px; font-size: 2.65rem; }
+    .lineup-rail small { grid-column: 1; grid-row: 3; padding-bottom: 8px; font-size: 0.82rem; }
+    .lineup-rail__roster { display: grid; grid-column: 1; grid-row: 4; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    .lineup-rail__roster span { padding: 7px 0 0; border-top-color: rgba(255,255,255,0.18); }
+    .lineup-rail__roster b { font-size: 0.64rem; }
+    .lineup-rail__roster em { font-size: 0.78rem; }
+    .lineup-rail__progress { position: absolute; right: 18px; top: 43px; grid-column: auto; grid-row: auto; }
+    .lineup-swipe-nav { bottom: 18px; }
+    .lineup-swipe-nav__hint { font-size: 0.72rem; }
+    .lineup-card--active { transform: translate(-50%, -50%) scale(1.1); }
 }
