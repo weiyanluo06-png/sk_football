@@ -500,6 +500,27 @@
         document.querySelectorAll('.hero__dot').forEach(function (dot, i) { dot.classList.toggle('hero__dot--active', i === slideIndex); });
     }
 
+    function initHeroSwipe(hero) {
+        var startX = 0;
+        var startY = 0;
+        hero.addEventListener('touchstart', function (event) {
+            var touch = event.changedTouches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+            stopAutoPlay();
+        }, { passive: true });
+        hero.addEventListener('touchend', function (event) {
+            var touch = event.changedTouches[0];
+            var deltaX = touch.clientX - startX;
+            var deltaY = touch.clientY - startY;
+            if (Math.abs(deltaX) >= 48 && Math.abs(deltaX) > Math.abs(deltaY)) {
+                showSlide(slideIndex + (deltaX > 0 ? -1 : 1));
+            }
+            startAutoPlay();
+        }, { passive: true });
+        hero.addEventListener('touchcancel', startAutoPlay, { passive: true });
+    }
+
     function handleScrollReveal() {
         var h = window.innerHeight;
         document.querySelectorAll('.reveal').forEach(function (el) {
@@ -576,6 +597,7 @@
         if (hero) {
             hero.addEventListener('mouseenter', stopAutoPlay);
             hero.addEventListener('mouseleave', startAutoPlay);
+            initHeroSwipe(hero);
         }
         startAutoPlay();
         window.addEventListener('scroll', handleScrollReveal);

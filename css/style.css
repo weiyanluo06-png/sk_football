@@ -184,6 +184,7 @@ textarea:focus-visible {
     min-height: 100svh;
     padding: 0;
     overflow: hidden;
+    touch-action: pan-y;
     color: #fff;
     background: #091910;
 }
