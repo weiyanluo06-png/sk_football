@@ -15,3 +15,7 @@ assert.match(css, /\.gallery__item--loaded/);
 assert.match(js, /function syncLineupRail\(group\)/);
 assert.match(js, /function lazyLoadGalleryImages/);
 assert.match(js, /classList\.add\('gallery__item--loaded'\)/);
+assert.match(html, /id="recruit"/);
+assert.match(html, /assets\/photos\/recruit-qq-group\.jpg/);
+assert.match(html, /913800697/);
+assert.match(css, /\.recruit__card/);

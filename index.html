@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="css/style.css?v=memorial-refresh-1">
+    <link rel="stylesheet" href="css/style.css?v=recruit-1">
 </head>
 <body>
     <div class="site-bg" aria-hidden="true"></div>
@@ -32,6 +32,7 @@
         <nav class="header__nav" id="mainNav">
             <ul class="header__nav-list">
                 <li><a class="header__nav-link header__nav-link--active" href="#hero">首页</a></li>
+                <li><a class="header__nav-link header__nav-link--recruit" href="#recruit">招新</a></li>
                 <li><a class="header__nav-link" href="#memory">本赛季</a></li>
                 <li><a class="header__nav-link" href="#squad">队员档案</a></li>
                 <li><a class="header__nav-link" href="#gallery">影像墙</a></li>
@@ -68,7 +69,7 @@
             </div>
 
             <div class="hero__actions">
-                <a href="#memory" class="hero__cta hero__cta--primary">翻看本赛季</a>
+                <a href="#recruit" class="hero__cta hero__cta--primary"><i class="fa-solid fa-user-plus" aria-hidden="true"></i> 加入新生群</a>
                 <a href="#gallery" class="hero__cta">打开影像墙</a>
             </div>
 
@@ -81,6 +82,32 @@
             <button class="hero__btn hero__btn--prev" id="carouselPrev" aria-label="上一张"><i class="fa-solid fa-chevron-left"></i></button>
             <button class="hero__btn hero__btn--next" id="carouselNext" aria-label="下一张"><i class="fa-solid fa-chevron-right"></i></button>
             <div class="hero__dots" id="carouselDots"></div>
+        </section>
+
+        <section class="section reveal recruit" id="recruit">
+            <div class="recruit__copy">
+                <span class="section__kicker">NEW SEASON / 2026</span>
+                <h2 class="recruit__title">把下一批<br class="recruit__mobile-break">球员凑齐</h2>
+                <p class="recruit__lead">不管你踢哪个位置，或者只是想重新开始踢球，来和我们一起训练、比赛、记下新的赛季。</p>
+                <div class="recruit__rhythm" aria-label="球队日常">
+                    <span><i class="fa-solid fa-futbol" aria-hidden="true"></i> 一起训练</span>
+                    <span><i class="fa-solid fa-people-group" aria-hidden="true"></i> 一起比赛</span>
+                    <span><i class="fa-solid fa-camera" aria-hidden="true"></i> 一起留下照片</span>
+                </div>
+                <p class="recruit__note">新学期见。先来群里，等下一场球。</p>
+            </div>
+
+            <aside class="recruit__card" aria-label="生康足球队新生群二维码">
+                <div class="recruit__card-head">
+                    <span>生康足球队 / RECRUIT</span>
+                    <strong>2026</strong>
+                </div>
+                <div class="recruit__qr-frame">
+                    <img src="assets/photos/recruit-qq-group.jpg" alt="生康足球队 QQ 群二维码，群号 913800697" width="1152" height="2048" loading="lazy" decoding="async">
+                </div>
+                <p class="recruit__scan">扫码加入新生群</p>
+                <p class="recruit__group-number">QQ群号 <strong>913800697</strong></p>
+            </aside>
         </section>
 
         <section class="section reveal story" id="story">

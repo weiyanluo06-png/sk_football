@@ -1699,6 +1699,149 @@ textarea:focus-visible {
 .player-card:hover { background: #f8fbf6; }
 .modal__panel { border-radius: 10px; }
 
+/* New-season recruitment: one clear route into the team, with a scan-safe QR. */
+.recruit {
+    min-height: auto;
+    padding-block: 118px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 410px);
+    align-items: center;
+    gap: clamp(42px, 8vw, 132px);
+}
+
+.recruit::before {
+    content: "2026";
+    position: absolute;
+    top: 50%;
+    left: 4%;
+    z-index: -1;
+    color: rgba(31, 122, 77, 0.055);
+    font: 700 clamp(8rem, 21vw, 19rem)/0.8 "Oswald", sans-serif;
+    letter-spacing: 0.02em;
+    transform: translateY(-50%);
+}
+
+.recruit__copy { max-width: 700px; }
+.recruit__copy .section__kicker { margin-bottom: 16px; }
+.recruit__title {
+    max-width: 700px;
+    color: var(--green-dark);
+    font-size: clamp(3rem, 5.2vw, 5.8rem);
+    font-weight: 900;
+    line-height: 1.02;
+    letter-spacing: 0.02em;
+}
+
+.recruit__mobile-break { display: none; }
+
+.recruit__lead {
+    max-width: 520px;
+    margin-top: 22px;
+    color: #405047;
+    font-size: clamp(1rem, 1.4vw, 1.18rem);
+    line-height: 1.9;
+}
+
+.recruit__rhythm {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 28px;
+}
+
+.recruit__rhythm span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 11px;
+    border: 1px solid rgba(31,122,77,0.18);
+    border-radius: 4px;
+    color: var(--green-dark);
+    font-size: 0.82rem;
+    font-weight: 800;
+    background: rgba(255,253,248,0.7);
+}
+
+.recruit__rhythm i { color: var(--green); }
+.recruit__note {
+    margin-top: 28px;
+    color: var(--green);
+    font: 700 0.78rem/1 "Oswald", sans-serif;
+    letter-spacing: 0.12em;
+}
+
+.recruit__card {
+    position: relative;
+    isolation: isolate;
+    width: min(100%, 410px);
+    justify-self: end;
+    padding: 18px;
+    overflow: hidden;
+    border-radius: 10px;
+    color: #fff;
+    background: linear-gradient(150deg, #278a5a, #0c412c 76%);
+    box-shadow: 0 24px 54px rgba(9, 52, 33, 0.23);
+}
+
+.recruit__card::after {
+    content: "SKFC";
+    position: absolute;
+    right: -12px;
+    bottom: -25px;
+    z-index: -1;
+    color: rgba(255,255,255,0.06);
+    font: 700 6.7rem/0.8 "Oswald", sans-serif;
+    letter-spacing: 0.04em;
+}
+
+.recruit__card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 2px 4px 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    font: 700 0.72rem/1 "Oswald", sans-serif;
+    letter-spacing: 0.1em;
+}
+
+.recruit__card-head strong { font-size: 0.92rem; }
+.recruit__qr-frame {
+    width: min(100%, 294px);
+    margin: 18px auto 15px;
+    padding: 9px;
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.16);
+}
+
+.recruit__qr-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #fff;
+}
+
+.recruit__scan {
+    color: #fff;
+    text-align: center;
+    font-size: 1.06rem;
+    font-weight: 900;
+}
+
+.recruit__group-number {
+    margin-top: 4px;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.recruit__group-number strong {
+    color: #fff;
+    font-family: "Oswald", sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+}
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         scroll-behavior: auto !important;
@@ -1741,4 +1884,20 @@ textarea:focus-visible {
     .lineup-swipe-nav { bottom: 18px; }
     .lineup-swipe-nav__hint { font-size: 0.72rem; }
     .lineup-card--active { transform: translate(-50%, -50%) scale(1.1); }
+
+    .recruit {
+        min-height: auto;
+        padding: 82px 6%;
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .recruit::before { top: 22%; left: 3%; font-size: 8.5rem; }
+    .recruit__title { font-size: clamp(2.65rem, 13vw, 4rem); }
+    .recruit__mobile-break { display: block; }
+    .recruit__lead { margin-top: 16px; font-size: 0.98rem; }
+    .recruit__rhythm { gap: 7px; margin-top: 22px; }
+    .recruit__rhythm span { padding: 7px 9px; font-size: 0.74rem; }
+    .recruit__note { margin-top: 22px; }
+    .recruit__card { width: 100%; max-width: 390px; justify-self: stretch; margin: 0 auto; padding: 15px; }
+    .recruit__qr-frame { width: min(100%, 290px); margin-block: 15px 13px; }
 }
