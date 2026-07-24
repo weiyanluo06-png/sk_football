@@ -29,8 +29,10 @@ class TeamWorkbookSyncTest(unittest.TestCase):
         self.assertIn('球员数据', workbook.sheetnames)
         self.assertIn('赛事索引', workbook.sheetnames)
         self.assertIn('赛程', workbook.sheetnames)
-        self.assertTrue(str(workbook['球员数据']['M2'].value).startswith('=ROUND(MIN('))
-        self.assertTrue(str(workbook['球员数据']['O2'].value).startswith('=IF('))
+        headers = [cell.value for cell in workbook['球员数据'][1]]
+        self.assertNotIn('扑救', headers)
+        self.assertTrue(str(workbook['球员数据']['L2'].value).startswith('=ROUND(MIN('))
+        self.assertTrue(str(workbook['球员数据']['N2'].value).startswith('=IF('))
 
     def test_player_stats_in_workbook_match_the_website(self):
         workbook = load_workbook(WORKBOOK_PATH, data_only=True)
@@ -49,10 +51,10 @@ class TeamWorkbookSyncTest(unittest.TestCase):
             self.assertEqual(player['goals'], row['进球'])
             self.assertEqual(player['asts'], row['助攻'])
             self.assertEqual(player['motm'], row['MVP'])
-            self.assertEqual(player['saves'], row['扑救'])
             self.assertEqual(player['cleanSheets'], row['零封'])
             self.assertEqual(player['rating'], row['评分'])
             self.assertEqual(player['memory'], row['代表数据'])
+            self.assertNotIn('saves', player)
 
 
 if __name__ == '__main__':
