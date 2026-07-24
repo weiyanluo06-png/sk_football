@@ -19,3 +19,5 @@ assert.match(html, /id="recruit"/);
 assert.match(html, /assets\/photos\/recruit-qq-group\.jpg/);
 assert.match(html, /913800697/);
 assert.match(css, /\.recruit__card/);
+assert.match(js, /setProperty\('--lineup-roster-count'/);
+assert.match(css, /repeat\(var\(--lineup-roster-count\), minmax\(0, 1fr\)\)/);

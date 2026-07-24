@@ -85,6 +85,7 @@
             groupNumber.textContent = String(index + 1).padStart(2, '0') + ' / 04';
         }
         if (roster) {
+            roster.style.setProperty('--lineup-roster-count', Math.max(1, meta.slots.length));
             roster.innerHTML = meta.slots.map(function (slotKey) {
                 var slot = startingLineup[slotKey];
                 var player = slot && getPlayerById(slot.playerId);
