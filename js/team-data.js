@@ -1,23 +1,493 @@
 window.PONYTAIL_DATA = {
     players: [
-        { id: 1, name: '吴宇成', nickname: '铁血后卫', number: 6, pos: 'DF', apps: 10, goals: 0, asts: 1, role: 'CB/CM/GK', saves: 0, cleanSheets: 0, motm: 0, rating: 7.6, avatarIcon: 'fa-shield-halved', traits: ['后场组织者/进攻型门将'], memory: '送出 1 次助攻', reviews: ['铁血后卫+天才门将', '这家伙到底是中场还是后卫还是门将啊？', '六边形战士', '生康最强中卫+门将天赋拉满', '进步最快之人'], bio: '场上可胜任中后卫、中场和门将。', photo: 'assets/players/wuyucheng.webp' },
-        { id: 2, name: '代育锐', nickname: '球王', number: 10, pos: 'DF', apps: 4, goals: 0, asts: 0, role: 'CB/LB', saves: 0, cleanSheets: 0, motm: 0, rating: 6.9, avatarIcon: 'fa-shield-halved', traits: ['组织型中后卫'], memory: '累计出场 4 场', reviews: ['我要跟代队当一辈子队友', '代队无敌', '全世界最好的代队', '代队牛逼', '10号体育生'], bio: '场上可胜任中后卫和左后卫。', photo: 'assets/players/daiyurui.webp' },
-        { id: 3, name: '王伯函', nickname: '防守大闸', number: 29, pos: 'DF', apps: 10, goals: 0, asts: 0, role: 'LB/CB', saves: 0, cleanSheets: 0, motm: 0, rating: 7.4, avatarIcon: 'fa-shield-halved', traits: ['防守型边后卫'], memory: '累计出场 10 场', reviews: ['纺大铲球第一人', 'if：对视；print：放铲', '人和球总得留下一个', '纺大万比萨卡', '最努力之人'], bio: '场上可胜任左后卫和中后卫。', photo: 'assets/players/wangbohan.webp' },
-        { id: 4, name: '刘航宇', nickname: '门神', number: 0, pos: 'GK', apps: 6, goals: 0, asts: 0, role: 'GK', saves: 0, cleanSheets: 0, motm: 0, rating: 7.1, avatarIcon: 'fa-hands', traits: ['防守型门将'], memory: '累计出场 6 场', reviews: ['门神', '佛得角', '抽卡出红了', '爆炸身体素质', '打篮球的'], bio: '场上位置为门将。', photo: 'assets/players/liuhangyu.webp' },
-        { id: 5, name: '曹维嘉', nickname: '能跑', number: 23, pos: 'FW', apps: 8, goals: 0, asts: 0, role: 'RB/RWF', saves: 0, cleanSheets: 0, motm: 0, rating: 7.3, avatarIcon: 'fa-person-running', traits: ['防守型边锋'], memory: '累计出场 8 场', reviews: ['有点能跑', '边路超跑，百公里加速只需要淌一脚', '生康耐跑王', '生康跑车', '能跑'], bio: '场上可胜任右后卫和右边锋。', photo: 'assets/players/caoweijia.webp' },
-        { id: 6, name: '尚锐杰', nickname: '曾效力队员', number: 9, pos: 'DF', apps: 0, goals: 0, asts: 0, role: 'RB', saves: 0, cleanSheets: 0, motm: 0, rating: 6.6, avatarIcon: 'fa-shield-halved', traits: ['边后卫'], memory: '累计出场 0 场', reviews: ['npc', '懒得喷', '有这号人吗？', '这是谁', '？'], bio: '场上位置为右后卫。', photo: 'assets/players/shangruijie.webp' },
-        { id: 7, name: '吴宇泽', nickname: '53', number: 15, pos: 'FW', apps: 9, goals: 6, asts: 1, role: 'LWF/CF', saves: 0, cleanSheets: 0, motm: 0, rating: 8.4, avatarIcon: 'fa-person-running', traits: ['抢点型前锋'], memory: '贡献 6 粒进球 / 送出 1 次助攻', reviews: ['爸爸', '爸爸', '爸爸', '爸爸', '姆巴佩'], bio: '场上可胜任左边锋和中锋。', photo: 'assets/players/wuyuze.webp' },
-        { id: 8, name: '彭卓伦', nickname: '发牌', number: 8, pos: 'MF', apps: 8, goals: 2, asts: 3, role: 'AM/LWF', saves: 0, cleanSheets: 0, motm: 0, rating: 8.0, avatarIcon: 'fa-compass', traits: ['组织型前锋'], memory: '贡献 2 粒进球 / 送出 3 次助攻', reviews: ['给过我很多助攻之人', '发牌～', '男模', '腿长14的技术型球员', '瓦学弟'], bio: '场上可胜任攻击型中场和左边锋。', photo: 'assets/players/pengzhuolun.webp' },
-        { id: 9, name: '周霄旭', nickname: '生康未来', number: 5, pos: 'FW', apps: 10, goals: 4, asts: 3, role: 'CF/RWF/AM', saves: 0, cleanSheets: 0, motm: 0, rating: 8.4, avatarIcon: 'fa-person-running', traits: ['全能前锋'], memory: '贡献 4 粒进球 / 送出 3 次助攻', reviews: ['生康未来', '贝林厄姆', '生康球王', '贝林厄姆', '生康未来'], bio: '场上可胜任中锋、右边锋和攻击型中场。', photo: 'assets/players/zhouxiaoxu.webp' },
-        { id: 10, name: '张俊', nickname: '全能王', number: 17, pos: 'DF', apps: 7, goals: 0, asts: 0, role: 'CB/CM/GK', saves: 0, cleanSheets: 0, motm: 0, rating: 7.1, avatarIcon: 'fa-shield-halved', traits: ['全能中场'], memory: '累计出场 7 场', reviews: ['有点万能', '让我看看热区图，我靠全红！', '我无处不在', '全能王', '工具人'], bio: '场上可胜任中后卫、中场和门将。', photo: 'assets/players/zhangjun.webp' },
-        { id: 11, name: '岑烨', nickname: '门神', number: 18, pos: 'GK', apps: 9, goals: 0, asts: 0, role: 'GK/CB', saves: 0, cleanSheets: 0, motm: 0, rating: 7.3, avatarIcon: 'fa-hands', traits: ['防守型门将'], memory: '累计出场 9 场', reviews: ['扑点第一人', '对面装逼让对面飞起来', '生康战车', '一场比赛可以吹四年的门神', '小黑胖子'], bio: '场上可胜任门将和中后卫。', photo: 'assets/players/cenye.webp' },
-        { id: 12, name: '李傲', nickname: '铁血', number: 19, pos: 'DF', apps: 4, goals: 0, asts: 0, role: 'RB', saves: 0, cleanSheets: 0, motm: 0, rating: 7.0, avatarIcon: 'fa-shield-halved', traits: ['边翼卫'], memory: '累计出场 4 场', reviews: ['铁血后卫', '要么人过去球留下，要么全留下', '你们的前锋很一般', '腿长14铁血边后卫', '铁血后卫'], bio: '场上位置为右后卫。', photo: 'assets/players/liao.webp' },
-        { id: 13, name: '吴全银', nickname: '控场', number: 25, pos: 'MF', apps: 3, goals: 0, asts: 0, role: 'DM/RB', saves: 0, cleanSheets: 0, motm: 0, rating: 6.8, avatarIcon: 'fa-compass', traits: ['全能中场'], memory: '累计出场 3 场', reviews: ['阿萨塔', '阿萨塔', '阿萨塔', '生康罗德里', '阿萨塔'], bio: '场上可胜任后腰和右后卫。', photo: 'assets/players/wuquanyin.webp' },
-        { id: 14, name: '陈亿霏', nickname: '寝室长', number: 66, pos: 'DF', apps: 2, goals: 0, asts: 0, role: 'LB', saves: 0, cleanSheets: 0, motm: 0, rating: 6.7, avatarIcon: 'fa-shield-halved', traits: ['边后卫'], memory: '累计出场 2 场', reviews: ['大脑完全不发育，小脑发育不完全', '寝室长？', '寝室长', '寝室长。', '窝里横'], bio: '场上位置为左后卫。', photo: 'assets/players/chenyifei.webp' },
-        { id: 15, name: '何嗣承', nickname: '生康坎特', number: 12, pos: 'MF', apps: 7, goals: 1, asts: 1, role: 'DM/LB', saves: 0, cleanSheets: 0, motm: 0, rating: 7.5, avatarIcon: 'fa-compass', traits: ['扫荡型中场'], memory: '贡献 1 粒进球 / 送出 1 次助攻', reviews: ['真鸡巴猛', '这个真牛逼', '身体最硬之人', '生康坎特', '菜'], bio: '场上可胜任后腰和左后卫。', photo: 'assets/players/hesicheng.webp' },
-        { id: 16, name: '曹志威', nickname: '活跃队员', number: 66, pos: 'GK', apps: 1, goals: 0, asts: 0, role: 'GK', saves: 0, cleanSheets: 0, motm: 0, rating: 6.7, avatarIcon: 'fa-hands', traits: ['门将'], memory: '累计出场 1 场', reviews: [], bio: '场上位置为门将。', photo: 'assets/players/caozhiwei.webp' },
-        { id: 17, name: '苗志梁', nickname: '足球文艺青年', number: 15, pos: 'DF', apps: 2, goals: 0, asts: 0, role: 'LB/LWB', saves: 0, cleanSheets: 0, motm: 0, rating: 6.8, avatarIcon: 'fa-shield-halved', traits: ['边后卫'], memory: '累计出场 2 场', reviews: ['唱歌有点好听的', '足球文艺青年', '生康门面', '生康ktv扛把子', '和他去当A仔'], bio: '场上可胜任左后卫和左翼卫。', photo: 'assets/players/miaozhiliang.webp' }
-    ],
+        {
+                "id": 1,
+                "name": "吴宇成",
+                "nickname": "铁血后卫",
+                "number": 6,
+                "pos": "DF",
+                "apps": 11,
+                "goals": 0,
+                "asts": 1,
+                "role": "CB/CM/GK",
+                "saves": 0,
+                "cleanSheets": 0,
+                "motm": 0,
+                "rating": 7.1,
+                "avatarIcon": "fa-shield-halved",
+                "traits": [
+                        "后场组织者/进攻型门将"
+                ],
+                "memory": "送出 1 次助攻",
+                "reviews": [
+                        "铁血后卫+天才门将",
+                        "这家伙到底是中场还是后卫还是门将啊？",
+                        "六边形战士",
+                        "生康最强中卫+门将天赋拉满",
+                        "进步最快之人"
+                ],
+                "bio": "场上可胜任中后卫、中场和门将。",
+                "photo": "assets/players/wuyucheng.webp"
+        },
+        {
+                "id": 2,
+                "name": "代育锐",
+                "nickname": "球王",
+                "number": 10,
+                "pos": "DF",
+                "apps": 4,
+                "goals": 0,
+                "asts": 0,
+                "role": "CB/LB",
+                "saves": 0,
+                "cleanSheets": 0,
+                "motm": 0,
+                "rating": 6.3,
+                "avatarIcon": "fa-shield-halved",
+                "traits": [
+                        "组织型中后卫"
+                ],
+                "memory": "累计出场 4 场",
+                "reviews": [
+                        "我要跟代队当一辈子队友",
+                        "代队无敌",
+                        "全世界最好的代队",
+                        "代队牛逼",
+                        "10号体育生"
+                ],
+                "bio": "场上可胜任中后卫和左后卫。",
+                "photo": "assets/players/daiyurui.webp"
+        },
+        {
+                "id": 3,
+                "name": "王伯函",
+                "nickname": "防守大闸",
+                "number": 29,
+                "pos": "DF",
+                "apps": 9,
+                "goals": 0,
+                "asts": 0,
+                "role": "LB/CB",
+                "saves": 0,
+                "cleanSheets": 0,
+                "motm": 0,
+                "rating": 6.7,
+                "avatarIcon": "fa-shield-halved",
+                "traits": [
+                        "防守型边后卫"
+                ],
+                "memory": "累计出场 9 场",
+                "reviews": [
+                        "纺大铲球第一人",
+                        "if：对视；print：放铲",
+                        "人和球总得留下一个",
+                        "纺大万比萨卡",
+                        "最努力之人"
+                ],
+                "bio": "场上可胜任左后卫和中后卫。",
+                "photo": "assets/players/wangbohan.webp"
+        },
+        {
+                "id": 4,
+                "name": "刘航宇",
+                "nickname": "门神",
+                "number": 0,
+                "pos": "GK",
+                "apps": 8,
+                "goals": 0,
+                "asts": 0,
+                "role": "GK",
+                "saves": 0,
+                "cleanSheets": 1,
+                "motm": 0,
+                "rating": 6.8,
+                "avatarIcon": "fa-hands",
+                "traits": [
+                        "防守型门将"
+                ],
+                "memory": "累计出场 8 场",
+                "reviews": [
+                        "门神",
+                        "佛得角",
+                        "抽卡出红了",
+                        "爆炸身体素质",
+                        "打篮球的"
+                ],
+                "bio": "场上位置为门将。",
+                "photo": "assets/players/liuhangyu.webp"
+        },
+        {
+                "id": 5,
+                "name": "曹维嘉",
+                "nickname": "能跑",
+                "number": 23,
+                "pos": "FW",
+                "apps": 8,
+                "goals": 0,
+                "asts": 0,
+                "role": "RB/RWF",
+                "saves": 0,
+                "cleanSheets": 0,
+                "motm": 0,
+                "rating": 6.6,
+                "avatarIcon": "fa-person-running",
+                "traits": [
+                        "防守型边锋"
+                ],
+                "memory": "累计出场 8 场",
+                "reviews": [
+                        "有点能跑",
+                        "边路超跑，百公里加速只需要淌一脚",
+                        "生康耐跑王",
+                        "生康跑车",
+                        "能跑"
+                ],
+                "bio": "场上可胜任右后卫和右边锋。",
+                "photo": "assets/players/caoweijia.webp"
+        },
+        {
+                "id": 6,
+                "name": "尚锐杰",
+                "nickname": "曾效力队员",
+                "number": 9,
+                "pos": "DF",
+                "apps": 0,
+                "goals": 0,
+                "asts": 0,
+                "role": "RB",
+                "saves": 0,
+                "cleanSheets": 0,
+                "motm": 0,
+                "rating": 6.0,
+                "avatarIcon": "fa-shield-halved",
+                "traits": [
+                        "边后卫"
+                ],
+                "memory": "累计出场 0 场",
+                "reviews": [
+                        "npc",
+                        "懒得喷",
+                        "有这号人吗？",
+                        "这是谁",
+                        "？"
+                ],
+                "bio": "场上位置为右后卫。",
+                "photo": "assets/players/shangruijie.webp"
+        },
+        {
+                "id": 7,
+                "name": "吴宇泽",
+                "nickname": "53",
+                "number": 15,
+                "pos": "FW",
+                "apps": 11,
+                "goals": 6,
+                "asts": 1,
+                "role": "LWF/CF",
+                "saves": 0,
+                "cleanSheets": 0,
+                "motm": 0,
+                "rating": 9.2,
+                "avatarIcon": "fa-person-running",
+                "traits": [
+                        "抢点型前锋"
+                ],
+                "memory": "贡献 6 粒进球 / 送出 1 次助攻",
+                "reviews": [
+                        "爸爸",
+                        "爸爸",
+                        "爸爸",
+                        "爸爸",
+                        "姆巴佩"
+                ],
+                "bio": "场上可胜任左边锋和中锋。",
+                "photo": "assets/players/wuyuze.webp"
+        },
+        {
+                "id": 8,
+                "name": "彭卓伦",
+                "nickname": "发牌",
+                "number": 8,
+                "pos": "MF",
+                "apps": 8,
+                "goals": 2,
+                "asts": 3,
+                "role": "AM/LWF",
+                "saves": 0,
+                "cleanSheets": 0,
+                "motm": 0,
+                "rating": 8.1,
+                "avatarIcon": "fa-compass",
+                "traits": [
+                        "组织型前锋"
+                ],
+                "memory": "贡献 2 粒进球 / 送出 3 次助攻",
+                "reviews": [
+                        "给过我很多助攻之人",
+                        "发牌～",
+                        "男模",
+                        "腿长14的技术型球员",
+                        "瓦学弟"
+                ],
+                "bio": "场上可胜任攻击型中场和左边锋。",
+                "photo": "assets/players/pengzhuolun.webp"
+        },
+        {
+                "id": 9,
+                "name": "周霄旭",
+                "nickname": "生康未来",
+                "number": 5,
+                "pos": "FW",
+                "apps": 10,
+                "goals": 4,
+                "asts": 3,
+                "role": "CF/RWF/AM",
+                "saves": 0,
+                "cleanSheets": 0,
+                "motm": 0,
+                "rating": 9.0,
+                "avatarIcon": "fa-person-running",
+                "traits": [
+                        "全能前锋"
+                ],
+                "memory": "贡献 4 粒进球 / 送出 3 次助攻",
+                "reviews": [
+                        "生康未来",
+                        "贝林厄姆",
+                        "生康球王",
+                        "贝林厄姆",
+                        "生康未来"
+                ],
+                "bio": "场上可胜任中锋、右边锋和攻击型中场。",
+                "photo": "assets/players/zhouxiaoxu.webp"
+        },
+        {
+                "id": 10,
+                "name": "张俊",
+                "nickname": "全能王",
+                "number": 17,
+                "pos": "DF",
+                "apps": 6,
+                "goals": 0,
+                "asts": 0,
+                "role": "CB/CM/GK",
+                "saves": 0,
+                "cleanSheets": 0,
+                "motm": 0,
+                "rating": 6.5,
+                "avatarIcon": "fa-shield-halved",
+                "traits": [
+                        "全能中场"
+                ],
+                "memory": "累计出场 6 场",
+                "reviews": [
+                        "有点万能",
+                        "让我看看热区图，我靠全红！",
+                        "我无处不在",
+                        "全能王",
+                        "工具人"
+                ],
+                "bio": "场上可胜任中后卫、中场和门将。",
+                "photo": "assets/players/zhangjun.webp"
+        },
+        {
+                "id": 11,
+                "name": "岑烨",
+                "nickname": "门神",
+                "number": 18,
+                "pos": "GK",
+                "apps": 5,
+                "goals": 0,
+                "asts": 0,
+                "role": "GK/CB",
+                "saves": 0,
+                "cleanSheets": 1,
+                "motm": 0,
+                "rating": 6.6,
+                "avatarIcon": "fa-hands",
+                "traits": [
+                        "防守型门将"
+                ],
+                "memory": "累计出场 5 场",
+                "reviews": [
+                        "扑点第一人",
+                        "对面装逼让对面飞起来",
+                        "生康战车",
+                        "一场比赛可以吹四年的门神",
+                        "小黑胖子"
+                ],
+                "bio": "场上可胜任门将和中后卫。",
+                "photo": "assets/players/cenye.webp"
+        },
+        {
+                "id": 12,
+                "name": "李傲",
+                "nickname": "铁血",
+                "number": 19,
+                "pos": "DF",
+                "apps": 8,
+                "goals": 0,
+                "asts": 0,
+                "role": "RB",
+                "saves": 0,
+                "cleanSheets": 0,
+                "motm": 0,
+                "rating": 6.6,
+                "avatarIcon": "fa-shield-halved",
+                "traits": [
+                        "边翼卫"
+                ],
+                "memory": "累计出场 8 场",
+                "reviews": [
+                        "铁血后卫",
+                        "要么人过去球留下，要么全留下",
+                        "你们的前锋很一般",
+                        "腿长14铁血边后卫",
+                        "铁血后卫"
+                ],
+                "bio": "场上位置为右后卫。",
+                "photo": "assets/players/liao.webp"
+        },
+        {
+                "id": 13,
+                "name": "吴全银",
+                "nickname": "控场",
+                "number": 25,
+                "pos": "MF",
+                "apps": 6,
+                "goals": 0,
+                "asts": 0,
+                "role": "DM/RB",
+                "saves": 0,
+                "cleanSheets": 0,
+                "motm": 0,
+                "rating": 6.5,
+                "avatarIcon": "fa-compass",
+                "traits": [
+                        "全能中场"
+                ],
+                "memory": "累计出场 6 场",
+                "reviews": [
+                        "阿萨塔",
+                        "阿萨塔",
+                        "阿萨塔",
+                        "生康罗德里",
+                        "阿萨塔"
+                ],
+                "bio": "场上可胜任后腰和右后卫。",
+                "photo": "assets/players/wuquanyin.webp"
+        },
+        {
+                "id": 14,
+                "name": "陈亿霏",
+                "nickname": "寝室长",
+                "number": 66,
+                "pos": "DF",
+                "apps": 3,
+                "goals": 0,
+                "asts": 0,
+                "role": "LB",
+                "saves": 0,
+                "cleanSheets": 0,
+                "motm": 0,
+                "rating": 6.2,
+                "avatarIcon": "fa-shield-halved",
+                "traits": [
+                        "边后卫"
+                ],
+                "memory": "累计出场 3 场",
+                "reviews": [
+                        "大脑完全不发育，小脑发育不完全",
+                        "寝室长？",
+                        "寝室长",
+                        "寝室长。",
+                        "窝里横"
+                ],
+                "bio": "场上位置为左后卫。",
+                "photo": "assets/players/chenyifei.webp"
+        },
+        {
+                "id": 15,
+                "name": "何嗣承",
+                "nickname": "生康坎特",
+                "number": 12,
+                "pos": "MF",
+                "apps": 10,
+                "goals": 1,
+                "asts": 1,
+                "role": "DM/LB",
+                "saves": 0,
+                "cleanSheets": 1,
+                "motm": 0,
+                "rating": 7.6,
+                "avatarIcon": "fa-compass",
+                "traits": [
+                        "扫荡型中场"
+                ],
+                "memory": "贡献 1 粒进球 / 送出 1 次助攻",
+                "reviews": [
+                        "真鸡巴猛",
+                        "这个真牛逼",
+                        "身体最硬之人",
+                        "生康坎特",
+                        "菜"
+                ],
+                "bio": "场上可胜任后腰和左后卫。",
+                "photo": "assets/players/hesicheng.webp"
+        },
+        {
+                "id": 16,
+                "name": "曹志威",
+                "nickname": "活跃队员",
+                "number": 66,
+                "pos": "GK",
+                "apps": 1,
+                "goals": 0,
+                "asts": 0,
+                "role": "GK",
+                "saves": 0,
+                "cleanSheets": 0,
+                "motm": 0,
+                "rating": 6.1,
+                "avatarIcon": "fa-hands",
+                "traits": [
+                        "门将"
+                ],
+                "memory": "累计出场 1 场",
+                "reviews": [],
+                "bio": "场上位置为门将。",
+                "photo": "assets/players/caozhiwei.webp"
+        },
+        {
+                "id": 17,
+                "name": "苗志梁",
+                "nickname": "足球文艺青年",
+                "number": 15,
+                "pos": "DF",
+                "apps": 2,
+                "goals": 0,
+                "asts": 0,
+                "role": "LB/LWB",
+                "saves": 0,
+                "cleanSheets": 0,
+                "motm": 0,
+                "rating": 6.2,
+                "avatarIcon": "fa-shield-halved",
+                "traits": [
+                        "边后卫"
+                ],
+                "memory": "累计出场 2 场",
+                "reviews": [
+                        "唱歌有点好听的",
+                        "足球文艺青年",
+                        "生康门面",
+                        "生康ktv扛把子",
+                        "和他去当A仔"
+                ],
+                "bio": "场上可胜任左后卫和左翼卫。",
+                "photo": "assets/players/miaozhiliang.webp"
+        }
+],
 
     startingLineup: {
         GK: { top: '88%', left: '50%', playerId: 4 },
@@ -36,24 +506,155 @@ window.PONYTAIL_DATA = {
     defaultCompetitionId: '2025-eleven-fangda',
 
     competitions: [
-        { id: '2025-eleven-fangda', year: '2025', name: '十一人制纺大杯', label: '十一人制纺大杯', status: '建队后的首个赛事', description: '从临时凑齐队员、确定位置到真正踏上十一人制赛场，正式比赛从这里开始。' },
-        { id: '2025-freshmen-cup', year: '2025', name: '八人制新生杯', label: '八人制新生杯', status: '首届新生杯', description: '紧密赛程里，球队最终获得第七名。这是第一届新生杯，也是很高的起点。' },
-        { id: '2026-eight-fangda', year: '2026', name: '八人制纺大杯', label: '八人制纺大杯', status: '最新赛事', description: '下学期唯一一项学院足球赛事。这里保留这段比赛记录。' }
-    ],
+        {
+                "id": "2025-eleven-fangda",
+                "year": "2025",
+                "name": "十一人制纺大杯",
+                "label": "十一人制纺大杯",
+                "status": "建队后的首个赛事",
+                "description": "从临时凑齐队员、确定位置到真正踏上十一人制赛场，正式比赛从这里开始。"
+        },
+        {
+                "id": "2025-freshmen-cup",
+                "year": "2025",
+                "name": "八人制新生杯",
+                "label": "八人制新生杯",
+                "status": "首届新生杯",
+                "description": "紧密赛程里，球队最终获得第七名。这是第一届新生杯，也是很高的起点。"
+        },
+        {
+                "id": "2026-eight-fangda",
+                "year": "2026",
+                "name": "八人制纺大杯",
+                "label": "八人制纺大杯",
+                "status": "最新赛事",
+                "description": "下学期唯一一项学院足球赛事。这里保留这段比赛记录。"
+        }
+],
 
     matches: [
-        { season: '2025-2026', result: 'loss', score: '0 : 3', opponent: '材料学院', date: '2026-04-16', venue: '阳光校区足球场', competition: '八人制纺大杯', scorers: '暂无进球记录', quote: '八人制纺大杯对阵材料学院。' },
-        { season: '2025-2026', result: 'loss', score: '2 : 6', opponent: '机智学院', date: '2026-04-08', venue: '阳光校区足球场', competition: '八人制纺大杯', scorers: '周霄旭 20′ / 周霄旭 40′', quote: '周霄旭打入两球。' },
-        { season: '2025-2026', result: 'loss', score: '2 : 3', opponent: '管理学院', date: '2026-03-30', venue: '阳光校区足球场', competition: '八人制纺大杯', scorers: '吴宇泽 12′ / 何嗣承 24′', quote: '八人制纺大杯对阵管理学院。' },
-        { season: '2025-2026', result: 'win', score: '1 : 0', opponent: '管理学院', date: '2025-12-18', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '彭卓伦 40′', quote: '最后一场大家轮换到不熟悉的位置，也更理解了队友的难处。' },
-        { season: '2025-2026', result: 'loss', score: '0 : 1', opponent: '计智学院', date: '2025-12-17', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '暂无进球记录', quote: '首次进入淘汰赛，球队最终获得第七名。' },
-        { season: '2025-2026', result: 'loss', score: '1 : 3', opponent: '南湖校区', date: '2025-12-16', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '周霄旭 62′', quote: '紧密赛程中的一场比赛。' },
-        { season: '2025-2026', result: 'win', score: '2 : 0', opponent: '化工学院', date: '2025-12-12', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '彭卓伦 30′ / 吴宇泽 42′', quote: '小组赛第二场胜利。' },
-        { season: '2025-2026', result: 'win', score: '1 : 0', opponent: '微电子学院', date: '2025-12-08', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '吴宇泽 18′', quote: '球队在新生杯拿到首胜。' },
-        { season: '2025-2026', result: 'loss', score: '0 : 5', opponent: '研究生', date: '2025-12-03', venue: '阳光校区足球场', competition: '八人制新生杯', scorers: '暂无进球记录', quote: '八人制新生杯的第一场记录。' },
-        { season: '2025-2026', result: 'loss', score: '2 : 5', opponent: '材料学院', date: '2025-10-28', venue: '阳光校区足球场', competition: '十一人制纺大杯', scorers: '吴宇泽 20′ / 吴宇泽 60′', quote: '面对一直帮助球队的材料学院，继续在实战里学习。' },
-        { season: '2025-2026', result: 'loss', score: '2 : 4', opponent: '管理学院', date: '2025-10-14', venue: '阳光校区足球场', competition: '十一人制纺大杯', scorers: '周霄旭 20′ / 吴宇泽 40′', quote: '球队十一人制正式首战，雨中作战，比分并非一边倒。' }
-    ],
+        {
+                "season": "2025-2026",
+                "result": "loss",
+                "score": "0 : 3",
+                "opponent": "材料学院",
+                "date": "2026-04-16",
+                "venue": "阳光校区足球场",
+                "competition": "八人制纺大杯",
+                "scorers": "暂无进球记录",
+                "quote": "八人制纺大杯对阵材料学院。"
+        },
+        {
+                "season": "2025-2026",
+                "result": "loss",
+                "score": "2 : 6",
+                "opponent": "机智学院",
+                "date": "2026-04-08",
+                "venue": "阳光校区足球场",
+                "competition": "八人制纺大杯",
+                "scorers": "周霄旭 20′ / 周霄旭 40′",
+                "quote": "周霄旭打入两球。"
+        },
+        {
+                "season": "2025-2026",
+                "result": "loss",
+                "score": "2 : 3",
+                "opponent": "管理学院",
+                "date": "2026-03-30",
+                "venue": "阳光校区足球场",
+                "competition": "八人制纺大杯",
+                "scorers": "吴宇泽 12′ / 何嗣承 24′",
+                "quote": "八人制纺大杯对阵管理学院。"
+        },
+        {
+                "season": "2025-2026",
+                "result": "win",
+                "score": "1 : 0",
+                "opponent": "管理学院",
+                "date": "2025-12-18",
+                "venue": "阳光校区足球场",
+                "competition": "八人制新生杯",
+                "scorers": "彭卓伦 40′",
+                "quote": "最后一场大家轮换到不熟悉的位置，也更理解了队友的难处。"
+        },
+        {
+                "season": "2025-2026",
+                "result": "loss",
+                "score": "0 : 1",
+                "opponent": "计智学院",
+                "date": "2025-12-17",
+                "venue": "阳光校区足球场",
+                "competition": "八人制新生杯",
+                "scorers": "暂无进球记录",
+                "quote": "首次进入淘汰赛，球队最终获得第七名。"
+        },
+        {
+                "season": "2025-2026",
+                "result": "loss",
+                "score": "1 : 3",
+                "opponent": "南湖校区",
+                "date": "2025-12-16",
+                "venue": "阳光校区足球场",
+                "competition": "八人制新生杯",
+                "scorers": "周霄旭 62′",
+                "quote": "紧密赛程中的一场比赛。"
+        },
+        {
+                "season": "2025-2026",
+                "result": "win",
+                "score": "2 : 0",
+                "opponent": "化工学院",
+                "date": "2025-12-12",
+                "venue": "阳光校区足球场",
+                "competition": "八人制新生杯",
+                "scorers": "彭卓伦 30′ / 吴宇泽 42′",
+                "quote": "小组赛第二场胜利。"
+        },
+        {
+                "season": "2025-2026",
+                "result": "win",
+                "score": "1 : 0",
+                "opponent": "微电子学院",
+                "date": "2025-12-08",
+                "venue": "阳光校区足球场",
+                "competition": "八人制新生杯",
+                "scorers": "吴宇泽 18′",
+                "quote": "球队在新生杯拿到首胜。"
+        },
+        {
+                "season": "2025-2026",
+                "result": "loss",
+                "score": "0 : 5",
+                "opponent": "研究生",
+                "date": "2025-12-03",
+                "venue": "阳光校区足球场",
+                "competition": "八人制新生杯",
+                "scorers": "暂无进球记录",
+                "quote": "八人制新生杯的第一场记录。"
+        },
+        {
+                "season": "2025-2026",
+                "result": "loss",
+                "score": "2 : 5",
+                "opponent": "材料学院",
+                "date": "2025-10-28",
+                "venue": "阳光校区足球场",
+                "competition": "十一人制纺大杯",
+                "scorers": "吴宇泽 20′ / 吴宇泽 60′",
+                "quote": "面对一直帮助球队的材料学院，继续在实战里学习。"
+        },
+        {
+                "season": "2025-2026",
+                "result": "loss",
+                "score": "2 : 4",
+                "opponent": "管理学院",
+                "date": "2025-10-14",
+                "venue": "阳光校区足球场",
+                "competition": "十一人制纺大杯",
+                "scorers": "周霄旭 20′ / 吴宇泽 40′",
+                "quote": "球队十一人制正式首战，雨中作战，比分并非一边倒。"
+        }
+],
 
     honors: [
         { icon: 'fa-people-group', title: '把队伍凑齐', date: '2025 秋季', text: '从不能联院、人数不够开始，队员们一起拉人报名、订队服，生康终于有了自己的足球队。' },
