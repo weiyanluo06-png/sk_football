@@ -16,7 +16,7 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_WORKBOOK = ROOT / 'data' / '生康足球队数据源.xlsx'
-PLAYER_HEADERS = ['序号', '姓名', '绰号', '号码', '主位置', '可胜任位置', '出场', '进球', '助攻', 'MVP', '零封', '评分', '踢球风格', '代表数据']
+PLAYER_HEADERS = ['序号', '姓名', '绰号', '号码', '主位置', '可胜任位置', '出场', '进球', '助攻', 'MVP', '零封', '低失球场', '评分', '踢球风格', '代表数据']
 COMPETITION_HEADERS = ['赛事 ID', '年份', '赛事名称', '显示名称', '状态', '赛事说明']
 MATCH_HEADERS = ['赛季', '赛事名称', '日期', '对手', '比分', '赛果', '场地', '进球者', '赛事备注']
 GREEN = '1F7A4D'
@@ -39,7 +39,7 @@ process.stdout.write(JSON.stringify(context.window.PONYTAIL_DATA));
 
 
 def rating_formula(row):
-    return f'=ROUND(MIN(9.5,MAX(6,6+G{row}*0.08+H{row}*0.35+I{row}*0.25+J{row}*0.25+K{row}*0.15)),1)'
+    return f'=ROUND(MIN(9.5,MAX(6,6+G{row}*0.08+H{row}*0.35+I{row}*0.25+J{row}*0.25+K{row}*0.15+IF(E{row}="DF",G{row}*0.06+K{row}*0.35+L{row}*0.15,0))),1)'
 
 
 def memory_formula(row):
@@ -53,6 +53,10 @@ def calculate_rating(row):
     score += Decimal(str(row['助攻'])) * Decimal('0.25')
     score += Decimal(str(row['MVP'])) * Decimal('0.25')
     score += Decimal(str(row['零封'])) * Decimal('0.15')
+    if row['主位置'] == 'DF':
+        score += Decimal(str(row['出场'])) * Decimal('0.06')
+        score += Decimal(str(row['零封'])) * Decimal('0.35')
+        score += Decimal(str(row['低失球场'])) * Decimal('0.15')
     return float(min(Decimal('9.5'), max(Decimal('6'), score)).quantize(Decimal('0.1'), rounding=ROUND_HALF_UP))
 
 
@@ -123,6 +127,16 @@ def remove_save_column(sheet):
         sheet.delete_cols(headers.index('扑救') + 1)
 
 
+def ensure_low_concede_column(sheet):
+    headers = [cell.value for cell in sheet[1]]
+    if '低失球场' not in headers:
+        insert_at = headers.index('零封') + 2
+        sheet.insert_cols(insert_at)
+        sheet.cell(1, insert_at).value = '低失球场'
+        for row in range(2, sheet.max_row + 1):
+            sheet.cell(row, insert_at).value = 0
+
+
 def update_players(data, rows):
     existing = {player['name']: player for player in data['players']}
     updated = []
@@ -134,7 +148,7 @@ def update_players(data, rows):
         player.update({
             'id': row['序号'], 'name': row['姓名'], 'nickname': row['绰号'], 'number': row['号码'],
             'pos': row['主位置'], 'role': row['可胜任位置'], 'apps': row['出场'], 'goals': row['进球'],
-            'asts': row['助攻'], 'motm': row['MVP'], 'cleanSheets': row['零封'],
+            'asts': row['助攻'], 'motm': row['MVP'], 'cleanSheets': row['零封'], 'lowConcedeGames': row['低失球场'],
             'rating': calculate_rating(row), 'traits': [row['踢球风格']], 'memory': calculate_memory(row),
         })
         updated.append(player)
@@ -182,11 +196,12 @@ def main():
     workbook = load_workbook(args.target)
     players = workbook['球员数据']
     remove_save_column(players)
+    ensure_low_concede_column(players)
     for row in range(2, players.max_row + 1):
-        players.cell(row, 12).value = rating_formula(row)
-        players.cell(row, 14).value = memory_formula(row)
-        players.cell(row, 12).number_format = '0.0'
-    style_table(players, {'A': 8, 'B': 12, 'C': 16, 'D': 8, 'E': 10, 'F': 17, 'G': 9, 'H': 9, 'I': 9, 'J': 9, 'K': 9, 'L': 12, 'M': 20, 'N': 28})
+        players.cell(row, 13).value = rating_formula(row)
+        players.cell(row, 15).value = memory_formula(row)
+        players.cell(row, 13).number_format = '0.0'
+    style_table(players, {'A': 8, 'B': 12, 'C': 16, 'D': 8, 'E': 10, 'F': 17, 'G': 9, 'H': 9, 'I': 9, 'J': 9, 'K': 9, 'L': 11, 'M': 12, 'N': 20, 'O': 28})
     append_table(players, 'PlayerStats')
     ensure_schedule_sheets(workbook, data)
     workbook.calculation.fullCalcOnLoad = True

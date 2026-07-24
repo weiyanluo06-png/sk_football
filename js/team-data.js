@@ -12,7 +12,7 @@ window.PONYTAIL_DATA = {
                 "role": "CB/CM/GK",
                 "cleanSheets": 0,
                 "motm": 0,
-                "rating": 7.1,
+                "rating": 7.8,
                 "avatarIcon": "fa-shield-halved",
                 "traits": [
                         "后场组织者/进攻型门将"
@@ -26,7 +26,8 @@ window.PONYTAIL_DATA = {
                         "进步最快之人"
                 ],
                 "bio": "场上可胜任中后卫、中场和门将。",
-                "photo": "assets/players/wuyucheng.webp"
+                "photo": "assets/players/wuyucheng.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 2,
@@ -40,7 +41,7 @@ window.PONYTAIL_DATA = {
                 "role": "CB/LB",
                 "cleanSheets": 0,
                 "motm": 0,
-                "rating": 6.3,
+                "rating": 6.6,
                 "avatarIcon": "fa-shield-halved",
                 "traits": [
                         "组织型中后卫"
@@ -54,7 +55,8 @@ window.PONYTAIL_DATA = {
                         "10号体育生"
                 ],
                 "bio": "场上可胜任中后卫和左后卫。",
-                "photo": "assets/players/daiyurui.webp"
+                "photo": "assets/players/daiyurui.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 3,
@@ -68,7 +70,7 @@ window.PONYTAIL_DATA = {
                 "role": "LB/CB",
                 "cleanSheets": 0,
                 "motm": 0,
-                "rating": 6.7,
+                "rating": 7.3,
                 "avatarIcon": "fa-shield-halved",
                 "traits": [
                         "防守型边后卫"
@@ -82,7 +84,8 @@ window.PONYTAIL_DATA = {
                         "最努力之人"
                 ],
                 "bio": "场上可胜任左后卫和中后卫。",
-                "photo": "assets/players/wangbohan.webp"
+                "photo": "assets/players/wangbohan.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 4,
@@ -110,7 +113,8 @@ window.PONYTAIL_DATA = {
                         "打篮球的"
                 ],
                 "bio": "场上位置为门将。",
-                "photo": "assets/players/liuhangyu.webp"
+                "photo": "assets/players/liuhangyu.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 5,
@@ -138,7 +142,8 @@ window.PONYTAIL_DATA = {
                         "能跑"
                 ],
                 "bio": "场上可胜任右后卫和右边锋。",
-                "photo": "assets/players/caoweijia.webp"
+                "photo": "assets/players/caoweijia.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 6,
@@ -166,7 +171,8 @@ window.PONYTAIL_DATA = {
                         "？"
                 ],
                 "bio": "场上位置为右后卫。",
-                "photo": "assets/players/shangruijie.webp"
+                "photo": "assets/players/shangruijie.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 7,
@@ -194,7 +200,8 @@ window.PONYTAIL_DATA = {
                         "姆巴佩"
                 ],
                 "bio": "场上可胜任左边锋和中锋。",
-                "photo": "assets/players/wuyuze.webp"
+                "photo": "assets/players/wuyuze.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 8,
@@ -222,7 +229,8 @@ window.PONYTAIL_DATA = {
                         "瓦学弟"
                 ],
                 "bio": "场上可胜任攻击型中场和左边锋。",
-                "photo": "assets/players/pengzhuolun.webp"
+                "photo": "assets/players/pengzhuolun.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 9,
@@ -250,7 +258,8 @@ window.PONYTAIL_DATA = {
                         "生康未来"
                 ],
                 "bio": "场上可胜任中锋、右边锋和攻击型中场。",
-                "photo": "assets/players/zhouxiaoxu.webp"
+                "photo": "assets/players/zhouxiaoxu.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 10,
@@ -264,7 +273,7 @@ window.PONYTAIL_DATA = {
                 "role": "CB/CM/GK",
                 "cleanSheets": 0,
                 "motm": 0,
-                "rating": 6.5,
+                "rating": 6.8,
                 "avatarIcon": "fa-shield-halved",
                 "traits": [
                         "全能中场"
@@ -278,7 +287,8 @@ window.PONYTAIL_DATA = {
                         "工具人"
                 ],
                 "bio": "场上可胜任中后卫、中场和门将。",
-                "photo": "assets/players/zhangjun.webp"
+                "photo": "assets/players/zhangjun.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 11,
@@ -306,7 +316,8 @@ window.PONYTAIL_DATA = {
                         "小黑胖子"
                 ],
                 "bio": "场上可胜任门将和中后卫。",
-                "photo": "assets/players/cenye.webp"
+                "photo": "assets/players/cenye.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 12,
@@ -320,7 +331,7 @@ window.PONYTAIL_DATA = {
                 "role": "RB",
                 "cleanSheets": 0,
                 "motm": 0,
-                "rating": 6.6,
+                "rating": 7.1,
                 "avatarIcon": "fa-shield-halved",
                 "traits": [
                         "边翼卫"
@@ -334,7 +345,8 @@ window.PONYTAIL_DATA = {
                         "铁血后卫"
                 ],
                 "bio": "场上位置为右后卫。",
-                "photo": "assets/players/liao.webp"
+                "photo": "assets/players/liao.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 13,
@@ -362,7 +374,8 @@ window.PONYTAIL_DATA = {
                         "阿萨塔"
                 ],
                 "bio": "场上可胜任后腰和右后卫。",
-                "photo": "assets/players/wuquanyin.webp"
+                "photo": "assets/players/wuquanyin.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 14,
@@ -376,7 +389,7 @@ window.PONYTAIL_DATA = {
                 "role": "LB",
                 "cleanSheets": 0,
                 "motm": 0,
-                "rating": 6.2,
+                "rating": 6.4,
                 "avatarIcon": "fa-shield-halved",
                 "traits": [
                         "边后卫"
@@ -390,7 +403,8 @@ window.PONYTAIL_DATA = {
                         "窝里横"
                 ],
                 "bio": "场上位置为左后卫。",
-                "photo": "assets/players/chenyifei.webp"
+                "photo": "assets/players/chenyifei.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 15,
@@ -418,7 +432,8 @@ window.PONYTAIL_DATA = {
                         "菜"
                 ],
                 "bio": "场上可胜任后腰和左后卫。",
-                "photo": "assets/players/hesicheng.webp"
+                "photo": "assets/players/hesicheng.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 16,
@@ -440,7 +455,8 @@ window.PONYTAIL_DATA = {
                 "memory": "累计出场 1 场",
                 "reviews": [],
                 "bio": "场上位置为门将。",
-                "photo": "assets/players/caozhiwei.webp"
+                "photo": "assets/players/caozhiwei.webp",
+                "lowConcedeGames": 0
         },
         {
                 "id": 17,
@@ -454,7 +470,7 @@ window.PONYTAIL_DATA = {
                 "role": "LB/LWB",
                 "cleanSheets": 0,
                 "motm": 0,
-                "rating": 6.2,
+                "rating": 6.3,
                 "avatarIcon": "fa-shield-halved",
                 "traits": [
                         "边后卫"
@@ -468,7 +484,8 @@ window.PONYTAIL_DATA = {
                         "和他去当A仔"
                 ],
                 "bio": "场上可胜任左后卫和左翼卫。",
-                "photo": "assets/players/miaozhiliang.webp"
+                "photo": "assets/players/miaozhiliang.webp",
+                "lowConcedeGames": 0
         }
 ],
 
