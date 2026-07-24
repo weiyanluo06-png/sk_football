@@ -24,3 +24,4 @@ assert.match(css, /repeat\(var\(--lineup-roster-count\), minmax\(0, 1fr\)\)/);
 assert.match(js, /data-player-id/);
 assert.match(js, /closest\('\.lineup-card'\)/);
 assert.match(css, /\.lineup-card--dim\s*\{[^}]*pointer-events:\s*auto/);
+assert.match(css, /\.lineup-scroll-steps\s*\{[^}]*pointer-events:\s*none/);

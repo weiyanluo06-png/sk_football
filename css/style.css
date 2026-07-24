@@ -948,6 +948,7 @@ textarea:focus-visible {
 .lineup-scroll-steps {
     position: relative;
     z-index: 0;
+    pointer-events: none;
 }
 
 .lineup-step {
