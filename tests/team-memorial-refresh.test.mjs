@@ -21,3 +21,6 @@ assert.match(html, /913800697/);
 assert.match(css, /\.recruit__card/);
 assert.match(js, /setProperty\('--lineup-roster-count'/);
 assert.match(css, /repeat\(var\(--lineup-roster-count\), minmax\(0, 1fr\)\)/);
+assert.match(js, /data-player-id/);
+assert.match(js, /closest\('\.lineup-card'\)/);
+assert.match(css, /\.lineup-card--dim\s*\{[^}]*pointer-events:\s*auto/);

@@ -48,6 +48,15 @@
 
     function renderLineupStage() {
         var pitch = $('lineupPitch'); if (!pitch) return;
+        if (!pitch.dataset.playerModalBound) {
+            pitch.dataset.playerModalBound = 'true';
+            pitch.addEventListener('click', function (event) {
+                var card = event.target.closest('.lineup-card');
+                if (!card || !pitch.contains(card)) return;
+                var playerId = parseInt(card.getAttribute('data-player-id'), 10);
+                if (!isNaN(playerId)) openPlayerModal(playerId);
+            });
+        }
         pitch.querySelectorAll('.lineup-card').forEach(function (node) { node.remove(); });
         Object.keys(startingLineup).forEach(function (key) {
             var slot = startingLineup[key];
@@ -59,6 +68,7 @@
             node.className = 'lineup-card lineup-card--' + group;
             node.setAttribute('data-group', group);
             node.setAttribute('data-number', player.number);
+            node.setAttribute('data-player-id', player.id);
             node.setAttribute('aria-label', player.name + ' 队员档案');
             node.style.left = slot.left;
             node.style.top = slot.top;
@@ -66,7 +76,6 @@
                 '<span class="lineup-card__flag" aria-hidden="true"></span>' +
                 '<span class="lineup-card__photo" style="background-image:url(\'' + getPlayerPhoto(player) + '\');"></span>' +
                 '<span class="lineup-card__body"><strong>' + escapeHtml(player.name) + '</strong><span>' + player.number + '号 / ' + player.role + '</span></span>';
-            node.addEventListener('click', function () { openPlayerModal(player.id); });
             pitch.appendChild(node);
         });
         updateLineupFocus(activeLineupGroup);

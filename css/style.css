@@ -677,6 +677,9 @@ textarea:focus-visible {
     transform-origin: center;
     opacity: 0.42;
     filter: saturate(0.78);
+    cursor: pointer;
+    pointer-events: auto;
+    touch-action: manipulation;
     transition:
         transform 0.72s cubic-bezier(0.2, 0.8, 0.2, 1),
         opacity 0.55s ease,
@@ -777,6 +780,20 @@ textarea:focus-visible {
 .lineup-card--dim {
     opacity: 0.22;
     transform: translate(-50%, -50%) scale(0.56);
+    pointer-events: auto;
+}
+
+.lineup-card--dim:hover,
+.lineup-card--dim:focus-visible {
+    z-index: 6;
+    opacity: 0.82;
+    filter: saturate(1);
+    transform: translate(-50%, -50%) scale(0.82);
+}
+
+.lineup-card:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 4px;
 }
 
 .lineup-card--GK {
