@@ -25,3 +25,5 @@ assert.match(js, /data-player-id/);
 assert.match(js, /closest\('\.lineup-card'\)/);
 assert.match(css, /\.lineup-card--dim\s*\{[^}]*pointer-events:\s*auto/);
 assert.match(css, /\.lineup-scroll-steps\s*\{[^}]*pointer-events:\s*none/);
+assert.match(js, /function getDisplayRating\(rating\)/);
+assert.match(js, /numericRating < 8 \? numericRating \+ 1 : numericRating/);
