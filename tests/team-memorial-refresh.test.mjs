@@ -50,3 +50,6 @@ assert.match(js, /requestAnimationFrame/);
 assert.match(js, /viewport\.scrollLeft/);
 assert.match(js, /prefers-reduced-motion/);
 assert.match(js, /visibilitychange/);
+assert.match(js, /function getNewcomerDuplicateCount\(distance, viewportWidth\)/);
+assert.match(js, /Math\.max\(1, Math\.ceil\(viewportWidth \/ distance\)\)/);
+assert.match(js, /while \(duplicates\.length < duplicateCount\)/);
