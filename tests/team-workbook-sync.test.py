@@ -18,28 +18,29 @@ SYNC_SPEC.loader.exec_module(SYNC_MODULE)
 newcomer_payload = SYNC_MODULE.newcomer_payload
 
 
-def load_site_data():
+def load_window_data(path, global_name):
     script = """
 const fs = require('fs');
 const vm = require('vm');
 const context = { window: {} };
-vm.runInNewContext(fs.readFileSync('js/team-data.js', 'utf8'), context);
-process.stdout.write(JSON.stringify(context.window.PONYTAIL_DATA));
+vm.runInNewContext(fs.readFileSync(process.argv[1], 'utf8'), context);
+process.stdout.write(JSON.stringify(context.window[process.argv[2]]));
 """
-    result = subprocess.run(['node', '-e', script], cwd=ROOT, check=True, capture_output=True)
+    result = subprocess.run(
+        ['node', '-e', script, str(path), global_name],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+    )
     return json.loads(result.stdout.decode('utf-8'))
 
 
-def load_newcomer_data():
-    script = """
-const fs = require('fs');
-const vm = require('vm');
-const context = { window: {} };
-vm.runInNewContext(fs.readFileSync('js/newcomer-data.js', 'utf8'), context);
-process.stdout.write(JSON.stringify(context.window.NEWCOMER_DATA));
-"""
-    result = subprocess.run(['node', '-e', script], cwd=ROOT, check=True, capture_output=True)
-    return json.loads(result.stdout.decode('utf-8'))
+def load_site_data(path=SITE_DATA_PATH):
+    return load_window_data(path, 'PONYTAIL_DATA')
+
+
+def load_newcomer_data(path=NEWCOMER_DATA_PATH):
+    return load_window_data(path, 'NEWCOMER_DATA')
 
 
 class TeamWorkbookSyncTest(unittest.TestCase):
@@ -52,14 +53,42 @@ class TeamWorkbookSyncTest(unittest.TestCase):
             '惯用脚', '踢球风格', '自我介绍', '照片文件名', '照片焦点', '展示状态',
         ])
 
-    def test_newcomers_are_not_official_players(self):
-        workbook = load_workbook(WORKBOOK_PATH, data_only=True)
-        rows = list(workbook['新生展示'].iter_rows(min_row=2, values_only=True))
-        visible_names = {row[1] for row in rows if row[0] is not None and row[11] == '展示'}
-        newcomer_names = {item['name'] for item in load_newcomer_data()['newcomers']}
-        official_names = {item['name'] for item in load_site_data()['players']}
-        self.assertEqual(newcomer_names, visible_names)
-        self.assertTrue(newcomer_names.isdisjoint(official_names))
+    def test_sync_emits_nonempty_newcomers_without_changing_official_roster(self):
+        official_source = SITE_DATA_PATH.read_bytes()
+        official_data = load_site_data()
+        with tempfile.TemporaryDirectory() as directory:
+            temporary = Path(directory)
+            source = temporary / 'source.xlsx'
+            target = temporary / 'synced.xlsx'
+            site_output = temporary / 'team-data.js'
+            newcomer_output = temporary / 'newcomer-data.js'
+            shutil.copy2(WORKBOOK_PATH, source)
+
+            workbook = load_workbook(source)
+            workbook['新生展示'].append([
+                1, 'Fixture Newcomer', '2026级', 24, 'MF', 'AM',
+                '右脚', '组织', 'Fixture intro', 'fixture.webp', '50% 25%', '展示',
+            ])
+            workbook.save(source)
+
+            SYNC_MODULE.sync_workbook(
+                source, target, SITE_DATA_PATH, site_output, newcomer_output,
+            )
+
+            newcomer_data = load_newcomer_data(newcomer_output)
+            synced_site_data = load_site_data(site_output)
+            self.assertEqual(newcomer_data['season'], '2026')
+            self.assertEqual(
+                [item['name'] for item in newcomer_data['newcomers']],
+                ['Fixture Newcomer'],
+            )
+            self.assertEqual(synced_site_data['players'], official_data['players'])
+            self.assertEqual(
+                synced_site_data['startingLineup'],
+                official_data['startingLineup'],
+            )
+
+        self.assertEqual(SITE_DATA_PATH.read_bytes(), official_source)
 
     def test_empty_newcomer_payload_has_required_shape(self):
         payload = load_newcomer_data()
@@ -107,6 +136,8 @@ class TeamWorkbookSyncTest(unittest.TestCase):
     def test_sync_keeps_official_formula_caches_usable(self):
         tracked_files = [WORKBOOK_PATH, SITE_DATA_PATH, NEWCOMER_DATA_PATH]
         before = {path: path.read_bytes() for path in tracked_files}
+        summary_cells = ['B4', 'B5', 'B6', 'B7', 'B8']
+        summary_values = [17, 110, 13, 9, 0]
         with tempfile.TemporaryDirectory() as directory:
             temporary = Path(directory)
             source = temporary / 'source.xlsx'
@@ -114,13 +145,26 @@ class TeamWorkbookSyncTest(unittest.TestCase):
             site_output = temporary / 'team-data.js'
             newcomer_output = temporary / 'newcomer-data.js'
             shutil.copy2(WORKBOOK_PATH, source)
+            source_formulas = load_workbook(source, data_only=False)['统计汇总']
+            expected_formulas = [source_formulas[cell].value for cell in summary_cells]
+            SYNC_MODULE.write_formula_caches(
+                source,
+                '统计汇总',
+                dict(zip(summary_cells, summary_values)),
+            )
+            source_cached = load_workbook(source, data_only=True)['统计汇总']
+            self.assertEqual(
+                [source_cached[cell].value for cell in summary_cells],
+                summary_values,
+            )
 
             SYNC_MODULE.sync_workbook(
                 source, target, SITE_DATA_PATH, site_output, newcomer_output,
             )
 
-            workbook = load_workbook(target, data_only=True)
-            worksheet = workbook['球员数据']
+            formula_workbook = load_workbook(target, data_only=False)
+            cached_workbook = load_workbook(target, data_only=True)
+            worksheet = cached_workbook['球员数据']
             headers = [cell.value for cell in worksheet[1]]
             rows = [dict(zip(headers, values)) for values in worksheet.iter_rows(min_row=2, values_only=True)]
             site_players = {player['name']: player for player in load_site_data()['players']}
@@ -132,6 +176,14 @@ class TeamWorkbookSyncTest(unittest.TestCase):
             self.assertEqual(
                 {row['姓名']: row['代表数据'] for row in rows},
                 {name: player['memory'] for name, player in site_players.items()},
+            )
+            self.assertEqual(
+                [formula_workbook['统计汇总'][cell].value for cell in summary_cells],
+                expected_formulas,
+            )
+            self.assertEqual(
+                [cached_workbook['统计汇总'][cell].value for cell in summary_cells],
+                summary_values,
             )
             self.assertTrue(site_output.exists())
             self.assertTrue(newcomer_output.exists())

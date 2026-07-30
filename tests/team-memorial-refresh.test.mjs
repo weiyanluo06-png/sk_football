@@ -61,10 +61,47 @@ assert.equal(advanceNewcomerMotionOffset(0, 0.316, 820), 0.316);
 assert.equal(advanceNewcomerMotionOffset(0.316, 0.316, 820), 0.632);
 assert.ok(Math.abs(advanceNewcomerMotionOffset(819.8, 0.5, 820) - 0.3) < 1e-9);
 assert.ok(Math.abs(advanceNewcomerMotionOffset(1640.2, 0.5, 820) - 0.7) < 1e-9);
+
+const newcomerPauseHelper = js.match(/function createNewcomerPauseState\(\) \{[\s\S]*?\n    \}/);
+assert.ok(newcomerPauseHelper, 'newcomer motion tracks independent pause reasons');
+const scheduledResumes = new Map();
+let nextResumeId = 1;
+globalThis.window = {
+  setTimeout(callback) {
+    const id = nextResumeId++;
+    scheduledResumes.set(id, callback);
+    return id;
+  },
+  clearTimeout(id) {
+    scheduledResumes.delete(id);
+  },
+};
+const createNewcomerPauseState = new Function(`${newcomerPauseHelper[0]}; return createNewcomerPauseState;`)();
+const pauseState = createNewcomerPauseState();
+pauseState.pause('hover');
+pauseState.pause('focus');
+pauseState.resumeLater('hover');
+scheduledResumes.get(1)();
+assert.equal(pauseState.isPaused(), true, 'focus keeps motion paused after hover resumes');
+pauseState.resumeLater('focus');
+scheduledResumes.get(2)();
+assert.equal(pauseState.isPaused(), false, 'motion resumes after every pause reason clears');
+pauseState.pause('touch');
+pauseState.resumeLater('touch');
+pauseState.pause('touch');
+assert.equal(scheduledResumes.has(3), false, 'a renewed touch cancels its pending resume');
+delete globalThis.window;
+
 const newcomerMotionSource = js.match(/function initNewcomerMotion\(\) \{[\s\S]*?\n    \}\n\n    function getPlayerById/)[0];
 assert.match(newcomerMotionSource, /motionOffset = advanceNewcomerMotionOffset\(motionOffset, delta \* 0\.038, distance\)/);
 assert.match(newcomerMotionSource, /viewport\.scrollLeft = motionOffset/);
 assert.doesNotMatch(newcomerMotionSource, /viewport\.scrollLeft\s*\+=/);
 assert.match(newcomerMotionSource, /viewport\.style\.scrollSnapType = 'none'/);
-assert.match(newcomerMotionSource, /touchstart', function \(\) \{ setPaused\(true\); viewport\.style\.scrollSnapType = ''; \}/);
+assert.match(newcomerMotionSource, /mouseenter', function \(\) \{ pauseState\.pause\('hover'\); \}/);
+assert.match(newcomerMotionSource, /mouseleave', function \(\) \{ pauseState\.resumeLater\('hover'\); \}/);
+assert.match(newcomerMotionSource, /focusin', function \(\) \{ pauseState\.pause\('focus'\); \}/);
+assert.match(newcomerMotionSource, /focusout', function \(\) \{ pauseState\.resumeLater\('focus'\); \}/);
+assert.match(newcomerMotionSource, /touchstart', function \(\) \{ pauseState\.pause\('touch'\); viewport\.style\.scrollSnapType = ''; \}/);
+assert.match(newcomerMotionSource, /touchend', resumeTouchLater/);
+assert.match(newcomerMotionSource, /touchcancel', resumeTouchLater/);
 assert.match(newcomerMotionSource, /else if \(reduceMotion\.matches\) \{\s*viewport\.style\.scrollSnapType = '';/);

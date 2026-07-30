@@ -212,6 +212,16 @@ def formula_cache_values(rows):
     return values
 
 
+def summary_formula_cache_values(rows):
+    return {
+        'B4': len(rows),
+        'B5': sum(row.get('出场') or 0 for row in rows),
+        'B6': sum(row.get('进球') or 0 for row in rows),
+        'B7': sum(row.get('助攻') or 0 for row in rows),
+        'B8': sum(row.get('MVP') or 0 for row in rows),
+    }
+
+
 def worksheet_archive_path(archive, sheet_name):
     workbook = ElementTree.fromstring(archive.read('xl/workbook.xml'))
     relationships = ElementTree.fromstring(archive.read('xl/_rels/workbook.xml.rels'))
@@ -311,6 +321,11 @@ def sync_workbook(source, target, site_data_path, site_output_path, newcomer_out
     update_matches(data, read_rows(workbook['赛程']))
     write_site_data(data, site_output_path, site_data_path)
     write_formula_caches(target, players.title, formula_cache_values(player_rows))
+    write_formula_caches(
+        target,
+        workbook['统计汇总'].title,
+        summary_formula_cache_values(player_rows),
+    )
     write_newcomer_data(newcomer_payload(read_rows(workbook['新生展示'])), newcomer_output_path)
 
 

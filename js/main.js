@@ -109,31 +109,53 @@
         return next < 0 ? next + distance : next;
     }
 
+    function createNewcomerPauseState() {
+        var reasons = {};
+        var resumeTimers = {};
+
+        function clearResumeTimer(reason) {
+            if (!resumeTimers[reason]) return;
+            window.clearTimeout(resumeTimers[reason]);
+            delete resumeTimers[reason];
+        }
+
+        return {
+            pause: function (reason) {
+                clearResumeTimer(reason);
+                reasons[reason] = true;
+            },
+            resumeLater: function (reason) {
+                clearResumeTimer(reason);
+                resumeTimers[reason] = window.setTimeout(function () {
+                    delete resumeTimers[reason];
+                    delete reasons[reason];
+                }, 1200);
+            },
+            isPaused: function () {
+                return Object.keys(reasons).length > 0;
+            }
+        };
+    }
+
     function initNewcomerMotion() {
         var section = $('newcomers');
         var viewport = $('newcomerViewport');
         var track = $('newcomerTrack');
         if (!section || !viewport || !track || !newcomers.length) return;
 
-        var paused = false;
-        var resumeTimer = 0;
+        var pauseState = createNewcomerPauseState();
         var lastTime = 0;
         var motionOffset = viewport.scrollLeft;
         var lastAppliedScrollLeft = viewport.scrollLeft;
         var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-        function setPaused(value) {
-            paused = value;
-            if (resumeTimer) window.clearTimeout(resumeTimer);
-        }
-        function resumeLater() {
-            if (resumeTimer) window.clearTimeout(resumeTimer);
-            resumeTimer = window.setTimeout(function () { paused = false; }, 1200);
+        function resumeTouchLater() {
+            pauseState.resumeLater('touch');
         }
         function frame(time) {
             var firstSequence = track.querySelector('.newcomers__sequence');
             var distance = firstSequence ? firstSequence.offsetWidth : 0;
-            if (!paused && !reduceMotion.matches && !document.hidden && distance > 0) {
+            if (!pauseState.isPaused() && !reduceMotion.matches && !document.hidden && distance > 0) {
                 var delta = lastTime ? Math.min(50, time - lastTime) : 0;
                 viewport.style.scrollSnapType = 'none';
                 motionOffset = advanceNewcomerMotionOffset(motionOffset, delta * 0.038, distance);
@@ -151,12 +173,13 @@
                 motionOffset = viewport.scrollLeft;
             }
         }, { passive: true });
-        viewport.addEventListener('mouseenter', function () { setPaused(true); });
-        viewport.addEventListener('mouseleave', resumeLater);
-        viewport.addEventListener('focusin', function () { setPaused(true); });
-        viewport.addEventListener('focusout', resumeLater);
-        viewport.addEventListener('touchstart', function () { setPaused(true); viewport.style.scrollSnapType = ''; }, { passive: true });
-        viewport.addEventListener('touchend', resumeLater, { passive: true });
+        viewport.addEventListener('mouseenter', function () { pauseState.pause('hover'); });
+        viewport.addEventListener('mouseleave', function () { pauseState.resumeLater('hover'); });
+        viewport.addEventListener('focusin', function () { pauseState.pause('focus'); });
+        viewport.addEventListener('focusout', function () { pauseState.resumeLater('focus'); });
+        viewport.addEventListener('touchstart', function () { pauseState.pause('touch'); viewport.style.scrollSnapType = ''; }, { passive: true });
+        viewport.addEventListener('touchend', resumeTouchLater, { passive: true });
+        viewport.addEventListener('touchcancel', resumeTouchLater, { passive: true });
         document.addEventListener('visibilitychange', function () {
             lastTime = performance.now();
         });
