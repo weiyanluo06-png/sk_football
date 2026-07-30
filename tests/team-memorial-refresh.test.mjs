@@ -27,3 +27,16 @@ assert.match(css, /\.lineup-card--dim\s*\{[^}]*pointer-events:\s*auto/);
 assert.match(css, /\.lineup-scroll-steps\s*\{[^}]*pointer-events:\s*none/);
 assert.match(js, /function getDisplayRating\(rating\)/);
 assert.match(js, /numericRating < 8 \? numericRating \+ 1 : numericRating/);
+assert.match(html, /href="#newcomers">新生<\/a>/);
+assert.match(html, /id="newcomers"/);
+assert.match(html, /id="newcomerTrack"/);
+assert.match(html, /js\/newcomer-data\.js/);
+assert.ok(
+  html.indexOf('id="recruit"') < html.indexOf('id="newcomers"') &&
+  html.indexOf('id="newcomers"') < html.indexOf('id="story"')
+);
+assert.match(js, /var newcomerData = window\.NEWCOMER_DATA/);
+assert.match(js, /function renderNewcomers\(\)/);
+assert.match(js, /新生资料待更新/);
+assert.match(js, /newcomer-card--duplicate/);
+assert.match(js, /aria-hidden="true"/);

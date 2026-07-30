@@ -33,6 +33,7 @@
             <ul class="header__nav-list">
                 <li><a class="header__nav-link header__nav-link--active" href="#hero">首页</a></li>
                 <li><a class="header__nav-link header__nav-link--recruit" href="#recruit">招新</a></li>
+                <li><a class="header__nav-link" href="#newcomers">新生</a></li>
                 <li><a class="header__nav-link" href="#memory">本赛季</a></li>
                 <li><a class="header__nav-link" href="#squad">队员档案</a></li>
                 <li><a class="header__nav-link" href="#gallery">影像墙</a></li>
@@ -108,6 +109,17 @@
                 <p class="recruit__scan">扫码加入新生群</p>
                 <p class="recruit__group-number">QQ群号 <strong>913800697</strong></p>
             </aside>
+        </section>
+
+        <section class="section reveal newcomers" id="newcomers">
+            <div class="newcomers__heading">
+                <span class="section__kicker" id="newcomerKicker">NEW FACES</span>
+                <h2 class="section__title">新赛季，新面孔</h2>
+                <p class="section__subtitle">欢迎新学期来到球队的新队员。认识他们，也记住他们加入球队时最初的样子。</p>
+            </div>
+            <div class="newcomers__viewport" id="newcomerViewport" aria-label="新生球员展示" tabindex="0">
+                <div class="newcomers__track" id="newcomerTrack"></div>
+            </div>
         </section>
 
         <section class="section reveal story" id="story">
@@ -278,6 +290,7 @@
     </div>
 
     <script src="js/team-data.js?v=defensive-rating-1"></script>
+    <script src="js/newcomer-data.js"></script>
     <script src="js/gallery-data.js?v=media-optimisation-1"></script>
     <script src="js/main.js?v=display-rating-1"></script>
 </body>

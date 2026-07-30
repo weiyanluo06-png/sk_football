@@ -2,6 +2,9 @@
     'use strict';
 
     var teamData = window.PONYTAIL_DATA || {};
+    var newcomerData = window.NEWCOMER_DATA || {};
+    var newcomers = newcomerData.newcomers || [];
+    var newcomerMotion = null;
     var allPlayers = teamData.players || [];
     var startingLineup = teamData.startingLineup || {};
     var matchItems = teamData.matches || [];
@@ -24,6 +27,59 @@
     };
     function $(id) { return document.getElementById(id); }
     function escapeHtml(str) { return String(str).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+    function newcomerCardHtml(item, extraClass, hidden) {
+        var photo = item.photo
+            ? '<img src="' + escapeHtml(item.photo) + '" alt="" loading="lazy" decoding="async" style="object-position:' +
+              escapeHtml(item.photoPosition || '50% 50%') + ';">'
+            : '<i class="fa-solid fa-shield-heart" aria-hidden="true"></i><span>照片待更新</span>';
+        var number = item.number !== '' && item.number != null
+            ? '<b>NO. ' + escapeHtml(item.number) + '</b>'
+            : '';
+        var meta = [item.grade, item.pos, item.role, item.preferredFoot].filter(Boolean).join(' · ');
+        return '<article class="newcomer-card ' + (extraClass || '') + '"' +
+            (hidden ? ' aria-hidden="true"' : '') + '>' +
+            '<div class="newcomer-card__photo">' + photo +
+            '</div><div class="newcomer-card__body"><div class="newcomer-card__top"><strong>' +
+            escapeHtml(item.name) + '</strong>' + number + '</div>' +
+            '<p class="newcomer-card__meta">' + escapeHtml(meta) + '</p>' +
+            '<p class="newcomer-card__intro">' + escapeHtml(item.intro || '新赛季，一起上场。') + '</p>' +
+            '<span class="newcomer-card__style">' +
+            escapeHtml(item.style || '等待第一次训练记录') +
+            '</span></div></article>';
+    }
+
+    function placeholderNewcomerHtml() {
+        return '<article class="newcomer-card newcomer-card--placeholder">' +
+            '<div class="newcomer-card__photo"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i></div>' +
+            '<div class="newcomer-card__body"><div class="newcomer-card__top"><strong>新生资料待更新</strong></div>' +
+            '<p class="newcomer-card__meta">新学期见</p>' +
+            '<p class="newcomer-card__intro">等待新面孔加入。</p>' +
+            '<span class="newcomer-card__style">NEW FACES</span></div></article>';
+    }
+
+    function renderNewcomers() {
+        var track = $('newcomerTrack');
+        var section = $('newcomers');
+        var kicker = $('newcomerKicker');
+        if (!track || !section) return;
+        if (kicker) {
+            kicker.textContent = 'NEW FACES' + (newcomerData.season ? ' / ' + newcomerData.season : '');
+        }
+        section.classList.toggle('newcomers--empty', newcomers.length === 0);
+        if (!newcomers.length) {
+            track.innerHTML = [placeholderNewcomerHtml(), placeholderNewcomerHtml(), placeholderNewcomerHtml()].join('');
+            return;
+        }
+        var originals = newcomers.map(function (item) { return newcomerCardHtml(item, '', false); }).join('');
+        var duplicates = newcomers.map(function (item) {
+            return newcomerCardHtml(item, 'newcomer-card--duplicate', true);
+        }).join('');
+        track.innerHTML =
+            '<div class="newcomers__sequence">' + originals + '</div>' +
+            '<div class="newcomers__sequence newcomers__sequence--duplicate" aria-hidden="true">' +
+            duplicates + '</div>';
+    }
     function getPlayerById(id) { return allPlayers.find(function (p) { return p.id === id; }) || null; }
     function getLineupPlayerIds() { return Object.keys(startingLineup).map(function (key) { return startingLineup[key].playerId; }); }
     function resultName(result) { return { win: '胜', draw: '平', loss: '负' }[result] || result; }
@@ -646,6 +702,7 @@
     }
 
     function init() {
+        renderNewcomers();
         featuredPlayers = shuffled(allPlayers).slice(0, 3);
         renderAllPlayers();
         renderSeasonSwitch();
