@@ -22,7 +22,37 @@ process.stdout.write(JSON.stringify(context.window.PONYTAIL_DATA));
     return json.loads(result.stdout.decode('utf-8'))
 
 
+def load_newcomer_data():
+    script = """
+const fs = require('fs');
+const vm = require('vm');
+const context = { window: {} };
+vm.runInNewContext(fs.readFileSync('js/newcomer-data.js', 'utf8'), context);
+process.stdout.write(JSON.stringify(context.window.NEWCOMER_DATA));
+"""
+    result = subprocess.run(['node', '-e', script], cwd=ROOT, check=True, capture_output=True)
+    return json.loads(result.stdout.decode('utf-8'))
+
+
 class TeamWorkbookSyncTest(unittest.TestCase):
+    def test_workbook_has_isolated_newcomer_sheet(self):
+        workbook = load_workbook(WORKBOOK_PATH, data_only=False)
+        self.assertIn('新生展示', workbook.sheetnames)
+        headers = [cell.value for cell in workbook['新生展示'][1]]
+        self.assertEqual(headers, [
+            '排序', '姓名', '年级', '号码', '主位置', '可胜任位置',
+            '惯用脚', '踢球风格', '自我介绍', '照片文件名', '照片焦点', '展示状态',
+        ])
+
+    def test_newcomers_are_not_official_players(self):
+        workbook = load_workbook(WORKBOOK_PATH, data_only=True)
+        rows = list(workbook['新生展示'].iter_rows(min_row=2, values_only=True))
+        visible_names = {row[1] for row in rows if row[0] is not None and row[11] == '展示'}
+        newcomer_names = {item['name'] for item in load_newcomer_data()['newcomers']}
+        official_names = {item['name'] for item in load_site_data()['players']}
+        self.assertEqual(newcomer_names, visible_names)
+        self.assertTrue(newcomer_names.isdisjoint(official_names))
+
     def test_workbook_has_formula_driven_player_data_and_schedule_sheets(self):
         self.assertTrue(WORKBOOK_PATH.exists())
         workbook = load_workbook(WORKBOOK_PATH, data_only=False)

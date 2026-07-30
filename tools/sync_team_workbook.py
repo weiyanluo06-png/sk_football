@@ -19,6 +19,10 @@ DEFAULT_WORKBOOK = ROOT / 'data' / '生康足球队数据源.xlsx'
 PLAYER_HEADERS = ['序号', '姓名', '绰号', '号码', '主位置', '可胜任位置', '出场', '进球', '助攻', 'MVP', '零封', '低失球场', '评分', '踢球风格', '代表数据']
 COMPETITION_HEADERS = ['赛事 ID', '年份', '赛事名称', '显示名称', '状态', '赛事说明']
 MATCH_HEADERS = ['赛季', '赛事名称', '日期', '对手', '比分', '赛果', '场地', '进球者', '赛事备注']
+NEWCOMER_HEADERS = [
+    '排序', '姓名', '年级', '号码', '主位置', '可胜任位置',
+    '惯用脚', '踢球风格', '自我介绍', '照片文件名', '照片焦点', '展示状态',
+]
 GREEN = '1F7A4D'
 PAPER = 'FFFDF8'
 LIGHT_GREEN = 'EAF3EC'
@@ -116,6 +120,19 @@ def ensure_schedule_sheets(workbook, data):
     append_table(matches, 'MatchSchedule')
 
 
+def ensure_newcomer_sheet(workbook):
+    if '新生展示' not in workbook.sheetnames:
+        sheet = workbook.create_sheet('新生展示')
+        sheet.append(NEWCOMER_HEADERS)
+    sheet = workbook['新生展示']
+    style_table(sheet, {
+        'A': 8, 'B': 12, 'C': 10, 'D': 8, 'E': 10, 'F': 18,
+        'G': 10, 'H': 18, 'I': 34, 'J': 24, 'K': 14, 'L': 12,
+    })
+    append_table(sheet, 'NewcomerShowcase')
+    return sheet
+
+
 def read_rows(sheet):
     headers = [cell.value for cell in sheet[1]]
     return [dict(zip(headers, values)) for values in sheet.iter_rows(min_row=2, values_only=True) if values[0] is not None]
@@ -182,6 +199,37 @@ def write_site_data(data):
     path.write_text(source, encoding='utf-8')
 
 
+def newcomer_payload(rows):
+    visible = [row for row in rows if str(row.get('展示状态') or '').strip() == '展示']
+    visible.sort(key=lambda row: (row.get('排序') is None, row.get('排序') or 0))
+    newcomers = []
+    for row in visible:
+        filename = str(row.get('照片文件名') or '').strip()
+        newcomers.append({
+            'order': row.get('排序'),
+            'name': str(row.get('姓名') or '').strip(),
+            'grade': str(row.get('年级') or '').strip(),
+            'number': row.get('号码'),
+            'pos': str(row.get('主位置') or '').strip(),
+            'role': str(row.get('可胜任位置') or '').strip(),
+            'preferredFoot': str(row.get('惯用脚') or '').strip(),
+            'style': str(row.get('踢球风格') or '').strip(),
+            'intro': str(row.get('自我介绍') or '').strip(),
+            'photo': f'assets/players/{filename}' if filename else '',
+            'photoPosition': str(row.get('照片焦点') or '50% 50%').strip(),
+        })
+    season = next((item['grade'].replace('级', '') for item in newcomers if item['grade']), '')
+    return {'season': season, 'newcomers': newcomers}
+
+
+def write_newcomer_data(payload):
+    path = ROOT / 'js' / 'newcomer-data.js'
+    source = 'window.NEWCOMER_DATA = ' + json.dumps(
+        payload, ensure_ascii=False, indent=4
+    ) + ';\n'
+    path.write_text(source, encoding='utf-8')
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--source', type=Path, default=DEFAULT_WORKBOOK)
@@ -204,6 +252,7 @@ def main():
     style_table(players, {'A': 8, 'B': 12, 'C': 16, 'D': 8, 'E': 10, 'F': 17, 'G': 9, 'H': 9, 'I': 9, 'J': 9, 'K': 9, 'L': 11, 'M': 12, 'N': 20, 'O': 28})
     append_table(players, 'PlayerStats')
     ensure_schedule_sheets(workbook, data)
+    ensure_newcomer_sheet(workbook)
     workbook.calculation.fullCalcOnLoad = True
     workbook.calculation.forceFullCalc = True
     workbook.save(args.target)
@@ -213,6 +262,7 @@ def main():
     update_competitions(data, read_rows(workbook['赛事索引']))
     update_matches(data, read_rows(workbook['赛程']))
     write_site_data(data)
+    write_newcomer_data(newcomer_payload(read_rows(workbook['新生展示'])))
 
 
 if __name__ == '__main__':
