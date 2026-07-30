@@ -14,6 +14,7 @@ coverage/
 # Browser QA, design sessions, and generated exports
 .playwright-cli/
 .superpowers/
+.worktrees/
 output/
 outputs/
 __pycache__/
