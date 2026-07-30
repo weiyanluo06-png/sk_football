@@ -80,6 +80,50 @@
             '<div class="newcomers__sequence newcomers__sequence--duplicate" aria-hidden="true">' +
             duplicates + '</div>';
     }
+
+    function initNewcomerMotion() {
+        var section = $('newcomers');
+        var viewport = $('newcomerViewport');
+        var track = $('newcomerTrack');
+        if (!section || !viewport || !track || !newcomers.length) return;
+
+        var paused = false;
+        var resumeTimer = 0;
+        var lastTime = 0;
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        function setPaused(value) {
+            paused = value;
+            if (resumeTimer) window.clearTimeout(resumeTimer);
+        }
+        function resumeLater() {
+            if (resumeTimer) window.clearTimeout(resumeTimer);
+            resumeTimer = window.setTimeout(function () { paused = false; }, 1200);
+        }
+        function frame(time) {
+            var firstSequence = track.querySelector('.newcomers__sequence');
+            var distance = firstSequence ? firstSequence.offsetWidth : 0;
+            if (!paused && !reduceMotion.matches && !document.hidden && distance > 0) {
+                var delta = lastTime ? Math.min(50, time - lastTime) : 0;
+                viewport.scrollLeft += delta * 0.038;
+                if (viewport.scrollLeft >= distance) viewport.scrollLeft -= distance;
+            }
+            lastTime = time;
+            newcomerMotion = window.requestAnimationFrame(frame);
+        }
+
+        viewport.addEventListener('mouseenter', function () { setPaused(true); });
+        viewport.addEventListener('mouseleave', resumeLater);
+        viewport.addEventListener('focusin', function () { setPaused(true); });
+        viewport.addEventListener('focusout', resumeLater);
+        viewport.addEventListener('touchstart', function () { setPaused(true); }, { passive: true });
+        viewport.addEventListener('touchend', resumeLater, { passive: true });
+        document.addEventListener('visibilitychange', function () {
+            lastTime = performance.now();
+        });
+        newcomerMotion = window.requestAnimationFrame(frame);
+    }
+
     function getPlayerById(id) { return allPlayers.find(function (p) { return p.id === id; }) || null; }
     function getLineupPlayerIds() { return Object.keys(startingLineup).map(function (key) { return startingLineup[key].playerId; }); }
     function resultName(result) { return { win: '胜', draw: '平', loss: '负' }[result] || result; }
@@ -703,6 +747,7 @@
 
     function init() {
         renderNewcomers();
+        initNewcomerMotion();
         featuredPlayers = shuffled(allPlayers).slice(0, 3);
         renderAllPlayers();
         renderSeasonSwitch();
