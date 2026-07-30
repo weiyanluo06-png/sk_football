@@ -1,6 +1,8 @@
 import importlib.util
 import json
+import shutil
 import subprocess
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -8,6 +10,8 @@ from openpyxl import load_workbook
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKBOOK_PATH = ROOT / 'data' / '生康足球队数据源.xlsx'
+SITE_DATA_PATH = ROOT / 'js' / 'team-data.js'
+NEWCOMER_DATA_PATH = ROOT / 'js' / 'newcomer-data.js'
 SYNC_SPEC = importlib.util.spec_from_file_location('sync_team_workbook', ROOT / 'tools' / 'sync_team_workbook.py')
 SYNC_MODULE = importlib.util.module_from_spec(SYNC_SPEC)
 SYNC_SPEC.loader.exec_module(SYNC_MODULE)
@@ -36,10 +40,6 @@ process.stdout.write(JSON.stringify(context.window.NEWCOMER_DATA));
 """
     result = subprocess.run(['node', '-e', script], cwd=ROOT, check=True, capture_output=True)
     return json.loads(result.stdout.decode('utf-8'))
-
-
-def sync_workbook():
-    subprocess.run(['python', 'tools/sync_team_workbook.py'], cwd=ROOT, check=True)
 
 
 class TeamWorkbookSyncTest(unittest.TestCase):
@@ -105,21 +105,38 @@ class TeamWorkbookSyncTest(unittest.TestCase):
         })
 
     def test_sync_keeps_official_formula_caches_usable(self):
-        sync_workbook()
-        workbook = load_workbook(WORKBOOK_PATH, data_only=True)
-        worksheet = workbook['球员数据']
-        headers = [cell.value for cell in worksheet[1]]
-        rows = [dict(zip(headers, values)) for values in worksheet.iter_rows(min_row=2, values_only=True)]
-        site_players = {player['name']: player for player in load_site_data()['players']}
+        tracked_files = [WORKBOOK_PATH, SITE_DATA_PATH, NEWCOMER_DATA_PATH]
+        before = {path: path.read_bytes() for path in tracked_files}
+        with tempfile.TemporaryDirectory() as directory:
+            temporary = Path(directory)
+            source = temporary / 'source.xlsx'
+            target = temporary / 'synced.xlsx'
+            site_output = temporary / 'team-data.js'
+            newcomer_output = temporary / 'newcomer-data.js'
+            shutil.copy2(WORKBOOK_PATH, source)
 
-        self.assertEqual(
-            {row['姓名']: row['评分'] for row in rows},
-            {name: player['rating'] for name, player in site_players.items()},
-        )
-        self.assertEqual(
-            {row['姓名']: row['代表数据'] for row in rows},
-            {name: player['memory'] for name, player in site_players.items()},
-        )
+            SYNC_MODULE.sync_workbook(
+                source, target, SITE_DATA_PATH, site_output, newcomer_output,
+            )
+
+            workbook = load_workbook(target, data_only=True)
+            worksheet = workbook['球员数据']
+            headers = [cell.value for cell in worksheet[1]]
+            rows = [dict(zip(headers, values)) for values in worksheet.iter_rows(min_row=2, values_only=True)]
+            site_players = {player['name']: player for player in load_site_data()['players']}
+
+            self.assertEqual(
+                {row['姓名']: row['评分'] for row in rows},
+                {name: player['rating'] for name, player in site_players.items()},
+            )
+            self.assertEqual(
+                {row['姓名']: row['代表数据'] for row in rows},
+                {name: player['memory'] for name, player in site_players.items()},
+            )
+            self.assertTrue(site_output.exists())
+            self.assertTrue(newcomer_output.exists())
+
+        self.assertEqual({path: path.read_bytes() for path in tracked_files}, before)
 
     def test_workbook_has_formula_driven_player_data_and_schedule_sheets(self):
         self.assertTrue(WORKBOOK_PATH.exists())

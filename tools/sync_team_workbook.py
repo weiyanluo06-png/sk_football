@@ -36,12 +36,12 @@ REL_NS = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships'
 PACKAGE_REL_NS = 'http://schemas.openxmlformats.org/package/2006/relationships'
 
 
-def site_data():
-    script = """
+def site_data(path):
+    script = f"""
 const fs = require('fs');
 const vm = require('vm');
-const context = { window: {} };
-vm.runInNewContext(fs.readFileSync('js/team-data.js', 'utf8'), context);
+const context = {{ window: {{}} }};
+vm.runInNewContext(fs.readFileSync({json.dumps(str(path))}, 'utf8'), context);
 process.stdout.write(JSON.stringify(context.window.PONYTAIL_DATA));
 """
     result = subprocess.run(['node', '-e', script], cwd=ROOT, check=True, capture_output=True)
@@ -193,9 +193,8 @@ def update_matches(data, rows):
     } for row in rows]
 
 
-def write_site_data(data):
-    path = ROOT / 'js' / 'team-data.js'
-    source = path.read_text(encoding='utf-8')
+def write_site_data(data, path, template_path):
+    source = template_path.read_text(encoding='utf-8')
     players_json = json.dumps(data['players'], ensure_ascii=False, indent=8)
     competitions_json = json.dumps(data['competitions'], ensure_ascii=False, indent=8)
     matches_json = json.dumps(data['matches'], ensure_ascii=False, indent=8)
@@ -277,26 +276,20 @@ def newcomer_payload(rows):
     return {'season': season, 'newcomers': newcomers}
 
 
-def write_newcomer_data(payload):
-    path = ROOT / 'js' / 'newcomer-data.js'
+def write_newcomer_data(payload, path):
     source = 'window.NEWCOMER_DATA = ' + json.dumps(
         payload, ensure_ascii=False, indent=4
     ) + ';\n'
     path.write_text(source, encoding='utf-8')
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--source', type=Path, default=DEFAULT_WORKBOOK)
-    parser.add_argument('--target', type=Path, default=DEFAULT_WORKBOOK)
-    args = parser.parse_args()
+def sync_workbook(source, target, site_data_path, site_output_path, newcomer_output_path):
+    target.parent.mkdir(parents=True, exist_ok=True)
+    if source.resolve() != target.resolve():
+        shutil.copy2(source, target)
 
-    args.target.parent.mkdir(parents=True, exist_ok=True)
-    if args.source.resolve() != args.target.resolve():
-        shutil.copy2(args.source, args.target)
-
-    data = site_data()
-    workbook = load_workbook(args.target)
+    data = site_data(site_data_path)
+    workbook = load_workbook(target)
     players = workbook['球员数据']
     remove_save_column(players)
     ensure_low_concede_column(players)
@@ -310,15 +303,29 @@ def main():
     ensure_newcomer_sheet(workbook)
     workbook.calculation.fullCalcOnLoad = True
     workbook.calculation.forceFullCalc = True
-    workbook.save(args.target)
+    workbook.save(target)
 
     player_rows = read_rows(players)
     update_players(data, player_rows)
     update_competitions(data, read_rows(workbook['赛事索引']))
     update_matches(data, read_rows(workbook['赛程']))
-    write_site_data(data)
-    write_formula_caches(args.target, players.title, formula_cache_values(player_rows))
-    write_newcomer_data(newcomer_payload(read_rows(workbook['新生展示'])))
+    write_site_data(data, site_output_path, site_data_path)
+    write_formula_caches(target, players.title, formula_cache_values(player_rows))
+    write_newcomer_data(newcomer_payload(read_rows(workbook['新生展示'])), newcomer_output_path)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--source', type=Path, default=DEFAULT_WORKBOOK)
+    parser.add_argument('--target', type=Path, default=DEFAULT_WORKBOOK)
+    args = parser.parse_args()
+    sync_workbook(
+        args.source,
+        args.target,
+        ROOT / 'js' / 'team-data.js',
+        ROOT / 'js' / 'team-data.js',
+        ROOT / 'js' / 'newcomer-data.js',
+    )
 
 
 if __name__ == '__main__':
