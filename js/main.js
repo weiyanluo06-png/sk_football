@@ -103,6 +103,12 @@
         return distance;
     }
 
+    function advanceNewcomerMotionOffset(offset, increment, distance) {
+        if (!distance) return offset;
+        var next = (offset + increment) % distance;
+        return next < 0 ? next + distance : next;
+    }
+
     function initNewcomerMotion() {
         var section = $('newcomers');
         var viewport = $('newcomerViewport');
@@ -112,6 +118,8 @@
         var paused = false;
         var resumeTimer = 0;
         var lastTime = 0;
+        var motionOffset = viewport.scrollLeft;
+        var lastAppliedScrollLeft = viewport.scrollLeft;
         var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
         function setPaused(value) {
@@ -127,26 +135,38 @@
             var distance = firstSequence ? firstSequence.offsetWidth : 0;
             if (!paused && !reduceMotion.matches && !document.hidden && distance > 0) {
                 var delta = lastTime ? Math.min(50, time - lastTime) : 0;
-                viewport.scrollLeft += delta * 0.038;
-                if (viewport.scrollLeft >= distance) viewport.scrollLeft -= distance;
+                viewport.style.scrollSnapType = 'none';
+                motionOffset = advanceNewcomerMotionOffset(motionOffset, delta * 0.038, distance);
+                viewport.scrollLeft = motionOffset;
+                lastAppliedScrollLeft = viewport.scrollLeft;
+            } else if (reduceMotion.matches) {
+                viewport.style.scrollSnapType = '';
             }
             lastTime = time;
             newcomerMotion = window.requestAnimationFrame(frame);
         }
 
+        viewport.addEventListener('scroll', function () {
+            if (Math.abs(viewport.scrollLeft - lastAppliedScrollLeft) > 0.5) {
+                motionOffset = viewport.scrollLeft;
+            }
+        }, { passive: true });
         viewport.addEventListener('mouseenter', function () { setPaused(true); });
         viewport.addEventListener('mouseleave', resumeLater);
         viewport.addEventListener('focusin', function () { setPaused(true); });
         viewport.addEventListener('focusout', resumeLater);
-        viewport.addEventListener('touchstart', function () { setPaused(true); }, { passive: true });
+        viewport.addEventListener('touchstart', function () { setPaused(true); viewport.style.scrollSnapType = ''; }, { passive: true });
         viewport.addEventListener('touchend', resumeLater, { passive: true });
         document.addEventListener('visibilitychange', function () {
             lastTime = performance.now();
         });
         window.addEventListener('resize', function () {
-            ensureNewcomerMotionCoverage(track, viewport);
+            var distance = ensureNewcomerMotionCoverage(track, viewport);
+            motionOffset = advanceNewcomerMotionOffset(motionOffset, 0, distance);
+            lastAppliedScrollLeft = viewport.scrollLeft;
         });
-        ensureNewcomerMotionCoverage(track, viewport);
+        motionOffset = advanceNewcomerMotionOffset(motionOffset, 0, ensureNewcomerMotionCoverage(track, viewport));
+        lastAppliedScrollLeft = viewport.scrollLeft;
         newcomerMotion = window.requestAnimationFrame(frame);
     }
 
