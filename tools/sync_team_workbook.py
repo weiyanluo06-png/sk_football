@@ -2,12 +2,15 @@
 
 import argparse
 import json
+import os
 import re
 import shutil
 import subprocess
 import tempfile
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
+from xml.etree import ElementTree
+from zipfile import ZIP_DEFLATED, ZipFile
 
 from openpyxl import load_workbook
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
@@ -28,6 +31,9 @@ PAPER = 'FFFDF8'
 LIGHT_GREEN = 'EAF3EC'
 WHITE = 'FFFFFF'
 LINE = Side(style='thin', color='B9D7C2')
+MAIN_NS = 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'
+REL_NS = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships'
+PACKAGE_REL_NS = 'http://schemas.openxmlformats.org/package/2006/relationships'
 
 
 def site_data():
@@ -199,6 +205,55 @@ def write_site_data(data):
     path.write_text(source, encoding='utf-8')
 
 
+def formula_cache_values(rows):
+    values = {}
+    for index, row in enumerate(rows, start=2):
+        values[f'M{index}'] = calculate_rating(row)
+        values[f'O{index}'] = calculate_memory(row)
+    return values
+
+
+def worksheet_archive_path(archive, sheet_name):
+    workbook = ElementTree.fromstring(archive.read('xl/workbook.xml'))
+    relationships = ElementTree.fromstring(archive.read('xl/_rels/workbook.xml.rels'))
+    targets = {
+        relationship.attrib['Id']: relationship.attrib['Target']
+        for relationship in relationships.findall(f'{{{PACKAGE_REL_NS}}}Relationship')
+    }
+    for sheet in workbook.findall(f'.//{{{MAIN_NS}}}sheet'):
+        if sheet.attrib['name'] == sheet_name:
+            target = targets[sheet.attrib[f'{{{REL_NS}}}id']].lstrip('/')
+            return target if target.startswith('xl/') else f'xl/{target}'
+    raise KeyError(f'Worksheet {sheet_name} does not exist.')
+
+
+def write_formula_caches(workbook_path, sheet_name, values):
+    with tempfile.NamedTemporaryFile(dir=workbook_path.parent, suffix='.xlsx', delete=False) as temporary:
+        temporary_path = Path(temporary.name)
+    try:
+        with ZipFile(workbook_path) as source:
+            sheet_path = worksheet_archive_path(source, sheet_name)
+            sheet = ElementTree.fromstring(source.read(sheet_path))
+            for cell in sheet.findall(f'.//{{{MAIN_NS}}}c'):
+                value = values.get(cell.attrib.get('r'))
+                if value is None:
+                    continue
+                value_node = cell.find(f'{{{MAIN_NS}}}v')
+                if value_node is None:
+                    value_node = ElementTree.SubElement(cell, f'{{{MAIN_NS}}}v')
+                value_node.text = str(value)
+                if isinstance(value, str):
+                    cell.attrib['t'] = 'str'
+
+            with ZipFile(temporary_path, 'w', ZIP_DEFLATED) as target:
+                for item in source.infolist():
+                    content = ElementTree.tostring(sheet, encoding='utf-8', xml_declaration=True) if item.filename == sheet_path else source.read(item.filename)
+                    target.writestr(item, content)
+        os.replace(temporary_path, workbook_path)
+    finally:
+        temporary_path.unlink(missing_ok=True)
+
+
 def newcomer_payload(rows):
     visible = [row for row in rows if str(row.get('展示状态') or '').strip() == '展示']
     visible.sort(key=lambda row: (row.get('排序') is None, row.get('排序') or 0))
@@ -262,6 +317,7 @@ def main():
     update_competitions(data, read_rows(workbook['赛事索引']))
     update_matches(data, read_rows(workbook['赛程']))
     write_site_data(data)
+    write_formula_caches(args.target, players.title, formula_cache_values(player_rows))
     write_newcomer_data(newcomer_payload(read_rows(workbook['新生展示'])))
 
 

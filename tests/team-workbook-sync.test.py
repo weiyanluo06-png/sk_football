@@ -1,3 +1,4 @@
+import importlib.util
 import json
 import subprocess
 import unittest
@@ -5,9 +6,12 @@ from pathlib import Path
 
 from openpyxl import load_workbook
 
-
 ROOT = Path(__file__).resolve().parents[1]
 WORKBOOK_PATH = ROOT / 'data' / '生康足球队数据源.xlsx'
+SYNC_SPEC = importlib.util.spec_from_file_location('sync_team_workbook', ROOT / 'tools' / 'sync_team_workbook.py')
+SYNC_MODULE = importlib.util.module_from_spec(SYNC_SPEC)
+SYNC_SPEC.loader.exec_module(SYNC_MODULE)
+newcomer_payload = SYNC_MODULE.newcomer_payload
 
 
 def load_site_data():
@@ -34,6 +38,10 @@ process.stdout.write(JSON.stringify(context.window.NEWCOMER_DATA));
     return json.loads(result.stdout.decode('utf-8'))
 
 
+def sync_workbook():
+    subprocess.run(['python', 'tools/sync_team_workbook.py'], cwd=ROOT, check=True)
+
+
 class TeamWorkbookSyncTest(unittest.TestCase):
     def test_workbook_has_isolated_newcomer_sheet(self):
         workbook = load_workbook(WORKBOOK_PATH, data_only=False)
@@ -52,6 +60,66 @@ class TeamWorkbookSyncTest(unittest.TestCase):
         official_names = {item['name'] for item in load_site_data()['players']}
         self.assertEqual(newcomer_names, visible_names)
         self.assertTrue(newcomer_names.isdisjoint(official_names))
+
+    def test_empty_newcomer_payload_has_required_shape(self):
+        payload = load_newcomer_data()
+        self.assertEqual(payload, {'season': '', 'newcomers': []})
+        self.assertEqual(set(payload), {'season', 'newcomers'})
+
+    def test_newcomer_payload_filters_sorts_and_defaults_fields(self):
+        payload = newcomer_payload([
+            {
+                '排序': 2, '姓名': 'Second', '年级': '2026级', '号码': 9,
+                '主位置': 'FW', '可胜任位置': 'LW', '惯用脚': '右脚',
+                '踢球风格': '冲刺', '自我介绍': '第二位', '照片文件名': '',
+                '照片焦点': '', '展示状态': '展示',
+            },
+            {
+                '排序': 1, '姓名': 'First', '年级': '2026级', '号码': 7,
+                '主位置': 'MF', '可胜任位置': 'AM', '惯用脚': '左脚',
+                '踢球风格': '组织', '自我介绍': '第一位', '照片文件名': 'first.webp',
+                '照片焦点': '50% 25%', '展示状态': '展示',
+            },
+            {
+                '排序': 3, '姓名': 'Hidden', '年级': '2026级', '号码': 10,
+                '主位置': 'DF', '可胜任位置': 'CB', '惯用脚': '右脚',
+                '踢球风格': '防守', '自我介绍': '不展示', '照片文件名': 'hidden.webp',
+                '照片焦点': '50% 50%', '展示状态': '隐藏',
+            },
+        ])
+        self.assertEqual(payload, {
+            'season': '2026',
+            'newcomers': [
+                {
+                    'order': 1, 'name': 'First', 'grade': '2026级', 'number': 7,
+                    'pos': 'MF', 'role': 'AM', 'preferredFoot': '左脚',
+                    'style': '组织', 'intro': '第一位', 'photo': 'assets/players/first.webp',
+                    'photoPosition': '50% 25%',
+                },
+                {
+                    'order': 2, 'name': 'Second', 'grade': '2026级', 'number': 9,
+                    'pos': 'FW', 'role': 'LW', 'preferredFoot': '右脚',
+                    'style': '冲刺', 'intro': '第二位', 'photo': '', 'photoPosition': '50% 50%',
+                },
+            ],
+        })
+
+    def test_sync_keeps_official_formula_caches_usable(self):
+        sync_workbook()
+        workbook = load_workbook(WORKBOOK_PATH, data_only=True)
+        worksheet = workbook['球员数据']
+        headers = [cell.value for cell in worksheet[1]]
+        rows = [dict(zip(headers, values)) for values in worksheet.iter_rows(min_row=2, values_only=True)]
+        site_players = {player['name']: player for player in load_site_data()['players']}
+
+        self.assertEqual(
+            {row['姓名']: row['评分'] for row in rows},
+            {name: player['rating'] for name, player in site_players.items()},
+        )
+        self.assertEqual(
+            {row['姓名']: row['代表数据'] for row in rows},
+            {name: player['memory'] for name, player in site_players.items()},
+        )
 
     def test_workbook_has_formula_driven_player_data_and_schedule_sheets(self):
         self.assertTrue(WORKBOOK_PATH.exists())
