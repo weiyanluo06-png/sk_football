@@ -10,3 +10,11 @@ node_modules/
 dist/
 coverage/
 *.log
+
+# Browser QA, design sessions, and generated exports
+.playwright-cli/
+.superpowers/
+.worktrees/
+output/
+outputs/
+__pycache__/

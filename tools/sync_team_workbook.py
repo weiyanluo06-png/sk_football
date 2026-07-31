@@ -2,12 +2,15 @@
 
 import argparse
 import json
+import os
 import re
 import shutil
 import subprocess
 import tempfile
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
+from xml.etree import ElementTree
+from zipfile import ZIP_DEFLATED, ZipFile
 
 from openpyxl import load_workbook
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
@@ -19,19 +22,26 @@ DEFAULT_WORKBOOK = ROOT / 'data' / '生康足球队数据源.xlsx'
 PLAYER_HEADERS = ['序号', '姓名', '绰号', '号码', '主位置', '可胜任位置', '出场', '进球', '助攻', 'MVP', '零封', '低失球场', '评分', '踢球风格', '代表数据']
 COMPETITION_HEADERS = ['赛事 ID', '年份', '赛事名称', '显示名称', '状态', '赛事说明']
 MATCH_HEADERS = ['赛季', '赛事名称', '日期', '对手', '比分', '赛果', '场地', '进球者', '赛事备注']
+NEWCOMER_HEADERS = [
+    '排序', '姓名', '年级', '号码', '主位置', '可胜任位置',
+    '惯用脚', '踢球风格', '自我介绍', '照片文件名', '照片焦点', '展示状态',
+]
 GREEN = '1F7A4D'
 PAPER = 'FFFDF8'
 LIGHT_GREEN = 'EAF3EC'
 WHITE = 'FFFFFF'
 LINE = Side(style='thin', color='B9D7C2')
+MAIN_NS = 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'
+REL_NS = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships'
+PACKAGE_REL_NS = 'http://schemas.openxmlformats.org/package/2006/relationships'
 
 
-def site_data():
-    script = """
+def site_data(path):
+    script = f"""
 const fs = require('fs');
 const vm = require('vm');
-const context = { window: {} };
-vm.runInNewContext(fs.readFileSync('js/team-data.js', 'utf8'), context);
+const context = {{ window: {{}} }};
+vm.runInNewContext(fs.readFileSync({json.dumps(str(path))}, 'utf8'), context);
 process.stdout.write(JSON.stringify(context.window.PONYTAIL_DATA));
 """
     result = subprocess.run(['node', '-e', script], cwd=ROOT, check=True, capture_output=True)
@@ -116,6 +126,19 @@ def ensure_schedule_sheets(workbook, data):
     append_table(matches, 'MatchSchedule')
 
 
+def ensure_newcomer_sheet(workbook):
+    if '新生展示' not in workbook.sheetnames:
+        sheet = workbook.create_sheet('新生展示')
+        sheet.append(NEWCOMER_HEADERS)
+    sheet = workbook['新生展示']
+    style_table(sheet, {
+        'A': 8, 'B': 12, 'C': 10, 'D': 8, 'E': 10, 'F': 18,
+        'G': 10, 'H': 18, 'I': 34, 'J': 24, 'K': 14, 'L': 12,
+    })
+    append_table(sheet, 'NewcomerShowcase')
+    return sheet
+
+
 def read_rows(sheet):
     headers = [cell.value for cell in sheet[1]]
     return [dict(zip(headers, values)) for values in sheet.iter_rows(min_row=2, values_only=True) if values[0] is not None]
@@ -170,9 +193,8 @@ def update_matches(data, rows):
     } for row in rows]
 
 
-def write_site_data(data):
-    path = ROOT / 'js' / 'team-data.js'
-    source = path.read_text(encoding='utf-8')
+def write_site_data(data, path, template_path):
+    source = template_path.read_text(encoding='utf-8')
     players_json = json.dumps(data['players'], ensure_ascii=False, indent=8)
     competitions_json = json.dumps(data['competitions'], ensure_ascii=False, indent=8)
     matches_json = json.dumps(data['matches'], ensure_ascii=False, indent=8)
@@ -182,18 +204,102 @@ def write_site_data(data):
     path.write_text(source, encoding='utf-8')
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--source', type=Path, default=DEFAULT_WORKBOOK)
-    parser.add_argument('--target', type=Path, default=DEFAULT_WORKBOOK)
-    args = parser.parse_args()
+def formula_cache_values(rows):
+    values = {}
+    for index, row in enumerate(rows, start=2):
+        values[f'M{index}'] = calculate_rating(row)
+        values[f'O{index}'] = calculate_memory(row)
+    return values
 
-    args.target.parent.mkdir(parents=True, exist_ok=True)
-    if args.source.resolve() != args.target.resolve():
-        shutil.copy2(args.source, args.target)
 
-    data = site_data()
-    workbook = load_workbook(args.target)
+def summary_formula_cache_values(rows):
+    return {
+        'B4': len(rows),
+        'B5': sum(row.get('出场') or 0 for row in rows),
+        'B6': sum(row.get('进球') or 0 for row in rows),
+        'B7': sum(row.get('助攻') or 0 for row in rows),
+        'B8': sum(row.get('MVP') or 0 for row in rows),
+    }
+
+
+def worksheet_archive_path(archive, sheet_name):
+    workbook = ElementTree.fromstring(archive.read('xl/workbook.xml'))
+    relationships = ElementTree.fromstring(archive.read('xl/_rels/workbook.xml.rels'))
+    targets = {
+        relationship.attrib['Id']: relationship.attrib['Target']
+        for relationship in relationships.findall(f'{{{PACKAGE_REL_NS}}}Relationship')
+    }
+    for sheet in workbook.findall(f'.//{{{MAIN_NS}}}sheet'):
+        if sheet.attrib['name'] == sheet_name:
+            target = targets[sheet.attrib[f'{{{REL_NS}}}id']].lstrip('/')
+            return target if target.startswith('xl/') else f'xl/{target}'
+    raise KeyError(f'Worksheet {sheet_name} does not exist.')
+
+
+def write_formula_caches(workbook_path, sheet_name, values):
+    with tempfile.NamedTemporaryFile(dir=workbook_path.parent, suffix='.xlsx', delete=False) as temporary:
+        temporary_path = Path(temporary.name)
+    try:
+        with ZipFile(workbook_path) as source:
+            sheet_path = worksheet_archive_path(source, sheet_name)
+            sheet = ElementTree.fromstring(source.read(sheet_path))
+            for cell in sheet.findall(f'.//{{{MAIN_NS}}}c'):
+                value = values.get(cell.attrib.get('r'))
+                if value is None:
+                    continue
+                value_node = cell.find(f'{{{MAIN_NS}}}v')
+                if value_node is None:
+                    value_node = ElementTree.SubElement(cell, f'{{{MAIN_NS}}}v')
+                value_node.text = str(value)
+                if isinstance(value, str):
+                    cell.attrib['t'] = 'str'
+
+            with ZipFile(temporary_path, 'w', ZIP_DEFLATED) as target:
+                for item in source.infolist():
+                    content = ElementTree.tostring(sheet, encoding='utf-8', xml_declaration=True) if item.filename == sheet_path else source.read(item.filename)
+                    target.writestr(item, content)
+        os.replace(temporary_path, workbook_path)
+    finally:
+        temporary_path.unlink(missing_ok=True)
+
+
+def newcomer_payload(rows):
+    visible = [row for row in rows if str(row.get('展示状态') or '').strip() == '展示']
+    visible.sort(key=lambda row: (row.get('排序') is None, row.get('排序') or 0))
+    newcomers = []
+    for row in visible:
+        filename = str(row.get('照片文件名') or '').strip()
+        newcomers.append({
+            'order': row.get('排序'),
+            'name': str(row.get('姓名') or '').strip(),
+            'grade': str(row.get('年级') or '').strip(),
+            'number': row.get('号码'),
+            'pos': str(row.get('主位置') or '').strip(),
+            'role': str(row.get('可胜任位置') or '').strip(),
+            'preferredFoot': str(row.get('惯用脚') or '').strip(),
+            'style': str(row.get('踢球风格') or '').strip(),
+            'intro': str(row.get('自我介绍') or '').strip(),
+            'photo': f'assets/players/{filename}' if filename else '',
+            'photoPosition': str(row.get('照片焦点') or '50% 50%').strip(),
+        })
+    season = next((item['grade'].replace('级', '') for item in newcomers if item['grade']), '')
+    return {'season': season, 'newcomers': newcomers}
+
+
+def write_newcomer_data(payload, path):
+    source = 'window.NEWCOMER_DATA = ' + json.dumps(
+        payload, ensure_ascii=False, indent=4
+    ) + ';\n'
+    path.write_text(source, encoding='utf-8')
+
+
+def sync_workbook(source, target, site_data_path, site_output_path, newcomer_output_path):
+    target.parent.mkdir(parents=True, exist_ok=True)
+    if source.resolve() != target.resolve():
+        shutil.copy2(source, target)
+
+    data = site_data(site_data_path)
+    workbook = load_workbook(target)
     players = workbook['球员数据']
     remove_save_column(players)
     ensure_low_concede_column(players)
@@ -204,15 +310,37 @@ def main():
     style_table(players, {'A': 8, 'B': 12, 'C': 16, 'D': 8, 'E': 10, 'F': 17, 'G': 9, 'H': 9, 'I': 9, 'J': 9, 'K': 9, 'L': 11, 'M': 12, 'N': 20, 'O': 28})
     append_table(players, 'PlayerStats')
     ensure_schedule_sheets(workbook, data)
+    ensure_newcomer_sheet(workbook)
     workbook.calculation.fullCalcOnLoad = True
     workbook.calculation.forceFullCalc = True
-    workbook.save(args.target)
+    workbook.save(target)
 
     player_rows = read_rows(players)
     update_players(data, player_rows)
     update_competitions(data, read_rows(workbook['赛事索引']))
     update_matches(data, read_rows(workbook['赛程']))
-    write_site_data(data)
+    write_site_data(data, site_output_path, site_data_path)
+    write_formula_caches(target, players.title, formula_cache_values(player_rows))
+    write_formula_caches(
+        target,
+        workbook['统计汇总'].title,
+        summary_formula_cache_values(player_rows),
+    )
+    write_newcomer_data(newcomer_payload(read_rows(workbook['新生展示'])), newcomer_output_path)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--source', type=Path, default=DEFAULT_WORKBOOK)
+    parser.add_argument('--target', type=Path, default=DEFAULT_WORKBOOK)
+    args = parser.parse_args()
+    sync_workbook(
+        args.source,
+        args.target,
+        ROOT / 'js' / 'team-data.js',
+        ROOT / 'js' / 'team-data.js',
+        ROOT / 'js' / 'newcomer-data.js',
+    )
 
 
 if __name__ == '__main__':

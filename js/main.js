@@ -2,6 +2,9 @@
     'use strict';
 
     var teamData = window.PONYTAIL_DATA || {};
+    var newcomerData = window.NEWCOMER_DATA || {};
+    var newcomers = newcomerData.newcomers || [];
+    var newcomerMotion = null;
     var allPlayers = teamData.players || [];
     var startingLineup = teamData.startingLineup || {};
     var matchItems = teamData.matches || [];
@@ -24,6 +27,172 @@
     };
     function $(id) { return document.getElementById(id); }
     function escapeHtml(str) { return String(str).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+    function newcomerCardHtml(item, extraClass, hidden) {
+        var photo = item.photo
+            ? '<img src="' + escapeHtml(item.photo) + '" alt="" loading="lazy" decoding="async" style="object-position:' +
+              escapeHtml(item.photoPosition || '50% 50%') + ';">'
+            : '<i class="fa-solid fa-shield-heart" aria-hidden="true"></i><span>照片待更新</span>';
+        var number = item.number !== '' && item.number != null
+            ? '<b>NO. ' + escapeHtml(item.number) + '</b>'
+            : '';
+        var meta = [item.grade, item.pos, item.role, item.preferredFoot].filter(Boolean).join(' · ');
+        return '<article class="newcomer-card ' + (extraClass || '') + '"' +
+            (hidden ? ' aria-hidden="true"' : '') + '>' +
+            '<div class="newcomer-card__photo">' + photo +
+            '</div><div class="newcomer-card__body"><div class="newcomer-card__top"><strong>' +
+            escapeHtml(item.name) + '</strong>' + number + '</div>' +
+            '<p class="newcomer-card__meta">' + escapeHtml(meta) + '</p>' +
+            '<p class="newcomer-card__intro">' + escapeHtml(item.intro || '新赛季，一起上场。') + '</p>' +
+            '<span class="newcomer-card__style">' +
+            escapeHtml(item.style || '等待第一次训练记录') +
+            '</span></div></article>';
+    }
+
+    function placeholderNewcomerHtml() {
+        return '<article class="newcomer-card newcomer-card--placeholder">' +
+            '<div class="newcomer-card__photo"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i></div>' +
+            '<div class="newcomer-card__body"><div class="newcomer-card__top"><strong>新生资料待更新</strong></div>' +
+            '<p class="newcomer-card__meta">新学期见</p>' +
+            '<p class="newcomer-card__intro">等待新面孔加入。</p>' +
+            '<span class="newcomer-card__style">NEW FACES</span></div></article>';
+    }
+
+    function renderNewcomers() {
+        var track = $('newcomerTrack');
+        var section = $('newcomers');
+        var kicker = $('newcomerKicker');
+        if (!track || !section) return;
+        if (kicker) {
+            kicker.textContent = 'NEW FACES' + (newcomerData.season ? ' / ' + newcomerData.season : '');
+        }
+        section.classList.toggle('newcomers--empty', newcomers.length === 0);
+        if (!newcomers.length) {
+            track.innerHTML = [placeholderNewcomerHtml(), placeholderNewcomerHtml(), placeholderNewcomerHtml()].join('');
+            return;
+        }
+        var originals = newcomers.map(function (item) { return newcomerCardHtml(item, '', false); }).join('');
+        var duplicates = newcomers.map(function (item) {
+            return newcomerCardHtml(item, 'newcomer-card--duplicate', true);
+        }).join('');
+        track.innerHTML =
+            '<div class="newcomers__sequence">' + originals + '</div>' +
+            '<div class="newcomers__sequence newcomers__sequence--duplicate" aria-hidden="true">' +
+            duplicates + '</div>';
+    }
+
+    function getNewcomerDuplicateCount(distance, viewportWidth) {
+        return distance ? Math.max(1, Math.ceil(viewportWidth / distance)) : 1;
+    }
+
+    function ensureNewcomerMotionCoverage(track, viewport) {
+        var firstSequence = track.querySelector('.newcomers__sequence');
+        var duplicates = Array.from(track.querySelectorAll('.newcomers__sequence--duplicate'));
+        var distance = firstSequence ? firstSequence.offsetWidth : 0;
+        if (!distance || !duplicates.length) return distance;
+
+        var duplicateCount = getNewcomerDuplicateCount(distance, viewport.clientWidth);
+        while (duplicates.length < duplicateCount) {
+            var duplicate = duplicates[0].cloneNode(true);
+            track.appendChild(duplicate);
+            duplicates.push(duplicate);
+        }
+        while (duplicates.length > duplicateCount) {
+            duplicates.pop().remove();
+        }
+        return distance;
+    }
+
+    function advanceNewcomerMotionOffset(offset, increment, distance) {
+        if (!distance) return offset;
+        var next = (offset + increment) % distance;
+        return next < 0 ? next + distance : next;
+    }
+
+    function createNewcomerPauseState() {
+        var reasons = {};
+        var resumeTimers = {};
+
+        function clearResumeTimer(reason) {
+            if (!resumeTimers[reason]) return;
+            window.clearTimeout(resumeTimers[reason]);
+            delete resumeTimers[reason];
+        }
+
+        return {
+            pause: function (reason) {
+                clearResumeTimer(reason);
+                reasons[reason] = true;
+            },
+            resumeLater: function (reason) {
+                clearResumeTimer(reason);
+                resumeTimers[reason] = window.setTimeout(function () {
+                    delete resumeTimers[reason];
+                    delete reasons[reason];
+                }, 1200);
+            },
+            isPaused: function () {
+                return Object.keys(reasons).length > 0;
+            }
+        };
+    }
+
+    function initNewcomerMotion() {
+        var section = $('newcomers');
+        var viewport = $('newcomerViewport');
+        var track = $('newcomerTrack');
+        if (!section || !viewport || !track || !newcomers.length) return;
+
+        var pauseState = createNewcomerPauseState();
+        var lastTime = 0;
+        var motionOffset = viewport.scrollLeft;
+        var lastAppliedScrollLeft = viewport.scrollLeft;
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        function resumeTouchLater() {
+            pauseState.resumeLater('touch');
+        }
+        function frame(time) {
+            var firstSequence = track.querySelector('.newcomers__sequence');
+            var distance = firstSequence ? firstSequence.offsetWidth : 0;
+            if (!pauseState.isPaused() && !reduceMotion.matches && !document.hidden && distance > 0) {
+                var delta = lastTime ? Math.min(50, time - lastTime) : 0;
+                viewport.style.scrollSnapType = 'none';
+                motionOffset = advanceNewcomerMotionOffset(motionOffset, delta * 0.038, distance);
+                viewport.scrollLeft = motionOffset;
+                lastAppliedScrollLeft = viewport.scrollLeft;
+            } else if (reduceMotion.matches) {
+                viewport.style.scrollSnapType = '';
+            }
+            lastTime = time;
+            newcomerMotion = window.requestAnimationFrame(frame);
+        }
+
+        viewport.addEventListener('scroll', function () {
+            if (Math.abs(viewport.scrollLeft - lastAppliedScrollLeft) > 0.5) {
+                motionOffset = viewport.scrollLeft;
+            }
+        }, { passive: true });
+        viewport.addEventListener('mouseenter', function () { pauseState.pause('hover'); });
+        viewport.addEventListener('mouseleave', function () { pauseState.resumeLater('hover'); });
+        viewport.addEventListener('focusin', function () { pauseState.pause('focus'); });
+        viewport.addEventListener('focusout', function () { pauseState.resumeLater('focus'); });
+        viewport.addEventListener('touchstart', function () { pauseState.pause('touch'); viewport.style.scrollSnapType = ''; }, { passive: true });
+        viewport.addEventListener('touchend', resumeTouchLater, { passive: true });
+        viewport.addEventListener('touchcancel', resumeTouchLater, { passive: true });
+        document.addEventListener('visibilitychange', function () {
+            lastTime = performance.now();
+        });
+        window.addEventListener('resize', function () {
+            var distance = ensureNewcomerMotionCoverage(track, viewport);
+            motionOffset = advanceNewcomerMotionOffset(motionOffset, 0, distance);
+            lastAppliedScrollLeft = viewport.scrollLeft;
+        });
+        motionOffset = advanceNewcomerMotionOffset(motionOffset, 0, ensureNewcomerMotionCoverage(track, viewport));
+        lastAppliedScrollLeft = viewport.scrollLeft;
+        newcomerMotion = window.requestAnimationFrame(frame);
+    }
+
     function getPlayerById(id) { return allPlayers.find(function (p) { return p.id === id; }) || null; }
     function getLineupPlayerIds() { return Object.keys(startingLineup).map(function (key) { return startingLineup[key].playerId; }); }
     function resultName(result) { return { win: '胜', draw: '平', loss: '负' }[result] || result; }
@@ -646,6 +815,8 @@
     }
 
     function init() {
+        renderNewcomers();
+        initNewcomerMotion();
         featuredPlayers = shuffled(allPlayers).slice(0, 3);
         renderAllPlayers();
         renderSeasonSwitch();
