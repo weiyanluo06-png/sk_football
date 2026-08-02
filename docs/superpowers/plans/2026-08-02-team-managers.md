@@ -212,7 +212,7 @@ Expected: pass.
 - Consumes: completed Task 1 and Task 2 outputs.
 - Produces: verified desktop/mobile manager section ready for real records.
 
-- [ ] **Step 1: Run all automated checks**
+- [x] **Step 1: Run all automated checks**
 
 Run:
 
@@ -224,18 +224,18 @@ git diff --check
 
 Expected: all tests pass and `git diff --check` reports no errors.
 
-- [ ] **Step 2: Start the local static site**
+- [x] **Step 2: Start the local static site**
 
 Run the existing Python static server on an unused local port and open `/#managers`.
 
-- [ ] **Step 3: Verify desktop behavior at 1440 x 1000**
+- [x] **Step 3: Verify desktop behavior at 1440 x 1000**
 
 Confirm the section is between player archive and photo wall, uses the approved empty state without fake people, aligns with the existing content width, and introduces no overlap or horizontal page overflow.
 
-- [ ] **Step 4: Verify mobile behavior at 390 x 844**
+- [x] **Step 4: Verify mobile behavior at 390 x 844**
 
 Confirm the empty state fits the viewport. In a fixture render with two manager records, confirm one profile is emphasized, the next profile remains partially visible, manual horizontal swipe snaps cleanly, and vertical page scrolling remains normal.
 
-- [ ] **Step 5: Review the final diff**
+- [x] **Step 5: Review the final diff**
 
 Confirm only the manager feature, tests, workbook sheet, and related documentation changed. Keep real manager records empty until the user supplies names and photos.

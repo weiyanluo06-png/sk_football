@@ -1960,6 +1960,7 @@ textarea:focus-visible {
 .managers {
     min-height: auto;
     padding-block: clamp(92px, 10vw, 140px);
+    scroll-margin-top: 76px;
     overflow: hidden;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
