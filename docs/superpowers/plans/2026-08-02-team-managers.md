@@ -32,7 +32,7 @@
 - Consumes: workbook rows from sheet `球队经理`.
 - Produces: `manager_payload(rows) -> {'managers': list[dict]}` and `window.MANAGER_DATA = { managers: [...] }`.
 
-- [ ] **Step 1: Write failing workbook and payload tests**
+- [x] **Step 1: Write failing workbook and payload tests**
 
 Add `MANAGER_DATA_PATH`, `load_manager_data()`, and tests that require these exact headers:
 
@@ -63,17 +63,17 @@ Test a visible fixture and a hidden fixture. Assert that the visible output is:
 
 Also assert that official players, `startingLineup`, and `NEWCOMER_DATA` do not contain `Fixture Manager`.
 
-- [ ] **Step 2: Run the workbook tests and confirm failure**
+- [x] **Step 2: Run the workbook tests and confirm failure**
 
 Run:
 
 ```powershell
-python -m unittest tests/team-workbook-sync.test.py
+python tests/team-workbook-sync.test.py
 ```
 
 Expected: failure because `球队经理`, `manager_payload`, and `manager-data.js` do not exist.
 
-- [ ] **Step 3: Implement workbook creation and manager serialization**
+- [x] **Step 3: Implement workbook creation and manager serialization**
 
 Add:
 
@@ -98,13 +98,13 @@ def write_manager_data(payload, path):
 
 Extend `sync_workbook()` with `manager_output_path`, call `ensure_manager_sheet()`, and write manager data after saving the workbook. Pass `ROOT / 'js' / 'manager-data.js'` from `main()`.
 
-- [ ] **Step 4: Run the sync tool and workbook tests**
+- [x] **Step 4: Run the sync tool and workbook tests**
 
 Run:
 
 ```powershell
 python tools/sync_team_workbook.py
-python -m unittest tests/team-workbook-sync.test.py
+python tests/team-workbook-sync.test.py
 ```
 
 Expected: the workbook includes an empty styled `球队经理` sheet, `js/manager-data.js` contains `{"managers": []}`, and all workbook tests pass.
@@ -217,7 +217,7 @@ Expected: pass.
 Run:
 
 ```powershell
-python -m unittest tests/team-workbook-sync.test.py
+python tests/team-workbook-sync.test.py
 node tests/team-memorial-refresh.test.mjs
 git diff --check
 ```
