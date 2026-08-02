@@ -45,6 +45,20 @@ assert.match(css, /\.newcomer-card__photo img\s*\{[^}]*object-fit:\s*cover/s);
 assert.match(css, /\.newcomer-card\s*\{[^}]*flex:\s*0\s*0\s*var\(--newcomer-card-width\)/s);
 assert.match(css, /\.newcomers__track\s*\{[^}]*width:\s*max-content/s);
 assert.match(css, /\.newcomers--empty[\s\S]*\.newcomers__track/);
+assert.match(html, /id="managers"/);
+assert.match(html, /id="managerProfiles"/);
+assert.match(html, /js\/manager-data\.js/);
+assert.ok(
+  html.indexOf('id="squad"') < html.indexOf('id="managers"') &&
+  html.indexOf('id="managers"') < html.indexOf('id="gallery"')
+);
+assert.match(js, /var managerData = window\.MANAGER_DATA/);
+assert.match(js, /function renderManagers\(\)/);
+assert.match(js, /球队经理资料待更新/);
+assert.match(css, /\.manager-card__photo\s*\{[^}]*aspect-ratio:\s*4\s*\/\s*5/s);
+assert.match(css, /\.manager-profiles\s*\{[^}]*grid-template-columns:\s*repeat\(2,/s);
+assert.match(css, /\.manager-card\s*\{[^}]*border-radius:\s*8px/s);
+assert.match(css, /\.manager-profiles\s*\{[^}]*scroll-snap-type:\s*x mandatory/s);
 assert.match(js, /function initNewcomerMotion\(\)/);
 assert.match(js, /requestAnimationFrame/);
 assert.match(js, /viewport\.scrollLeft/);

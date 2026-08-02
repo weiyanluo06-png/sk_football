@@ -123,7 +123,7 @@ Expected: the workbook includes an empty styled `球队经理` sheet, `js/manage
 - Consumes: `window.MANAGER_DATA.managers` from Task 1.
 - Produces: `renderManagers()` and DOM section `#managers` containing `#managerProfiles`.
 
-- [ ] **Step 1: Write failing page contract tests**
+- [x] **Step 1: Write failing page contract tests**
 
 Require:
 
@@ -143,7 +143,7 @@ assert.match(css, /\.manager-profiles\s*\{[^}]*grid-template-columns:\s*repeat\(
 assert.match(css, /scroll-snap-type:\s*x mandatory/);
 ```
 
-- [ ] **Step 2: Run the page contract test and confirm failure**
+- [x] **Step 2: Run the page contract test and confirm failure**
 
 Run:
 
@@ -153,7 +153,7 @@ node tests/team-memorial-refresh.test.mjs
 
 Expected: failure because the manager section and renderer are absent.
 
-- [ ] **Step 3: Add the section markup and data script**
+- [x] **Step 3: Add the section markup and data script**
 
 Insert after `</section>` for `#squad` and before `#gallery`:
 
@@ -170,7 +170,7 @@ Insert after `</section>` for `#squad` and before `#gallery`:
 
 Load `js/manager-data.js` after `js/newcomer-data.js` and before `js/main.js`.
 
-- [ ] **Step 4: Render real profiles and the honest empty state**
+- [x] **Step 4: Render real profiles and the honest empty state**
 
 At the top of `js/main.js`, read:
 
@@ -183,11 +183,11 @@ Implement `managerCardHtml(item)` with an image using `loading="lazy"`, `decodin
 
 Implement `renderManagers()` so no-data output is exactly one non-person card containing `球队经理资料待更新`, and call it from `init()` after `renderNewcomers()`.
 
-- [ ] **Step 5: Add desktop and mobile styles**
+- [x] **Step 5: Add desktop and mobile styles**
 
 Use a restrained full-width section band. Desktop `.manager-profiles` is a two-column grid with a maximum content width, and each `.manager-card` uses a `minmax(0, 0.92fr) minmax(260px, 1.08fr)` photo/content layout. On screens at or below `760px`, change the container to horizontal flex scrolling with `scroll-snap-type: x mandatory`, set each card to about `82vw`, and stack photo above copy. Do not add autoplay or JavaScript swipe interception.
 
-- [ ] **Step 6: Run the page contract test**
+- [x] **Step 6: Run the page contract test**
 
 Run:
 
