@@ -104,16 +104,26 @@
             intro + '</div></article>';
     }
 
+    function managerPlaceholderHtml(index) {
+        var slot = String(index).padStart(2, '0');
+        return '<article class="manager-card manager-card--placeholder">' +
+            '<div class="manager-card__photo"><div class="manager-card__photo-missing">' +
+            '<i class="fa-solid fa-shield-heart" aria-hidden="true"></i><span>照片待更新</span>' +
+            '</div></div><div class="manager-card__body">' +
+            '<div class="manager-card__eyebrow"><span>球队经理</span><b>STAFF ' + slot + '</b></div>' +
+            '<h3>经理席位 ' + slot + '</h3>' +
+            '<p class="manager-card__meta">资料待更新</p>' +
+            '<p class="manager-card__duties">球队经理资料待更新，姓名、照片和加入信息确认后展示。</p>' +
+            '</div></article>';
+    }
+
     function renderManagers() {
         var profiles = $('managerProfiles');
         var section = $('managers');
         if (!profiles || !section) return;
         section.classList.toggle('managers--empty', managers.length === 0);
         if (!managers.length) {
-            profiles.innerHTML = '<div class="manager-empty">' +
-                '<span class="manager-empty__mark"><i class="fa-solid fa-clipboard-user" aria-hidden="true"></i></span>' +
-                '<div><small>TEAM MANAGERS</small><strong>球队经理资料待更新</strong>' +
-                '<p>姓名、照片和加入信息将在确认后展示。</p></div></div>';
+            profiles.innerHTML = [1, 2].map(managerPlaceholderHtml).join('');
             return;
         }
         profiles.innerHTML = managers.map(managerCardHtml).join('');
