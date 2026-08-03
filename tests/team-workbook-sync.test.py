@@ -12,10 +12,12 @@ ROOT = Path(__file__).resolve().parents[1]
 WORKBOOK_PATH = ROOT / 'data' / '生康足球队数据源.xlsx'
 SITE_DATA_PATH = ROOT / 'js' / 'team-data.js'
 NEWCOMER_DATA_PATH = ROOT / 'js' / 'newcomer-data.js'
+MANAGER_DATA_PATH = ROOT / 'js' / 'manager-data.js'
 SYNC_SPEC = importlib.util.spec_from_file_location('sync_team_workbook', ROOT / 'tools' / 'sync_team_workbook.py')
 SYNC_MODULE = importlib.util.module_from_spec(SYNC_SPEC)
 SYNC_SPEC.loader.exec_module(SYNC_MODULE)
 newcomer_payload = SYNC_MODULE.newcomer_payload
+manager_payload = SYNC_MODULE.manager_payload
 
 
 def load_window_data(path, global_name):
@@ -43,7 +45,20 @@ def load_newcomer_data(path=NEWCOMER_DATA_PATH):
     return load_window_data(path, 'NEWCOMER_DATA')
 
 
+def load_manager_data(path=MANAGER_DATA_PATH):
+    return load_window_data(path, 'MANAGER_DATA')
+
+
 class TeamWorkbookSyncTest(unittest.TestCase):
+    def test_workbook_has_isolated_manager_sheet(self):
+        workbook = load_workbook(WORKBOOK_PATH, data_only=False)
+        self.assertIn('球队经理', workbook.sheetnames)
+        headers = [cell.value for cell in workbook['球队经理'][1]]
+        self.assertEqual(headers, [
+            '排序', '姓名', '年级', '加入赛季', '身份', '职责',
+            '个人介绍', '照片文件名', '照片焦点', '展示状态',
+        ])
+
     def test_workbook_has_isolated_newcomer_sheet(self):
         workbook = load_workbook(WORKBOOK_PATH, data_only=False)
         self.assertIn('新生展示', workbook.sheetnames)
@@ -62,6 +77,7 @@ class TeamWorkbookSyncTest(unittest.TestCase):
             target = temporary / 'synced.xlsx'
             site_output = temporary / 'team-data.js'
             newcomer_output = temporary / 'newcomer-data.js'
+            manager_output = temporary / 'manager-data.js'
             shutil.copy2(WORKBOOK_PATH, source)
 
             workbook = load_workbook(source)
@@ -72,7 +88,7 @@ class TeamWorkbookSyncTest(unittest.TestCase):
             workbook.save(source)
 
             SYNC_MODULE.sync_workbook(
-                source, target, SITE_DATA_PATH, site_output, newcomer_output,
+                source, target, SITE_DATA_PATH, site_output, newcomer_output, manager_output,
             )
 
             newcomer_data = load_newcomer_data(newcomer_output)
@@ -89,6 +105,94 @@ class TeamWorkbookSyncTest(unittest.TestCase):
             )
 
         self.assertEqual(SITE_DATA_PATH.read_bytes(), official_source)
+
+    def test_sync_emits_manager_without_changing_player_or_newcomer_data(self):
+        official_data = load_site_data()
+        official_newcomers = load_newcomer_data()
+        with tempfile.TemporaryDirectory() as directory:
+            temporary = Path(directory)
+            source = temporary / 'source.xlsx'
+            target = temporary / 'synced.xlsx'
+            site_output = temporary / 'team-data.js'
+            newcomer_output = temporary / 'newcomer-data.js'
+            manager_output = temporary / 'manager-data.js'
+            shutil.copy2(WORKBOOK_PATH, source)
+
+            workbook = load_workbook(source)
+            workbook['球队经理'].append([
+                1, 'Fixture Manager', '2026级', '2026-2027', '球队经理',
+                '协助球队日常事务、比赛记录、人员联络与赛场保障。',
+                '和球队一起记录每一次出发。', 'fixture-manager.webp',
+                '50% 30%', '展示',
+            ])
+            workbook.save(source)
+
+            SYNC_MODULE.sync_workbook(
+                source, target, SITE_DATA_PATH, site_output, newcomer_output, manager_output,
+            )
+
+            manager_data = load_manager_data(manager_output)
+            synced_site_data = load_site_data(site_output)
+            synced_newcomers = load_newcomer_data(newcomer_output)
+            self.assertEqual(manager_data, {
+                'managers': [{
+                    'order': 1,
+                    'name': 'Fixture Manager',
+                    'grade': '2026级',
+                    'season': '2026-2027',
+                    'role': '球队经理',
+                    'duties': '协助球队日常事务、比赛记录、人员联络与赛场保障。',
+                    'intro': '和球队一起记录每一次出发。',
+                    'photo': 'assets/managers/fixture-manager.webp',
+                    'photoPosition': '50% 30%',
+                }],
+            })
+            self.assertEqual(synced_site_data['players'], official_data['players'])
+            self.assertEqual(synced_site_data['startingLineup'], official_data['startingLineup'])
+            self.assertEqual(synced_newcomers, official_newcomers)
+            self.assertNotIn(
+                'Fixture Manager',
+                [player['name'] for player in synced_site_data['players']],
+            )
+
+    def test_manager_payload_filters_sorts_and_defaults_fields(self):
+        payload = manager_payload([
+            {
+                '排序': 2, '姓名': 'Second', '年级': '', '加入赛季': '',
+                '身份': '', '职责': '', '个人介绍': '', '照片文件名': '',
+                '照片焦点': '', '展示状态': '展示',
+            },
+            {
+                '排序': 1, '姓名': 'First', '年级': '2026级',
+                '加入赛季': '2026-2027', '身份': '球队经理',
+                '职责': '比赛记录', '个人介绍': '一起记录。',
+                '照片文件名': 'first.webp', '照片焦点': '50% 25%',
+                '展示状态': '展示',
+            },
+            {
+                '排序': 3, '姓名': 'Hidden', '年级': '2026级',
+                '加入赛季': '2026-2027', '身份': '球队经理',
+                '职责': '不展示', '个人介绍': '', '照片文件名': '',
+                '照片焦点': '', '展示状态': '隐藏',
+            },
+        ])
+        self.assertEqual(payload, {
+            'managers': [
+                {
+                    'order': 1, 'name': 'First', 'grade': '2026级',
+                    'season': '2026-2027', 'role': '球队经理',
+                    'duties': '比赛记录', 'intro': '一起记录。',
+                    'photo': 'assets/managers/first.webp',
+                    'photoPosition': '50% 25%',
+                },
+                {
+                    'order': 2, 'name': 'Second', 'grade': '', 'season': '',
+                    'role': '球队经理',
+                    'duties': '协助球队日常事务、比赛记录、人员联络与赛场保障。',
+                    'intro': '', 'photo': '', 'photoPosition': '50% 50%',
+                },
+            ],
+        })
 
     def test_empty_newcomer_payload_has_required_shape(self):
         payload = load_newcomer_data()
@@ -144,6 +248,7 @@ class TeamWorkbookSyncTest(unittest.TestCase):
             target = temporary / 'synced.xlsx'
             site_output = temporary / 'team-data.js'
             newcomer_output = temporary / 'newcomer-data.js'
+            manager_output = temporary / 'manager-data.js'
             shutil.copy2(WORKBOOK_PATH, source)
             source_formulas = load_workbook(source, data_only=False)['统计汇总']
             expected_formulas = [source_formulas[cell].value for cell in summary_cells]
@@ -159,7 +264,7 @@ class TeamWorkbookSyncTest(unittest.TestCase):
             )
 
             SYNC_MODULE.sync_workbook(
-                source, target, SITE_DATA_PATH, site_output, newcomer_output,
+                source, target, SITE_DATA_PATH, site_output, newcomer_output, manager_output,
             )
 
             formula_workbook = load_workbook(target, data_only=False)
@@ -187,6 +292,7 @@ class TeamWorkbookSyncTest(unittest.TestCase):
             )
             self.assertTrue(site_output.exists())
             self.assertTrue(newcomer_output.exists())
+            self.assertTrue(manager_output.exists())
 
         self.assertEqual({path: path.read_bytes() for path in tracked_files}, before)
 

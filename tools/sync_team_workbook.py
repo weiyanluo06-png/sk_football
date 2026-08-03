@@ -26,6 +26,10 @@ NEWCOMER_HEADERS = [
     '排序', '姓名', '年级', '号码', '主位置', '可胜任位置',
     '惯用脚', '踢球风格', '自我介绍', '照片文件名', '照片焦点', '展示状态',
 ]
+MANAGER_HEADERS = [
+    '排序', '姓名', '年级', '加入赛季', '身份', '职责',
+    '个人介绍', '照片文件名', '照片焦点', '展示状态',
+]
 GREEN = '1F7A4D'
 PAPER = 'FFFDF8'
 LIGHT_GREEN = 'EAF3EC'
@@ -136,6 +140,19 @@ def ensure_newcomer_sheet(workbook):
         'G': 10, 'H': 18, 'I': 34, 'J': 24, 'K': 14, 'L': 12,
     })
     append_table(sheet, 'NewcomerShowcase')
+    return sheet
+
+
+def ensure_manager_sheet(workbook):
+    if '球队经理' not in workbook.sheetnames:
+        sheet = workbook.create_sheet('球队经理')
+        sheet.append(MANAGER_HEADERS)
+    sheet = workbook['球队经理']
+    style_table(sheet, {
+        'A': 8, 'B': 12, 'C': 10, 'D': 14, 'E': 14,
+        'F': 46, 'G': 38, 'H': 26, 'I': 14, 'J': 12,
+    })
+    append_table(sheet, 'TeamManagers')
     return sheet
 
 
@@ -293,7 +310,42 @@ def write_newcomer_data(payload, path):
     path.write_text(source, encoding='utf-8')
 
 
-def sync_workbook(source, target, site_data_path, site_output_path, newcomer_output_path):
+def manager_payload(rows):
+    visible = [
+        row for row in rows
+        if str(row.get('展示状态') or '').strip() == '展示'
+        and str(row.get('姓名') or '').strip()
+    ]
+    visible.sort(key=lambda row: (row.get('排序') is None, row.get('排序') or 0))
+    managers = []
+    default_duties = '协助球队日常事务、比赛记录、人员联络与赛场保障。'
+    for row in visible:
+        filename = str(row.get('照片文件名') or '').strip()
+        managers.append({
+            'order': row.get('排序'),
+            'name': str(row.get('姓名') or '').strip(),
+            'grade': str(row.get('年级') or '').strip(),
+            'season': str(row.get('加入赛季') or '').strip(),
+            'role': str(row.get('身份') or '球队经理').strip(),
+            'duties': str(row.get('职责') or default_duties).strip(),
+            'intro': str(row.get('个人介绍') or '').strip(),
+            'photo': f'assets/managers/{filename}' if filename else '',
+            'photoPosition': str(row.get('照片焦点') or '50% 50%').strip(),
+        })
+    return {'managers': managers}
+
+
+def write_manager_data(payload, path):
+    source = 'window.MANAGER_DATA = ' + json.dumps(
+        payload, ensure_ascii=False, indent=4
+    ) + ';\n'
+    path.write_text(source, encoding='utf-8')
+
+
+def sync_workbook(
+    source, target, site_data_path, site_output_path,
+    newcomer_output_path, manager_output_path,
+):
     target.parent.mkdir(parents=True, exist_ok=True)
     if source.resolve() != target.resolve():
         shutil.copy2(source, target)
@@ -311,6 +363,7 @@ def sync_workbook(source, target, site_data_path, site_output_path, newcomer_out
     append_table(players, 'PlayerStats')
     ensure_schedule_sheets(workbook, data)
     ensure_newcomer_sheet(workbook)
+    ensure_manager_sheet(workbook)
     workbook.calculation.fullCalcOnLoad = True
     workbook.calculation.forceFullCalc = True
     workbook.save(target)
@@ -327,6 +380,7 @@ def sync_workbook(source, target, site_data_path, site_output_path, newcomer_out
         summary_formula_cache_values(player_rows),
     )
     write_newcomer_data(newcomer_payload(read_rows(workbook['新生展示'])), newcomer_output_path)
+    write_manager_data(manager_payload(read_rows(workbook['球队经理'])), manager_output_path)
 
 
 def main():
@@ -340,6 +394,7 @@ def main():
         ROOT / 'js' / 'team-data.js',
         ROOT / 'js' / 'team-data.js',
         ROOT / 'js' / 'newcomer-data.js',
+        ROOT / 'js' / 'manager-data.js',
     )
 
 

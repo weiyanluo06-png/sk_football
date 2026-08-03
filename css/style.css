@@ -1956,6 +1956,194 @@ textarea:focus-visible {
     gap: 14px;
     padding-inline: 5vw;
 }
+
+.managers {
+    min-height: auto;
+    padding-block: clamp(92px, 10vw, 140px);
+    scroll-margin-top: 76px;
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background:
+        linear-gradient(90deg, transparent 0 66%, rgba(31,122,77,0.045) 66% 100%),
+        #f4f7f2;
+}
+
+.managers::before {
+    content: "TEAM STAFF";
+    position: absolute;
+    right: 2.5vw;
+    top: 50%;
+    color: rgba(31,122,77,0.045);
+    font: 700 clamp(5rem, 12vw, 11rem)/0.82 "Oswald", sans-serif;
+    letter-spacing: 0.02em;
+    transform: translateY(-50%) rotate(90deg);
+    pointer-events: none;
+}
+
+.managers__heading {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 42px;
+}
+
+.manager-profiles {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(18px, 2.4vw, 34px);
+    width: min(100%, 1320px);
+    margin: 0 auto;
+}
+
+.manager-card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(260px, 1.08fr);
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #cfe0d4;
+    border-radius: 8px;
+    background: rgba(255,253,248,0.94);
+    box-shadow: 0 18px 42px rgba(15,61,42,0.1);
+}
+
+.manager-card__photo {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: #dce7df;
+}
+
+.manager-card__photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 58%, rgba(8,39,25,0.2));
+    pointer-events: none;
+}
+
+.manager-card__photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.manager-card__photo-missing {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    min-height: 270px;
+    color: var(--green);
+    background:
+        linear-gradient(rgba(31,122,77,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,122,77,0.06) 1px, transparent 1px),
+        #e9f0ea;
+    background-size: 30px 30px;
+}
+
+.manager-card__photo-missing i { font-size: 2.2rem; }
+.manager-card__photo-missing span { font-size: 0.74rem; font-weight: 900; }
+
+.manager-card__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    padding: clamp(24px, 3vw, 42px);
+}
+
+.manager-card__eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding-bottom: 13px;
+    border-bottom: 1px solid var(--line);
+    color: var(--green);
+    font-size: 0.72rem;
+    font-weight: 900;
+}
+
+.manager-card__eyebrow b {
+    color: #839187;
+    font: 700 0.64rem/1 "Oswald", sans-serif;
+    letter-spacing: 0.12em;
+}
+
+.manager-card__body h3 {
+    margin-top: 22px;
+    color: var(--green-dark);
+    font-family: "Noto Serif SC", serif;
+    font-size: clamp(1.8rem, 2.4vw, 2.8rem);
+    line-height: 1.1;
+}
+
+.manager-card__meta {
+    margin-top: 9px;
+    color: var(--muted);
+    font: 700 0.78rem/1.5 "Oswald", "Noto Sans SC", sans-serif;
+}
+
+.manager-card__duties {
+    margin-top: 26px;
+    color: #34473c;
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.manager-card__intro {
+    margin-top: 20px;
+    padding: 12px 0 12px 16px;
+    border-left: 3px solid var(--green);
+    color: var(--green-dark);
+    font-family: "Noto Serif SC", serif;
+    font-size: 0.9rem;
+    line-height: 1.75;
+}
+
+.manager-empty {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    min-height: 220px;
+    padding: 32px;
+    border-top: 1px solid #bdd4c4;
+    border-bottom: 1px solid #bdd4c4;
+    color: var(--green-dark);
+    background: rgba(255,253,248,0.58);
+}
+
+.manager-empty__mark {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    flex: 0 0 64px;
+    border-radius: 50%;
+    color: #fff;
+    background: var(--green);
+}
+
+.manager-empty__mark i { font-size: 1.35rem; }
+.manager-empty small {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--green);
+    font: 700 0.68rem/1 "Oswald", sans-serif;
+    letter-spacing: 0.14em;
+}
+.manager-empty strong { display: block; font-size: clamp(1.35rem, 2.2vw, 2rem); }
+.manager-empty p { margin-top: 7px; color: var(--muted); font-size: 0.86rem; }
+
 @media (max-width: 760px) {
     .newcomers__heading { padding-inline: 20px; }
     .newcomers__viewport { scroll-snap-type: x mandatory; }
@@ -1968,6 +2156,43 @@ textarea:focus-visible {
         justify-content: flex-start;
         padding-inline: 20px;
     }
+
+    .managers {
+        padding: 82px 0;
+        background: #f4f7f2;
+    }
+    .managers::before { display: none; }
+    .managers__heading { padding-inline: 20px; margin-bottom: 30px; }
+    .manager-profiles {
+        display: flex;
+        width: 100%;
+        gap: 14px;
+        margin: 0;
+        padding: 4px 20px 20px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        overscroll-behavior-inline: contain;
+        touch-action: pan-x pan-y;
+    }
+    .manager-profiles::-webkit-scrollbar { display: none; }
+    .manager-card {
+        flex: 0 0 min(82vw, 360px);
+        display: block;
+        scroll-snap-align: start;
+    }
+    .manager-card__photo { min-height: 0; }
+    .manager-card__body { min-height: 270px; padding: 24px 22px 26px; }
+    .manager-card__body h3 { font-size: 2rem; }
+    .manager-card__duties { margin-top: 20px; }
+    .manager-empty {
+        flex: 0 0 calc(100vw - 40px);
+        min-height: 210px;
+        margin: 0;
+        padding: 28px 22px;
+        scroll-snap-align: start;
+    }
+    .manager-empty__mark { width: 54px; height: 54px; flex-basis: 54px; }
 }
 @media (prefers-reduced-motion: reduce) {
     .newcomers__viewport { scroll-behavior: auto; }

@@ -5,6 +5,8 @@
     var newcomerData = window.NEWCOMER_DATA || {};
     var newcomers = newcomerData.newcomers || [];
     var newcomerMotion = null;
+    var managerData = window.MANAGER_DATA || {};
+    var managers = managerData.managers || [];
     var allPlayers = teamData.players || [];
     var startingLineup = teamData.startingLineup || {};
     var matchItems = teamData.matches || [];
@@ -79,6 +81,42 @@
             '<div class="newcomers__sequence">' + originals + '</div>' +
             '<div class="newcomers__sequence newcomers__sequence--duplicate" aria-hidden="true">' +
             duplicates + '</div>';
+    }
+
+    function managerCardHtml(item) {
+        var photo = item.photo
+            ? '<img src="' + escapeHtml(item.photo) + '" alt="' +
+              escapeHtml(item.name + '，球队经理') + '" loading="lazy" decoding="async" style="object-position:' +
+              escapeHtml(item.photoPosition || '50% 50%') + ';">'
+            : '<div class="manager-card__photo-missing"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i><span>照片待更新</span></div>';
+        var meta = [item.grade, item.season ? item.season + ' 加入' : ''].filter(Boolean).join(' · ');
+        var intro = item.intro
+            ? '<blockquote class="manager-card__intro">' + escapeHtml(item.intro) + '</blockquote>'
+            : '';
+        return '<article class="manager-card">' +
+            '<div class="manager-card__photo">' + photo + '</div>' +
+            '<div class="manager-card__body">' +
+            '<div class="manager-card__eyebrow"><span>' + escapeHtml(item.role || '球队经理') +
+            '</span><b>TEAM STAFF</b></div>' +
+            '<h3>' + escapeHtml(item.name) + '</h3>' +
+            (meta ? '<p class="manager-card__meta">' + escapeHtml(meta) + '</p>' : '') +
+            (item.duties ? '<p class="manager-card__duties">' + escapeHtml(item.duties) + '</p>' : '') +
+            intro + '</div></article>';
+    }
+
+    function renderManagers() {
+        var profiles = $('managerProfiles');
+        var section = $('managers');
+        if (!profiles || !section) return;
+        section.classList.toggle('managers--empty', managers.length === 0);
+        if (!managers.length) {
+            profiles.innerHTML = '<div class="manager-empty">' +
+                '<span class="manager-empty__mark"><i class="fa-solid fa-clipboard-user" aria-hidden="true"></i></span>' +
+                '<div><small>TEAM MANAGERS</small><strong>球队经理资料待更新</strong>' +
+                '<p>姓名、照片和加入信息将在确认后展示。</p></div></div>';
+            return;
+        }
+        profiles.innerHTML = managers.map(managerCardHtml).join('');
     }
 
     function getNewcomerDuplicateCount(distance, viewportWidth) {
@@ -817,6 +855,7 @@
     function init() {
         renderNewcomers();
         initNewcomerMotion();
+        renderManagers();
         featuredPlayers = shuffled(allPlayers).slice(0, 3);
         renderAllPlayers();
         renderSeasonSwitch();
