@@ -54,6 +54,8 @@ assert.ok(
 );
 assert.match(js, /var managerData = window\.MANAGER_DATA/);
 assert.match(js, /function renderManagers\(\)/);
+assert.match(js, /function managerPlaceholderHtml\(index\)/);
+assert.match(js, /\[1, 2\]\.map\(managerPlaceholderHtml\)\.join\(''\)/);
 assert.match(js, /球队经理资料待更新/);
 assert.match(css, /\.manager-card__photo\s*\{[^}]*aspect-ratio:\s*4\s*\/\s*5/s);
 assert.match(css, /\.manager-profiles\s*\{[^}]*grid-template-columns:\s*repeat\(2,/s);
