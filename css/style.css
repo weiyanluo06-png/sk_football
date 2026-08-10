@@ -305,6 +305,7 @@ textarea:focus-visible {
 
 .hero__cta:hover { transform: translateY(-3px); background: rgba(255,255,255,0.22); }
 .hero__cta--primary { color: #082015; background: #fffdf8; }
+.hero__cta--external { white-space: nowrap; }
 
 .hero__stats {
     position: absolute;
@@ -2214,7 +2215,7 @@ textarea:focus-visible {
     .hero__eyebrow { padding: 7px 10px; font-size: 0.68rem; }
     .hero__title { max-width: 92%; margin-top: 13px; font-size: clamp(2rem, 8.4vw, 2.75rem); line-height: 1.16; }
     .hero__desc { display: block; max-width: 88%; margin-top: 12px; font-size: 0.88rem; line-height: 1.7; }
-    .hero__actions { display: flex; left: 6%; bottom: 58px; gap: 8px; }
+    .hero__actions { display: flex; left: 6%; bottom: 58px; gap: 8px; max-width: 88%; }
     .hero__cta { min-height: 42px; padding: 9px 14px; font-size: 0.82rem; }
     .hero__stats { display: none; }
 
@@ -2256,4 +2257,9 @@ textarea:focus-visible {
     .recruit__note { margin-top: 22px; }
     .recruit__card { width: 100%; max-width: 390px; justify-self: stretch; margin: 0 auto; padding: 15px; }
     .recruit__qr-frame { width: min(100%, 290px); margin-block: 15px 13px; }
+}
+
+@media screen and (max-width: 420px) {
+    .hero__actions { gap: 7px; }
+    .hero__cta { min-height: 40px; padding: 8px 10px; font-size: 0.76rem; }
 }
