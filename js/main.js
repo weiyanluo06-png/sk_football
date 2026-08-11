@@ -748,7 +748,7 @@
         if (!slide) return;
         var source = getHeroImage(slide);
         if (!source || slide.dataset.loadedImage === source) return;
-        slide.style.backgroundImage = 'linear-gradient(rgba(7,11,19,0.2), rgba(7,11,19,0.72)), url("' + source + '")';
+        slide.style.backgroundImage = 'url("' + source + '")';
         slide.dataset.loadedImage = source;
     }
 
