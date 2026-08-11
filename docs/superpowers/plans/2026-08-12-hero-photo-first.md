@@ -4,7 +4,7 @@
 
 **Goal:** Present all three homepage team photos at their natural brightness without dark or pale full-image overlays, while retaining a readable large white title that does not cover player faces.
 
-**Architecture:** Keep the existing static hero carousel, image assets, controls, and JavaScript behavior unchanged. Remove the descriptive copy and CSS pseudo-elements that tint the entire photo, then make the title itself readable with a close, layered shadow and subtle text stroke. Validate the markup and styling with the existing Node assertion suite and verify composition at desktop and mobile viewport sizes.
+**Architecture:** Keep the existing static hero carousel, image assets, controls, and navigation behavior unchanged. Remove the descriptive copy, CSS pseudo-elements, and inline JavaScript gradient that tint the photo, then make the title itself readable with a close, layered shadow and subtle text stroke. Validate the markup and styling with the existing Node assertion suite and verify composition at desktop and mobile viewport sizes.
 
 **Tech Stack:** Static HTML, CSS, Node assertion tests, local HTTP server, Playwright visual verification.
 
@@ -14,7 +14,9 @@
 - Remove the pale bottom fade from the hero.
 - Remove all three small descriptive paragraphs below the large titles.
 - Keep the chapter label, large white title, hero actions, statistics, carousel controls, image assets, and carousel behavior.
-- Do not add a title card, localized photo scrim, JavaScript, dependency, or new image asset.
+- Do not add a title card, localized photo scrim, dependency, or new image asset.
+- In JavaScript, change only the hero image assignment so it writes the photo URL without an inline gradient; keep all carousel timing and interaction logic unchanged.
+- Set the CSS and JavaScript asset query tokens to `hero-photo-first-1` so GitHub Pages visitors do not retain the previous overlay code from browser cache.
 - Keep title letter spacing at `0` and use only a close text stroke and shadow for contrast.
 - Confirm that no title covers a player face at desktop and mobile viewport sizes.
 
@@ -28,11 +30,12 @@
 - Modify: `css/style.css:192-279`
 - Modify: `css/style.css:1613-1623`
 - Modify: `css/style.css:2211-2218`
+- Modify: `js/main.js:747-753`
 
 **Interfaces:**
 - Consumes: the existing `.hero`, `.hero__slide`, `.hero__content`, `.hero__chapter`, and `.hero__title` structure.
 - Produces: a photo-first hero with no `.hero__desc`, `.hero::after`, or `.hero__slide::before` overlay layers.
-- Preserves: all existing carousel image attributes, action links, statistics, navigation buttons, dots, and `js/main.js` behavior.
+- Preserves: all existing carousel image attributes, action links, statistics, navigation buttons, dots, timing, preload, and swipe behavior.
 
 - [ ] **Step 1: Add failing structural assertions**
 
@@ -44,6 +47,10 @@ assert.doesNotMatch(css, /\.hero::after\s*\{/);
 assert.doesNotMatch(css, /\.hero__slide::before\s*\{/);
 assert.match(css, /\.hero__title\s*\{[^}]*-webkit-text-stroke:\s*0\.6px/s);
 assert.match(css, /\.hero__title\s*\{[^}]*letter-spacing:\s*0/s);
+assert.doesNotMatch(js, /slide\.style\.backgroundImage\s*=\s*'linear-gradient/);
+assert.match(js, /slide\.style\.backgroundImage\s*=\s*'url\("'/);
+assert.match(html, /css\/style\.css\?v=hero-photo-first-1/);
+assert.match(html, /js\/main\.js\?v=hero-photo-first-1/);
 ```
 
 - [ ] **Step 2: Run the test to verify it fails**
@@ -54,7 +61,7 @@ Run:
 node tests/team-memorial-refresh.test.mjs
 ```
 
-Expected: FAIL because the three descriptive paragraphs and both overlay pseudo-elements still exist, and the title does not yet have the new text stroke.
+Expected: FAIL because the three descriptive paragraphs, both CSS overlay pseudo-elements, and the JavaScript-injected dark gradient still exist, and the title does not yet have the new text stroke.
 
 - [ ] **Step 3: Remove the three descriptive paragraphs**
 
@@ -68,6 +75,13 @@ In `index.html`, leave each `.hero__content` with only its chapter label and tit
 ```
 
 Delete all three `<p class="hero__desc">...</p>` elements. Do not change any `data-image`, `data-image-mobile`, title, or chapter text.
+
+Update the stylesheet and main script references in `index.html` to use the shared cache token:
+
+```html
+<link rel="stylesheet" href="css/style.css?v=hero-photo-first-1">
+<script src="js/main.js?v=hero-photo-first-1"></script>
+```
 
 - [ ] **Step 4: Remove the full-photo tint layers**
 
@@ -89,7 +103,17 @@ Delete both `.hero__slide::before` rules: the base rule containing the initial t
 
 Delete the base `.hero__desc` rule, the later `.hero__desc` memorial-refresh override, and the mobile `.hero__desc` rule because the corresponding markup no longer exists.
 
-- [ ] **Step 5: Strengthen only the title glyphs**
+- [ ] **Step 5: Remove the JavaScript-injected photo gradient**
+
+In `loadHeroImage()` within `js/main.js`, replace the inline gradient assignment with the raw image URL:
+
+```js
+slide.style.backgroundImage = 'url("' + source + '")';
+```
+
+Do not change image selection, preload timing, active-slide classes, autoplay, arrows, dots, or touch handlers.
+
+- [ ] **Step 6: Strengthen only the title glyphs**
 
 Replace the base `.hero__title` rule with:
 
@@ -116,7 +140,7 @@ Change the later memorial-refresh title override to avoid reintroducing nonzero 
 
 Keep the existing mobile title width, size, line height, and natural wrapping rules. Do not add a background, backdrop filter, or pseudo-element behind the title.
 
-- [ ] **Step 6: Run automated verification**
+- [ ] **Step 7: Run automated verification**
 
 Run:
 
@@ -128,7 +152,7 @@ git diff --check
 
 Expected: both test suites pass and `git diff --check` reports no whitespace errors.
 
-- [ ] **Step 7: Verify the desktop composition**
+- [ ] **Step 8: Verify the desktop composition**
 
 Serve the worktree locally and inspect all three slides at `1440x900`.
 
@@ -140,7 +164,7 @@ Confirm:
 - the large title stays in the upper sky/building area and does not cover faces;
 - buttons, statistics, arrows, and dots remain usable and visually separated from the photo.
 
-- [ ] **Step 8: Verify the mobile composition and swipe behavior**
+- [ ] **Step 9: Verify the mobile composition and swipe behavior**
 
 Inspect all three slides at `390x844` and `430x932`.
 
@@ -151,10 +175,9 @@ Confirm:
 - horizontal hero swiping still changes slides;
 - the action buttons remain inside the viewport and do not overlap the title or carousel dots.
 
-- [ ] **Step 9: Commit the implementation**
+- [ ] **Step 10: Commit the implementation**
 
 ```powershell
-git add index.html css/style.css tests/team-memorial-refresh.test.mjs
+git add index.html css/style.css js/main.js tests/team-memorial-refresh.test.mjs docs/superpowers/plans/2026-08-12-hero-photo-first.md
 git commit -m "Show homepage team photos without overlays"
 ```
-
