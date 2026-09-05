@@ -1397,6 +1397,32 @@ textarea:focus-visible {
     border-top: 1px solid rgba(31,122,77,0.12);
 }
 
+.footer__text { margin: 0; }
+
+.footer__visits {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    color: var(--green-dark);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.footer__visits i { color: var(--green); }
+
+.footer__visits img {
+    display: block;
+    width: 112px;
+    height: 20px;
+    object-fit: contain;
+    object-position: left center;
+}
+
+.footer__visits:hover,
+.footer__visits:focus-visible { color: var(--green); }
+
 @media screen and (max-width: 1080px) {
     .squad,
     .story__grid { grid-template-columns: 1fr; }
