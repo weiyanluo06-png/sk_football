@@ -74,6 +74,14 @@
             return;
         }
         var originals = newcomers.map(function (item) { return newcomerCardHtml(item, '', false); }).join('');
+        if (newcomers.length <= 3) {
+            var emptySlots = '';
+            for (var slot = newcomers.length; slot < 3; slot += 1) {
+                emptySlots += '<article class="newcomer-card" style="visibility:hidden" aria-hidden="true"></article>';
+            }
+            track.innerHTML = '<div class="newcomers__sequence">' + originals + emptySlots + '</div>';
+            return;
+        }
         var duplicates = newcomers.map(function (item) {
             return newcomerCardHtml(item, 'newcomer-card--duplicate', true);
         }).join('');
@@ -189,7 +197,7 @@
         var section = $('newcomers');
         var viewport = $('newcomerViewport');
         var track = $('newcomerTrack');
-        if (!section || !viewport || !track || !newcomers.length) return;
+        if (!section || !viewport || !track || newcomers.length <= 3) return;
 
         var pauseState = createNewcomerPauseState();
         var lastTime = 0;
