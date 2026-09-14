@@ -13,6 +13,32 @@ window.NEWCOMER_DATA = {
             "intro": "改变生康历史的男人要来了",
             "photo": "assets/players/duanshitian.jpg",
             "photoPosition": "50% 50%"
+        },
+        {
+            "order": 2,
+            "name": "何梁柱",
+            "grade": "2026级",
+            "number": 18,
+            "pos": "中场",
+            "role": "",
+            "preferredFoot": "右脚",
+            "style": "",
+            "intro": "",
+            "photo": "assets/players/heliangzhu.png",
+            "photoPosition": "50% 50%"
+        },
+        {
+            "order": 3,
+            "name": "肖思博",
+            "grade": "2026级",
+            "number": 33,
+            "pos": "后卫",
+            "role": "",
+            "preferredFoot": "右脚",
+            "style": "",
+            "intro": "",
+            "photo": "assets/players/xiaosibo.jpg",
+            "photoPosition": "50% 50%"
         }
     ]
 };
