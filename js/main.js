@@ -12,11 +12,12 @@
     newcomers.forEach(function (item) {
         if (allPlayers.some(function (player) { return player.name === item.name; })) return;
         var positionGroups = { '中锋': 'FW', '前锋': 'FW', '中场': 'MF', '前腰': 'MF', '后卫': 'DF', '门将': 'GK', FW: 'FW', MF: 'MF', DF: 'DF', GK: 'GK' };
+        positionGroups['中前场'] = 'MF';
         var group = positionGroups[item.pos];
         if (!group) return;
         allPlayers.push({
             id: nextPlayerId++, name: item.name, number: item.number, pos: group,
-            secondaryPos: positionGroups[item.role] || '',
+            secondaryPos: item.pos === '中前场' ? 'FW' : (positionGroups[item.role] || ''),
             role: [item.pos, item.role].filter(Boolean).join('/'),
             nickname: [item.grade, item.preferredFoot].filter(Boolean).join(' · '),
             photo: item.photo, rating: '待评', apps: 0, goals: 0, asts: 0,
@@ -502,7 +503,7 @@
         return (key.indexOf('GK') !== -1 && player.pos === 'GK') ||
             ((key.indexOf('LB') !== -1 || key.indexOf('RB') !== -1 || key.indexOf('CB') !== -1) && player.pos === 'DF') ||
             (key.indexOf('M') !== -1 && (player.pos === 'MF' || player.secondaryPos === 'MF')) ||
-            (['ST', 'LW', 'RW'].indexOf(key) !== -1 && player.pos === 'FW');
+            (['ST', 'LW', 'RW'].indexOf(key) !== -1 && (player.pos === 'FW' || player.secondaryPos === 'FW'));
     }
 
     function renderFeaturedPlayers() {

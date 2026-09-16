@@ -39,6 +39,32 @@ window.NEWCOMER_DATA = {
             "intro": "",
             "photo": "assets/players/xiaosibo.jpg",
             "photoPosition": "50% 50%"
+        },
+        {
+            "order": 4,
+            "name": "凌淇",
+            "grade": "2026级",
+            "number": 17,
+            "pos": "中前场",
+            "role": "",
+            "preferredFoot": "右脚",
+            "style": "",
+            "intro": "",
+            "photo": "assets/players/lingqi.jpg",
+            "photoPosition": "50% 50%"
+        },
+        {
+            "order": 5,
+            "name": "雷振廷",
+            "grade": "2026级",
+            "number": 12,
+            "pos": "后卫",
+            "role": "中场",
+            "preferredFoot": "右脚",
+            "style": "",
+            "intro": "",
+            "photo": "assets/players/leizhenting.png",
+            "photoPosition": "50% 50%"
         }
     ]
 };
