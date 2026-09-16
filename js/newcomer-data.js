@@ -65,6 +65,45 @@ window.NEWCOMER_DATA = {
             "intro": "",
             "photo": "assets/players/leizhenting.png",
             "photoPosition": "50% 50%"
+        },
+        {
+            "order": 6,
+            "name": "蔡照",
+            "grade": "2026级",
+            "number": 6,
+            "pos": "边锋",
+            "role": "",
+            "preferredFoot": "右脚",
+            "style": "",
+            "intro": "",
+            "photo": "assets/players/caizhao.jpg",
+            "photoPosition": "50% 50%"
+        },
+        {
+            "order": 7,
+            "name": "喻新旭",
+            "grade": "2026级",
+            "number": 14,
+            "pos": "中锋",
+            "role": "后卫",
+            "preferredFoot": "右脚",
+            "style": "",
+            "intro": "",
+            "photo": "assets/players/yuxinxu.jpg",
+            "photoPosition": "50% 50%"
+        },
+        {
+            "order": 8,
+            "name": "叶浩",
+            "grade": "2026级",
+            "number": 66,
+            "pos": "边锋",
+            "role": "",
+            "preferredFoot": "右脚",
+            "style": "",
+            "intro": "",
+            "photo": "assets/players/yehao.jpg",
+            "photoPosition": "50% 50%"
         }
     ]
 };

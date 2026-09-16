@@ -13,6 +13,7 @@
         if (allPlayers.some(function (player) { return player.name === item.name; })) return;
         var positionGroups = { '中锋': 'FW', '前锋': 'FW', '中场': 'MF', '前腰': 'MF', '后卫': 'DF', '门将': 'GK', FW: 'FW', MF: 'MF', DF: 'DF', GK: 'GK' };
         positionGroups['中前场'] = 'MF';
+        positionGroups['边锋'] = 'FW';
         var group = positionGroups[item.pos];
         if (!group) return;
         allPlayers.push({
@@ -450,6 +451,7 @@
     }
 
     function renderPitchNodes() {
+        if (window.TACTICS) return window.TACTICS.render();
         var pitch = $('pitch'); if (!pitch) return;
         pitch.querySelectorAll('.pitch__player').forEach(function (node) { node.remove(); });
         Object.keys(startingLineup).forEach(function (key) {
@@ -470,6 +472,7 @@
     }
 
     function renderSquadPool() {
+        if (window.TACTICS) return;
         ['FW', 'MF', 'DF', 'GK'].forEach(function (pos) { var el = $('pool-' + pos); if (el) el.innerHTML = ''; });
         var lineupIds = getLineupPlayerIds();
         allPlayers.forEach(function (player) {
@@ -890,6 +893,7 @@
     }
 
     function init() {
+        window.TACTICS = window.createTacticsEditor(allPlayers, startingLineup, openPlayerModal);
         renderNewcomers();
         initNewcomerMotion();
         renderManagers();

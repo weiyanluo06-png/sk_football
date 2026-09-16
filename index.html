@@ -215,8 +215,9 @@
             <div class="squad-tools">
                 <div class="section__heading section__heading--compact">
                     <span class="section__kicker">LINEUP EDITOR</span>
-                    <h2 class="section__title">阵容调换</h2>
-                    <p class="section__subtitle">点场上位置，再点右侧候选队员即可换人；直接点队员卡可以查看详细档案。</p>
+                    <h2 class="section__title">自由战术板</h2>
+                    <p class="section__subtitle">先选阵型，点场上位置再选队员；所有球员均可安排在任意位置，已在场上的球员会互换。拖动头像可微调站位。</p>
+                    <div class="tactics-controls"><label>阵型 <select id="formationSelect"><option>4-3-3</option><option>4-4-2</option><option>4-2-3-1</option><option>4-1-4-1</option><option>3-5-2</option><option>3-4-3</option></select></label><button type="button" id="resetPositions">恢复标准站位</button><button type="button" id="resetTactics">恢复默认阵容</button><span id="tacticsStatus" role="status"></span></div>
                 </div>
 
                 <div class="squad">
@@ -226,7 +227,7 @@
                     </div>
 
                     <div class="squad__pool" id="squadPool">
-                        <div class="squad__pool-hint"><i class="fa-solid fa-lightbulb"></i> 这个区域像一本队员卡册：保留数据，也方便临时预览换人。</div>
+                        <div class="squad__pool-hint">全部队员均可换入任何位置。分组仅供参考，阵容自动保存在当前浏览器。</div>
                         <div class="squad__pool-group-title">前锋 FW</div>
                         <div class="squad__pool-grid" id="pool-FW"></div>
                         <div class="squad__pool-group-title">中场 MF</div>
@@ -307,6 +308,7 @@
     <script src="js/newcomer-data.js"></script>
     <script src="js/manager-data.js"></script>
     <script src="js/gallery-data.js?v=media-optimisation-1"></script>
-    <script src="js/main.js?v=hero-photo-first-1"></script>
+    <script src="js/tactics.js?v=1"></script>
+    <script src="js/main.js?v=tactics-1"></script>
 </body>
 </html>

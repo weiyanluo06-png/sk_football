@@ -2260,3 +2260,12 @@ textarea:focus-visible {
     .hero__actions { gap: 7px; }
     .hero__cta { min-height: 40px; padding: 8px 10px; font-size: 0.76rem; }
 }
+
+.tactics-controls { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:20px; }
+.tactics-controls button,.tactics-controls select { padding:10px 14px; background:#fff; color:#123c2b; border:1px solid #9caf9f; border-radius:6px; font:inherit; }
+#tacticsStatus { width:100%; font-size:0.85rem; color:#38604b; }
+.tactics-player { touch-action:none; cursor:grab; }
+.tactics-player img { width:100%; height:100%; border-radius:50%; object-fit:cover; pointer-events:none; }
+.tactics-player:active { cursor:grabbing; }
+.tactics-controls button:focus-visible,.tactics-controls select:focus-visible { outline:3px solid #d8a63a; }
+
