@@ -51,9 +51,11 @@
     function $(id) { return document.getElementById(id); }
     function escapeHtml(str) { return String(str).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
-    function newcomerCardHtml(item, extraClass, hidden) {
+    function newcomerCardHtml(item, extraClass, hidden, index) {
+        var variants = (window.NEWCOMER_IMAGES || {})[item.photo];
+        var responsive = variants ? ' srcset="' + escapeHtml(variants['320'].src) + ' ' + variants['320'].width + 'w' + (variants['640'].width > variants['320'].width ? ', ' + escapeHtml(variants['640'].src) + ' ' + variants['640'].width + 'w' : '') + '" sizes="(max-width: 760px) 70vw, 240px"' : '';
         var photo = item.photo
-            ? '<img src="' + escapeHtml(item.photo) + '" alt="" loading="lazy" decoding="async" style="object-position:' +
+            ? '<img src="' + escapeHtml(variants ? variants['320'].src : item.photo) + '"' + responsive + ' alt="" loading="' + (!hidden && index < 3 ? 'eager' : 'lazy') + '" decoding="async" style="object-position:' +
               escapeHtml(item.photoPosition || '50% 50%') + ';">'
             : '<i class="fa-solid fa-shield-heart" aria-hidden="true"></i><span>照片待更新</span>';
         var number = item.number !== '' && item.number != null
@@ -94,7 +96,7 @@
             track.innerHTML = [placeholderNewcomerHtml(), placeholderNewcomerHtml(), placeholderNewcomerHtml()].join('');
             return;
         }
-        var originals = newcomers.map(function (item) { return newcomerCardHtml(item, '', false); }).join('');
+        var originals = newcomers.map(function (item, index) { return newcomerCardHtml(item, '', false, index); }).join('');
         if (newcomers.length <= 3) {
             var emptySlots = '';
             for (var slot = newcomers.length; slot < 3; slot += 1) {
@@ -932,3 +934,4 @@
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
+

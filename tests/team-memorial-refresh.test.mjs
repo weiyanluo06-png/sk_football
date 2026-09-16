@@ -16,7 +16,7 @@ assert.match(css, /\.hero__title\s*\{[^}]*letter-spacing:\s*0/s);
 assert.doesNotMatch(js, /slide\.style\.backgroundImage\s*=\s*'linear-gradient/);
 assert.match(js, /slide\.style\.backgroundImage\s*=\s*'url\("'/);
 assert.match(html, /css\/style\.css\?v=visitor-counter-1/);
-assert.match(html, /js\/main\.js\?v=tactics-1/);
+assert.match(html, /js\/main\.js\?v=newcomer-images-1/);
 assert.match(html, /href="https:\/\/weiyanluo06-png\.github\.io\/wtu-football\/"/);
 assert.match(html, /target="_blank"/);
 assert.match(html, /rel="noopener noreferrer"/);
@@ -139,4 +139,5 @@ assert.match(newcomerMotionSource, /touchstart', function \(\) \{ pauseState\.pa
 assert.match(newcomerMotionSource, /touchend', resumeTouchLater/);
 assert.match(newcomerMotionSource, /touchcancel', resumeTouchLater/);
 assert.match(newcomerMotionSource, /else if \(reduceMotion\.matches\) \{\s*viewport\.style\.scrollSnapType = '';/);
+
 
