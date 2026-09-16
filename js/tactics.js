@@ -46,7 +46,7 @@
                 var p=byName(slot.player), node=document.createElement('button');node.type='button';
                 node.className='pitch__player tactics-player'+(selected===index?' pitch__player--selected':'');
                 node.style.left=slot.x+'%';node.style.top=slot.y+'%';node.setAttribute('aria-label',p.name+'，'+p.number+'号，点击换人或拖动调整站位');
-                if(p.photo){var img=document.createElement('img');img.src=p.photo;img.alt='';node.appendChild(img);}
+                if(p.photo){var img=document.createElement('img');img.src=p.photo;img.alt='';img.style.objectPosition=p.photoPosition||'50% 50%';node.appendChild(img);}
                 var label=document.createElement('span');label.className='pitch__player-name';label.textContent=p.number+' '+p.name;node.appendChild(label);
                 var drag=null,suppress=false;
                 node.addEventListener('pointerdown',function(e){if(e.button!==0)return;drag={x:e.clientX,y:e.clientY,oldX:slot.x,oldY:slot.y,moved:false};node.setPointerCapture(e.pointerId);});

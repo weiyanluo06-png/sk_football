@@ -14,6 +14,7 @@
         var positionGroups = { '中锋': 'FW', '前锋': 'FW', '中场': 'MF', '前腰': 'MF', '后卫': 'DF', '门将': 'GK', FW: 'FW', MF: 'MF', DF: 'DF', GK: 'GK' };
         positionGroups['中前场'] = 'MF';
         positionGroups['边锋'] = 'FW';
+        positionGroups['中后卫'] = 'DF';
         var group = positionGroups[item.pos];
         if (!group) return;
         allPlayers.push({
@@ -21,7 +22,7 @@
             secondaryPos: item.pos === '中前场' ? 'FW' : (positionGroups[item.role] || ''),
             role: [item.pos, item.role].filter(Boolean).join('/'),
             nickname: [item.grade, item.preferredFoot].filter(Boolean).join(' · '),
-            photo: item.photo, rating: '待评', apps: 0, goals: 0, asts: 0,
+            photo: item.photo, photoPosition: item.photoPosition, rating: '待评', apps: 0, goals: 0, asts: 0,
             cleanSheets: 0, motm: 0, avatarIcon: 'fa-futbol',
             traits: item.style ? [item.style] : [], reviews: [],
             memory: '新加入球队，比赛数据待积累',

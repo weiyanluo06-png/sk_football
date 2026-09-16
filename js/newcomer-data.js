@@ -104,6 +104,19 @@ window.NEWCOMER_DATA = {
             "intro": "",
             "photo": "assets/players/yehao.jpg",
             "photoPosition": "50% 50%"
+        },
+        {
+            "order": 9,
+            "name": "杨锦泰",
+            "grade": "2026级",
+            "number": 4,
+            "pos": "中后卫",
+            "role": "",
+            "preferredFoot": "右脚",
+            "style": "",
+            "intro": "",
+            "photo": "assets/players/yangjintai.png",
+            "photoPosition": "50% 0%"
         }
     ]
 };
