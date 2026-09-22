@@ -878,6 +878,7 @@
         }).filter(function (item) { return item.el; });
         window.addEventListener('scroll', function () {
             header.classList.toggle('header--compact', window.scrollY > 80);
+            if (document.body.dataset.column) return;
             var pos = window.scrollY + 140;
             sections.forEach(function (item) {
                 if (pos >= item.el.offsetTop && pos < item.el.offsetTop + item.el.offsetHeight) {
@@ -896,6 +897,7 @@
     }
 
     function init() {
+        window.openTeamProfile = openPlayerModal;
         window.TACTICS = window.createTacticsEditor(allPlayers, startingLineup, openPlayerModal);
         renderNewcomers();
         initNewcomerMotion();

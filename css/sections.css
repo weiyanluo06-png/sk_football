@@ -1,0 +1,66 @@
+[hidden] { display:none !important; }
+.column-page { min-height:60vh; padding-top:88px; }
+.column-page[data-page="home"] { padding-top:0; }
+.column-page .section { min-height:0; padding-block:55px; }
+.column-page[data-page="home"] .hero { height:520px; min-height:0; padding:0; }
+.column-page[data-page="home"] .hero__stats { display:none; }
+.column-page[data-page="home"] .hero__title { font-size:clamp(28px,4vw,52px); }
+.home-overview,.column-content { width:min(1120px,90%); margin:auto; padding:48px 0; }
+.column-content h1 { color:var(--green-dark); font-size:clamp(28px,4vw,44px); margin-bottom:14px; }
+.column-content h2,.overview-heading h2 { color:var(--green-dark); font-size:28px; }
+.column-content>p { color:var(--muted); line-height:1.9; margin-bottom:22px; }
+.overview-heading,.home-match,.home-bottom { display:flex; justify-content:space-between; align-items:center; gap:18px; }
+.text-link { color:var(--green); font-weight:700; font-size:14px; }
+.home-news { margin:20px 0; }
+.notice-card { display:block; padding:24px; border:1px solid var(--line); border-radius:14px; background:var(--paper); color:var(--ink); transition:border-color .2s; }
+.notice-card:hover { border-color:var(--green); }
+.notice-meta { color:var(--green); font-size:12px; letter-spacing:.04em; }
+.notice-card h3 { margin:10px 0; font-size:21px; color:var(--green-dark); }
+.notice-card p { color:var(--muted); line-height:1.8; margin-bottom:12px; }
+.home-match { background:#e9efe8; padding:22px; border-radius:12px; margin-bottom:24px; }
+.home-match p { color:var(--muted); font-size:13px; margin-top:6px; }
+.quick-links { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+.quick-links a { display:flex; flex-direction:column; gap:8px; padding:22px 16px; color:var(--green-dark); font-weight:700; border:1px solid var(--line); border-radius:10px; background:var(--paper); }
+.quick-links span { font-size:12px; font-weight:400; color:var(--muted); }
+.home-bottom { margin-top:24px; color:var(--green); }
+.notice-filters { display:flex; flex-wrap:wrap; gap:8px; margin:24px 0; }
+.notice-filters button { border:1px solid var(--line); padding:9px 16px; border-radius:24px; background:var(--paper); color:var(--green-dark); font:inherit; }
+.notice-filters button[aria-pressed="true"] { background:var(--green-dark); color:var(--paper); }
+.notice-list { display:grid; gap:16px; }
+.empty-notice { padding:50px 0; color:var(--muted); text-align:center; }
+.notice-detail { max-width:840px; }
+.notice-detail .notice-meta { margin:30px 0 12px; }
+.notice-detail .notice-lead { font-size:18px; border-left:3px solid var(--gold); padding-left:16px; }
+.notice-members { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:28px 0; }
+.notice-members>div { padding:16px; border:1px solid var(--line); border-radius:10px; background:var(--paper); }
+.notice-members strong,.notice-members span { display:block; }
+.notice-members span { margin-top:6px; font-size:12px; color:var(--muted); }
+.notice-detail figure img { width:100%; border-radius:12px; }
+.notice-detail figcaption { margin:8px 0 28px; color:var(--muted); font-size:12px; }
+.notice-action { display:inline-block; background:var(--green-dark); color:var(--paper); padding:12px 20px; border-radius:8px; }
+.team-directory { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:20px; }
+.lineup-archive { width:90%; margin:20px auto; border:1px solid var(--line); border-radius:12px; }
+.lineup-archive summary { padding:18px; cursor:pointer; color:var(--green-dark); font-weight:700; }
+.column-page[data-page="tactics"] { width:min(1240px,94%); margin:auto; padding-bottom:50px; }
+.column-page[data-page="tactics"] .squad-tools { margin-top:28px; }
+.mobile-columns { display:none; }
+@media(max-width:760px) {
+ body { padding-bottom:calc(66px + env(safe-area-inset-bottom)); }
+ .column-page { padding-top:74px; }
+ .column-page[data-page="home"] .hero { height:430px; }
+ .column-page[data-page="home"] .hero__content { padding-bottom:95px; }
+ .column-page .section { padding-block:35px; }
+ .home-overview,.column-content { padding:28px 0; }
+ .overview-heading h2 { font-size:24px; }
+ .notice-card { padding:18px; }
+ .notice-card h3 { font-size:18px; }
+ .home-match { align-items:flex-start; flex-direction:column; padding:18px; gap:10px; }
+ .quick-links,.team-directory,.notice-members { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .quick-links a { padding:15px 12px; font-size:14px; }
+ .home-bottom { font-size:13px; }
+ .mobile-columns { display:grid; grid-template-columns:repeat(5,1fr); position:fixed; bottom:0; left:0; right:0; z-index:100; background:rgba(255,253,248,.97); border-top:1px solid var(--line); padding:8px 6px calc(8px + env(safe-area-inset-bottom)); backdrop-filter:blur(12px); }
+ .mobile-columns a { padding:12px 2px; text-align:center; font-size:13px; color:var(--muted); border-radius:8px; }
+ .mobile-columns a[aria-current="page"] { background:#e7eee7; color:var(--green-dark); font-weight:800; }
+ .notice-members span { line-height:1.8; }
+ .notice-detail h1 { font-size:27px; }
+}

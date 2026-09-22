@@ -383,6 +383,25 @@ def sync_workbook(
     write_manager_data(manager_payload(read_rows(workbook['球队经理'])), manager_output_path)
 
 
+def write_notices(workbook, path):
+    if '通知公告' not in workbook.sheetnames:
+        return
+    notices = []
+    for row in read_rows(workbook['通知公告']):
+        date = row.get('发布日期') or ''
+        if hasattr(date, 'strftime'):
+            date = date.strftime('%Y-%m-%d')
+        notices.append({
+            'id': str(row.get('公告ID') or ''), 'category': row.get('分类') or '球队动态',
+            'date': str(date), 'title': row.get('标题') or '', 'summary': row.get('摘要') or '',
+            'body': row.get('正文') or '', 'members': str(row.get('名单') or '').split('、'),
+            'image': row.get('配图') or '', 'imageCaption': row.get('图片说明') or '',
+            'link': row.get('关联链接') or '#notices', 'linkText': row.get('链接文字') or '查看详情',
+            'status': row.get('发布状态') or '草稿', 'pinned': row.get('置顶') == '是',
+        })
+    path.write_text('window.TEAM_NOTICES = ' + json.dumps(notices, ensure_ascii=False, indent=4) + ';\n', encoding='utf-8')
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--source', type=Path, default=DEFAULT_WORKBOOK)
@@ -396,6 +415,7 @@ def main():
         ROOT / 'js' / 'newcomer-data.js',
         ROOT / 'js' / 'manager-data.js',
     )
+    write_notices(load_workbook(args.target), ROOT / 'js' / 'notices-data.js')
 
 
 if __name__ == '__main__':
