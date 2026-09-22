@@ -17,10 +17,10 @@ assert.doesNotMatch(js, /slide\.style\.backgroundImage\s*=\s*'linear-gradient/);
 assert.match(js, /slide\.style\.backgroundImage\s*=\s*'url\("'/);
 assert.match(html, /css\/style\.css\?v=visitor-counter-1/);
 assert.match(html, /js\/main\.js\?v=columns-1/);
-assert.match(html, /href="https:\/\/weiyanluo06-png\.github\.io\/wtu-football\/"/);
+assert.match(readFileSync('js/sections.js', 'utf8'), /href="https:\/\/weiyanluo06-png\.github\.io\/wtu-football\/"/);
 assert.match(html, /target="_blank"/);
 assert.match(html, /rel="noopener noreferrer"/);
-assert.match(html, /材料足球队/);
+assert.match(readFileSync('js/sections.js', 'utf8'), /材料足球队/);
 assert.match(html, /https:\/\/hits\.sh\/weiyanluo06-png\.github\.io\/sk_football\.svg/);
 assert.match(html, /view=today-total/);
 assert.match(html, /class="footer__visits"/);
@@ -139,6 +139,8 @@ assert.match(newcomerMotionSource, /touchstart', function \(\) \{ pauseState\.pa
 assert.match(newcomerMotionSource, /touchend', resumeTouchLater/);
 assert.match(newcomerMotionSource, /touchcancel', resumeTouchLater/);
 assert.match(newcomerMotionSource, /else if \(reduceMotion\.matches\) \{\s*viewport\.style\.scrollSnapType = '';/);
+
+
 
 
 
