@@ -123,7 +123,7 @@ window.NEWCOMER_DATA = {
             "name": "田杨洋",
             "grade": "2026级",
             "number": 22,
-            "pos": "",
+            "pos": "后卫",
             "role": "",
             "preferredFoot": "右脚",
             "style": "",
