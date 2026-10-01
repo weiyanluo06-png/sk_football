@@ -71,3 +71,23 @@
  .notice-detail h1 { font-size:27px; }
 }
 .notice-detail > p { white-space: pre-line; }
+.draw-groups { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:24px 0; }
+.draw-group { overflow:hidden; border:1px solid var(--line); border-radius:14px; background:var(--paper); }
+.draw-group header { display:flex; align-items:center; gap:12px; padding:18px; background:#eaf0e8; border-bottom:1px solid var(--line); }
+.draw-letter { font:700 42px/1 Oswald,sans-serif; color:var(--green); }
+.draw-eyebrow { font:600 10px/1.5 Oswald,sans-serif; letter-spacing:2px; color:var(--muted); }
+.draw-group header h2 { margin:2px 0 0; font-size:18px; }
+.draw-group ul { list-style:none; margin:0; padding:10px 14px; }
+.draw-group li { display:flex; align-items:center; gap:12px; padding:13px 8px; border-bottom:1px solid var(--line); }
+.draw-group li:last-child { border-bottom:0; }
+.draw-number { font:500 12px Oswald,sans-serif; color:var(--muted); }
+.draw-group strong { font-size:16px; color:var(--green-dark); }
+.draw-group--ours { border-color:var(--gold); }
+.draw-group--ours header { background:var(--green-dark); }
+.draw-group--ours header h2,.draw-group--ours .draw-letter { color:var(--paper); }
+.draw-group--ours .draw-eyebrow { color:#cfdbc9; }
+.draw-badge { margin-left:auto; font-size:10px; color:#f1d489; border:1px solid #9d8855; padding:4px 6px; border-radius:4px; }
+.draw-team--ours { background:#edf2e7; border-radius:6px; }
+.draw-us { margin-left:auto; font-size:10px; color:var(--green); }
+.draw-rule { grid-column:1/-1; margin:0; padding:12px; text-align:center; background:#eee9dc; color:var(--green-dark); border-radius:8px; font-size:13px; }
+@media(max-width:480px) { .draw-groups { gap:10px; } .draw-group header { padding:12px; gap:8px; flex-wrap:wrap; } .draw-letter { font-size:34px; } .draw-badge { margin-left:0; } .draw-group ul { padding:6px 8px; } .draw-group li { gap:8px; padding:12px 4px; flex-wrap:wrap; } .draw-group strong { font-size:14px; } .draw-us { width:100%; margin-left:22px; } }
