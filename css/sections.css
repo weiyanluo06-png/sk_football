@@ -70,3 +70,4 @@
  .notice-members span { line-height:1.8; }
  .notice-detail h1 { font-size:27px; }
 }
+.notice-detail > p { white-space: pre-line; }

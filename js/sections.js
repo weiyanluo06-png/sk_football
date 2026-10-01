@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded',function(){
  pages.team.appendChild(roster);
  function populateRoster(){var target=roster.querySelector('.team-directory');target.replaceChildren();document.querySelectorAll('#squadPool .player-card').forEach(function(card){var copy=card.cloneNode(true);copy.classList.remove('player-card--starting');copy.addEventListener('click',function(){var name=card.querySelector('.player-card__name').textContent; var originals=(window.PONYTAIL_DATA.players||[]); var max=originals.reduce(function(m,p){return Math.max(m,p.id);},0); var extras=(window.NEWCOMER_DATA.newcomers||[]).filter(function(p){return !originals.some(function(o){return o.name===p.name;});}); var found=originals.find(function(p){return p.name===name;}); window.openTeamProfile(found?found.id:max+1+extras.findIndex(function(p){return p.name===name;}));});target.appendChild(copy);});}
  populateRoster();
- var notices=(window.TEAM_NOTICES||[]).filter(function(n){return n.status==='发布';}).sort(function(a,b){return b.date.localeCompare(a.date);});
+ var notices=(window.TEAM_NOTICES||[]).filter(function(n){return n.status==='发布';}).reverse().sort(function(a,b){return b.date.localeCompare(a.date);});
  function card(n){return '<a class="notice-card" href="#notice/'+encodeURIComponent(n.id)+'"><span class="notice-meta">'+esc(n.date)+'</span><h3>'+esc(n.title)+'</h3><p>'+esc(n.summary)+'</p><span class="text-link">查看公告 →</span></a>';}
  pages.home.insertAdjacentHTML('beforeend','<section class="home-overview"><div class="overview-heading"><div><span class="section__kicker">CLUB NEWS</span><h2>球队近况</h2></div><a href="#notices" class="text-link">全部通知 →</a></div><div class="home-news">'+notices.slice(0,3).map(card).join('')+'</div><div class="home-match" id="homeMatch"></div><nav class="quick-links" aria-label="快捷入口"><a href="#team">球队成员 <span>认识队员与经理 →</span></a><a href="#tactics">自由战术板 <span>选择阵型，自由排阵 →</span></a><a href="#matches">赛事档案 <span>赛程与比赛记录 →</span></a><a href="#gallery">球队影像 <span>留住场上场下的瞬间 →</span></a></nav><div class="home-bottom"><a href="#recruit">加入球队 →</a><a href="#about">了解我们的故事 →</a></div></section>');
  var matches=(window.PONYTAIL_DATA.matches||[]).filter(function(m){return /^\d{4}-\d{2}-\d{2}$/.test(m.date);});var today=new Date().toLocaleDateString('sv-SE');var next=matches.filter(function(m){return m.date>=today;}).sort(function(a,b){return a.date.localeCompare(b.date);})[0];var latest=next||matches.sort(function(a,b){return b.date.localeCompare(a.date);})[0];
@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded',function(){
  document.addEventListener('click',function(event){var a=event.target.closest('a[href^="#"]');if(!a||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;var h=a.getAttribute('href');if(h.length<2)return;event.preventDefault();if(location.hash!==h){history.pushState(null,'',h);route();}});
  window.addEventListener('hashchange',route);route();
 });
+
 
 
 
