@@ -117,6 +117,19 @@ window.NEWCOMER_DATA = {
             "intro": "",
             "photo": "assets/players/yangjintai.png",
             "photoPosition": "50% 0%"
+        },
+        {
+            "order": 10,
+            "name": "田杨洋",
+            "grade": "2026级",
+            "number": 22,
+            "pos": "",
+            "role": "",
+            "preferredFoot": "右脚",
+            "style": "",
+            "intro": "",
+            "photo": "assets/players/tianyangyang.jpg",
+            "photoPosition": "50% 50%"
         }
     ]
 };

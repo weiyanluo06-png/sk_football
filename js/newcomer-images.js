@@ -88,5 +88,15 @@ window.NEWCOMER_IMAGES = {
       "src": "assets/players/showcase/yangjintai-640.webp",
       "width": 387
     }
+  },
+  "assets/players/tianyangyang.jpg": {
+    "320": {
+      "src": "assets/players/showcase/tianyangyang-320.webp",
+      "width": 320
+    },
+    "640": {
+      "src": "assets/players/showcase/tianyangyang-640.webp",
+      "width": 640
+    }
   }
 };

@@ -23,5 +23,22 @@ window.TEAM_NOTICES = [
         "linkText": "认识新队员",
         "status": "发布",
         "pinned": true
+    },
+    {
+        "id": "welcome-tianyangyang-2026",
+        "category": "新人加入",
+        "date": "2026-10-01",
+        "title": "欢迎2026级新队员田杨洋加入球队",
+        "summary": "田杨洋的球员资料已上线：2026级，22号，惯用右脚。",
+        "body": "欢迎田杨洋加入生康足球队！期待在新赛季一起训练、并肩上场。",
+        "members": [
+            "田杨洋"
+        ],
+        "image": "assets/players/showcase/tianyangyang-640.webp",
+        "imageCaption": "田杨洋 · 2026级 · 22号",
+        "link": "#team",
+        "linkText": "查看球队成员",
+        "status": "发布",
+        "pinned": false
     }
 ];
