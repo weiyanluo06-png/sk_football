@@ -130,6 +130,19 @@ window.NEWCOMER_DATA = {
             "intro": "",
             "photo": "assets/players/tianyangyang.jpg",
             "photoPosition": "50% 50%"
+        },
+        {
+            "order": 11,
+            "name": "段德浩",
+            "grade": "2024级",
+            "number": 37,
+            "pos": "前锋",
+            "role": "",
+            "preferredFoot": "右脚",
+            "style": "",
+            "intro": "2026年加入球队。",
+            "photo": "assets/players/duandehao.png",
+            "photoPosition": "50% 50%"
         }
     ]
 };

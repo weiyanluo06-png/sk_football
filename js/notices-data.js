@@ -57,5 +57,22 @@ window.TEAM_NOTICES = [
         "linkText": "查看赛事栏目",
         "status": "发布",
         "pinned": false
+    },
+    {
+        "id": "welcome-duandehao-2026",
+        "category": "新人加入",
+        "date": "2026-10-05",
+        "title": "欢迎段德浩加入生康足球队",
+        "summary": "段德浩今年加入生康足球队：2024级，37号，前锋，惯用右脚。",
+        "body": "欢迎段德浩加入生康足球队！段德浩是2024级同学，今年正式加入球队，身披37号，司职前锋，惯用右脚。\n\n期待他在训练和比赛中尽快融入球队，与大家一起为新赛季贡献力量。",
+        "members": [
+            "段德浩"
+        ],
+        "image": "assets/players/showcase/duandehao-640.webp",
+        "imageCaption": "段德浩 · 2024级 · 37号",
+        "link": "#team",
+        "linkText": "查看球队成员",
+        "status": "发布",
+        "pinned": false
     }
 ];

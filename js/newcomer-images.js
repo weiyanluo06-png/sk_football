@@ -98,5 +98,15 @@ window.NEWCOMER_IMAGES = {
       "src": "assets/players/showcase/tianyangyang-640.webp",
       "width": 640
     }
+  },
+  "assets/players/duandehao.png": {
+    "320": {
+      "src": "assets/players/showcase/duandehao-320.webp",
+      "width": 320
+    },
+    "640": {
+      "src": "assets/players/showcase/duandehao-640.webp",
+      "width": 640
+    }
   }
 };
