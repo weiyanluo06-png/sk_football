@@ -41,6 +41,14 @@ def load_site_data(path=SITE_DATA_PATH):
     return load_window_data(path, 'PONYTAIL_DATA')
 
 
+def load_legacy_site_data():
+    # The workbook is a historical snapshot, preceding event-derived totals.
+    data = load_site_data()
+    workbook = load_workbook(WORKBOOK_PATH, data_only=True)
+    SYNC_MODULE.update_players(data, SYNC_MODULE.read_rows(workbook['球员数据']))
+    return data
+
+
 def load_newcomer_data(path=NEWCOMER_DATA_PATH):
     return load_window_data(path, 'NEWCOMER_DATA')
 
@@ -70,7 +78,7 @@ class TeamWorkbookSyncTest(unittest.TestCase):
 
     def test_sync_emits_nonempty_newcomers_without_changing_official_roster(self):
         official_source = SITE_DATA_PATH.read_bytes()
-        official_data = load_site_data()
+        official_data = load_legacy_site_data()
         with tempfile.TemporaryDirectory() as directory:
             temporary = Path(directory)
             source = temporary / 'source.xlsx'
@@ -81,6 +89,7 @@ class TeamWorkbookSyncTest(unittest.TestCase):
             shutil.copy2(WORKBOOK_PATH, source)
 
             workbook = load_workbook(source)
+            workbook['新生展示'].delete_rows(2, workbook['新生展示'].max_row)
             workbook['新生展示'].append([
                 1, 'Fixture Newcomer', '2026级', 24, 'MF', 'AM',
                 '右脚', '组织', 'Fixture intro', 'fixture.webp', '50% 25%', '展示',
@@ -98,7 +107,10 @@ class TeamWorkbookSyncTest(unittest.TestCase):
                 [item['name'] for item in newcomer_data['newcomers']],
                 ['Fixture Newcomer'],
             )
-            self.assertEqual(synced_site_data['players'], official_data['players'])
+            self.assertEqual(
+                [(p['id'], p['name']) for p in synced_site_data['players']],
+                [(p['id'], p['name']) for p in official_data['players']],
+            )
             self.assertEqual(
                 synced_site_data['startingLineup'],
                 official_data['startingLineup'],
@@ -107,7 +119,7 @@ class TeamWorkbookSyncTest(unittest.TestCase):
         self.assertEqual(SITE_DATA_PATH.read_bytes(), official_source)
 
     def test_sync_emits_manager_without_changing_player_or_newcomer_data(self):
-        official_data = load_site_data()
+        official_data = load_legacy_site_data()
         official_newcomers = load_newcomer_data()
         with tempfile.TemporaryDirectory() as directory:
             temporary = Path(directory)
@@ -119,6 +131,7 @@ class TeamWorkbookSyncTest(unittest.TestCase):
             shutil.copy2(WORKBOOK_PATH, source)
 
             workbook = load_workbook(source)
+            workbook['球队经理'].delete_rows(2, workbook['球队经理'].max_row)
             workbook['球队经理'].append([
                 1, 'Fixture Manager', '2026级', '2026-2027', '球队经理',
                 '协助球队日常事务、比赛记录、人员联络与赛场保障。',
@@ -147,7 +160,10 @@ class TeamWorkbookSyncTest(unittest.TestCase):
                     'photoPosition': '50% 30%',
                 }],
             })
-            self.assertEqual(synced_site_data['players'], official_data['players'])
+            self.assertEqual(
+                [(p['id'], p['name']) for p in synced_site_data['players']],
+                [(p['id'], p['name']) for p in official_data['players']],
+            )
             self.assertEqual(synced_site_data['startingLineup'], official_data['startingLineup'])
             self.assertEqual(synced_newcomers, official_newcomers)
             self.assertNotIn(
@@ -195,7 +211,7 @@ class TeamWorkbookSyncTest(unittest.TestCase):
         })
 
     def test_empty_newcomer_payload_has_required_shape(self):
-        payload = load_newcomer_data()
+        payload = newcomer_payload([])
         self.assertEqual(payload, {'season': '', 'newcomers': []})
         self.assertEqual(set(payload), {'season', 'newcomers'})
 
@@ -272,7 +288,7 @@ class TeamWorkbookSyncTest(unittest.TestCase):
             worksheet = cached_workbook['球员数据']
             headers = [cell.value for cell in worksheet[1]]
             rows = [dict(zip(headers, values)) for values in worksheet.iter_rows(min_row=2, values_only=True)]
-            site_players = {player['name']: player for player in load_site_data()['players']}
+            site_players = {player['name']: player for player in load_legacy_site_data()['players']}
 
             self.assertEqual(
                 {row['姓名']: row['评分'] for row in rows},
@@ -310,12 +326,12 @@ class TeamWorkbookSyncTest(unittest.TestCase):
         self.assertIn('IF(E2="DF"', rating_formula)
         self.assertTrue(str(workbook['球员数据']['O2'].value).startswith('=IF('))
 
-    def test_player_stats_in_workbook_match_the_website(self):
+    def test_player_stats_in_workbook_match_preserved_baseline(self):
         workbook = load_workbook(WORKBOOK_PATH, data_only=True)
         worksheet = workbook['球员数据']
         headers = [cell.value for cell in worksheet[1]]
         rows = [dict(zip(headers, values)) for values in worksheet.iter_rows(min_row=2, values_only=True)]
-        site_players = {player['name']: player for player in load_site_data()['players']}
+        site_players = {player['name']: player for player in load_legacy_site_data()['players']}
 
         self.assertEqual(set(site_players), {row['姓名'] for row in rows})
         for row in rows:
@@ -329,9 +345,24 @@ class TeamWorkbookSyncTest(unittest.TestCase):
             self.assertEqual(player['motm'], row['MVP'])
             self.assertEqual(player['cleanSheets'], row['零封'])
             self.assertEqual(player['lowConcedeGames'], row['低失球场'])
-            self.assertEqual(player['rating'], row['评分'])
-            self.assertEqual(player['memory'], row['代表数据'])
+            self.assertEqual(player['rating'], SYNC_MODULE.calculate_rating(row))
+            self.assertEqual(player['memory'], SYNC_MODULE.calculate_memory(row))
             self.assertNotIn('saves', player)
+
+    def test_legacy_sync_cannot_overwrite_event_derived_site(self):
+        before = SITE_DATA_PATH.read_bytes()
+        with self.assertRaisesRegex(ValueError, 'team-records.json'):
+            SYNC_MODULE.sync_workbook(WORKBOOK_PATH, WORKBOOK_PATH, SITE_DATA_PATH, SITE_DATA_PATH, NEWCOMER_DATA_PATH, MANAGER_DATA_PATH)
+        self.assertEqual(SITE_DATA_PATH.read_bytes(), before)
+
+    def test_archived_workbook_baselines_equal_ledger(self):
+        records = json.loads((ROOT / 'data' / 'team-records.json').read_text(encoding='utf-8'))
+        profiles = {p['name']: p for p in records['players']}
+        workbook = load_workbook(WORKBOOK_PATH, data_only=True)
+        keys = {'出场': 'apps', '进球': 'goals', '助攻': 'asts', 'MVP': 'motm', '零封': 'cleanSheets', '低失球场': 'lowConcedeGames'}
+        for row in SYNC_MODULE.read_rows(workbook['球员数据']):
+            for column, key in keys.items():
+                self.assertEqual(row[column], profiles[row['姓名']]['baseline'][key], row['姓名'])
 
 
 if __name__ == '__main__':

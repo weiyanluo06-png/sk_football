@@ -1,676 +1,1633 @@
+// 自动生成：请维护 data/team-records.json，然后运行 node tools/build_team_data.mjs
 window.PONYTAIL_DATA = {
-    players: [
+    "players": [
         {
-                "id": 1,
-                "name": "吴宇成",
-                "nickname": "铁血后卫",
-                "number": 6,
-                "pos": "DF",
+            "id": 1,
+            "name": "吴宇成",
+            "nickname": "铁血后卫",
+            "number": 6,
+            "pos": "DF",
+            "role": "CB/CM/GK",
+            "avatarIcon": "fa-shield-halved",
+            "traits": [
+                "后场组织者/进攻型门将"
+            ],
+            "reviews": [
+                "铁血后卫+天才门将",
+                "这家伙到底是中场还是后卫还是门将啊？",
+                "六边形战士",
+                "生康最强中卫+门将天赋拉满",
+                "进步最快之人"
+            ],
+            "bio": "场上可胜任中后卫、中场和门将。",
+            "photo": "assets/players/wuyucheng.webp",
+            "baseline": {
                 "apps": 11,
                 "goals": 0,
                 "asts": 1,
-                "role": "CB/CM/GK",
-                "cleanSheets": 0,
                 "motm": 0,
-                "rating": 7.8,
-                "avatarIcon": "fa-shield-halved",
-                "traits": [
-                        "后场组织者/进攻型门将"
-                ],
-                "memory": "送出 1 次助攻",
-                "reviews": [
-                        "铁血后卫+天才门将",
-                        "这家伙到底是中场还是后卫还是门将啊？",
-                        "六边形战士",
-                        "生康最强中卫+门将天赋拉满",
-                        "进步最快之人"
-                ],
-                "bio": "场上可胜任中后卫、中场和门将。",
-                "photo": "assets/players/wuyucheng.webp",
+                "cleanSheets": 0,
                 "lowConcedeGames": 0
+            },
+            "apps": 12,
+            "goals": 0,
+            "asts": 1,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [
+                {
+                    "matchId": "2026-10-16-eleven-material",
+                    "date": "2026-10-16",
+                    "opponent": "材料学院",
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                }
+            ],
+            "rating": 7.9,
+            "memory": "送出 1 次助攻"
         },
         {
-                "id": 2,
-                "name": "代育锐",
-                "nickname": "球王",
-                "number": 10,
-                "pos": "DF",
+            "id": 2,
+            "name": "代育锐",
+            "nickname": "球王",
+            "number": 10,
+            "pos": "DF",
+            "role": "CB/LB",
+            "avatarIcon": "fa-shield-halved",
+            "traits": [
+                "组织型中后卫"
+            ],
+            "reviews": [
+                "我要跟代队当一辈子队友",
+                "代队无敌",
+                "全世界最好的代队",
+                "代队牛逼",
+                "10号体育生"
+            ],
+            "bio": "场上可胜任中后卫和左后卫。",
+            "photo": "assets/players/daiyurui.webp",
+            "baseline": {
                 "apps": 4,
                 "goals": 0,
                 "asts": 0,
-                "role": "CB/LB",
-                "cleanSheets": 0,
                 "motm": 0,
-                "rating": 6.6,
-                "avatarIcon": "fa-shield-halved",
-                "traits": [
-                        "组织型中后卫"
-                ],
-                "memory": "累计出场 4 场",
-                "reviews": [
-                        "我要跟代队当一辈子队友",
-                        "代队无敌",
-                        "全世界最好的代队",
-                        "代队牛逼",
-                        "10号体育生"
-                ],
-                "bio": "场上可胜任中后卫和左后卫。",
-                "photo": "assets/players/daiyurui.webp",
+                "cleanSheets": 0,
                 "lowConcedeGames": 0
+            },
+            "apps": 4,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6.6,
+            "memory": "累计出场 4 场"
         },
         {
-                "id": 3,
-                "name": "王伯函",
-                "nickname": "防守大闸",
-                "number": 29,
-                "pos": "DF",
+            "id": 3,
+            "name": "王伯函",
+            "nickname": "防守大闸",
+            "number": 29,
+            "pos": "DF",
+            "role": "LB/CB",
+            "avatarIcon": "fa-shield-halved",
+            "traits": [
+                "防守型边后卫"
+            ],
+            "reviews": [
+                "纺大铲球第一人",
+                "if：对视；print：放铲",
+                "人和球总得留下一个",
+                "纺大万比萨卡",
+                "最努力之人"
+            ],
+            "bio": "场上可胜任左后卫和中后卫。",
+            "photo": "assets/players/wangbohan.webp",
+            "baseline": {
                 "apps": 9,
                 "goals": 0,
                 "asts": 0,
-                "role": "LB/CB",
-                "cleanSheets": 0,
                 "motm": 0,
-                "rating": 7.3,
-                "avatarIcon": "fa-shield-halved",
-                "traits": [
-                        "防守型边后卫"
-                ],
-                "memory": "累计出场 9 场",
-                "reviews": [
-                        "纺大铲球第一人",
-                        "if：对视；print：放铲",
-                        "人和球总得留下一个",
-                        "纺大万比萨卡",
-                        "最努力之人"
-                ],
-                "bio": "场上可胜任左后卫和中后卫。",
-                "photo": "assets/players/wangbohan.webp",
+                "cleanSheets": 0,
                 "lowConcedeGames": 0
+            },
+            "apps": 9,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 7.3,
+            "memory": "累计出场 9 场"
         },
         {
-                "id": 4,
-                "name": "刘航宇",
-                "nickname": "门神",
-                "number": 0,
-                "pos": "GK",
+            "id": 4,
+            "name": "刘航宇",
+            "nickname": "门神",
+            "number": 0,
+            "pos": "GK",
+            "role": "GK",
+            "avatarIcon": "fa-hands",
+            "traits": [
+                "防守型门将"
+            ],
+            "reviews": [
+                "门神",
+                "佛得角",
+                "抽卡出红了",
+                "爆炸身体素质",
+                "打篮球的"
+            ],
+            "bio": "场上位置为门将。",
+            "photo": "assets/players/liuhangyu.webp",
+            "baseline": {
                 "apps": 8,
                 "goals": 0,
                 "asts": 0,
-                "role": "GK",
+                "motm": 0,
                 "cleanSheets": 1,
-                "motm": 0,
-                "rating": 6.8,
-                "avatarIcon": "fa-hands",
-                "traits": [
-                        "防守型门将"
-                ],
-                "memory": "累计出场 8 场",
-                "reviews": [
-                        "门神",
-                        "佛得角",
-                        "抽卡出红了",
-                        "爆炸身体素质",
-                        "打篮球的"
-                ],
-                "bio": "场上位置为门将。",
-                "photo": "assets/players/liuhangyu.webp",
                 "lowConcedeGames": 0
+            },
+            "apps": 9,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 1,
+            "lowConcedeGames": 0,
+            "matchHistory": [
+                {
+                    "matchId": "2026-10-16-eleven-material",
+                    "date": "2026-10-16",
+                    "opponent": "材料学院",
+                    "started": true,
+                    "position": "GK",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                }
+            ],
+            "rating": 6.9,
+            "memory": "累计出场 9 场"
         },
         {
-                "id": 5,
-                "name": "曹维嘉",
-                "nickname": "能跑",
-                "number": 23,
-                "pos": "FW",
+            "id": 5,
+            "name": "曹维嘉",
+            "nickname": "能跑",
+            "number": 23,
+            "pos": "FW",
+            "role": "RB/RWF",
+            "avatarIcon": "fa-person-running",
+            "traits": [
+                "防守型边锋"
+            ],
+            "reviews": [
+                "有点能跑",
+                "边路超跑，百公里加速只需要淌一脚",
+                "生康耐跑王",
+                "生康跑车",
+                "能跑"
+            ],
+            "bio": "场上可胜任右后卫和右边锋。",
+            "photo": "assets/players/caoweijia.webp",
+            "baseline": {
                 "apps": 8,
                 "goals": 0,
                 "asts": 0,
-                "role": "RB/RWF",
-                "cleanSheets": 0,
                 "motm": 0,
-                "rating": 6.6,
-                "avatarIcon": "fa-person-running",
-                "traits": [
-                        "防守型边锋"
-                ],
-                "memory": "累计出场 8 场",
-                "reviews": [
-                        "有点能跑",
-                        "边路超跑，百公里加速只需要淌一脚",
-                        "生康耐跑王",
-                        "生康跑车",
-                        "能跑"
-                ],
-                "bio": "场上可胜任右后卫和右边锋。",
-                "photo": "assets/players/caoweijia.webp",
+                "cleanSheets": 0,
                 "lowConcedeGames": 0
+            },
+            "apps": 8,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6.6,
+            "memory": "累计出场 8 场"
         },
         {
-                "id": 6,
-                "name": "尚锐杰",
-                "nickname": "曾效力队员",
-                "number": 9,
-                "pos": "DF",
+            "id": 6,
+            "name": "尚锐杰",
+            "nickname": "曾效力队员",
+            "number": 9,
+            "pos": "DF",
+            "role": "RB",
+            "avatarIcon": "fa-shield-halved",
+            "traits": [
+                "边后卫"
+            ],
+            "reviews": [
+                "npc",
+                "懒得喷",
+                "有这号人吗？",
+                "这是谁",
+                "？"
+            ],
+            "bio": "场上位置为右后卫。",
+            "photo": "assets/players/shangruijie.webp",
+            "baseline": {
                 "apps": 0,
                 "goals": 0,
                 "asts": 0,
-                "role": "RB",
-                "cleanSheets": 0,
                 "motm": 0,
-                "rating": 6.0,
-                "avatarIcon": "fa-shield-halved",
-                "traits": [
-                        "边后卫"
-                ],
-                "memory": "累计出场 0 场",
-                "reviews": [
-                        "npc",
-                        "懒得喷",
-                        "有这号人吗？",
-                        "这是谁",
-                        "？"
-                ],
-                "bio": "场上位置为右后卫。",
-                "photo": "assets/players/shangruijie.webp",
+                "cleanSheets": 0,
                 "lowConcedeGames": 0
+            },
+            "apps": 0,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6,
+            "memory": "累计出场 0 场"
         },
         {
-                "id": 7,
-                "name": "吴宇泽",
-                "nickname": "53",
-                "number": 15,
-                "pos": "FW",
+            "id": 7,
+            "name": "吴宇泽",
+            "nickname": "53",
+            "number": 15,
+            "pos": "FW",
+            "role": "LWF/CF",
+            "avatarIcon": "fa-person-running",
+            "traits": [
+                "抢点型前锋"
+            ],
+            "reviews": [
+                "爸爸",
+                "爸爸",
+                "爸爸",
+                "爸爸",
+                "姆巴佩"
+            ],
+            "bio": "场上可胜任左边锋和中锋。",
+            "photo": "assets/players/wuyuze.webp",
+            "baseline": {
                 "apps": 11,
                 "goals": 6,
                 "asts": 1,
-                "role": "LWF/CF",
-                "cleanSheets": 0,
                 "motm": 0,
-                "rating": 9.2,
-                "avatarIcon": "fa-person-running",
-                "traits": [
-                        "抢点型前锋"
-                ],
-                "memory": "贡献 6 粒进球 / 送出 1 次助攻",
-                "reviews": [
-                        "爸爸",
-                        "爸爸",
-                        "爸爸",
-                        "爸爸",
-                        "姆巴佩"
-                ],
-                "bio": "场上可胜任左边锋和中锋。",
-                "photo": "assets/players/wuyuze.webp",
+                "cleanSheets": 0,
                 "lowConcedeGames": 0
+            },
+            "apps": 12,
+            "goals": 6,
+            "asts": 1,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [
+                {
+                    "matchId": "2026-10-16-eleven-material",
+                    "date": "2026-10-16",
+                    "opponent": "材料学院",
+                    "started": true,
+                    "position": "FW",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                }
+            ],
+            "rating": 9.3,
+            "memory": "贡献 6 粒进球 / 送出 1 次助攻"
         },
         {
-                "id": 8,
-                "name": "彭卓伦",
-                "nickname": "发牌",
-                "number": 8,
-                "pos": "MF",
+            "id": 8,
+            "name": "彭卓伦",
+            "nickname": "发牌",
+            "number": 8,
+            "pos": "MF",
+            "role": "AM/LWF",
+            "avatarIcon": "fa-compass",
+            "traits": [
+                "组织型前锋"
+            ],
+            "reviews": [
+                "给过我很多助攻之人",
+                "发牌～",
+                "男模",
+                "腿长14的技术型球员",
+                "瓦学弟"
+            ],
+            "bio": "场上可胜任攻击型中场和左边锋。",
+            "photo": "assets/players/pengzhuolun.webp",
+            "baseline": {
                 "apps": 8,
                 "goals": 2,
                 "asts": 3,
-                "role": "AM/LWF",
-                "cleanSheets": 0,
                 "motm": 0,
-                "rating": 8.1,
-                "avatarIcon": "fa-compass",
-                "traits": [
-                        "组织型前锋"
-                ],
-                "memory": "贡献 2 粒进球 / 送出 3 次助攻",
-                "reviews": [
-                        "给过我很多助攻之人",
-                        "发牌～",
-                        "男模",
-                        "腿长14的技术型球员",
-                        "瓦学弟"
-                ],
-                "bio": "场上可胜任攻击型中场和左边锋。",
-                "photo": "assets/players/pengzhuolun.webp",
+                "cleanSheets": 0,
                 "lowConcedeGames": 0
+            },
+            "apps": 9,
+            "goals": 3,
+            "asts": 3,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [
+                {
+                    "matchId": "2026-10-16-eleven-material",
+                    "date": "2026-10-16",
+                    "opponent": "材料学院",
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": 50,
+                    "apps": 1,
+                    "goals": 1,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                }
+            ],
+            "rating": 8.5,
+            "memory": "贡献 3 粒进球 / 送出 3 次助攻"
         },
         {
-                "id": 9,
-                "name": "周霄旭",
-                "nickname": "生康未来",
-                "number": 5,
-                "pos": "FW",
+            "id": 9,
+            "name": "周霄旭",
+            "nickname": "生康未来",
+            "number": 5,
+            "pos": "FW",
+            "role": "CF/RWF/AM",
+            "avatarIcon": "fa-person-running",
+            "traits": [
+                "全能前锋"
+            ],
+            "reviews": [
+                "生康未来",
+                "贝林厄姆",
+                "生康球王",
+                "贝林厄姆",
+                "生康未来"
+            ],
+            "bio": "场上可胜任中锋、右边锋和攻击型中场。",
+            "photo": "assets/players/zhouxiaoxu.webp",
+            "baseline": {
                 "apps": 10,
                 "goals": 4,
                 "asts": 3,
-                "role": "CF/RWF/AM",
-                "cleanSheets": 0,
                 "motm": 0,
-                "rating": 9.0,
-                "avatarIcon": "fa-person-running",
-                "traits": [
-                        "全能前锋"
-                ],
-                "memory": "贡献 4 粒进球 / 送出 3 次助攻",
-                "reviews": [
-                        "生康未来",
-                        "贝林厄姆",
-                        "生康球王",
-                        "贝林厄姆",
-                        "生康未来"
-                ],
-                "bio": "场上可胜任中锋、右边锋和攻击型中场。",
-                "photo": "assets/players/zhouxiaoxu.webp",
+                "cleanSheets": 0,
                 "lowConcedeGames": 0
+            },
+            "apps": 11,
+            "goals": 4,
+            "asts": 3,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [
+                {
+                    "matchId": "2026-10-16-eleven-material",
+                    "date": "2026-10-16",
+                    "opponent": "材料学院",
+                    "started": true,
+                    "position": "FW",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                }
+            ],
+            "rating": 9,
+            "memory": "贡献 4 粒进球 / 送出 3 次助攻"
         },
         {
-                "id": 10,
-                "name": "张俊",
-                "nickname": "全能王",
-                "number": 17,
-                "pos": "DF",
+            "id": 10,
+            "name": "张俊",
+            "nickname": "全能王",
+            "number": 17,
+            "pos": "DF",
+            "role": "CB/CM/GK",
+            "avatarIcon": "fa-shield-halved",
+            "traits": [
+                "全能中场"
+            ],
+            "reviews": [
+                "有点万能",
+                "让我看看热区图，我靠全红！",
+                "我无处不在",
+                "全能王",
+                "工具人"
+            ],
+            "bio": "场上可胜任中后卫、中场和门将。",
+            "photo": "assets/players/zhangjun.webp",
+            "baseline": {
                 "apps": 6,
                 "goals": 0,
                 "asts": 0,
-                "role": "CB/CM/GK",
-                "cleanSheets": 0,
                 "motm": 0,
-                "rating": 6.8,
-                "avatarIcon": "fa-shield-halved",
-                "traits": [
-                        "全能中场"
-                ],
-                "memory": "累计出场 6 场",
-                "reviews": [
-                        "有点万能",
-                        "让我看看热区图，我靠全红！",
-                        "我无处不在",
-                        "全能王",
-                        "工具人"
-                ],
-                "bio": "场上可胜任中后卫、中场和门将。",
-                "photo": "assets/players/zhangjun.webp",
+                "cleanSheets": 0,
                 "lowConcedeGames": 0
+            },
+            "apps": 7,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [
+                {
+                    "matchId": "2026-10-16-eleven-material",
+                    "date": "2026-10-16",
+                    "opponent": "材料学院",
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                }
+            ],
+            "rating": 7,
+            "memory": "累计出场 7 场"
         },
         {
-                "id": 11,
-                "name": "岑烨",
-                "nickname": "门神",
-                "number": 18,
-                "pos": "GK",
+            "id": 11,
+            "name": "岑烨",
+            "nickname": "门神",
+            "number": 18,
+            "pos": "GK",
+            "role": "GK/CB",
+            "avatarIcon": "fa-hands",
+            "traits": [
+                "防守型门将"
+            ],
+            "reviews": [
+                "扑点第一人",
+                "对面装逼让对面飞起来",
+                "生康战车",
+                "一场比赛可以吹四年的门神",
+                "小黑胖子"
+            ],
+            "bio": "场上可胜任门将和中后卫。",
+            "photo": "assets/players/cenye.webp",
+            "baseline": {
                 "apps": 5,
                 "goals": 0,
                 "asts": 0,
-                "role": "GK/CB",
-                "cleanSheets": 1,
                 "motm": 0,
-                "rating": 6.6,
-                "avatarIcon": "fa-hands",
-                "traits": [
-                        "防守型门将"
-                ],
-                "memory": "累计出场 5 场",
-                "reviews": [
-                        "扑点第一人",
-                        "对面装逼让对面飞起来",
-                        "生康战车",
-                        "一场比赛可以吹四年的门神",
-                        "小黑胖子"
-                ],
-                "bio": "场上可胜任门将和中后卫。",
-                "photo": "assets/players/cenye.webp",
+                "cleanSheets": 1,
                 "lowConcedeGames": 0
+            },
+            "apps": 5,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 1,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6.6,
+            "memory": "累计出场 5 场"
         },
         {
-                "id": 12,
-                "name": "李傲",
-                "nickname": "铁血",
-                "number": 19,
-                "pos": "DF",
+            "id": 12,
+            "name": "李傲",
+            "nickname": "铁血",
+            "number": 19,
+            "pos": "DF",
+            "role": "RB",
+            "avatarIcon": "fa-shield-halved",
+            "traits": [
+                "边翼卫"
+            ],
+            "reviews": [
+                "铁血后卫",
+                "要么人过去球留下，要么全留下",
+                "你们的前锋很一般",
+                "腿长14铁血边后卫",
+                "铁血后卫"
+            ],
+            "bio": "场上位置为右后卫。",
+            "photo": "assets/players/liao.webp",
+            "baseline": {
                 "apps": 8,
                 "goals": 0,
                 "asts": 0,
-                "role": "RB",
-                "cleanSheets": 0,
                 "motm": 0,
-                "rating": 7.1,
-                "avatarIcon": "fa-shield-halved",
-                "traits": [
-                        "边翼卫"
-                ],
-                "memory": "累计出场 8 场",
-                "reviews": [
-                        "铁血后卫",
-                        "要么人过去球留下，要么全留下",
-                        "你们的前锋很一般",
-                        "腿长14铁血边后卫",
-                        "铁血后卫"
-                ],
-                "bio": "场上位置为右后卫。",
-                "photo": "assets/players/liao.webp",
+                "cleanSheets": 0,
                 "lowConcedeGames": 0
+            },
+            "apps": 9,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [
+                {
+                    "matchId": "2026-10-16-eleven-material",
+                    "date": "2026-10-16",
+                    "opponent": "材料学院",
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                }
+            ],
+            "rating": 7.3,
+            "memory": "累计出场 9 场"
         },
         {
-                "id": 13,
-                "name": "吴全银",
-                "nickname": "控场",
-                "number": 25,
-                "pos": "MF",
+            "id": 13,
+            "name": "吴全银",
+            "nickname": "控场",
+            "number": 25,
+            "pos": "MF",
+            "role": "DM/RB",
+            "avatarIcon": "fa-compass",
+            "traits": [
+                "全能中场"
+            ],
+            "reviews": [
+                "阿萨塔",
+                "阿萨塔",
+                "阿萨塔",
+                "生康罗德里",
+                "阿萨塔"
+            ],
+            "bio": "场上可胜任后腰和右后卫。",
+            "photo": "assets/players/wuquanyin.webp",
+            "baseline": {
                 "apps": 6,
                 "goals": 0,
                 "asts": 0,
-                "role": "DM/RB",
-                "cleanSheets": 0,
                 "motm": 0,
-                "rating": 6.5,
-                "avatarIcon": "fa-compass",
-                "traits": [
-                        "全能中场"
-                ],
-                "memory": "累计出场 6 场",
-                "reviews": [
-                        "阿萨塔",
-                        "阿萨塔",
-                        "阿萨塔",
-                        "生康罗德里",
-                        "阿萨塔"
-                ],
-                "bio": "场上可胜任后腰和右后卫。",
-                "photo": "assets/players/wuquanyin.webp",
+                "cleanSheets": 0,
                 "lowConcedeGames": 0
+            },
+            "apps": 7,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [
+                {
+                    "matchId": "2026-10-16-eleven-material",
+                    "date": "2026-10-16",
+                    "opponent": "材料学院",
+                    "started": false,
+                    "position": "MF",
+                    "onMinute": 50,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                }
+            ],
+            "rating": 6.6,
+            "memory": "累计出场 7 场"
         },
         {
-                "id": 14,
-                "name": "陈亿霏",
-                "nickname": "寝室长",
-                "number": 66,
-                "pos": "DF",
+            "id": 14,
+            "name": "陈亿霏",
+            "nickname": "寝室长",
+            "number": 66,
+            "pos": "DF",
+            "role": "LB",
+            "avatarIcon": "fa-shield-halved",
+            "traits": [
+                "边后卫"
+            ],
+            "reviews": [
+                "大脑完全不发育，小脑发育不完全",
+                "寝室长？",
+                "寝室长",
+                "寝室长。",
+                "窝里横"
+            ],
+            "bio": "场上位置为左后卫。",
+            "photo": "assets/players/chenyifei.webp",
+            "baseline": {
                 "apps": 3,
                 "goals": 0,
                 "asts": 0,
-                "role": "LB",
-                "cleanSheets": 0,
                 "motm": 0,
-                "rating": 6.4,
-                "avatarIcon": "fa-shield-halved",
-                "traits": [
-                        "边后卫"
-                ],
-                "memory": "累计出场 3 场",
-                "reviews": [
-                        "大脑完全不发育，小脑发育不完全",
-                        "寝室长？",
-                        "寝室长",
-                        "寝室长。",
-                        "窝里横"
-                ],
-                "bio": "场上位置为左后卫。",
-                "photo": "assets/players/chenyifei.webp",
+                "cleanSheets": 0,
                 "lowConcedeGames": 0
+            },
+            "apps": 3,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6.4,
+            "memory": "累计出场 3 场"
         },
         {
-                "id": 15,
-                "name": "何嗣承",
-                "nickname": "生康坎特",
-                "number": 12,
-                "pos": "MF",
+            "id": 15,
+            "name": "何嗣承",
+            "nickname": "生康坎特",
+            "number": 12,
+            "pos": "MF",
+            "role": "DM/LB",
+            "avatarIcon": "fa-compass",
+            "traits": [
+                "扫荡型中场"
+            ],
+            "reviews": [
+                "真鸡巴猛",
+                "这个真牛逼",
+                "身体最硬之人",
+                "生康坎特",
+                "菜"
+            ],
+            "bio": "场上可胜任后腰和左后卫。",
+            "photo": "assets/players/hesicheng.webp",
+            "baseline": {
                 "apps": 10,
                 "goals": 1,
                 "asts": 1,
-                "role": "DM/LB",
-                "cleanSheets": 1,
                 "motm": 0,
-                "rating": 7.6,
-                "avatarIcon": "fa-compass",
-                "traits": [
-                        "扫荡型中场"
-                ],
-                "memory": "贡献 1 粒进球 / 送出 1 次助攻",
-                "reviews": [
-                        "真鸡巴猛",
-                        "这个真牛逼",
-                        "身体最硬之人",
-                        "生康坎特",
-                        "菜"
-                ],
-                "bio": "场上可胜任后腰和左后卫。",
-                "photo": "assets/players/hesicheng.webp",
+                "cleanSheets": 1,
                 "lowConcedeGames": 0
+            },
+            "apps": 11,
+            "goals": 1,
+            "asts": 2,
+            "motm": 0,
+            "cleanSheets": 1,
+            "lowConcedeGames": 0,
+            "matchHistory": [
+                {
+                    "matchId": "2026-10-16-eleven-material",
+                    "date": "2026-10-16",
+                    "opponent": "材料学院",
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 1,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                }
+            ],
+            "rating": 7.9,
+            "memory": "贡献 1 粒进球 / 送出 2 次助攻"
         },
         {
-                "id": 16,
-                "name": "曹志威",
-                "nickname": "活跃队员",
-                "number": 66,
-                "pos": "GK",
+            "id": 16,
+            "name": "曹志威",
+            "nickname": "活跃队员",
+            "number": 66,
+            "pos": "GK",
+            "role": "GK",
+            "avatarIcon": "fa-hands",
+            "traits": [
+                "门将"
+            ],
+            "reviews": [],
+            "bio": "场上位置为门将。",
+            "photo": "assets/players/caozhiwei.webp",
+            "baseline": {
                 "apps": 1,
                 "goals": 0,
                 "asts": 0,
-                "role": "GK",
-                "cleanSheets": 0,
                 "motm": 0,
-                "rating": 6.1,
-                "avatarIcon": "fa-hands",
-                "traits": [
-                        "门将"
-                ],
-                "memory": "累计出场 1 场",
-                "reviews": [],
-                "bio": "场上位置为门将。",
-                "photo": "assets/players/caozhiwei.webp",
+                "cleanSheets": 0,
                 "lowConcedeGames": 0
+            },
+            "apps": 1,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6.1,
+            "memory": "累计出场 1 场"
         },
         {
-                "id": 17,
-                "name": "苗志梁",
-                "nickname": "足球文艺青年",
-                "number": 15,
-                "pos": "DF",
+            "id": 17,
+            "name": "苗志梁",
+            "nickname": "足球文艺青年",
+            "number": 15,
+            "pos": "DF",
+            "role": "LB/LWB",
+            "avatarIcon": "fa-shield-halved",
+            "traits": [
+                "边后卫"
+            ],
+            "reviews": [
+                "唱歌有点好听的",
+                "足球文艺青年",
+                "生康门面",
+                "生康ktv扛把子",
+                "和他去当A仔"
+            ],
+            "bio": "场上可胜任左后卫和左翼卫。",
+            "photo": "assets/players/miaozhiliang.webp",
+            "baseline": {
                 "apps": 2,
                 "goals": 0,
                 "asts": 0,
-                "role": "LB/LWB",
-                "cleanSheets": 0,
                 "motm": 0,
-                "rating": 6.3,
-                "avatarIcon": "fa-shield-halved",
-                "traits": [
-                        "边后卫"
-                ],
-                "memory": "累计出场 2 场",
-                "reviews": [
-                        "唱歌有点好听的",
-                        "足球文艺青年",
-                        "生康门面",
-                        "生康ktv扛把子",
-                        "和他去当A仔"
-                ],
-                "bio": "场上可胜任左后卫和左翼卫。",
-                "photo": "assets/players/miaozhiliang.webp",
+                "cleanSheets": 0,
                 "lowConcedeGames": 0
+            },
+            "apps": 2,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6.3,
+            "memory": "累计出场 2 场"
+        },
+        {
+            "id": 18,
+            "name": "段世添",
+            "number": 10,
+            "pos": "FW",
+            "role": "中锋/前腰",
+            "nickname": "2026级 · 双脚",
+            "photo": "assets/players/duanshitian.jpg",
+            "photoPosition": "50% 50%",
+            "avatarIcon": "fa-futbol",
+            "traits": [],
+            "reviews": [],
+            "bio": "改变生康历史的男人要来了",
+            "baseline": {
+                "apps": 0,
+                "goals": 0,
+                "asts": 0,
+                "motm": 0,
+                "cleanSheets": 0,
+                "lowConcedeGames": 0
+            },
+            "apps": 1,
+            "goals": 1,
+            "asts": 0,
+            "motm": 1,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [
+                {
+                    "matchId": "2026-10-16-eleven-material",
+                    "date": "2026-10-16",
+                    "opponent": "材料学院",
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 1,
+                    "asts": 0,
+                    "motm": 1,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                }
+            ],
+            "rating": 6.7,
+            "memory": "贡献 1 粒进球"
+        },
+        {
+            "id": 19,
+            "name": "何梁柱",
+            "number": 18,
+            "pos": "MF",
+            "role": "中场",
+            "nickname": "2026级 · 右脚",
+            "photo": "assets/players/heliangzhu.png",
+            "photoPosition": "50% 50%",
+            "avatarIcon": "fa-futbol",
+            "traits": [],
+            "reviews": [],
+            "bio": "欢迎加入生康足球队。",
+            "baseline": {
+                "apps": 0,
+                "goals": 0,
+                "asts": 0,
+                "motm": 0,
+                "cleanSheets": 0,
+                "lowConcedeGames": 0
+            },
+            "apps": 0,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6,
+            "memory": "累计出场 0 场"
+        },
+        {
+            "id": 20,
+            "name": "肖思博",
+            "number": 33,
+            "pos": "DF",
+            "role": "后卫",
+            "nickname": "2026级 · 右脚",
+            "photo": "assets/players/xiaosibo.jpg",
+            "photoPosition": "50% 50%",
+            "avatarIcon": "fa-futbol",
+            "traits": [],
+            "reviews": [],
+            "bio": "欢迎加入生康足球队。",
+            "baseline": {
+                "apps": 0,
+                "goals": 0,
+                "asts": 0,
+                "motm": 0,
+                "cleanSheets": 0,
+                "lowConcedeGames": 0
+            },
+            "apps": 1,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [
+                {
+                    "matchId": "2026-10-16-eleven-material",
+                    "date": "2026-10-16",
+                    "opponent": "材料学院",
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                }
+            ],
+            "rating": 6.1,
+            "memory": "累计出场 1 场"
+        },
+        {
+            "id": 21,
+            "name": "凌淇",
+            "number": 17,
+            "pos": "MF",
+            "role": "中前场",
+            "nickname": "2026级 · 右脚",
+            "photo": "assets/players/lingqi.jpg",
+            "photoPosition": "50% 50%",
+            "avatarIcon": "fa-futbol",
+            "traits": [],
+            "reviews": [],
+            "bio": "欢迎加入生康足球队。",
+            "baseline": {
+                "apps": 0,
+                "goals": 0,
+                "asts": 0,
+                "motm": 0,
+                "cleanSheets": 0,
+                "lowConcedeGames": 0
+            },
+            "apps": 0,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6,
+            "memory": "累计出场 0 场"
+        },
+        {
+            "id": 22,
+            "name": "雷振廷",
+            "number": 12,
+            "pos": "DF",
+            "role": "后卫/中场",
+            "nickname": "2026级 · 右脚",
+            "photo": "assets/players/leizhenting.png",
+            "photoPosition": "50% 50%",
+            "avatarIcon": "fa-futbol",
+            "traits": [],
+            "reviews": [],
+            "bio": "欢迎加入生康足球队。",
+            "baseline": {
+                "apps": 0,
+                "goals": 0,
+                "asts": 0,
+                "motm": 0,
+                "cleanSheets": 0,
+                "lowConcedeGames": 0
+            },
+            "apps": 0,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6,
+            "memory": "累计出场 0 场"
+        },
+        {
+            "id": 23,
+            "name": "蔡照",
+            "number": 6,
+            "pos": "FW",
+            "role": "边锋",
+            "nickname": "2026级 · 右脚",
+            "photo": "assets/players/caizhao.jpg",
+            "photoPosition": "50% 50%",
+            "avatarIcon": "fa-futbol",
+            "traits": [],
+            "reviews": [],
+            "bio": "欢迎加入生康足球队。",
+            "baseline": {
+                "apps": 0,
+                "goals": 0,
+                "asts": 0,
+                "motm": 0,
+                "cleanSheets": 0,
+                "lowConcedeGames": 0
+            },
+            "apps": 0,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6,
+            "memory": "累计出场 0 场"
+        },
+        {
+            "id": 24,
+            "name": "喻新旭",
+            "number": 14,
+            "pos": "FW",
+            "role": "中锋/后卫",
+            "nickname": "2026级 · 右脚",
+            "photo": "assets/players/yuxinxu.jpg",
+            "photoPosition": "50% 50%",
+            "avatarIcon": "fa-futbol",
+            "traits": [],
+            "reviews": [],
+            "bio": "欢迎加入生康足球队。",
+            "baseline": {
+                "apps": 0,
+                "goals": 0,
+                "asts": 0,
+                "motm": 0,
+                "cleanSheets": 0,
+                "lowConcedeGames": 0
+            },
+            "apps": 0,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6,
+            "memory": "累计出场 0 场"
+        },
+        {
+            "id": 25,
+            "name": "叶浩",
+            "number": 66,
+            "pos": "FW",
+            "role": "边锋",
+            "nickname": "2026级 · 右脚",
+            "photo": "assets/players/yehao.jpg",
+            "photoPosition": "50% 50%",
+            "avatarIcon": "fa-futbol",
+            "traits": [],
+            "reviews": [],
+            "bio": "欢迎加入生康足球队。",
+            "baseline": {
+                "apps": 0,
+                "goals": 0,
+                "asts": 0,
+                "motm": 0,
+                "cleanSheets": 0,
+                "lowConcedeGames": 0
+            },
+            "apps": 0,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6,
+            "memory": "累计出场 0 场"
+        },
+        {
+            "id": 26,
+            "name": "杨锦泰",
+            "number": 4,
+            "pos": "DF",
+            "role": "中后卫",
+            "nickname": "2026级 · 右脚",
+            "photo": "assets/players/yangjintai.png",
+            "photoPosition": "50% 0%",
+            "avatarIcon": "fa-futbol",
+            "traits": [],
+            "reviews": [],
+            "bio": "欢迎加入生康足球队。",
+            "baseline": {
+                "apps": 0,
+                "goals": 0,
+                "asts": 0,
+                "motm": 0,
+                "cleanSheets": 0,
+                "lowConcedeGames": 0
+            },
+            "apps": 0,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6,
+            "memory": "累计出场 0 场"
+        },
+        {
+            "id": 27,
+            "name": "田杨洋",
+            "number": 22,
+            "pos": "DF",
+            "role": "后卫",
+            "nickname": "2026级 · 右脚",
+            "photo": "assets/players/tianyangyang.jpg",
+            "photoPosition": "50% 50%",
+            "avatarIcon": "fa-futbol",
+            "traits": [],
+            "reviews": [],
+            "bio": "欢迎加入生康足球队。",
+            "baseline": {
+                "apps": 0,
+                "goals": 0,
+                "asts": 0,
+                "motm": 0,
+                "cleanSheets": 0,
+                "lowConcedeGames": 0
+            },
+            "apps": 1,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [
+                {
+                    "matchId": "2026-10-16-eleven-material",
+                    "date": "2026-10-16",
+                    "opponent": "材料学院",
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                }
+            ],
+            "rating": 6.1,
+            "memory": "累计出场 1 场"
+        },
+        {
+            "id": 28,
+            "name": "段德浩",
+            "number": 37,
+            "pos": "FW",
+            "role": "前锋",
+            "nickname": "2024级 · 右脚",
+            "photo": "assets/players/duandehao.png",
+            "photoPosition": "50% 50%",
+            "avatarIcon": "fa-futbol",
+            "traits": [],
+            "reviews": [],
+            "bio": "2026年加入球队。",
+            "baseline": {
+                "apps": 0,
+                "goals": 0,
+                "asts": 0,
+                "motm": 0,
+                "cleanSheets": 0,
+                "lowConcedeGames": 0
+            },
+            "apps": 0,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6,
+            "memory": "累计出场 0 场"
         }
-],
-
-    startingLineup: {
-        GK: { top: '88%', left: '50%', playerId: 4 },
-        LB: { top: '66%', left: '15%', playerId: 3 },
-        CB1: { top: '72%', left: '37%', playerId: 1 },
-        CB2: { top: '72%', left: '63%', playerId: 12 },
-        RB: { top: '66%', left: '85%', playerId: 13 },
-        DM: { top: '48%', left: '50%', playerId: 15 },
-        LCM: { top: '36%', left: '28%', playerId: 8 },
-        RCM: { top: '36%', left: '72%', playerId: 10 },
-        LW: { top: '15%', left: '18%', playerId: 7 },
-        ST: { top: '12%', left: '50%', playerId: 9 },
-        RW: { top: '15%', left: '82%', playerId: 5 }
-    },
-
-    defaultCompetitionId: '2025-eleven-fangda',
-
-    competitions: [
-        {
-                "id": "2025-eleven-fangda",
-                "year": "2025",
-                "name": "十一人制纺大杯",
-                "label": "十一人制纺大杯",
-                "status": "建队后的首个赛事",
-                "description": "从临时凑齐队员、确定位置到真正踏上十一人制赛场，正式比赛从这里开始。"
-        },
-        {
-                "id": "2025-freshmen-cup",
-                "year": "2025",
-                "name": "八人制新生杯",
-                "label": "八人制新生杯",
-                "status": "首届新生杯",
-                "description": "紧密赛程里，球队最终获得第七名。这是第一届新生杯，也是很高的起点。"
-        },
-        {
-                "id": "2026-eight-fangda",
-                "year": "2026",
-                "name": "八人制纺大杯",
-                "label": "八人制纺大杯",
-                "status": "最新赛事",
-                "description": "下学期唯一一项学院足球赛事。这里保留这段比赛记录。"
-        }
-],
-
-    matches: [
-        {
-                "season": "2025-2026",
-                "result": "loss",
-                "score": "0 : 3",
-                "opponent": "材料学院",
-                "date": "2026-04-16",
-                "venue": "阳光校区足球场",
-                "competition": "八人制纺大杯",
-                "scorers": "暂无进球记录",
-                "quote": "八人制纺大杯对阵材料学院。"
-        },
-        {
-                "season": "2025-2026",
-                "result": "loss",
-                "score": "2 : 6",
-                "opponent": "机智学院",
-                "date": "2026-04-08",
-                "venue": "阳光校区足球场",
-                "competition": "八人制纺大杯",
-                "scorers": "周霄旭 20′ / 周霄旭 40′",
-                "quote": "周霄旭打入两球。"
-        },
-        {
-                "season": "2025-2026",
-                "result": "loss",
-                "score": "2 : 3",
-                "opponent": "管理学院",
-                "date": "2026-03-30",
-                "venue": "阳光校区足球场",
-                "competition": "八人制纺大杯",
-                "scorers": "吴宇泽 12′ / 何嗣承 24′",
-                "quote": "八人制纺大杯对阵管理学院。"
-        },
-        {
-                "season": "2025-2026",
-                "result": "win",
-                "score": "1 : 0",
-                "opponent": "管理学院",
-                "date": "2025-12-18",
-                "venue": "阳光校区足球场",
-                "competition": "八人制新生杯",
-                "scorers": "彭卓伦 40′",
-                "quote": "最后一场大家轮换到不熟悉的位置，也更理解了队友的难处。"
-        },
-        {
-                "season": "2025-2026",
-                "result": "loss",
-                "score": "0 : 1",
-                "opponent": "计智学院",
-                "date": "2025-12-17",
-                "venue": "阳光校区足球场",
-                "competition": "八人制新生杯",
-                "scorers": "暂无进球记录",
-                "quote": "首次进入淘汰赛，球队最终获得第七名。"
-        },
-        {
-                "season": "2025-2026",
-                "result": "loss",
-                "score": "1 : 3",
-                "opponent": "南湖校区",
-                "date": "2025-12-16",
-                "venue": "阳光校区足球场",
-                "competition": "八人制新生杯",
-                "scorers": "周霄旭 62′",
-                "quote": "紧密赛程中的一场比赛。"
-        },
-        {
-                "season": "2025-2026",
-                "result": "win",
-                "score": "2 : 0",
-                "opponent": "化工学院",
-                "date": "2025-12-12",
-                "venue": "阳光校区足球场",
-                "competition": "八人制新生杯",
-                "scorers": "彭卓伦 30′ / 吴宇泽 42′",
-                "quote": "小组赛第二场胜利。"
-        },
-        {
-                "season": "2025-2026",
-                "result": "win",
-                "score": "1 : 0",
-                "opponent": "微电子学院",
-                "date": "2025-12-08",
-                "venue": "阳光校区足球场",
-                "competition": "八人制新生杯",
-                "scorers": "吴宇泽 18′",
-                "quote": "球队在新生杯拿到首胜。"
-        },
-        {
-                "season": "2025-2026",
-                "result": "loss",
-                "score": "0 : 5",
-                "opponent": "研究生",
-                "date": "2025-12-03",
-                "venue": "阳光校区足球场",
-                "competition": "八人制新生杯",
-                "scorers": "暂无进球记录",
-                "quote": "八人制新生杯的第一场记录。"
-        },
-        {
-                "season": "2025-2026",
-                "result": "loss",
-                "score": "2 : 5",
-                "opponent": "材料学院",
-                "date": "2025-10-28",
-                "venue": "阳光校区足球场",
-                "competition": "十一人制纺大杯",
-                "scorers": "吴宇泽 20′ / 吴宇泽 60′",
-                "quote": "面对一直帮助球队的材料学院，继续在实战里学习。"
-        },
-        {
-                "season": "2025-2026",
-                "result": "loss",
-                "score": "2 : 4",
-                "opponent": "管理学院",
-                "date": "2025-10-14",
-                "venue": "阳光校区足球场",
-                "competition": "十一人制纺大杯",
-                "scorers": "周霄旭 20′ / 吴宇泽 40′",
-                "quote": "球队十一人制正式首战，雨中作战，比分并非一边倒。"
-        }
-],
-
-    honors: [
-        { icon: 'fa-people-group', title: '把队伍凑齐', date: '2025 秋季', text: '从不能联院、人数不够开始，队员们一起拉人报名、订队服，生康终于有了自己的足球队。' },
-        { icon: 'fa-flag-checkered', title: '十一人制首战', date: '2025-10-14', text: '雨中 2:4 对阵管理学院。虽然输了，但比赛并不难看，球队第一次打出了自己的风采。' },
-        { icon: 'fa-ranking-star', title: '首届新生杯第七名', date: '2025 秋季', text: '这不是运气，是一次次拼抢、解围和互相补位拼出来的成绩。' },
-        { icon: 'fa-handshake', title: '材料学院，兄弟学院', date: '一直以来', text: '从球队还没成立，到场边指导和加油，材料学院的学长给过球队很多帮助。' }
     ],
-
-    fallbackPhotos: [
-        'https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=600',
-        'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600',
-        'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?q=80&w=600',
-        'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=600',
-        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600',
-        'https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=600',
-        'https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=600',
-        'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=600'
-    ]
+    "startingLineup": {
+        "GK": {
+            "top": "88%",
+            "left": "50%",
+            "playerId": 4
+        },
+        "LB": {
+            "top": "66%",
+            "left": "15%",
+            "playerId": 3
+        },
+        "CB1": {
+            "top": "72%",
+            "left": "37%",
+            "playerId": 1
+        },
+        "CB2": {
+            "top": "72%",
+            "left": "63%",
+            "playerId": 12
+        },
+        "RB": {
+            "top": "66%",
+            "left": "85%",
+            "playerId": 13
+        },
+        "DM": {
+            "top": "48%",
+            "left": "50%",
+            "playerId": 15
+        },
+        "LCM": {
+            "top": "36%",
+            "left": "28%",
+            "playerId": 8
+        },
+        "RCM": {
+            "top": "36%",
+            "left": "72%",
+            "playerId": 10
+        },
+        "LW": {
+            "top": "15%",
+            "left": "18%",
+            "playerId": 7
+        },
+        "ST": {
+            "top": "12%",
+            "left": "50%",
+            "playerId": 9
+        },
+        "RW": {
+            "top": "15%",
+            "left": "82%",
+            "playerId": 5
+        }
+    },
+    "defaultCompetitionId": "2026-eleven-fangda",
+    "competitions": [
+        {
+            "id": "2025-eleven-fangda",
+            "year": "2025",
+            "name": "十一人制纺大杯",
+            "label": "十一人制纺大杯",
+            "status": "建队后的首个赛事",
+            "description": "从临时凑齐队员、确定位置到真正踏上十一人制赛场，正式比赛从这里开始。"
+        },
+        {
+            "id": "2025-freshmen-cup",
+            "year": "2025",
+            "name": "八人制新生杯",
+            "label": "八人制新生杯",
+            "status": "首届新生杯",
+            "description": "紧密赛程里，球队最终获得第七名。这是第一届新生杯，也是很高的起点。"
+        },
+        {
+            "id": "2026-eight-fangda",
+            "year": "2026",
+            "name": "八人制纺大杯",
+            "label": "八人制纺大杯",
+            "status": "最新赛事",
+            "description": "下学期唯一一项学院足球赛事。这里保留这段比赛记录。"
+        },
+        {
+            "id": "2026-eleven-fangda",
+            "year": "2026",
+            "name": "十一人制纺大杯",
+            "label": "十一人制纺大杯",
+            "status": "进行中",
+            "description": "2026年十一人制纺大杯，生康与材料、管理同在D组。首战2:3惜败材料学院。"
+        }
+    ],
+    "matches": [
+        {
+            "id": "2026-10-16-eleven-material",
+            "competitionId": "2026-eleven-fangda",
+            "season": "2026-2027",
+            "date": "2026-10-16",
+            "kickoff": "12:00",
+            "venue": "武汉纺织大学足球场",
+            "opponent": "材料学院",
+            "status": "played",
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "formation": "4-4-2",
+            "captainId": 1,
+            "appearances": [
+                {
+                    "playerId": 1,
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 27,
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 10,
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 12,
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 8,
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": 50
+                },
+                {
+                    "playerId": 20,
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 18,
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 15,
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 7,
+                    "started": true,
+                    "position": "FW",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 9,
+                    "started": true,
+                    "position": "FW",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 13,
+                    "started": false,
+                    "position": "MF",
+                    "onMinute": 50,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 4,
+                    "started": true,
+                    "position": "GK",
+                    "onMinute": 0,
+                    "offMinute": null
+                }
+            ],
+            "events": [
+                {
+                    "type": "goal",
+                    "minute": 6,
+                    "playerId": 8,
+                    "assistId": 15
+                },
+                {
+                    "type": "goal",
+                    "minute": 40,
+                    "playerId": 18,
+                    "assistId": null
+                },
+                {
+                    "type": "substitution",
+                    "minute": 50,
+                    "playerInId": 13,
+                    "playerOutId": 8
+                }
+            ],
+            "mvpId": 18,
+            "mvpReview": "任意球差之毫厘，膝顶稍稍偏出，倒钩被扑出。段世添不断制造威胁，并在第40分钟抓住机会打入一球，当选本场MVP。",
+            "quote": "两度领先，虽以2:3惜败，生康踢出了自己的风采与态度。",
+            "reportTitle": "两度领先，生康踢出了自己的未来",
+            "report": [
+                "10月16日中午12点，生康足球队迎来2026年十一人制纺大杯首战，对阵材料学院。此前友谊赛的大比分失利，让大家对这场比赛有些忐忑；但真正踏上赛场后，生康用表现给出了自己的回答。",
+                "第6分钟，何嗣承送出助攻，彭卓伦率先破门，帮助生康取得领先。被对手扳平后，生康没有退缩；第40分钟，段世添抓住机会进球，让球队再次领先。第50分钟，吴全银替补彭卓伦登场。可惜防守未能守住优势，球队最终以2:3惜败。",
+                "比分留下遗憾，比赛却让我们看到了生康的潜力。我们踢出了自己的风采，踢出了面对强敌的态度，也为球队的未来打开了更多可能。",
+                "赛后，队长吴宇成对失球很自责。但我们是一个团队、一个集体，丢球是大家共同的责任，绝不是他一个人的责任。每一次拼抢、每一次补位、每一次一起承担，都是这支球队继续向前的力量。",
+                "田杨洋和肖思博第一次参加比赛，难免有些紧张。第一次的经历会成为下一次的底气，再接再厉，一定会变得更强。带着这场比赛积累的信心，我们期待下一场对阵管理学院，争取胜利。"
+            ],
+            "photographers": [
+                "陈晗韵",
+                "刘雨莹"
+            ],
+            "photos": [
+                {
+                    "src": "assets/photos/match-2026-10-16-01.jpg",
+                    "caption": "赛前场边讨论",
+                    "photographer": "陈晗韵、刘雨莹"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-16-02.jpg",
+                    "caption": "比赛前的场上交流",
+                    "photographer": "陈晗韵、刘雨莹"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-16-03.jpg",
+                    "caption": "开赛前的球场与双方队伍",
+                    "photographer": "陈晗韵、刘雨莹"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-16-04.jpg",
+                    "caption": "替补席上的赛前准备",
+                    "photographer": "陈晗韵、刘雨莹"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-16-05.jpg",
+                    "caption": "场边交流与比赛准备",
+                    "photographer": "陈晗韵、刘雨莹"
+                }
+            ],
+            "missingInfo": [
+                "段世添进球的助攻信息待确认",
+                "对方进球时间、全场时长及其他换人待补充"
+            ],
+            "competition": "十一人制纺大杯",
+            "score": "2 : 3",
+            "result": "loss",
+            "scorers": "彭卓伦 6′（助攻：何嗣承） / 段世添 40′"
+        },
+        {
+            "season": "2025-2026",
+            "result": "loss",
+            "score": "0 : 3",
+            "opponent": "材料学院",
+            "date": "2026-04-16",
+            "venue": "阳光校区足球场",
+            "competition": "八人制纺大杯",
+            "scorers": "暂无进球记录",
+            "quote": "八人制纺大杯对阵材料学院。",
+            "id": "archive-2026-04-16-1",
+            "competitionId": "2026-eight-fangda",
+            "status": "played"
+        },
+        {
+            "season": "2025-2026",
+            "result": "loss",
+            "score": "2 : 6",
+            "opponent": "机智学院",
+            "date": "2026-04-08",
+            "venue": "阳光校区足球场",
+            "competition": "八人制纺大杯",
+            "scorers": "周霄旭 20′ / 周霄旭 40′",
+            "quote": "周霄旭打入两球。",
+            "id": "archive-2026-04-08-2",
+            "competitionId": "2026-eight-fangda",
+            "status": "played"
+        },
+        {
+            "season": "2025-2026",
+            "result": "loss",
+            "score": "2 : 3",
+            "opponent": "管理学院",
+            "date": "2026-03-30",
+            "venue": "阳光校区足球场",
+            "competition": "八人制纺大杯",
+            "scorers": "吴宇泽 12′ / 何嗣承 24′",
+            "quote": "八人制纺大杯对阵管理学院。",
+            "id": "archive-2026-03-30-3",
+            "competitionId": "2026-eight-fangda",
+            "status": "played"
+        },
+        {
+            "season": "2025-2026",
+            "result": "win",
+            "score": "1 : 0",
+            "opponent": "管理学院",
+            "date": "2025-12-18",
+            "venue": "阳光校区足球场",
+            "competition": "八人制新生杯",
+            "scorers": "彭卓伦 40′",
+            "quote": "最后一场大家轮换到不熟悉的位置，也更理解了队友的难处。",
+            "id": "archive-2025-12-18-4",
+            "competitionId": "2025-freshmen-cup",
+            "status": "played"
+        },
+        {
+            "season": "2025-2026",
+            "result": "loss",
+            "score": "0 : 1",
+            "opponent": "计智学院",
+            "date": "2025-12-17",
+            "venue": "阳光校区足球场",
+            "competition": "八人制新生杯",
+            "scorers": "暂无进球记录",
+            "quote": "首次进入淘汰赛，球队最终获得第七名。",
+            "id": "archive-2025-12-17-5",
+            "competitionId": "2025-freshmen-cup",
+            "status": "played"
+        },
+        {
+            "season": "2025-2026",
+            "result": "loss",
+            "score": "1 : 3",
+            "opponent": "南湖校区",
+            "date": "2025-12-16",
+            "venue": "阳光校区足球场",
+            "competition": "八人制新生杯",
+            "scorers": "周霄旭 62′",
+            "quote": "紧密赛程中的一场比赛。",
+            "id": "archive-2025-12-16-6",
+            "competitionId": "2025-freshmen-cup",
+            "status": "played"
+        },
+        {
+            "season": "2025-2026",
+            "result": "win",
+            "score": "2 : 0",
+            "opponent": "化工学院",
+            "date": "2025-12-12",
+            "venue": "阳光校区足球场",
+            "competition": "八人制新生杯",
+            "scorers": "彭卓伦 30′ / 吴宇泽 42′",
+            "quote": "小组赛第二场胜利。",
+            "id": "archive-2025-12-12-7",
+            "competitionId": "2025-freshmen-cup",
+            "status": "played"
+        },
+        {
+            "season": "2025-2026",
+            "result": "win",
+            "score": "1 : 0",
+            "opponent": "微电子学院",
+            "date": "2025-12-08",
+            "venue": "阳光校区足球场",
+            "competition": "八人制新生杯",
+            "scorers": "吴宇泽 18′",
+            "quote": "球队在新生杯拿到首胜。",
+            "id": "archive-2025-12-08-8",
+            "competitionId": "2025-freshmen-cup",
+            "status": "played"
+        },
+        {
+            "season": "2025-2026",
+            "result": "loss",
+            "score": "0 : 5",
+            "opponent": "研究生",
+            "date": "2025-12-03",
+            "venue": "阳光校区足球场",
+            "competition": "八人制新生杯",
+            "scorers": "暂无进球记录",
+            "quote": "八人制新生杯的第一场记录。",
+            "id": "archive-2025-12-03-9",
+            "competitionId": "2025-freshmen-cup",
+            "status": "played"
+        },
+        {
+            "season": "2025-2026",
+            "result": "loss",
+            "score": "2 : 5",
+            "opponent": "材料学院",
+            "date": "2025-10-28",
+            "venue": "阳光校区足球场",
+            "competition": "十一人制纺大杯",
+            "scorers": "吴宇泽 20′ / 吴宇泽 60′",
+            "quote": "面对一直帮助球队的材料学院，继续在实战里学习。",
+            "id": "archive-2025-10-28-10",
+            "competitionId": "2025-eleven-fangda",
+            "status": "played"
+        },
+        {
+            "season": "2025-2026",
+            "result": "loss",
+            "score": "2 : 4",
+            "opponent": "管理学院",
+            "date": "2025-10-14",
+            "venue": "阳光校区足球场",
+            "competition": "十一人制纺大杯",
+            "scorers": "周霄旭 20′ / 吴宇泽 40′",
+            "quote": "球队十一人制正式首战，雨中作战，比分并非一边倒。",
+            "id": "archive-2025-10-14-11",
+            "competitionId": "2025-eleven-fangda",
+            "status": "played"
+        }
+    ],
+    "honors": [
+        {
+            "icon": "fa-people-group",
+            "title": "把队伍凑齐",
+            "date": "2025 秋季",
+            "text": "从不能联院、人数不够开始，队员们一起拉人报名、订队服，生康终于有了自己的足球队。"
+        },
+        {
+            "icon": "fa-flag-checkered",
+            "title": "十一人制首战",
+            "date": "2025-10-14",
+            "text": "雨中 2:4 对阵管理学院。虽然输了，但比赛并不难看，球队第一次打出了自己的风采。"
+        },
+        {
+            "icon": "fa-ranking-star",
+            "title": "首届新生杯第七名",
+            "date": "2025 秋季",
+            "text": "这不是运气，是一次次拼抢、解围和互相补位拼出来的成绩。"
+        },
+        {
+            "icon": "fa-handshake",
+            "title": "材料学院，兄弟学院",
+            "date": "一直以来",
+            "text": "从球队还没成立，到场边指导和加油，材料学院的学长给过球队很多帮助。"
+        }
+    ],
+    "fallbackPhotos": [
+        "https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=600",
+        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600",
+        "https://images.unsplash.com/photo-1530268729831-4b0b9e170218?q=80&w=600",
+        "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=600",
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600",
+        "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=600",
+        "https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=600",
+        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=600"
+    ],
+    "baselineThrough": "2026-10-15"
 };

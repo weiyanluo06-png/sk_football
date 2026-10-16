@@ -16,11 +16,13 @@ document.addEventListener('DOMContentLoaded',function(){
  var notices=(window.TEAM_NOTICES||[]).filter(function(n){return n.status==='发布';}).reverse().sort(function(a,b){return b.date.localeCompare(a.date);});
  function card(n){return '<a class="notice-card" href="#notice/'+encodeURIComponent(n.id)+'"><span class="notice-meta">'+esc(n.date)+'</span><h3>'+esc(n.title)+'</h3><p>'+esc(n.summary)+'</p><span class="text-link">查看公告 →</span></a>';}
  pages.home.insertAdjacentHTML('beforeend','<section class="home-overview"><div class="overview-heading"><div><span class="section__kicker">CLUB NEWS</span><h2>球队近况</h2></div><a href="#notices" class="text-link">全部通知 →</a></div><div class="home-news">'+notices.slice(0,3).map(card).join('')+'</div><div class="home-match" id="homeMatch"></div><nav class="quick-links" aria-label="快捷入口"><a href="#team">球队成员 <span>认识队员与经理 →</span></a><a href="#tactics">自由战术板 <span>选择阵型，自由排阵 →</span></a><a href="#matches">赛事档案 <span>赛程与比赛记录 →</span></a><a href="#gallery">球队影像 <span>留住场上场下的瞬间 →</span></a></nav><div class="home-bottom"><a href="#recruit">加入球队 →</a><a href="#about">了解我们的故事 →</a></div></section>');
- var matches=(window.PONYTAIL_DATA.matches||[]).filter(function(m){return /^\d{4}-\d{2}-\d{2}$/.test(m.date);});var today=new Date().toLocaleDateString('sv-SE');var next=matches.filter(function(m){return m.date>=today;}).sort(function(a,b){return a.date.localeCompare(b.date);})[0];var latest=next||matches.sort(function(a,b){return b.date.localeCompare(a.date);})[0];
+ var matches=(window.PONYTAIL_DATA.matches||[]).filter(function(m){return /^\d{4}-\d{2}-\d{2}$/.test(m.date);});var today=new Date().toLocaleDateString('sv-SE');var next=matches.filter(function(m){return m.status==='scheduled'&&m.date>=today;}).sort(function(a,b){return a.date.localeCompare(b.date);})[0];var latest=next||matches.filter(function(m){return m.status==='played';}).sort(function(a,b){return b.date.localeCompare(a.date);})[0];
  document.getElementById('homeMatch').innerHTML=latest?'<div><span class="section__kicker">'+(next?'下一场比赛':'最近赛果')+'</span><h3>生康学院 '+esc(latest.score)+' '+esc(latest.opponent)+'</h3><p>'+esc(latest.date)+' · '+esc(latest.competition)+' · '+esc(latest.venue)+'</p></div><a class="text-link" href="#matches">赛事详情 →</a>':'<p>近期赛事安排待公布</p>';
+ if(latest)document.querySelector('#homeMatch .text-link').href='#match/'+encodeURIComponent(latest.id);
  pages.notices.innerHTML='<section class="column-content"><span class="section__kicker">NOTICE BOARD</span><h1>通知公告</h1><p>赛事、新面孔与球队共同经历的每一个节点。</p><div class="notice-list"></div></section>';
  pages.notices.querySelector('.notice-list').innerHTML=notices.map(card).join('')||'<p class="empty-notice">暂无通知，敬请期待。</p>';
  page('detail');
+ page('match-detail');
  function noticeParagraph(text){
      var lines=text.split('\n');
      if(lines.length===4 && lines.every(function(line){return /^[A-D]组：/.test(line);})){return '<div class="draw-groups" aria-label="纺大杯小组抽签结果">'+lines.map(function(line){var group=line.charAt(0),teams=line.slice(3).replace(/。$/,'').split('、'),ours=teams.includes('生康');return '<section class="draw-group'+(ours?' draw-group--ours':'')+'"><header><span class="draw-letter">'+group+'</span><div><span class="draw-eyebrow">GROUP '+group+'</span><h2>'+group+'组</h2></div>'+(ours?'<span class="draw-badge">生康所在组</span>':'')+'</header><ul>'+teams.map(function(team,i){return '<li'+(team==='生康'?' class="draw-team--ours"':'')+'><span class="draw-number">0'+(i+1)+'</span><strong>'+esc(team)+'</strong>'+(team==='生康'?'<span class="draw-us">我们的球队</span>':'')+'</li>';}).join('')+'</ul></section>';}).join('')+'<p class="draw-rule">小组赛采用积分制 · 各组前两名出线</p></div>';}
@@ -33,16 +35,15 @@ document.addEventListener('DOMContentLoaded',function(){
  var nav=document.querySelector('#mainNav ul');nav.innerHTML=['home','team','matches','tactics','gallery','notices','more'].map(function(id){return '<li><a class="header__nav-link" href="#'+id+'">'+labels[id]+'</a></li>';}).join('');
  var bottom=document.createElement('nav');bottom.className='mobile-columns';bottom.setAttribute('aria-label','栏目导航');bottom.innerHTML=['home','team','matches','tactics','more'].map(function(id){return '<a href="#'+id+'">'+labels[id]+'</a>';}).join('');document.body.appendChild(bottom);
  var aliases={hero:'home',newcomers:'team',managers:'team',memory:'matches',squad:'tactics',honors:'about',story:'about'};
- function route(){var hash=decodeURIComponent(location.hash.slice(1)||'home'),isDetail=hash.indexOf('notice/')===0,id=isDetail?'detail':(aliases[hash]||hash);if(!pages[id])id='home';
+ function route(){var hash;try{hash=decodeURIComponent(location.hash.slice(1)||'home');}catch(e){hash='home';}var isDetail=hash.indexOf('notice/')===0,isMatch=hash.indexOf('match/')===0,id=isMatch?'match-detail':isDetail?'detail':(aliases[hash]||hash);if(!pages[id])id='home';
  if(current)scrolls[current]=window.scrollY;Object.keys(pages).forEach(function(key){pages[key].hidden=key!==id;});if(isDetail)detail(hash.slice(7));current=hash;
- document.body.dataset.column=id;document.title=(isDetail?'通知详情':labels[id]||'首页')+' | 生康足球队';
- document.querySelectorAll('.header__nav-link,.mobile-columns a').forEach(function(a){var target=a.hash.slice(1),active=target===id||(id==='detail'&&target==='notices')||(['notices','detail','gallery','about','recruit'].includes(id)&&target==='more');a.classList.toggle('header__nav-link--active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+ document.body.dataset.column=id;document.title=(isMatch?window.renderTeamMatch(pages['match-detail'],hash.slice(6)):isDetail?'通知详情':labels[id]||'首页')+' | 生康足球队';
+ document.querySelectorAll('.header__nav-link,.mobile-columns a').forEach(function(a){var target=a.hash.slice(1),active=target===id||(isMatch&&target==='matches')||(id==='detail'&&target==='notices')||(['notices','detail','gallery','about','recruit'].includes(id)&&target==='more');a.classList.toggle('header__nav-link--active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
  document.getElementById('mainNav').classList.remove('header__nav--open');document.getElementById('menuToggle').setAttribute('aria-expanded','false');pages[id].querySelectorAll('.reveal').forEach(function(el){el.classList.add('reveal--visible');});
  requestAnimationFrame(function(){window.scrollTo({top:scrolls[hash]||0,behavior:'instant'});window.dispatchEvent(new Event('resize'));});}
  document.addEventListener('click',function(event){var a=event.target.closest('a[href^="#"]');if(!a||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;var h=a.getAttribute('href');if(h.length<2)return;event.preventDefault();if(location.hash!==h){history.pushState(null,'',h);route();}});
  window.addEventListener('hashchange',route);route();
 });
-
 
 
 

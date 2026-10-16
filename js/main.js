@@ -582,7 +582,7 @@
         var wrap = $('matchTimeline'); if (!wrap) return;
         var competition = getActiveCompetition();
         var filtered = matchItems.filter(function (m) {
-            return m.competition === competition.name && (!competition.year || m.date.slice(0, 4) === competition.year);
+            return m.competitionId ? m.competitionId === competition.id : m.competition === competition.name && (!competition.year || m.date.slice(0, 4) === competition.year);
         })
             .sort(function (a, b) { return b.date.localeCompare(a.date); });
         var overview = $('seasonOverview');
@@ -594,7 +594,7 @@
             var date = new Date(m.date + 'T00:00:00');
             var day = String(date.getDate()).padStart(2, '0');
             var month = String(date.getMonth() + 1).padStart(2, '0') + '月';
-            return '<article class="match-card"><div class="match-card__date"><div><div class="match-card__day">' + day + '</div><div class="match-card__month">' + month + ' / ' + date.getFullYear() + '</div></div></div><div class="match-card__body"><div class="match-card__meta">' + escapeHtml(m.competition) + ' / ' + escapeHtml(m.venue) + '</div><h3 class="match-card__opponent">VS ' + escapeHtml(m.opponent) + '</h3><p class="match-card__quote">' + escapeHtml(m.quote) + '</p><p class="match-card__scorers">进球：' + escapeHtml(m.scorers) + '</p></div><div class="match-card__score"><div class="scoreboard"><span class="result-' + m.result + '">' + resultName(m.result) + '</span><strong>' + m.score + '</strong><span>FINAL SCORE</span></div></div></article>';
+            return '<a class="match-card match-card--link" href="#match/' + encodeURIComponent(m.id) + '" aria-label="生康 ' + escapeHtml(m.score) + ' ' + escapeHtml(m.opponent) + '，查看比赛详情"><div class="match-card__date"><div><div class="match-card__day">' + day + '</div><div class="match-card__month">' + month + ' / ' + date.getFullYear() + '</div></div></div><div class="match-card__body"><div class="match-card__meta">' + escapeHtml(m.competition) + ' / ' + escapeHtml(m.venue) + '</div><h3 class="match-card__opponent">VS ' + escapeHtml(m.opponent) + '</h3><p class="match-card__quote">' + escapeHtml(m.quote) + '</p><p class="match-card__scorers">进球：' + escapeHtml(m.scorers) + '</p><span class="text-link">查看战报与照片 →</span></div><div class="match-card__score"><div class="scoreboard"><span class="result-' + m.result + '">' + resultName(m.result) + '</span><strong>' + escapeHtml(m.score) + '</strong><span>全场比分</span></div></div></a>';
         }).join('');
     }
 
@@ -683,6 +683,9 @@
         var displayRating = getDisplayRating(player.rating);
         body.innerHTML = '<div class="modal__hero"><div class="modal__number">' + player.number + '</div><div><h3 class="modal__title" id="playerModalTitle">' + escapeHtml(player.name) + '</h3><p class="modal__subtitle">' + player.pos + ' / ' + player.role + ' / ' + escapeHtml(player.nickname) + ' / 评分 ' + displayRating + '</p></div></div><div class="modal__stats"><div class="modal__stat"><strong>' + player.apps + '</strong><span>出场</span></div><div class="modal__stat"><strong>' + player.goals + '</strong><span>进球</span></div><div class="modal__stat"><strong>' + player.asts + '</strong><span>助攻</span></div><div class="modal__stat"><strong>' + player.motm + '</strong><span>MVP</span></div>' + cleanSheetMetric + '<div class="modal__stat"><strong>' + displayRating + '</strong><span>评分</span></div></div><p class="modal__bio"><strong>代表瞬间：</strong>' + escapeHtml(player.memory) + '</p>' + reviewSection + '<p class="modal__bio">' + escapeHtml(player.bio) + '</p><div class="modal__tags">' + tags + '</div>';
         openModal(modal);
+        body.insertAdjacentHTML('beforeend', '<section class="player-match-history"><h4>逐场记录</h4><p>历史累计截至 ' + escapeHtml(teamData.baselineThrough || '') + '，之后的出场可逐场追溯。</p>' + ((player.matchHistory || []).map(function (record) {
+            return '<a data-modal-close href="#match/' + encodeURIComponent(record.matchId) + '"><span>' + escapeHtml(record.date) + ' · 对阵' + escapeHtml(record.opponent) + '</span><strong>' + (record.started ? '首发' : '替补 ' + record.onMinute + '′') + ' · ' + record.goals + '球 ' + record.asts + '助攻' + (record.motm ? ' · MVP' : '') + ' →</strong></a>';
+        }).join('') || '<p>暂无新的出场记录。</p>') + '</section>');
     }
 
     function openPhotoModal(photo) {
@@ -936,4 +939,3 @@
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
-

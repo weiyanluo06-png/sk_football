@@ -1,0 +1,786 @@
+{
+  "schemaVersion": 1,
+  "baselineThrough": "2026-10-15",
+  "players": [
+    {
+      "playerId": 1,
+      "name": "吴宇成",
+      "baseline": {
+        "apps": 11,
+        "goals": 0,
+        "asts": 1,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 12,
+        "goals": 0,
+        "asts": 1,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": [
+        {
+          "matchId": "2026-10-16-eleven-material",
+          "date": "2026-10-16",
+          "opponent": "材料学院",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
+    },
+    {
+      "playerId": 2,
+      "name": "代育锐",
+      "baseline": {
+        "apps": 4,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 4,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    },
+    {
+      "playerId": 3,
+      "name": "王伯函",
+      "baseline": {
+        "apps": 9,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 9,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    },
+    {
+      "playerId": 4,
+      "name": "刘航宇",
+      "baseline": {
+        "apps": 8,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 1,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 9,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 1,
+        "lowConcedeGames": 0
+      },
+      "matches": [
+        {
+          "matchId": "2026-10-16-eleven-material",
+          "date": "2026-10-16",
+          "opponent": "材料学院",
+          "started": true,
+          "position": "GK",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
+    },
+    {
+      "playerId": 5,
+      "name": "曹维嘉",
+      "baseline": {
+        "apps": 8,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 8,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    },
+    {
+      "playerId": 6,
+      "name": "尚锐杰",
+      "baseline": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    },
+    {
+      "playerId": 7,
+      "name": "吴宇泽",
+      "baseline": {
+        "apps": 11,
+        "goals": 6,
+        "asts": 1,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 12,
+        "goals": 6,
+        "asts": 1,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": [
+        {
+          "matchId": "2026-10-16-eleven-material",
+          "date": "2026-10-16",
+          "opponent": "材料学院",
+          "started": true,
+          "position": "FW",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
+    },
+    {
+      "playerId": 8,
+      "name": "彭卓伦",
+      "baseline": {
+        "apps": 8,
+        "goals": 2,
+        "asts": 3,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 9,
+        "goals": 3,
+        "asts": 3,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": [
+        {
+          "matchId": "2026-10-16-eleven-material",
+          "date": "2026-10-16",
+          "opponent": "材料学院",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": 50,
+          "apps": 1,
+          "goals": 1,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
+    },
+    {
+      "playerId": 9,
+      "name": "周霄旭",
+      "baseline": {
+        "apps": 10,
+        "goals": 4,
+        "asts": 3,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 11,
+        "goals": 4,
+        "asts": 3,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": [
+        {
+          "matchId": "2026-10-16-eleven-material",
+          "date": "2026-10-16",
+          "opponent": "材料学院",
+          "started": true,
+          "position": "FW",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
+    },
+    {
+      "playerId": 10,
+      "name": "张俊",
+      "baseline": {
+        "apps": 6,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 7,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": [
+        {
+          "matchId": "2026-10-16-eleven-material",
+          "date": "2026-10-16",
+          "opponent": "材料学院",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
+    },
+    {
+      "playerId": 11,
+      "name": "岑烨",
+      "baseline": {
+        "apps": 5,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 1,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 5,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 1,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    },
+    {
+      "playerId": 12,
+      "name": "李傲",
+      "baseline": {
+        "apps": 8,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 9,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": [
+        {
+          "matchId": "2026-10-16-eleven-material",
+          "date": "2026-10-16",
+          "opponent": "材料学院",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
+    },
+    {
+      "playerId": 13,
+      "name": "吴全银",
+      "baseline": {
+        "apps": 6,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 7,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": [
+        {
+          "matchId": "2026-10-16-eleven-material",
+          "date": "2026-10-16",
+          "opponent": "材料学院",
+          "started": false,
+          "position": "MF",
+          "onMinute": 50,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
+    },
+    {
+      "playerId": 14,
+      "name": "陈亿霏",
+      "baseline": {
+        "apps": 3,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 3,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    },
+    {
+      "playerId": 15,
+      "name": "何嗣承",
+      "baseline": {
+        "apps": 10,
+        "goals": 1,
+        "asts": 1,
+        "motm": 0,
+        "cleanSheets": 1,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 11,
+        "goals": 1,
+        "asts": 2,
+        "motm": 0,
+        "cleanSheets": 1,
+        "lowConcedeGames": 0
+      },
+      "matches": [
+        {
+          "matchId": "2026-10-16-eleven-material",
+          "date": "2026-10-16",
+          "opponent": "材料学院",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 1,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
+    },
+    {
+      "playerId": 16,
+      "name": "曹志威",
+      "baseline": {
+        "apps": 1,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 1,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    },
+    {
+      "playerId": 17,
+      "name": "苗志梁",
+      "baseline": {
+        "apps": 2,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 2,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    },
+    {
+      "playerId": 18,
+      "name": "段世添",
+      "baseline": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 1,
+        "goals": 1,
+        "asts": 0,
+        "motm": 1,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": [
+        {
+          "matchId": "2026-10-16-eleven-material",
+          "date": "2026-10-16",
+          "opponent": "材料学院",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 1,
+          "asts": 0,
+          "motm": 1,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
+    },
+    {
+      "playerId": 19,
+      "name": "何梁柱",
+      "baseline": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    },
+    {
+      "playerId": 20,
+      "name": "肖思博",
+      "baseline": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 1,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": [
+        {
+          "matchId": "2026-10-16-eleven-material",
+          "date": "2026-10-16",
+          "opponent": "材料学院",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
+    },
+    {
+      "playerId": 21,
+      "name": "凌淇",
+      "baseline": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    },
+    {
+      "playerId": 22,
+      "name": "雷振廷",
+      "baseline": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    },
+    {
+      "playerId": 23,
+      "name": "蔡照",
+      "baseline": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    },
+    {
+      "playerId": 24,
+      "name": "喻新旭",
+      "baseline": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    },
+    {
+      "playerId": 25,
+      "name": "叶浩",
+      "baseline": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    },
+    {
+      "playerId": 26,
+      "name": "杨锦泰",
+      "baseline": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    },
+    {
+      "playerId": 27,
+      "name": "田杨洋",
+      "baseline": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 1,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": [
+        {
+          "matchId": "2026-10-16-eleven-material",
+          "date": "2026-10-16",
+          "opponent": "材料学院",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
+    },
+    {
+      "playerId": 28,
+      "name": "段德浩",
+      "baseline": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
+    }
+  ]
+}

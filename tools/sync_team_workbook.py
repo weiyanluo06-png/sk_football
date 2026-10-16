@@ -215,9 +215,9 @@ def write_site_data(data, path, template_path):
     players_json = json.dumps(data['players'], ensure_ascii=False, indent=8)
     competitions_json = json.dumps(data['competitions'], ensure_ascii=False, indent=8)
     matches_json = json.dumps(data['matches'], ensure_ascii=False, indent=8)
-    source = re.sub(r'players:\s*\[[\s\S]*?\n\s*\],\n\n\s*startingLineup:', f'players: {players_json},\n\n    startingLineup:', source, count=1)
-    source = re.sub(r'competitions:\s*\[[\s\S]*?\n\s*\],\n\n\s*matches:', f'competitions: {competitions_json},\n\n    matches:', source, count=1)
-    source = re.sub(r'matches:\s*\[[\s\S]*?\n\s*\],\n\n\s*honors:', f'matches: {matches_json},\n\n    honors:', source, count=1)
+    source = re.sub(r'["\']?players["\']?\s*:\s*\[[\s\S]*?\n\s*\],\s*\n\s*["\']?startingLineup["\']?\s*:', f'players: {players_json},\n\n    startingLineup:', source, count=1)
+    source = re.sub(r'["\']?competitions["\']?\s*:\s*\[[\s\S]*?\n\s*\],\s*\n\s*["\']?matches["\']?\s*:', f'competitions: {competitions_json},\n\n    matches:', source, count=1)
+    source = re.sub(r'["\']?matches["\']?\s*:\s*\[[\s\S]*?\n\s*\],\s*\n\s*["\']?honors["\']?\s*:', f'matches: {matches_json},\n\n    honors:', source, count=1)
     path.write_text(source, encoding='utf-8')
 
 
@@ -346,6 +346,8 @@ def sync_workbook(
     source, target, site_data_path, site_output_path,
     newcomer_output_path, manager_output_path,
 ):
+    if (ROOT / 'data' / 'team-records.json').exists() and site_output_path.resolve() == (ROOT / 'js' / 'team-data.js').resolve():
+        raise ValueError('球队统计已迁移至 data/team-records.json。请运行 node tools/build_team_data.mjs；旧 Excel 仅保留为历史存档，不得覆盖逐场记录。')
     target.parent.mkdir(parents=True, exist_ok=True)
     if source.resolve() != target.resolve():
         shutil.copy2(source, target)
