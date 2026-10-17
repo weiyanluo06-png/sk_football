@@ -92,22 +92,5 @@ window.TEAM_NOTICES = [
         "linkText": "查看本场比赛档案",
         "status": "发布",
        "pinned": true
-    },
-    {
-        "id": "website-update-rules-2026",
-        "category": "网站公告",
-        "date": "2026-10-17",
-        "title": "网站更新与公告发布规则",
-        "summary": "今后网站更新默认提交并推送到 main，官网公告统一使用固定格式并附线上链接。",
-        "body": "从即日起，网站更新完成并通过校验后，默认提交并推送到 main 分支，让大家可以直接访问 GitHub Pages；只有明确要求暂不发布或只在本地预览时才不推送。\n\n官网公告统一使用“【生康足球队官网公告｜公告标题】”开头，正文简明说明更新内容、涉及比赛或栏目、队员注意事项和待补信息，结尾固定写“完整公告：”并附线上公告链接。\n\n请大家以官网线上公告为准，后续比赛、照片和球队动态会继续按这套规则同步。",
-        "members": [
-            ""
-        ],
-        "image": "assets/photos/douyin-account-2026.jpg",
-        "imageCaption": "官网更新规则已同步，示例图片为球队抖音账号主页",
-        "link": "#notice/website-update-rules-2026",
-        "linkText": "查看公告规则",
-        "status": "发布",
-        "pinned": false
     }
 ];
