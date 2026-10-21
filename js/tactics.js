@@ -56,7 +56,7 @@
                 node.addEventListener('click',function(){if(suppress){suppress=false;return;}selected=selected===index?null:index;render();});
                 pitch.appendChild(node);
             });
-            ['FW','MF','DF','GK'].forEach(function(group){document.getElementById('pool-'+group).replaceChildren();});
+            ['FW','MF','DF','GK','TBD'].forEach(function(group){document.getElementById('pool-'+group).replaceChildren();});
             players.forEach(function(p){
                 var card=document.createElement('button');card.type='button';card.className='player-card';
                 if(slots.some(function(s){return s.player===p.name;}))card.classList.add('player-card--starting');

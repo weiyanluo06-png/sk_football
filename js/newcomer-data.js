@@ -143,6 +143,19 @@ window.NEWCOMER_DATA = {
             "intro": "2026年加入球队。",
             "photo": "assets/players/duandehao.png",
             "photoPosition": "50% 50%"
+        },
+        {
+            "order": 12,
+            "name": "方昭炬",
+            "grade": "2026级",
+            "number": 44,
+            "pos": "位置待定",
+            "role": "",
+            "preferredFoot": "右脚",
+            "style": "",
+            "intro": "这几天跟肖思博去看球赛，感觉生康球队非常有实力，关键氛围特别好。",
+            "photo": "assets/players/fangzhaoju.jpg",
+            "photoPosition": "50% 50%"
         }
     ]
 };

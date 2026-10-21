@@ -781,6 +781,27 @@
         "lowConcedeGames": 0
       },
       "matches": []
+    },
+    {
+      "playerId": 29,
+      "name": "方昭炬",
+      "baseline": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
     }
   ]
 }

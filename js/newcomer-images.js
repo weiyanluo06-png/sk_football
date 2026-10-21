@@ -108,5 +108,15 @@ window.NEWCOMER_IMAGES = {
       "src": "assets/players/showcase/duandehao-640.webp",
       "width": 640
     }
+  },
+  "assets/players/fangzhaoju.jpg": {
+    "320": {
+      "src": "assets/players/showcase/fangzhaoju-320.webp",
+      "width": 320
+    },
+    "640": {
+      "src": "assets/players/showcase/fangzhaoju-640.webp",
+      "width": 640
+    }
   }
 };

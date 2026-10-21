@@ -1173,6 +1173,37 @@ window.PONYTAIL_DATA = {
             "matchHistory": [],
             "rating": 6,
             "memory": "累计出场 0 场"
+        },
+        {
+            "id": 29,
+            "name": "方昭炬",
+            "number": 44,
+            "pos": "TBD",
+            "role": "位置待定",
+            "nickname": "2026级 · 右脚",
+            "photo": "assets/players/fangzhaoju.jpg",
+            "photoPosition": "50% 50%",
+            "avatarIcon": "fa-futbol",
+            "traits": [],
+            "reviews": [],
+            "bio": "这几天跟肖思博去看球赛，感觉生康球队非常有实力，关键氛围特别好。",
+            "baseline": {
+                "apps": 0,
+                "goals": 0,
+                "asts": 0,
+                "motm": 0,
+                "cleanSheets": 0,
+                "lowConcedeGames": 0
+            },
+            "apps": 0,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6,
+            "memory": "累计出场 0 场"
         }
     ],
     "startingLineup": {

@@ -109,5 +109,22 @@ window.TEAM_NOTICES = [
         "linkText": "查看球队经理",
         "status": "发布",
         "pinned": true
+    },
+    {
+        "id": "welcome-fangzhaoju-2026",
+        "category": "新人加入",
+        "date": "2026-10-21",
+        "title": "欢迎方昭炬加入生康足球队",
+        "summary": "2026级新队员方昭炬加入球队：44号，惯用右脚，场上位置待定。",
+        "body": "生康足球队迎来一位新的2026级队员——方昭炬，球衣号码44号，惯用右脚。\n\n方昭炬的球员资料和照片已同步至官网新生展示及球队成员栏目。其场上位置目前待定，个人统计将从0开始，并在今后的比赛记录中自动累计。\n\n欢迎方昭炬加入生康足球队。期待一起训练、看球、比赛，继续感受并融入球队的良好氛围。",
+        "members": [
+            "方昭炬"
+        ],
+        "image": "assets/players/showcase/fangzhaoju-640.webp",
+        "imageCaption": "方昭炬 · 2026级 · 44号",
+        "link": "#team",
+        "linkText": "查看球队成员",
+        "status": "发布",
+        "pinned": true
     }
 ];

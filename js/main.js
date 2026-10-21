@@ -11,7 +11,7 @@
     var nextPlayerId = allPlayers.reduce(function (max, player) { return Math.max(max, player.id); }, 0) + 1;
     newcomers.forEach(function (item) {
         if (allPlayers.some(function (player) { return player.name === item.name; })) return;
-        var positionGroups = { '中锋': 'FW', '前锋': 'FW', '中场': 'MF', '前腰': 'MF', '后卫': 'DF', '门将': 'GK', FW: 'FW', MF: 'MF', DF: 'DF', GK: 'GK' };
+        var positionGroups = { '中锋': 'FW', '前锋': 'FW', '中场': 'MF', '前腰': 'MF', '后卫': 'DF', '门将': 'GK', '位置待定': 'TBD', FW: 'FW', MF: 'MF', DF: 'DF', GK: 'GK', TBD: 'TBD' };
         positionGroups['中前场'] = 'MF';
         positionGroups['边锋'] = 'FW';
         positionGroups['中后卫'] = 'DF';
@@ -476,7 +476,7 @@
 
     function renderSquadPool() {
         if (window.TACTICS) return;
-        ['FW', 'MF', 'DF', 'GK'].forEach(function (pos) { var el = $('pool-' + pos); if (el) el.innerHTML = ''; });
+        ['FW', 'MF', 'DF', 'GK', 'TBD'].forEach(function (pos) { var el = $('pool-' + pos); if (el) el.innerHTML = ''; });
         var lineupIds = getLineupPlayerIds();
         allPlayers.forEach(function (player) {
             var card = document.createElement('button');
@@ -506,7 +506,8 @@
     }
 
     function isCandidateForSlot(player, key) {
-        return (key.indexOf('GK') !== -1 && player.pos === 'GK') ||
+        return player.pos === 'TBD' ||
+            (key.indexOf('GK') !== -1 && player.pos === 'GK') ||
             ((key.indexOf('LB') !== -1 || key.indexOf('RB') !== -1 || key.indexOf('CB') !== -1) && player.pos === 'DF') ||
             (key.indexOf('M') !== -1 && (player.pos === 'MF' || player.secondaryPos === 'MF')) ||
             (['ST', 'LW', 'RW'].indexOf(key) !== -1 && (player.pos === 'FW' || player.secondaryPos === 'FW'));
