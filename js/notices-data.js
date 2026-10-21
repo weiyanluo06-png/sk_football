@@ -92,5 +92,22 @@ window.TEAM_NOTICES = [
         "linkText": "查看本场比赛档案",
         "status": "发布",
        "pinned": true
+    },
+    {
+        "id": "welcome-zhaoweiran-2026",
+        "category": "新人加入",
+        "date": "2026-10-21",
+        "title": "欢迎赵慰冉加入生康足球队",
+        "summary": "欢迎2024级赵慰冉以球队经理身份加入生康足球队，经理资料已同步至官网。",
+        "body": "生康足球队迎来一位新的球队经理——2024级赵慰冉。\n\n赵慰冉的经理资料已同步至官网经理栏目，身份为球队经理，个人介绍为“我再想想”。\n\n欢迎赵慰冉加入生康足球队，期待今后一起记录更多比赛和球队故事。",
+        "members": [
+            "赵慰冉"
+        ],
+        "image": "assets/managers/zhaoweiran.jpg",
+        "imageCaption": "赵慰冉 · 2024级 · 球队经理",
+        "link": "#team",
+        "linkText": "查看球队经理",
+        "status": "发布",
+        "pinned": true
     }
 ];

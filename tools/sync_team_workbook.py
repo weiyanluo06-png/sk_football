@@ -14,6 +14,7 @@ from zipfile import ZIP_DEFLATED, ZipFile
 
 from openpyxl import load_workbook
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
+from openpyxl.workbook.properties import CalcProperties
 from openpyxl.worksheet.table import Table, TableStyleInfo
 
 
@@ -366,6 +367,8 @@ def sync_workbook(
     ensure_schedule_sheets(workbook, data)
     ensure_newcomer_sheet(workbook)
     ensure_manager_sheet(workbook)
+    if workbook.calculation is None:
+        workbook.calculation = CalcProperties()
     workbook.calculation.fullCalcOnLoad = True
     workbook.calculation.forceFullCalc = True
     workbook.save(target)

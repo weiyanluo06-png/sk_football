@@ -21,6 +21,17 @@ window.MANAGER_DATA = {
             "intro": "欢迎加入我们球队，期待成为大家坚实的后盾",
             "photo": "assets/managers/liuyuying.png",
             "photoPosition": "50% 50%"
+        },
+        {
+            "order": 3,
+            "name": "赵慰冉",
+            "grade": "2024级",
+            "season": "2026",
+            "role": "球队经理",
+            "duties": "",
+            "intro": "我再想想",
+            "photo": "assets/managers/zhaoweiran.jpg",
+            "photoPosition": "50% 50%"
         }
     ]
 };
