@@ -45,6 +45,7 @@ export function build(records) {
         if (source.date <= records.baseline.through) fail('明细比赛落在历史基数内，会重复统计');
         if (source.status !== 'played') fail('明细仅接受已完赛比赛');
         if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(source.kickoff)) fail('开球时间无效');
+        if (source.fullTimeMinutes != null && (!Number.isInteger(source.fullTimeMinutes) || source.fullTimeMinutes <= 0)) fail('全场时长无效');
         if (!count(source.goalsFor) || !count(source.goalsAgainst)) fail('比分无效');
         const appearances = new Map();
         for (const appearance of source.appearances) {
@@ -70,6 +71,7 @@ export function build(records) {
         const subIns = new Set(), subOuts = new Set();
         for (const event of source.events) {
             if (!count(event.minute)) fail('事件时间无效');
+            if (event.exactTime != null && (!/^\d{1,3}:[0-5]\d$/.test(event.exactTime) || Number(event.exactTime.split(':')[0]) !== event.minute)) fail('事件精确时间无效');
             if (event.type === 'goal') {
                 activeAt(event.playerId, event.minute);
                 if (event.assistId != null) {

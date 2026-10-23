@@ -27,7 +27,7 @@
             }).join('') + '</div></section>';
         }
         target.innerHTML = '<article class="column-content match-detail"><a class="text-link" href="#matches">← 赛事档案</a>' +
-            '<header class="match-detail__header"><span class="section__kicker">' + esc(match.date.slice(0, 4)) + ' · ' + esc(match.competition) + '</span><h1>' + esc(match.reportTitle || '生康对阵' + match.opponent) + '</h1><p>' + esc(match.date) + (match.kickoff ? ' · ' + esc(match.kickoff) : '') + ' · ' + esc(match.venue) + '</p></header>' +
+            '<header class="match-detail__header"><span class="section__kicker">' + esc(match.date.slice(0, 4)) + ' · ' + esc(match.competition) + '</span><h1>' + esc(match.reportTitle || '生康对阵' + match.opponent) + '</h1><p>' + esc(match.date) + (match.kickoff ? ' · ' + esc(match.kickoff) : '') + ' · ' + esc(match.venue) + (match.fullTimeMinutes ? ' · 全场' + esc(match.fullTimeMinutes) + '分钟' : '') + '</p></header>' +
             '<div class="match-result"><span>生康学院</span><div><strong>' + esc(match.score) + '</strong><small>全场比分</small></div><span>' + esc(match.opponent) + '</span></div>' +
             '<p class="match-detail__lead">' + esc(match.quote) + '</p><div class="match-detail__grid"><div>' +
             '<section class="match-report"><h2>赛后记</h2>' + report.map(function (paragraph) { return '<p>' + esc(paragraph) + '</p>'; }).join('') + '</section>' +
@@ -36,8 +36,9 @@
                 return '<figure><a href="' + esc(photo.src) + '" target="_blank" rel="noopener noreferrer"><img src="' + esc(photo.src) + '" alt="' + esc(photo.caption) + '" loading="lazy"></a><figcaption>' + esc(photo.caption) + (photo.photographer ? '<small>摄影：' + esc(photo.photographer) + '</small>' : '') + '</figcaption></figure>';
             }).join('') + '</div><p class="match-photographers">本场摄影：' + esc((match.photographers || []).join('、')) + '</p>' : '<p class="match-pending">本场照片待补充，属于这场比赛的瞬间会保存在这里。</p>') + '</section></div><aside>' +
             (events.length ? '<section class="match-events"><h2>已记录事件</h2><ol>' + events.map(function (event) {
-                return '<li><time>' + esc(event.minute) + '′</time><div>' + (event.type === 'goal' ? '<strong>' + name(event.playerId) + ' 进球</strong><span>' + (event.assistId != null ? '助攻：' + name(event.assistId) : '助攻待确认') + '</span>' : '<strong>换人</strong><span>' + name(event.playerInId) + ' 换下 ' + name(event.playerOutId) + '</span>') + '</div></li>';
+                return '<li><time>' + esc(event.exactTime || (event.minute + '′')) + '</time><div>' + (event.type === 'goal' ? '<strong>' + name(event.playerId) + ' 进球</strong><span>' + (event.assistId != null ? '助攻：' + name(event.assistId) : '助攻待确认') + '</span>' : '<strong>换人</strong><span>' + name(event.playerInId) + ' 换下 ' + name(event.playerOutId) + '</span>') + '</div></li>';
             }).join('') + '</ol></section>' : '<section class="match-events"><h2>进球记录</h2><p>' + esc(match.scorers) + '</p><p class="match-pending">历史比赛的阵容与详细事件待补充。</p></section>') + lineup +
+            ((match.recorders || []).length ? '<section class="match-recorders"><h3>场外录制</h3><p>' + esc(match.recorders.join('、')) + '</p></section>' : '') +
             ((match.missingInfo || []).length ? '<section class="match-pending"><h3>待补充记录</h3><ul>' + match.missingInfo.map(function (info) { return '<li>' + esc(info) + '</li>'; }).join('') + '</ul></section>' : '') +
             '</aside></div><a class="notice-action" href="#matches">返回赛事档案 →</a></article>';
         return '生康 ' + match.score + ' ' + match.opponent;

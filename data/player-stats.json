@@ -14,7 +14,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 12,
+        "apps": 13,
         "goals": 0,
         "asts": 1,
         "motm": 0,
@@ -22,6 +22,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-10-23-eleven-management",
+          "date": "2026-10-23",
+          "opponent": "管理学院",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-16-eleven-material",
           "date": "2026-10-16",
@@ -62,7 +77,7 @@
     },
     {
       "playerId": 3,
-      "name": "王伯函",
+      "name": "王伯涵",
       "baseline": {
         "apps": 9,
         "goals": 0,
@@ -72,14 +87,30 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 9,
+        "apps": 10,
         "goals": 0,
         "asts": 0,
         "motm": 0,
         "cleanSheets": 0,
         "lowConcedeGames": 0
       },
-      "matches": []
+      "matches": [
+        {
+          "matchId": "2026-10-23-eleven-management",
+          "date": "2026-10-23",
+          "opponent": "管理学院",
+          "started": false,
+          "position": "DF",
+          "onMinute": 35,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
     },
     {
       "playerId": 4,
@@ -93,14 +124,29 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 9,
+        "apps": 10,
         "goals": 0,
         "asts": 0,
         "motm": 0,
-        "cleanSheets": 1,
+        "cleanSheets": 2,
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-10-23-eleven-management",
+          "date": "2026-10-23",
+          "opponent": "管理学院",
+          "started": true,
+          "position": "GK",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 1,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-16-eleven-material",
           "date": "2026-10-16",
@@ -130,14 +176,30 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 8,
+        "apps": 9,
         "goals": 0,
         "asts": 0,
         "motm": 0,
         "cleanSheets": 0,
         "lowConcedeGames": 0
       },
-      "matches": []
+      "matches": [
+        {
+          "matchId": "2026-10-23-eleven-management",
+          "date": "2026-10-23",
+          "opponent": "管理学院",
+          "started": false,
+          "position": "DF",
+          "onMinute": 50,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
     },
     {
       "playerId": 6,
@@ -172,7 +234,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 12,
+        "apps": 13,
         "goals": 6,
         "asts": 1,
         "motm": 0,
@@ -180,6 +242,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-10-23-eleven-management",
+          "date": "2026-10-23",
+          "opponent": "管理学院",
+          "started": true,
+          "position": "FW",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-16-eleven-material",
           "date": "2026-10-16",
@@ -209,7 +286,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 9,
+        "apps": 10,
         "goals": 3,
         "asts": 3,
         "motm": 0,
@@ -217,6 +294,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-10-23-eleven-management",
+          "date": "2026-10-23",
+          "opponent": "管理学院",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-16-eleven-material",
           "date": "2026-10-16",
@@ -246,14 +338,29 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 11,
-        "goals": 4,
-        "asts": 3,
+        "apps": 12,
+        "goals": 5,
+        "asts": 4,
         "motm": 0,
         "cleanSheets": 0,
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-10-23-eleven-management",
+          "date": "2026-10-23",
+          "opponent": "管理学院",
+          "started": true,
+          "position": "FW",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 1,
+          "asts": 1,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-16-eleven-material",
           "date": "2026-10-16",
@@ -283,7 +390,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 7,
+        "apps": 8,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -291,6 +398,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-10-23-eleven-management",
+          "date": "2026-10-23",
+          "opponent": "管理学院",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-16-eleven-material",
           "date": "2026-10-16",
@@ -341,7 +463,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 9,
+        "apps": 10,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -349,6 +471,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-10-23-eleven-management",
+          "date": "2026-10-23",
+          "opponent": "管理学院",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": 35,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-16-eleven-material",
           "date": "2026-10-16",
@@ -436,7 +573,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 11,
+        "apps": 12,
         "goals": 1,
         "asts": 2,
         "motm": 0,
@@ -444,6 +581,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-10-23-eleven-management",
+          "date": "2026-10-23",
+          "opponent": "管理学院",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-16-eleven-material",
           "date": "2026-10-16",
@@ -515,14 +667,29 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 1,
-        "goals": 1,
-        "asts": 0,
-        "motm": 1,
+        "apps": 2,
+        "goals": 2,
+        "asts": 1,
+        "motm": 2,
         "cleanSheets": 0,
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-10-23-eleven-management",
+          "date": "2026-10-23",
+          "opponent": "管理学院",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 1,
+          "asts": 1,
+          "motm": 1,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-16-eleven-material",
           "date": "2026-10-16",
@@ -573,7 +740,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 1,
+        "apps": 2,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -581,6 +748,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-10-23-eleven-management",
+          "date": "2026-10-23",
+          "opponent": "管理学院",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-16-eleven-material",
           "date": "2026-10-16",
@@ -736,7 +918,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 1,
+        "apps": 2,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -744,6 +926,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-10-23-eleven-management",
+          "date": "2026-10-23",
+          "opponent": "管理学院",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": 50,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-16-eleven-material",
           "date": "2026-10-16",

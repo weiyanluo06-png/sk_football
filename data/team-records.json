@@ -65,7 +65,7 @@
     },
     {
       "id": 3,
-      "name": "王伯函",
+      "name": "王伯涵",
       "nickname": "防守大闸",
       "number": 29,
       "pos": "DF",
@@ -1126,40 +1126,196 @@
         "田杨洋和肖思博第一次参加比赛，难免有些紧张。第一次的经历会成为下一次的底气，再接再厉，一定会变得更强。带着这场比赛积累的信心，我们期待下一场对阵管理学院，争取胜利。"
       ],
       "photographers": [
-        "陈晗韵",
+        "陈涵韵",
         "刘雨莹"
       ],
       "photos": [
         {
           "src": "assets/photos/match-2026-10-16-01.jpg",
           "caption": "赛前场边讨论",
-          "photographer": "陈晗韵、刘雨莹"
+          "photographer": "陈涵韵、刘雨莹"
         },
         {
           "src": "assets/photos/match-2026-10-16-02.jpg",
           "caption": "比赛前的场上交流",
-          "photographer": "陈晗韵、刘雨莹"
+          "photographer": "陈涵韵、刘雨莹"
         },
         {
           "src": "assets/photos/match-2026-10-16-03.jpg",
           "caption": "开赛前的球场与双方队伍",
-          "photographer": "陈晗韵、刘雨莹"
+          "photographer": "陈涵韵、刘雨莹"
         },
         {
           "src": "assets/photos/match-2026-10-16-04.jpg",
           "caption": "替补席上的赛前准备",
-          "photographer": "陈晗韵、刘雨莹"
+          "photographer": "陈涵韵、刘雨莹"
         },
         {
           "src": "assets/photos/match-2026-10-16-05.jpg",
           "caption": "场边交流与比赛准备",
-          "photographer": "陈晗韵、刘雨莹"
+          "photographer": "陈涵韵、刘雨莹"
         }
       ],
       "missingInfo": [
         "段世添进球的助攻信息待确认",
         "对方进球时间、全场时长及其他换人待补充"
       ]
+    },
+    {
+      "id": "2026-10-23-eleven-management",
+      "competitionId": "2026-eleven-fangda",
+      "season": "2026-2027",
+      "date": "2026-10-23",
+      "kickoff": "12:00",
+      "venue": "武汉纺织大学足球场",
+      "fullTimeMinutes": 70,
+      "opponent": "管理学院",
+      "status": "played",
+      "goalsFor": 2,
+      "goalsAgainst": 0,
+      "formation": "4-4-2",
+      "captainId": 9,
+      "appearances": [
+        {
+          "playerId": 4,
+          "started": true,
+          "position": "GK",
+          "onMinute": 0,
+          "offMinute": null,
+          "cleanSheet": true
+        },
+        {
+          "playerId": 1,
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": null
+        },
+        {
+          "playerId": 27,
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": 50
+        },
+        {
+          "playerId": 10,
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": null
+        },
+        {
+          "playerId": 12,
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": 35
+        },
+        {
+          "playerId": 8,
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null
+        },
+        {
+          "playerId": 20,
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null
+        },
+        {
+          "playerId": 18,
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null
+        },
+        {
+          "playerId": 15,
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null
+        },
+        {
+          "playerId": 7,
+          "started": true,
+          "position": "FW",
+          "onMinute": 0,
+          "offMinute": null
+        },
+        {
+          "playerId": 9,
+          "started": true,
+          "position": "FW",
+          "onMinute": 0,
+          "offMinute": null
+        },
+        {
+          "playerId": 3,
+          "started": false,
+          "position": "DF",
+          "onMinute": 35,
+          "offMinute": null
+        },
+        {
+          "playerId": 5,
+          "started": false,
+          "position": "DF",
+          "onMinute": 50,
+          "offMinute": null
+        }
+      ],
+      "events": [
+        {
+          "type": "goal",
+          "minute": 19,
+          "exactTime": "19:15",
+          "playerId": 9,
+          "assistId": 18
+        },
+        {
+          "type": "substitution",
+          "minute": 35,
+          "playerInId": 3,
+          "playerOutId": 12
+        },
+        {
+          "type": "substitution",
+          "minute": 50,
+          "playerInId": 5,
+          "playerOutId": 27
+        },
+        {
+          "type": "goal",
+          "minute": 60,
+          "playerId": 18,
+          "assistId": 9
+        }
+      ],
+      "mvpId": 18,
+      "mvpReview": "连续第二场当选MVP。段世添先为周霄旭送出助攻，随后一条龙推进，在禁区外抽射右上死角，以一记世界波锁定胜局。",
+      "quote": "半年前的遗憾没有重演。二十多颗心脏共振，生康终于站在了胜利的一方。",
+      "reportTitle": "十一人制首胜，生康2:0复仇管理",
+      "report": [
+        "10月23日中午12点，生康足球队在武汉纺织大学足球场迎来2026年十一人制纺大杯对阵管理学院的比赛。去年无论新生杯还是十一人制，生康都曾与管理同组；建队初期底蕴尚浅，始终没能取胜。这一次，半年前的遗憾没有重演。",
+        "第19分15秒，段世添送出助攻，队长周霄旭右脚抽射球门死角，为生康打破僵局。中场休息时，王伯涵替换李傲登场；第50分钟，曹维嘉替换田杨洋，球队继续保持强度。",
+        "第60分钟，周霄旭投桃报李送出助攻。段世添一条龙带球推进，在禁区外抽射右上死角，以一记世界波将比分锁定为2:0。刘航宇首发打满全场，完成零封。",
+        "终场哨响的那一刻，所有人都有些恍惚：生康终于不再是输球的一方。这是球队十一人制正式比赛首胜，也是共同坚持换来的重要一步。感谢每一位队友的付出，也感谢材料学院和篮球队的兄弟们来到场边为我们加油。",
+        "你听到这二十多颗心脏共振而生的最强音了吗？一生生康，一声生康，三声加油。生康 Let's go！"
+      ],
+      "recorders": [
+        "赵慰冉",
+        "王凯程",
+        "刘雨莹",
+        "陈涵韵"
+      ],
+      "photographers": [],
+      "photos": [],
+      "missingInfo": []
     }
   ],
   "honors": [
