@@ -1649,7 +1649,92 @@ window.PONYTAIL_DATA = {
                 "陈涵韵"
             ],
             "photographers": [],
-            "photos": [],
+            "photos": [
+                {
+                    "src": "assets/photos/match-2026-10-23-01.jpg",
+                    "caption": "生康足球队2:0战胜管理学院后的全队合影"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-02.jpg",
+                    "caption": "终场后，队员们在场上分享胜利的喜悦"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-03.jpg",
+                    "caption": "场边及时处理腿部伤处"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-04.jpg",
+                    "caption": "赛后，队员们一起庆祝十一人制首胜"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-05.jpg",
+                    "caption": "进球后的激情奔跑庆祝"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-06.jpg",
+                    "caption": "队友赶来共同庆祝进球"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-07.jpg",
+                    "caption": "队员围圈凝聚力量的黑白瞬间"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-08.jpg",
+                    "caption": "比赛结束后与场边伙伴击掌"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-09.jpg",
+                    "caption": "角球进攻前观察禁区站位"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-10.jpg",
+                    "caption": "边路持球突破对方夹防"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-11.jpg",
+                    "caption": "进球后队员相互拥抱庆祝"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-12.jpg",
+                    "caption": "前场护球寻找推进机会"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-13.jpg",
+                    "caption": "双方球员争抢高空球落点"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-14.jpg",
+                    "caption": "禁区外起脚完成进攻"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-15.jpg",
+                    "caption": "边线掷球恢复比赛"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-16.jpg",
+                    "caption": "生康队员向前场发起推进"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-17.jpg",
+                    "caption": "角球区准备主罚定位球"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-18.jpg",
+                    "caption": "比赛间隙，队员们一同走回场内"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-19.jpg",
+                    "caption": "用拍立得留下这场胜利的全队合影"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-20.jpg",
+                    "caption": "比赛结束后的球队聚餐"
+                },
+                {
+                    "src": "assets/photos/match-2026-10-23-21.jpg",
+                    "caption": "开赛前，全队围圈为彼此加油"
+                }
+            ],
             "missingInfo": [],
             "competition": "十一人制纺大杯",
             "score": "2 : 0",
