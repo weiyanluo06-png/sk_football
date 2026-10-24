@@ -39,14 +39,10 @@ test("赵慰冉经理资料与欢迎公告保持一致", () => {
   assert.ok(fs.existsSync(path.join(root, manager.photo)));
 });
 
-test("姓名更正已同步到经理资料和官网公告", () => {
+test("经理姓名已更正且不发布姓名更正公告", () => {
   const managerData = loadWindowData("js/manager-data.js", "MANAGER_DATA");
   const notices = loadWindowData("js/notices-data.js", "TEAM_NOTICES");
-  const manager = managerData.managers.find((item) => item.order === 1);
-  const notice = notices.find((item) => item.id === "name-corrections-2026-10-24");
 
-  assert.equal(manager.name, "陈晗韵");
-  assert.ok(notice);
-  assert.equal(notice.status, "发布");
-  assert.match(notice.body, /王恺程/);
+  assert.equal(managerData.managers.find((item) => item.order === 1).name, "陈晗韵");
+  assert.equal(notices.some((item) => item.id === "name-corrections-2026-10-24"), false);
 });

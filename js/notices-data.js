@@ -145,20 +145,5 @@ window.TEAM_NOTICES = [
         "linkText": "查看本场比赛档案",
         "status": "发布",
         "pinned": true
-    },
-    {
-        "id": "name-corrections-2026-10-24",
-        "category": "资料更正",
-        "date": "2026-10-24",
-        "title": "人员姓名信息更正",
-        "summary": "官网已统一更正陈晗韵、王恺程两位人员的姓名信息。",
-        "body": "生康足球队官网已完成两处人员姓名信息更正，正确姓名为陈晗韵、王恺程。\n\n相关经理资料、10月16日比赛摄影记录、10月23日场外录制记录、公告和数据档案均已同步更新。\n\n本次更正不影响比赛成绩与球员个人统计，官网现有记录均以更正后的姓名为准。",
-        "members": [],
-        "image": "",
-        "imageCaption": "",
-        "link": "#matches",
-        "linkText": "查看比赛记录",
-        "status": "发布",
-        "pinned": true
     }
 ];
