@@ -2,7 +2,7 @@ window.MANAGER_DATA = {
     "managers": [
         {
             "order": 1,
-            "name": "陈涵韵",
+            "name": "陈晗韵",
             "grade": "2026级",
             "season": "2026",
             "role": "宣传经理",

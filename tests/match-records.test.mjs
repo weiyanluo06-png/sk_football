@@ -43,7 +43,7 @@ test('管理学院一战记录首胜、精确进球时间、两次换人、队�
     assert.equal(match.appearances.find(a => a.playerId === 4).cleanSheet, true);
     assert.deepEqual(match.events.filter(e => e.type === 'goal').map(e => [e.minute, e.exactTime || null, e.playerId, e.assistId]), [[19, '19:15', 9, 18], [60, null, 18, 9]]);
     assert.deepEqual(match.events.filter(e => e.type === 'substitution').map(e => [e.minute, e.playerInId, e.playerOutId]), [[35, 3, 12], [50, 5, 27]]);
-    assert.deepEqual(match.recorders, ['赵慰冉', '王凯程', '刘雨莹', '陈涵韵']);
+    assert.deepEqual(match.recorders, ['赵慰冉', '王恺程', '刘雨莹', '陈晗韵']);
     assert.equal(match.photos.length, 21);
     assert.equal(new Set(match.photos.map(photo => photo.src)).size, 21);
     assert.equal(match.photos[0].src, 'assets/photos/match-2026-10-23-01.jpg');
@@ -89,10 +89,10 @@ test('比赛详情显示门将、阵容、事件、战报、MVP和照片空状�
     vm.runInNewContext(fs.readFileSync('js/match-detail.js','utf8'),{window});
     const target={innerHTML:''};
     window.renderTeamMatch(target,matchId);
-    for (const text of ['刘航宇','4-4-2','何嗣承','吴全银','段世添','本场 MVP','我们是一个团队','match-2026-10-16-01.jpg','match-2026-10-16-05.jpg','摄影：陈涵韵、刘雨莹','助攻待确认']) assert.ok(target.innerHTML.includes(text),text);
+    for (const text of ['刘航宇','4-4-2','何嗣承','吴全银','段世添','本场 MVP','我们是一个团队','match-2026-10-16-01.jpg','match-2026-10-16-05.jpg','摄影：陈晗韵、刘雨莹','助攻待确认']) assert.ok(target.innerHTML.includes(text),text);
     assert.ok(!target.innerHTML.includes('首发门将待补充'));
     window.renderTeamMatch(target,managementMatchId);
-    for (const text of ['十一人制首胜','19:15','全场70分钟','王伯涵 换下 李傲','曹维嘉 换下 田杨洋','场外录制','赵慰冉、王凯程、刘雨莹、陈涵韵','match-2026-10-23-01.jpg','match-2026-10-23-21.jpg']) assert.ok(target.innerHTML.includes(text),text);
+    for (const text of ['十一人制首胜','19:15','全场70分钟','王伯涵 换下 李傲','曹维嘉 换下 田杨洋','场外录制','赵慰冉、王恺程、刘雨莹、陈晗韵','match-2026-10-23-01.jpg','match-2026-10-23-21.jpg']) assert.ok(target.innerHTML.includes(text),text);
     assert.ok(!target.innerHTML.includes('本场摄影：</p>'));
     const materialMatch = window.PONYTAIL_DATA.matches.find(match => match.id === matchId);
     materialMatch.report=['<script>bad</script>'];
