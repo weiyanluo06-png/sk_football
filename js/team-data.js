@@ -29,13 +29,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 13,
+            "apps": 14,
             "goals": 0,
             "asts": 1,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-09-eleven-yanjiusheng",
+                    "date": "2026-11-09",
+                    "opponent": "研究生",
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-10-23-eleven-management",
                     "date": "2026-10-23",
@@ -67,7 +82,7 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 8.1,
+            "rating": 8.2,
             "memory": "送出 1 次助攻"
         },
         {
@@ -190,13 +205,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 1,
                 "lowConcedeGames": 0
             },
-            "apps": 10,
+            "apps": 11,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 2,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-09-eleven-yanjiusheng",
+                    "date": "2026-11-09",
+                    "opponent": "研究生",
+                    "started": true,
+                    "position": "GK",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-10-23-eleven-management",
                     "date": "2026-10-23",
@@ -228,8 +258,8 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 7.1,
-            "memory": "累计出场 10 场"
+            "rating": 7.2,
+            "memory": "累计出场 11 场"
         },
         {
             "id": 5,
@@ -259,13 +289,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 9,
+            "apps": 10,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-09-eleven-yanjiusheng",
+                    "date": "2026-11-09",
+                    "opponent": "研究生",
+                    "started": false,
+                    "position": "FW",
+                    "onMinute": 60,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-10-23-eleven-management",
                     "date": "2026-10-23",
@@ -282,8 +327,8 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 6.7,
-            "memory": "累计出场 9 场"
+            "rating": 6.8,
+            "memory": "累计出场 10 场"
         },
         {
             "id": 6,
@@ -351,13 +396,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 13,
+            "apps": 14,
             "goals": 6,
             "asts": 1,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-09-eleven-yanjiusheng",
+                    "date": "2026-11-09",
+                    "opponent": "研究生",
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-10-23-eleven-management",
                     "date": "2026-10-23",
@@ -389,7 +449,7 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 9.4,
+            "rating": 9.5,
             "memory": "贡献 6 粒进球 / 送出 1 次助攻"
         },
         {
@@ -420,13 +480,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 10,
+            "apps": 11,
             "goals": 3,
             "asts": 3,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-09-eleven-yanjiusheng",
+                    "date": "2026-11-09",
+                    "opponent": "研究生",
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-10-23-eleven-management",
                     "date": "2026-10-23",
@@ -458,7 +533,7 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 8.6,
+            "rating": 8.7,
             "memory": "贡献 3 粒进球 / 送出 3 次助攻"
         },
         {
@@ -489,13 +564,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 12,
+            "apps": 13,
             "goals": 5,
             "asts": 4,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-09-eleven-yanjiusheng",
+                    "date": "2026-11-09",
+                    "opponent": "研究生",
+                    "started": true,
+                    "position": "FW",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-10-23-eleven-management",
                     "date": "2026-10-23",
@@ -558,13 +648,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 8,
+            "apps": 9,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-09-eleven-yanjiusheng",
+                    "date": "2026-11-09",
+                    "opponent": "研究生",
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-10-23-eleven-management",
                     "date": "2026-10-23",
@@ -596,8 +701,8 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 7.1,
-            "memory": "累计出场 8 场"
+            "rating": 7.3,
+            "memory": "累计出场 9 场"
         },
         {
             "id": 11,
@@ -665,13 +770,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 10,
+            "apps": 11,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-09-eleven-yanjiusheng",
+                    "date": "2026-11-09",
+                    "opponent": "研究生",
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-10-23-eleven-management",
                     "date": "2026-10-23",
@@ -703,8 +823,8 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 7.4,
-            "memory": "累计出场 10 场"
+            "rating": 7.5,
+            "memory": "累计出场 11 场"
         },
         {
             "id": 13,
@@ -826,13 +946,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 1,
                 "lowConcedeGames": 0
             },
-            "apps": 12,
+            "apps": 13,
             "goals": 1,
             "asts": 2,
             "motm": 0,
             "cleanSheets": 1,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-09-eleven-yanjiusheng",
+                    "date": "2026-11-09",
+                    "opponent": "研究生",
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-10-23-eleven-management",
                     "date": "2026-10-23",
@@ -958,13 +1093,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 2,
+            "apps": 3,
             "goals": 2,
             "asts": 1,
             "motm": 2,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-09-eleven-yanjiusheng",
+                    "date": "2026-11-09",
+                    "opponent": "研究生",
+                    "started": true,
+                    "position": "FW",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-10-23-eleven-management",
                     "date": "2026-10-23",
@@ -996,7 +1146,7 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 7.6,
+            "rating": 7.7,
             "memory": "贡献 2 粒进球 / 送出 1 次助攻"
         },
         {
@@ -1051,13 +1201,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 2,
+            "apps": 3,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-09-eleven-yanjiusheng",
+                    "date": "2026-11-09",
+                    "opponent": "研究生",
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-10-23-eleven-management",
                     "date": "2026-10-23",
@@ -1089,8 +1254,8 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 6.3,
-            "memory": "累计出场 2 场"
+            "rating": 6.4,
+            "memory": "累计出场 3 场"
         },
         {
             "id": 21,
@@ -1299,13 +1464,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 2,
+            "apps": 3,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-09-eleven-yanjiusheng",
+                    "date": "2026-11-09",
+                    "opponent": "研究生",
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": 60,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-10-23-eleven-management",
                     "date": "2026-10-23",
@@ -1337,8 +1517,8 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 6.3,
-            "memory": "累计出场 2 场"
+            "rating": 6.4,
+            "memory": "累计出场 3 场"
         },
         {
             "id": 28,
@@ -1496,6 +1676,159 @@ window.PONYTAIL_DATA = {
         }
     ],
     "matches": [
+        {
+            "id": "2026-11-09-eleven-yanjiusheng",
+            "competitionId": "2026-eleven-fangda",
+            "season": "2026-2027",
+            "date": "2026-11-09",
+            "kickoff": "12:00",
+            "venue": "武汉纺织大学足球场",
+            "fullTimeMinutes": 70,
+            "opponent": "研究生",
+            "status": "played",
+            "goalsFor": 0,
+            "goalsAgainst": 2,
+            "formation": "4-4-2",
+            "captainId": 9,
+            "appearances": [
+                {
+                    "playerId": 4,
+                    "started": true,
+                    "position": "GK",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 12,
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 1,
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 10,
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 27,
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": 60
+                },
+                {
+                    "playerId": 8,
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 15,
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 7,
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 20,
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 9,
+                    "started": true,
+                    "position": "FW",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 18,
+                    "started": true,
+                    "position": "FW",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 5,
+                    "started": false,
+                    "position": "FW",
+                    "onMinute": 60,
+                    "offMinute": null
+                }
+            ],
+            "events": [
+                {
+                    "type": "substitution",
+                    "minute": 60,
+                    "playerInId": 5,
+                    "playerOutId": 27
+                }
+            ],
+            "mvpId": null,
+            "mvpReview": "",
+            "quote": "前六十分钟没让对手进球，一口气松了，赛季就这样结束了。",
+            "reportTitle": "0:2，止步淘汰赛",
+            "report": [
+                "11 月 9 日中午，生康足球队在 2026 年十一人制纺大杯淘汰赛对阵研究生队。对手经验更老到、对抗更硬，我们带着背水一战的心态上场。",
+                "前 60 分钟是全队这场比赛最好的样子：门将刘航宇多次高接抵挡，扑出两个必进头球；周霄旭在边路持续突破，段世添在门前屡次制造险情，何嗣承在中场硬顶对抗，硬是把 0:0 守到了第 60 分钟。",
+                "第 60 分钟田杨洋下场、曹维嘉替补登场。第 62 分钟，对手打进一球；第 67 分钟，角球门前混战再失一球。比分定格在 0:2。",
+                "比分之外，这场球给我们上了一课：面对更成熟、会控制比赛节奏的对手，如何在僵持时守住自己的节奏，是接下来要补的东西。",
+                "场边录像与摄影：陈晗韵、赵慰冉、刘雨莹。也感谢七七糖水铺为球队赞助的两桶黄桃酸奶。"
+            ],
+            "recorders": [
+                "陈晗韵"
+            ],
+            "photographers": [
+                "赵慰冉",
+                "刘雨莹"
+            ],
+            "photos": [
+                {
+                    "src": "assets/photos/match-2026-11-09-01.jpg",
+                    "caption": "赛前全队围圈"
+                },
+                {
+                    "src": "assets/photos/match-2026-11-09-02.jpg",
+                    "caption": "双方赛前列队"
+                },
+                {
+                    "src": "assets/photos/match-2026-11-09-03.jpg",
+                    "caption": "赛后场边合影"
+                },
+                {
+                    "src": "assets/photos/match-2026-11-09-04.jpg",
+                    "caption": "场边记录"
+                }
+            ],
+            "missingInfo": [
+                "对手两个进球的进球者未记录",
+                "曹维嘉上场后的具体位置待确认"
+            ],
+            "competition": "十一人制纺大杯",
+            "score": "0 : 2",
+            "result": "loss",
+            "scorers": "无进球"
+        },
         {
             "id": "2026-10-23-eleven-management",
             "competitionId": "2026-eleven-fangda",

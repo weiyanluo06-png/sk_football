@@ -91,7 +91,7 @@ window.TEAM_NOTICES = [
         "link": "#match/2026-10-16-eleven-material",
         "linkText": "查看本场比赛档案",
         "status": "发布",
-       "pinned": true
+        "pinned": true
     },
     {
         "id": "welcome-zhaoweiran-2026",
@@ -142,6 +142,25 @@ window.TEAM_NOTICES = [
         "image": "assets/photos/match-2026-10-23-01.jpg",
         "imageCaption": "生康足球队2:0战胜管理学院后的全队合影",
         "link": "#match/2026-10-23-eleven-management",
+        "linkText": "查看本场比赛档案",
+        "status": "发布",
+        "pinned": true
+    },
+    {
+        "id": "eleven-knockout-yanjiusheng-2026",
+        "category": "比赛战报",
+        "date": "2026-11-10",
+        "title": "0:2 止步淘汰赛，2026 赛季收官",
+        "summary": "11月9日，生康在十一人制纺大杯淘汰赛0:2不敌研究生，止步淘汰赛。",
+        "body": "11 月 9 日中午，生康足球队在 2026 年十一人制纺大杯淘汰赛对阵研究生队，最终 0:2 落败。前 60 分钟球队顶住了对手的持续压迫，门将刘航宇多次扑救，双方以 0:0 进入最后阶段；第 62、67 分钟连失两球。\n\n比分之外，这场球让球队看清了与成熟对手之间的差距：如何在僵持时守住自己的节奏，是接下来要补的课。感谢到场记录比赛的陈晗韵、赵慰冉、刘雨莹，也感谢七七糖水铺为球队赞助的两桶黄桃酸奶。\n\n本场阵容、换人、4 张现场照片与完整战报已同步至官网；对手两个进球的进球者暂未记录。",
+        "members": [
+            "刘航宇",
+            "周霄旭",
+            "段世添"
+        ],
+        "image": "assets/photos/match-2026-11-09-01.jpg",
+        "imageCaption": "赛前全队围圈 · 2026-11-09 对阵研究生",
+        "link": "#match/2026-11-09-eleven-yanjiusheng",
         "linkText": "查看本场比赛档案",
         "status": "发布",
         "pinned": true

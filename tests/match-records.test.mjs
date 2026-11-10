@@ -7,14 +7,14 @@ import { build, outputs, statKeys } from '../tools/build_team_data.mjs';
 const source = JSON.parse(fs.readFileSync('data/team-records.json', 'utf8'));
 const matchId = '2026-10-16-eleven-material';
 const managementMatchId = '2026-10-23-eleven-management';
-test('两场比赛的出场、进球、助攻、MVP和零封从明细正确汇总，历史不重复计数', () => {
+test('逐场比赛的出场、进球、助攻、MVP和零封从明细正确汇总，历史不重复计数', () => {
     const data = build(source), match = data.matches.find(m => m.id === matchId);
     assert.equal(match.score, '2 : 3');
     assert.equal(match.kickoff, '12:00');
     assert.equal(match.appearances.filter(a => a.started).length, 11);
     assert.equal(match.appearances.length, 12);
     const byName = Object.fromEntries(data.players.map(p => [p.name, p]));
-    const expected = { '吴宇成': 13, '刘航宇': 10, '田杨洋': 2, '张俊': 8, '李傲': 10, '彭卓伦': 10, '肖思博': 2, '段世添': 2, '何嗣承': 12, '吴宇泽': 13, '周霄旭': 12, '吴全银': 7, '王伯涵': 10, '曹维嘉': 9 };
+    const expected = { '吴宇成': 14, '刘航宇': 11, '田杨洋': 3, '张俊': 9, '李傲': 11, '彭卓伦': 11, '肖思博': 3, '段世添': 3, '何嗣承': 13, '吴宇泽': 14, '周霄旭': 13, '吴全银': 7, '王伯涵': 10, '曹维嘉': 10 };
     for (const [name, apps] of Object.entries(expected)) {
         assert.equal(byName[name].apps, apps, name);
     }
@@ -23,7 +23,7 @@ test('两场比赛的出场、进球、助攻、MVP和零封从明细正确汇�
     assert.equal(byName['段世添'].motm, 2);
     assert.equal(byName['何嗣承'].asts, 2);
     assert.equal(byName['刘航宇'].cleanSheets, 2);
-    assert.equal(data.players.reduce((n, p) => n + p.apps - p.baseline.apps, 0), 25);
+    assert.equal(data.players.reduce((n, p) => n + p.apps - p.baseline.apps, 0), 37);
     assert.equal(data.players.reduce((n, p) => n + p.goals - p.baseline.goals, 0), 4);
     assert.equal(data.players.reduce((n, p) => n + p.asts - p.baseline.asts, 0), 3);
     for (const p of data.players.filter(p => !Object.hasOwn(expected, p.name))) {
@@ -62,7 +62,7 @@ test('纠正进球归属和补充出场会重新计算，不叠加旧数值', ()
     const data = build(edit);
     assert.equal(data.players.find(p => p.name === '段世添').goals, 1);
     assert.equal(data.players.find(p => p.id === 7).goals, 7);
-    assert.equal(data.players.find(p => p.name === '段世添').apps, 2);
+    assert.equal(data.players.find(p => p.name === '段世添').apps, 3);
     edit.matches[0].appearances.push({playerId:2,started:false,position:'DF',onMinute:55,offMinute:null});
     edit.matches[0].appearances.find(a=>a.playerId===10).offMinute=55;
     edit.matches[0].events.push({type:'substitution',minute:55,playerInId:2,playerOutId:10});
@@ -83,6 +83,23 @@ test('拒绝重复比赛、重复赛程、重复出场、未知球员、比分�
         r => r.matches[0].events[0].minute=51,
     ];
     for (const corrupt of corruptions) { const edit=structuredClone(source);corrupt(edit);assert.throws(()=>build(edit)); }
+});
+test('2026-11-09 对研究生的淘汰赛：0:2、不评 MVP、一次换人、四张照片', () => {
+    const data = build(source), match = data.matches.find(m => m.id === '2026-11-09-eleven-yanjiusheng');
+    assert.ok(match, '应能找到 2026-11-09 的比赛');
+    assert.equal(match.score, '0 : 2');
+    assert.equal(match.result, 'loss');
+    assert.equal(match.competitionId, '2026-eleven-fangda');
+    assert.equal(match.season, '2026-2027');
+    assert.equal(match.fullTimeMinutes, 70);
+    assert.equal(match.captainId, 9);
+    assert.equal(match.mvpId, null);
+    assert.equal(match.appearances.filter(a => a.started).length, 11);
+    assert.equal(match.appearances.length, 12);
+    assert.deepEqual(match.events.map(e => [e.type, e.minute, e.playerInId, e.playerOutId]),
+        [['substitution', 60, 5, 27]]);
+    assert.equal(match.photos.length, 4);
+    for (const photo of match.photos) assert.ok(fs.existsSync(photo.src), photo.src);
 });
 test('比赛详情显示门将、阵容、事件、战报、MVP和照片空状态，历史场次可回看', () => {
     const window={PONYTAIL_DATA:build(source)};

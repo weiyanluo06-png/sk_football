@@ -14,7 +14,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 13,
+        "apps": 14,
         "goals": 0,
         "asts": 1,
         "motm": 0,
@@ -22,6 +22,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-09-eleven-yanjiusheng",
+          "date": "2026-11-09",
+          "opponent": "研究生",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-23-eleven-management",
           "date": "2026-10-23",
@@ -124,7 +139,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 10,
+        "apps": 11,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -132,6 +147,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-09-eleven-yanjiusheng",
+          "date": "2026-11-09",
+          "opponent": "研究生",
+          "started": true,
+          "position": "GK",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-23-eleven-management",
           "date": "2026-10-23",
@@ -176,7 +206,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 9,
+        "apps": 10,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -184,6 +214,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-09-eleven-yanjiusheng",
+          "date": "2026-11-09",
+          "opponent": "研究生",
+          "started": false,
+          "position": "FW",
+          "onMinute": 60,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-23-eleven-management",
           "date": "2026-10-23",
@@ -234,7 +279,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 13,
+        "apps": 14,
         "goals": 6,
         "asts": 1,
         "motm": 0,
@@ -242,6 +287,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-09-eleven-yanjiusheng",
+          "date": "2026-11-09",
+          "opponent": "研究生",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-23-eleven-management",
           "date": "2026-10-23",
@@ -286,7 +346,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 10,
+        "apps": 11,
         "goals": 3,
         "asts": 3,
         "motm": 0,
@@ -294,6 +354,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-09-eleven-yanjiusheng",
+          "date": "2026-11-09",
+          "opponent": "研究生",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-23-eleven-management",
           "date": "2026-10-23",
@@ -338,7 +413,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 12,
+        "apps": 13,
         "goals": 5,
         "asts": 4,
         "motm": 0,
@@ -346,6 +421,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-09-eleven-yanjiusheng",
+          "date": "2026-11-09",
+          "opponent": "研究生",
+          "started": true,
+          "position": "FW",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-23-eleven-management",
           "date": "2026-10-23",
@@ -390,7 +480,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 8,
+        "apps": 9,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -398,6 +488,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-09-eleven-yanjiusheng",
+          "date": "2026-11-09",
+          "opponent": "研究生",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-23-eleven-management",
           "date": "2026-10-23",
@@ -463,7 +568,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 10,
+        "apps": 11,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -471,6 +576,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-09-eleven-yanjiusheng",
+          "date": "2026-11-09",
+          "opponent": "研究生",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-23-eleven-management",
           "date": "2026-10-23",
@@ -573,7 +693,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 12,
+        "apps": 13,
         "goals": 1,
         "asts": 2,
         "motm": 0,
@@ -581,6 +701,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-09-eleven-yanjiusheng",
+          "date": "2026-11-09",
+          "opponent": "研究生",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-23-eleven-management",
           "date": "2026-10-23",
@@ -667,7 +802,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 2,
+        "apps": 3,
         "goals": 2,
         "asts": 1,
         "motm": 2,
@@ -675,6 +810,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-09-eleven-yanjiusheng",
+          "date": "2026-11-09",
+          "opponent": "研究生",
+          "started": true,
+          "position": "FW",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-23-eleven-management",
           "date": "2026-10-23",
@@ -740,7 +890,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 2,
+        "apps": 3,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -748,6 +898,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-09-eleven-yanjiusheng",
+          "date": "2026-11-09",
+          "opponent": "研究生",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-23-eleven-management",
           "date": "2026-10-23",
@@ -918,7 +1083,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 2,
+        "apps": 3,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -926,6 +1091,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-09-eleven-yanjiusheng",
+          "date": "2026-11-09",
+          "opponent": "研究生",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": 60,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-23-eleven-management",
           "date": "2026-10-23",
