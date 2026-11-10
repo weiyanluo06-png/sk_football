@@ -900,9 +900,17 @@
         renderFeaturedPlayers();
     }
 
+    function syncHeroStats() {
+        // 首页「球员档案」数量跟随数据源自动更新，避免写死后忘记同步
+        var node = document.querySelector('[data-player-count]');
+        var count = (teamData.players || []).length;
+        if (node && count) node.textContent = String(count);
+    }
+
     function init() {
         window.openTeamProfile = openPlayerModal;
         window.TACTICS = window.createTacticsEditor(allPlayers, startingLineup, openPlayerModal);
+        syncHeroStats();
         renderNewcomers();
         initNewcomerMotion();
         renderManagers();
