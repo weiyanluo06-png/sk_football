@@ -2,8 +2,8 @@ import importlib.util
 import json
 import shutil
 import subprocess
-import tempfile
 import unittest
+import uuid
 from pathlib import Path
 
 from openpyxl import load_workbook
@@ -18,6 +18,20 @@ SYNC_MODULE = importlib.util.module_from_spec(SYNC_SPEC)
 SYNC_SPEC.loader.exec_module(SYNC_MODULE)
 newcomer_payload = SYNC_MODULE.newcomer_payload
 manager_payload = SYNC_MODULE.manager_payload
+
+
+class WorkspaceTemp:
+    """工作区内的临时目录：系统 TEMP 在受限环境（如沙箱）里可能不可写。"""
+
+    def __init__(self):
+        self.path = ROOT / f'.tmp-workbook-test-{uuid.uuid4().hex[:8]}'
+
+    def __enter__(self):
+        self.path.mkdir(parents=True, exist_ok=True)
+        return str(self.path)
+
+    def __exit__(self, *exc_info):
+        shutil.rmtree(self.path, ignore_errors=True)
 
 
 def load_window_data(path, global_name):
@@ -79,7 +93,7 @@ class TeamWorkbookSyncTest(unittest.TestCase):
     def test_sync_emits_nonempty_newcomers_without_changing_official_roster(self):
         official_source = SITE_DATA_PATH.read_bytes()
         official_data = load_legacy_site_data()
-        with tempfile.TemporaryDirectory() as directory:
+        with WorkspaceTemp() as directory:
             temporary = Path(directory)
             source = temporary / 'source.xlsx'
             target = temporary / 'synced.xlsx'
@@ -121,7 +135,7 @@ class TeamWorkbookSyncTest(unittest.TestCase):
     def test_sync_emits_manager_without_changing_player_or_newcomer_data(self):
         official_data = load_legacy_site_data()
         official_newcomers = load_newcomer_data()
-        with tempfile.TemporaryDirectory() as directory:
+        with WorkspaceTemp() as directory:
             temporary = Path(directory)
             source = temporary / 'source.xlsx'
             target = temporary / 'synced.xlsx'
@@ -258,7 +272,7 @@ class TeamWorkbookSyncTest(unittest.TestCase):
         before = {path: path.read_bytes() for path in tracked_files}
         summary_cells = ['B4', 'B5', 'B6', 'B7', 'B8']
         summary_values = [17, 110, 13, 9, 0]
-        with tempfile.TemporaryDirectory() as directory:
+        with WorkspaceTemp() as directory:
             temporary = Path(directory)
             source = temporary / 'source.xlsx'
             target = temporary / 'synced.xlsx'

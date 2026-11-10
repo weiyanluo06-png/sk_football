@@ -1,6 +1,6 @@
 # 生康足球队纪念站 · 维护规则（唯一有效版）
 
-> **本文件是项目唯一的规则来源。** 它合并了原先分散的 `docs/网站更新规则.md`、`docs/生康足球队纪念站-项目交接手册.md`（有效章节）、`README.md`（维护章节）、`data/README.md`、`docs/updates/2026-10-17-publish-and-announcement-rules.md`，并剔除了 2026-10-16 数据架构迁移后失效的旧流程。**合并完成后，上述规则类旧文件已从仓库删除**，历史只在本文件的第 0.1 节留档。
+> **本文件是项目唯一的规则来源。** 它合并了原先分散的 `docs/网站更新规则.md`、`docs/生康足球队纪念站-项目交接手册.md`（有效章节）、`data/README.md`、`docs/updates/2026-10-17-publish-and-announcement-rules.md` 以及 `README.md` 的维护章节，并剔除了 2026-10-16 数据架构迁移后失效的旧流程。**合并后除 `README.md` 保留并改写为项目导览外，其余规则类旧文件已从仓库删除**，历史只在本文件第 0.1 节留档。
 
 | 项 | 内容 |
 |---|---|
@@ -205,7 +205,7 @@ sk_football/
 │  ├─ team-memorial-refresh.test.mjs 页面结构契约
 │  ├─ fangzhaoju-player.test.mjs 单人物数据一致性
 │  └─ manager-notices.test.mjs   经理与公告一致性
-├─ docs/                         历史文档、更新记录、比赛数据收集清单
+├─ docs/                         更新记录（updates/）与比赛数据收集清单
 └─ .github/workflows/deploy-pages.yml
 ```
 
@@ -646,7 +646,7 @@ python tools/import_matches.py            # 导入 + 自动重新生成网站数
 
 因此以前文档里写"运行这条命令生成 `newcomer-data.js` / `manager-data.js` / `notices-data.js`"的做法**当前不可执行**。
 
-**可行绕行**：以编程方式调用，把 `site_output` 指到临时路径（`tests/team-workbook-sync.test.py:86-100` 就是这么做的），再单独调用 `write_notices()`：
+**可行绕行**：以编程方式调用，把 `site_output` 指到临时路径（`tests/team-workbook-sync.test.py` 里就是这么做的），再单独调用 `write_notices()`：
 
 ```python
 import importlib.util, pathlib, tempfile
@@ -661,13 +661,13 @@ m.write_notices(m.load_workbook(ROOT/'data'/'生康足球队数据源.xlsx'), wo
 # 再把 work/ 下三个文件复制回 js/ 并肉眼核对
 ```
 
-**Excel 已与仓库内容脱钩**（同一实测的差异）：
+**Excel 已与仓库内容脱钩**（2026-11-10 复测）：
 
 | 文件 | 与 Excel 生成的对比 |
 |---|---|
 | `newcomer-data.js` | **完全一致**（0 行差异） |
-| `manager-data.js` | 4 行差异：赵慰冉的 `duties` 在 Excel 里有说明文字，仓库里是空字符串 |
-| `notices-data.js` | 10 行差异：2:0 战报的正文结尾与配图/图注在仓库里已手工改过，Excel 仍是旧版（无配图） |
+| `manager-data.js` | 2 行差异：赵慰冉的 `duties` 在 Excel 里是默认文字，仓库里是空字符串 |
+| `notices-data.js` | 6 行差异：2:0 战报的正文结尾与配图/图注在仓库里已手工改过，Excel 仍是旧版（无配图） |
 
 结论：这三张表**已不再是可信真源**。改动前先以仓库里的 JS 为准核对，不要默认 Excel 是新的。
 
@@ -992,7 +992,7 @@ HTML + CSS + 原生 JavaScript + Font Awesome + Google Fonts + GitHub Pages。
 
 ### 12.2 JavaScript 约定
 
-- 数据挂在全局：`window.PONYTAIL_DATA`（生成）、`window.PONYTAIL_GALLERY`（手写）等。
+- 数据挂在全局：`window.PONYTAIL_DATA`（生成）、`window.PONYTAIL_GALLERY`（手写）、`window.NEWCOMER_DATA` / `window.MANAGER_DATA` / `window.TEAM_NOTICES`（Excel 同步生成）。
 - 渲染逻辑集中在 `main.js`；栏目与路由在 `sections.js`；战报在 `match-detail.js`；战术板在 `tactics.js`。
 - **所有用户/数据文本写入 HTML 前必须 `escapeHtml()`**。
 - DOM 用现有 `$()` 辅助函数获取。
@@ -1199,8 +1199,8 @@ git push origin main
 12. **比赛筛选依赖赛事名称与日期年份**：`name` 必须与 `competitions` 完全一致。
 13. **新球员不会自动拥有真实介绍**：必须人工补 `bio`/`reviews`/照片。
 14. **公告的 `pinned`、`category` 目前未生效**：脚本不消费这两个字段。
-15. **`docs/` 下的旧文档含失效流程**：以本规则为准，不要照抄第 4–6 章旧流程。
-16. **`docs/updates/` 有重复与格式不一致的历史文件**（2026-10-24 两篇内容相同；2026-10-21 方昭炬那篇缺标题行）：新文件按 8.3 写，不要模仿。
+15. **`docs/` 里现在只剩更新记录与采集清单**：旧规则文档已删除（见 0.1），流程只在本文件，不要再去 `docs/` 里找。
+16. **`docs/updates/2026-10-21-welcome-fangzhaoju.md` 缺一级标题行**（历史遗留）：新文件按 8.3 的格式写，不要模仿这一篇。
 17. **`python tools/sync_team_workbook.py` 现在必失败**：`main()` 固定把 `js/team-data.js` 当输出，守卫检测到 `team-records.json` 就抛 `ValueError`。新生/经理/公告的同步入口因此一起被冻结，绕行方案见 7.6。
 18. **Excel 与仓库已经不"同源"**：`newcomer-data.js` 一致，但 `manager-data.js`、`notices-data.js` 与 Excel 有差异。任何"照 Excel 重生成"的操作都会**回退**仓库里后来的手工修正。
 
@@ -1243,21 +1243,21 @@ git push origin main
 
 ## 19. 附录
 
-### 19.1 当前状态快照（截至 2026-10-24 最后一次提交）
+### 19.1 当前状态快照（截至 2026-11-10）
 
 | 项 | 值 |
 |---|---|
 | 球员总数 | 29（含 1 名位置待定新生） |
 | 有出场记录 | 19 |
-| 比赛总数 | 13（11 场历史 + 2 场逐场明细） |
-| 战绩 | 4 胜 0 平 9 负，进 17 失 33 |
-| 累计 | 出场 135、进球 17、助攻 12、MVP 2、零封 4 |
+| 比赛总数 | 14（11 场历史 + 3 场逐场明细） |
+| 战绩 | 4 胜 0 平 10 负，进 17 失 35 |
+| 累计 | 出场 147、进球 17、助攻 12、MVP 2、零封 4 |
 | 默认赛事 | `2026-eleven-fangda` |
-| 公告数 | 8（已发布） |
+| 公告数 | 9（已发布） |
 | 影像墙 | 11 张 |
-| 最近一场 | 2026-10-23 2:0 胜管理学院（十一人制首胜） |
+| 最近一场 | 2026-11-09 0:2 负研究生（淘汰赛出局，另有两场排位赛待赛） |
 
-> 本节只是快照，**不要当规则执行**；每次更新后如方便可顺手刷新。
+> 本节只是快照，**不要当规则执行**；每次更新后如方便可顺手刷新。嫌维护麻烦的话，整节删掉也不影响任何流程（数据以 `team-records.json` 和 `player-stats.json` 为准）。
 
 ### 19.2 常见错误对照表
 
