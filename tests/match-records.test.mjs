@@ -101,6 +101,23 @@ test('2026-11-09 对研究生的淘汰赛：0:2、不评 MVP、一次换人、�
     assert.equal(match.photos.length, 4);
     for (const photo of match.photos) assert.ok(fs.existsSync(photo.src), photo.src);
 });
+test('2026-11-17 南湖弃权：判 3:0 胜，无出场与事件，不计个人数据', () => {
+    const data = build(source), match = data.matches.find(m => m.id === '2026-11-17-eleven-nanhu');
+    assert.ok(match, '应能找到南湖弃权那场');
+    assert.equal(match.score, '3 : 0');
+    assert.equal(match.result, 'win');
+    assert.equal(match.walkover, true);
+    assert.deepEqual(match.appearances, []);
+    assert.deepEqual(match.events, []);
+    assert.equal(match.scorers, '对手弃权，判 3 : 0');
+    assert.equal(data.players.find(p => p.name === '段世添').apps, 3);
+});
+test('弃权场次填了出场会被拒', () => {
+    const edit = structuredClone(source);
+    const walk = edit.matches.find(m => m.walkover === true);
+    walk.appearances.push({ playerId: 1, started: true, position: 'DF', onMinute: 0, offMinute: null });
+    assert.throws(() => build(edit), /弃权场次/);
+});
 test('比赛详情显示门将、阵容、事件、战报、MVP和照片空状态，历史场次可回看', () => {
     const window={PONYTAIL_DATA:build(source)};
     vm.runInNewContext(fs.readFileSync('js/match-detail.js','utf8'),{window});

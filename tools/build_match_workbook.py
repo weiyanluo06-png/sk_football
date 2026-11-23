@@ -48,6 +48,7 @@ MATCH_COLUMNS = [
     ("对手", 12, "学院全名"),
     ("我方进球", 9, ""),
     ("对方进球", 9, ""),
+    ("对手弃权", 9, "是/否；弃权判胜时填是"),
     ("阵型", 9, "如 4-4-2"),
     ("队长", 10, "姓名"),
     ("全场分钟", 9, "默认 70（35′×2）"),
@@ -255,6 +256,7 @@ def match_row(match: dict, players: dict) -> list:
     return [
         match["id"], match["date"], match.get("kickoff", ""), match.get("venue", ""),
         match["competitionId"], match["opponent"], match["goalsFor"], match["goalsAgainst"],
+        "是" if match.get("walkover") else "",
         match.get("formation", ""), name(match.get("captainId")), match.get("fullTimeMinutes", ""),
         name(match.get("mvpId")),
     ]

@@ -233,10 +233,17 @@ def merge_matches(records: dict, workbook, force: bool) -> tuple[list[dict], lis
         goals_for = as_int(row.get("我方进球"), where, "我方进球")
         goals_against = as_int(row.get("对方进球"), where, "对方进球")
 
+        walkover = as_bool(row.get("对手弃权")) is True
+        if walkover:
+            if goals_for <= goals_against:
+                raise ImportProblem(f"{where}：弃权判胜的比分应为我方领先，实际是 {goals_for}:{goals_against}")
+            if grouped_app.get(match_id) or grouped_ev.get(match_id):
+                raise ImportProblem(f"{where}：弃权场次不应填出场或事件，请把这两张表里该场的行删掉")
+
         appearances = []
         seen_players: dict[int, str] = {}
         starters = 0
-        for app in grouped_app.get(match_id, []):
+        for app in ([] if walkover else grouped_app.get(match_id, [])):
             app_where = f"出场表第 {app['__row__']} 行"
             name = norm(app.get("球员姓名"))
             if not name:
@@ -274,7 +281,7 @@ def merge_matches(records: dict, workbook, force: bool) -> tuple[list[dict], lis
             if started:
                 starters += 1
             appearances.append(entry)
-        if not appearances:
+        if not appearances and not walkover:
             raise ImportProblem(f"{where}：出场表里没有任何属于这场比赛（比赛ID={match_id}）的球员")
         if starters > 11:
             raise ImportProblem(f"{where}：首发有 {starters} 人，超过 11 人")
@@ -283,7 +290,7 @@ def merge_matches(records: dict, workbook, force: bool) -> tuple[list[dict], lis
         goals = 0
         subs_in: set[int] = set()
         subs_out: set[int] = set()
-        for ev in grouped_ev.get(match_id, []):
+        for ev in ([] if walkover else grouped_ev.get(match_id, [])):
             ev_where = f"事件表第 {ev['__row__']} 行"
             minute = as_int(ev.get("分钟"), ev_where, "分钟")
             kind = norm(ev.get("类型"))
@@ -330,7 +337,7 @@ def merge_matches(records: dict, workbook, force: bool) -> tuple[list[dict], lis
             else:
                 raise ImportProblem(f"{ev_where}：类型只能填「进球」或「换人」，实际是「{kind}」")
 
-        if goals != goals_for:
+        if not walkover and goals != goals_for:
             raise ImportProblem(f"{where}：比分写的是我方 {goals_for} 球，但事件表里有 {goals} 个进球")
         for entry in appearances:
             if not entry["started"] and entry["playerId"] not in subs_in:
@@ -394,6 +401,7 @@ def merge_matches(records: dict, workbook, force: bool) -> tuple[list[dict], lis
         match.update({
             "opponent": opponent,
             "status": "played",
+            **({"walkover": True} if walkover else {}),
             "goalsFor": goals_for,
             "goalsAgainst": goals_against,
             "formation": norm(row.get("阵型")),

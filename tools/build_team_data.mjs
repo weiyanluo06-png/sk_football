@@ -47,6 +47,23 @@ export function build(records) {
         if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(source.kickoff)) fail('开球时间无效');
         if (source.fullTimeMinutes != null && (!Number.isInteger(source.fullTimeMinutes) || source.fullTimeMinutes <= 0)) fail('全场时长无效');
         if (!count(source.goalsFor) || !count(source.goalsAgainst)) fail('比分无效');
+        if (source.walkover === true) {
+            if (source.goalsFor <= source.goalsAgainst) fail('弃权判胜的比分应为我方领先');
+            if ((source.appearances || []).length) fail('弃权场次不应有出场记录');
+            if ((source.events || []).length) fail('弃权场次不应有事件记录');
+            if (source.captainId != null || source.mvpId != null) fail('弃权场次不应有队长或 MVP');
+            for (const photo of source.photos) {
+                if (!safeAsset(photo.src) || !photo.caption) fail('比赛照片路径或说明无效');
+            }
+            matches.push({
+                ...structuredClone(source), competition: competitions.get(source.competitionId).name,
+                score: `${source.goalsFor} : ${source.goalsAgainst}`,
+                result: 'win',
+                walkover: true,
+                scorers: `对手弃权，判 ${source.goalsFor} : ${source.goalsAgainst}`,
+            });
+            continue;
+        }
         const appearances = new Map();
         for (const appearance of source.appearances) {
             person(appearance.playerId);
