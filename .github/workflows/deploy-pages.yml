@@ -39,4 +39,11 @@ jobs:
           path: .
       - name: Deploy
         id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+      # GitHub Pages 的部署步骤偶尔会瞬时失败（校验与上传都成功、部署在几十秒内报错）。
+      # 失败时自动重试一次，避免为一次抖动再推空提交。
+      - name: Retry deploy once
+        if: steps.deployment.outcome == 'failure'
+        id: deployment_retry
         uses: actions/deploy-pages@v4
