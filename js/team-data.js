@@ -29,13 +29,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 14,
+            "apps": 15,
             "goals": 0,
             "asts": 1,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": 60,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-11-09-eleven-yanjiusheng",
                     "date": "2026-11-09",
@@ -82,7 +97,7 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 8.2,
+            "rating": 8.4,
             "memory": "送出 1 次助攻"
         },
         {
@@ -113,15 +128,31 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 4,
+            "apps": 5,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
-            "matchHistory": [],
-            "rating": 6.6,
-            "memory": "累计出场 4 场"
+            "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": false,
+                    "position": "DF",
+                    "onMinute": 60,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                }
+            ],
+            "rating": 6.7,
+            "memory": "累计出场 5 场"
         },
         {
             "id": 3,
@@ -151,13 +182,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 10,
+            "apps": 11,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": false,
+                    "position": "DF",
+                    "onMinute": 35,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-10-23-eleven-management",
                     "date": "2026-10-23",
@@ -174,8 +220,8 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 7.4,
-            "memory": "累计出场 10 场"
+            "rating": 7.5,
+            "memory": "累计出场 11 场"
         },
         {
             "id": 4,
@@ -205,13 +251,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 1,
                 "lowConcedeGames": 0
             },
-            "apps": 11,
+            "apps": 12,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 2,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": true,
+                    "position": "GK",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-11-09-eleven-yanjiusheng",
                     "date": "2026-11-09",
@@ -258,8 +319,8 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 7.2,
-            "memory": "累计出场 11 场"
+            "rating": 7.3,
+            "memory": "累计出场 12 场"
         },
         {
             "id": 5,
@@ -396,13 +457,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 14,
-            "goals": 6,
-            "asts": 1,
+            "apps": 15,
+            "goals": 9,
+            "asts": 2,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 3,
+                    "asts": 1,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-11-09-eleven-yanjiusheng",
                     "date": "2026-11-09",
@@ -450,7 +526,7 @@ window.PONYTAIL_DATA = {
                 }
             ],
             "rating": 9.5,
-            "memory": "贡献 6 粒进球 / 送出 1 次助攻"
+            "memory": "贡献 9 粒进球 / 送出 2 次助攻"
         },
         {
             "id": 8,
@@ -480,13 +556,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 11,
+            "apps": 12,
             "goals": 3,
-            "asts": 3,
+            "asts": 5,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 2,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-11-09-eleven-yanjiusheng",
                     "date": "2026-11-09",
@@ -533,8 +624,8 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 8.7,
-            "memory": "贡献 3 粒进球 / 送出 3 次助攻"
+            "rating": 9.3,
+            "memory": "贡献 3 粒进球 / 送出 5 次助攻"
         },
         {
             "id": 9,
@@ -564,13 +655,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 13,
+            "apps": 14,
             "goals": 5,
-            "asts": 4,
+            "asts": 5,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": true,
+                    "position": "FW",
+                    "onMinute": 0,
+                    "offMinute": 60,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 1,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-11-09-eleven-yanjiusheng",
                     "date": "2026-11-09",
@@ -618,7 +724,7 @@ window.PONYTAIL_DATA = {
                 }
             ],
             "rating": 9.5,
-            "memory": "贡献 5 粒进球 / 送出 4 次助攻"
+            "memory": "贡献 5 粒进球 / 送出 5 次助攻"
         },
         {
             "id": 10,
@@ -648,13 +754,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 9,
+            "apps": 10,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-11-09-eleven-yanjiusheng",
                     "date": "2026-11-09",
@@ -701,8 +822,8 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 7.3,
-            "memory": "累计出场 9 场"
+            "rating": 7.4,
+            "memory": "累计出场 10 场"
         },
         {
             "id": 11,
@@ -732,15 +853,31 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 1,
                 "lowConcedeGames": 0
             },
-            "apps": 5,
+            "apps": 6,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 1,
             "lowConcedeGames": 0,
-            "matchHistory": [],
+            "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": false,
+                    "position": "FW",
+                    "onMinute": 60,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                }
+            ],
             "rating": 6.6,
-            "memory": "累计出场 5 场"
+            "memory": "累计出场 6 场"
         },
         {
             "id": 12,
@@ -770,13 +907,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 11,
+            "apps": 12,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": 60,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-11-09-eleven-yanjiusheng",
                     "date": "2026-11-09",
@@ -823,8 +975,8 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 7.5,
-            "memory": "累计出场 11 场"
+            "rating": 7.7,
+            "memory": "累计出场 12 场"
         },
         {
             "id": 13,
@@ -854,13 +1006,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 7,
+            "apps": 8,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": false,
+                    "position": "MF",
+                    "onMinute": 35,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-10-16-eleven-material",
                     "date": "2026-10-16",
@@ -878,7 +1045,7 @@ window.PONYTAIL_DATA = {
                 }
             ],
             "rating": 6.6,
-            "memory": "累计出场 7 场"
+            "memory": "累计出场 8 场"
         },
         {
             "id": 14,
@@ -946,13 +1113,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 1,
                 "lowConcedeGames": 0
             },
-            "apps": 13,
+            "apps": 14,
             "goals": 1,
-            "asts": 2,
+            "asts": 4,
             "motm": 0,
             "cleanSheets": 1,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 2,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-11-09-eleven-yanjiusheng",
                     "date": "2026-11-09",
@@ -999,8 +1181,8 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 8,
-            "memory": "贡献 1 粒进球 / 送出 2 次助攻"
+            "rating": 8.6,
+            "memory": "贡献 1 粒进球 / 送出 4 次助攻"
         },
         {
             "id": 16,
@@ -1093,13 +1275,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 3,
-            "goals": 2,
-            "asts": 1,
-            "motm": 2,
+            "apps": 4,
+            "goals": 7,
+            "asts": 3,
+            "motm": 3,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": true,
+                    "position": "FW",
+                    "onMinute": 0,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 5,
+                    "asts": 2,
+                    "motm": 1,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-11-09-eleven-yanjiusheng",
                     "date": "2026-11-09",
@@ -1146,8 +1343,8 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 7.7,
-            "memory": "贡献 2 粒进球 / 送出 1 次助攻"
+            "rating": 9.5,
+            "memory": "贡献 7 粒进球 / 送出 3 次助攻"
         },
         {
             "id": 19,
@@ -1201,13 +1398,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 3,
+            "apps": 4,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": 35,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-11-09-eleven-yanjiusheng",
                     "date": "2026-11-09",
@@ -1254,8 +1466,8 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 6.4,
-            "memory": "累计出场 3 场"
+            "rating": 6.6,
+            "memory": "累计出场 4 场"
         },
         {
             "id": 21,
@@ -1464,13 +1676,28 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 3,
+            "apps": 4,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
             "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": 35,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                },
                 {
                     "matchId": "2026-11-09-eleven-yanjiusheng",
                     "date": "2026-11-09",
@@ -1517,8 +1744,8 @@ window.PONYTAIL_DATA = {
                     "lowConcedeGames": 0
                 }
             ],
-            "rating": 6.4,
-            "memory": "累计出场 3 场"
+            "rating": 6.6,
+            "memory": "累计出场 4 场"
         },
         {
             "id": 28,
@@ -1541,15 +1768,31 @@ window.PONYTAIL_DATA = {
                 "cleanSheets": 0,
                 "lowConcedeGames": 0
             },
-            "apps": 0,
+            "apps": 1,
             "goals": 0,
             "asts": 0,
             "motm": 0,
             "cleanSheets": 0,
             "lowConcedeGames": 0,
-            "matchHistory": [],
-            "rating": 6,
-            "memory": "累计出场 0 场"
+            "matchHistory": [
+                {
+                    "matchId": "2026-11-24-eleven-fangzhi",
+                    "date": "2026-11-24",
+                    "opponent": "纺织学院",
+                    "started": false,
+                    "position": "FW",
+                    "onMinute": 60,
+                    "offMinute": null,
+                    "apps": 1,
+                    "goals": 0,
+                    "asts": 0,
+                    "motm": 0,
+                    "cleanSheets": 0,
+                    "lowConcedeGames": 0
+                }
+            ],
+            "rating": 6.1,
+            "memory": "累计出场 1 场"
         },
         {
             "id": 29,
@@ -1671,11 +1914,287 @@ window.PONYTAIL_DATA = {
             "year": "2026",
             "name": "十一人制纺大杯",
             "label": "十一人制纺大杯",
-            "status": "进行中",
+            "status": "已结束",
             "description": "2026 年十一人制纺大杯，生康与材料、管理同在 D 组，小组赛 1 胜 1 负出线；淘汰赛 0:2 不敌研究生，之后进行两场排位赛。"
         }
     ],
     "matches": [
+        {
+            "id": "2026-11-24-eleven-fangzhi",
+            "competitionId": "2026-eleven-fangda",
+            "season": "2026-2027",
+            "date": "2026-11-24",
+            "kickoff": "12:00",
+            "venue": "武汉纺织大学足球场",
+            "fullTimeMinutes": 70,
+            "opponent": "纺织学院",
+            "status": "played",
+            "goalsFor": 8,
+            "goalsAgainst": 2,
+            "formation": "4-4-2",
+            "captainId": 1,
+            "appearances": [
+                {
+                    "playerId": 4,
+                    "started": true,
+                    "position": "GK",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 12,
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": 60
+                },
+                {
+                    "playerId": 1,
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": 60
+                },
+                {
+                    "playerId": 10,
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 27,
+                    "started": true,
+                    "position": "DF",
+                    "onMinute": 0,
+                    "offMinute": 35
+                },
+                {
+                    "playerId": 8,
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 15,
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 7,
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 20,
+                    "started": true,
+                    "position": "MF",
+                    "onMinute": 0,
+                    "offMinute": 35
+                },
+                {
+                    "playerId": 9,
+                    "started": true,
+                    "position": "FW",
+                    "onMinute": 0,
+                    "offMinute": 60
+                },
+                {
+                    "playerId": 18,
+                    "started": true,
+                    "position": "FW",
+                    "onMinute": 0,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 3,
+                    "started": false,
+                    "position": "DF",
+                    "onMinute": 35,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 13,
+                    "started": false,
+                    "position": "MF",
+                    "onMinute": 35,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 28,
+                    "started": false,
+                    "position": "FW",
+                    "onMinute": 60,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 2,
+                    "started": false,
+                    "position": "DF",
+                    "onMinute": 60,
+                    "offMinute": null
+                },
+                {
+                    "playerId": 11,
+                    "started": false,
+                    "position": "FW",
+                    "onMinute": 60,
+                    "offMinute": null
+                }
+            ],
+            "events": [
+                {
+                    "type": "goal",
+                    "minute": 5,
+                    "exactTime": "5:55",
+                    "playerId": 18,
+                    "assistId": 15
+                },
+                {
+                    "type": "goal",
+                    "minute": 20,
+                    "exactTime": "20:43",
+                    "playerId": 18,
+                    "assistId": 8
+                },
+                {
+                    "type": "goal",
+                    "minute": 22,
+                    "exactTime": "22:03",
+                    "playerId": 18,
+                    "assistId": 15
+                },
+                {
+                    "type": "goal",
+                    "minute": 28,
+                    "exactTime": "28:05",
+                    "playerId": 7,
+                    "assistId": 9
+                },
+                {
+                    "type": "goal",
+                    "minute": 46,
+                    "exactTime": "46:00",
+                    "playerId": 18,
+                    "assistId": 8
+                },
+                {
+                    "type": "goal",
+                    "minute": 50,
+                    "exactTime": "50:52",
+                    "playerId": 7,
+                    "assistId": 18
+                },
+                {
+                    "type": "goal",
+                    "minute": 70,
+                    "exactTime": "70:12",
+                    "playerId": 18,
+                    "assistId": 7
+                },
+                {
+                    "type": "goal",
+                    "minute": 74,
+                    "exactTime": "74:13",
+                    "playerId": 7,
+                    "assistId": 18
+                },
+                {
+                    "type": "substitution",
+                    "minute": 35,
+                    "playerInId": 3,
+                    "playerOutId": 27
+                },
+                {
+                    "type": "substitution",
+                    "minute": 35,
+                    "playerInId": 13,
+                    "playerOutId": 20
+                },
+                {
+                    "type": "substitution",
+                    "minute": 60,
+                    "playerInId": 28,
+                    "playerOutId": 12
+                },
+                {
+                    "type": "substitution",
+                    "minute": 60,
+                    "playerInId": 2,
+                    "playerOutId": 9
+                },
+                {
+                    "type": "substitution",
+                    "minute": 60,
+                    "playerInId": 11,
+                    "playerOutId": 1
+                }
+            ],
+            "mvpId": 18,
+            "mvpReview": "五子登科，本场最佳",
+            "quote": "五子登科、帽子戏法，8:2 把卫冕冠军斩于马下",
+            "reportTitle": "8:2 大胜纺织，生康拿下队史首场大胜",
+            "report": [
+                "11 月 24 日中午，生康在 2026 年十一人制纺大杯第五名争夺战中对阵纺织学院。8:2——建队以来第一场大胜，赢的是去年的冠军。",
+                "段世添独中五元（5′55″、20′43″、22′03″、46′00″、70′12″），吴宇泽上演帽子戏法（28′05″、50′52″、74′13″）。何嗣承、彭卓伦、段世添各送出两次助攻，吴宇泽、周霄旭各一次。",
+                "中场休息时肖思博、田杨洋被换下，王伯涵、吴全银登场；第 60 分钟李傲、周霄旭、吴宇成下场，段德浩、代育锐、岑烨上场。刘航宇与何嗣承互换位置，何嗣承客串门将；岑烨顶到锋线，段世添回撤中场，吴宇泽退到中后卫——这场球的后半段几乎是一次轮转。",
+                "段世添兑现了他自我介绍里的那句「改变纺大历史的人真的来了」；吴宇泽连续三年在十一人制纺大杯都打进三球，大一帽子戏法，大三又是帽子戏法，有始有终。大量大三队员在这一场出场，很多人接下来要考研，这可能是他们最后一次代表生康出战。",
+                "请不要相信，胜利就像山坡上的蒲公英一样唾手可得。但是请相信，世上总有一些美好值得我们全力以赴，哪怕粉身碎骨。"
+            ],
+            "photographers": [
+                "刘雨莹",
+                "赵慰冉",
+                "赵明馨"
+            ],
+            "photos": [
+                {
+                    "src": "assets/photos/match-2026-11-24-01.jpg",
+                    "caption": "大二全体合照"
+                },
+                {
+                    "src": "assets/photos/match-2026-11-24-02.jpg",
+                    "caption": "送别李斌：签满名字的球衣"
+                },
+                {
+                    "src": "assets/photos/match-2026-11-24-03.jpg",
+                    "caption": "大二全体合照 · 其二"
+                },
+                {
+                    "src": "assets/photos/match-2026-11-24-04.jpg",
+                    "caption": "新王登基：所有的手都指向段世添"
+                },
+                {
+                    "src": "assets/photos/match-2026-11-24-05.jpg",
+                    "caption": "大三全体合照"
+                },
+                {
+                    "src": "assets/photos/match-2026-11-24-06.jpg",
+                    "caption": "九张拍立得摊在草地上"
+                },
+                {
+                    "src": "assets/photos/match-2026-11-24-07.jpg",
+                    "caption": "大二集体合照"
+                },
+                {
+                    "src": "assets/photos/match-2026-11-24-08.jpg",
+                    "caption": "大三集体合照"
+                },
+                {
+                    "src": "assets/photos/match-2026-11-24-09.jpg",
+                    "caption": "终场哨响，像王者归来"
+                }
+            ],
+            "missingInfo": [],
+            "competition": "十一人制纺大杯",
+            "score": "8 : 2",
+            "result": "win",
+            "scorers": "段世添 5′（助攻：何嗣承） / 段世添 20′（助攻：彭卓伦） / 段世添 22′（助攻：何嗣承） / 吴宇泽 28′（助攻：周霄旭） / 段世添 46′（助攻：彭卓伦） / 吴宇泽 50′（助攻：段世添） / 段世添 70′（助攻：吴宇泽） / 吴宇泽 74′（助攻：段世添）"
+        },
         {
             "id": "2026-11-17-eleven-nanhu",
             "competitionId": "2026-eleven-fangda",

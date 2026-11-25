@@ -14,7 +14,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 14,
+        "apps": 15,
         "goals": 0,
         "asts": 1,
         "motm": 0,
@@ -22,6 +22,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": 60,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-11-09-eleven-yanjiusheng",
           "date": "2026-11-09",
@@ -81,14 +96,30 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 4,
+        "apps": 5,
         "goals": 0,
         "asts": 0,
         "motm": 0,
         "cleanSheets": 0,
         "lowConcedeGames": 0
       },
-      "matches": []
+      "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": false,
+          "position": "DF",
+          "onMinute": 60,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
     },
     {
       "playerId": 3,
@@ -102,7 +133,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 10,
+        "apps": 11,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -110,6 +141,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": false,
+          "position": "DF",
+          "onMinute": 35,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-23-eleven-management",
           "date": "2026-10-23",
@@ -139,7 +185,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 11,
+        "apps": 12,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -147,6 +193,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": true,
+          "position": "GK",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-11-09-eleven-yanjiusheng",
           "date": "2026-11-09",
@@ -279,14 +340,29 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 14,
-        "goals": 6,
-        "asts": 1,
+        "apps": 15,
+        "goals": 9,
+        "asts": 2,
         "motm": 0,
         "cleanSheets": 0,
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 3,
+          "asts": 1,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-11-09-eleven-yanjiusheng",
           "date": "2026-11-09",
@@ -346,14 +422,29 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 11,
+        "apps": 12,
         "goals": 3,
-        "asts": 3,
+        "asts": 5,
         "motm": 0,
         "cleanSheets": 0,
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 2,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-11-09-eleven-yanjiusheng",
           "date": "2026-11-09",
@@ -413,14 +504,29 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 13,
+        "apps": 14,
         "goals": 5,
-        "asts": 4,
+        "asts": 5,
         "motm": 0,
         "cleanSheets": 0,
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": true,
+          "position": "FW",
+          "onMinute": 0,
+          "offMinute": 60,
+          "apps": 1,
+          "goals": 0,
+          "asts": 1,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-11-09-eleven-yanjiusheng",
           "date": "2026-11-09",
@@ -480,7 +586,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 9,
+        "apps": 10,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -488,6 +594,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-11-09-eleven-yanjiusheng",
           "date": "2026-11-09",
@@ -547,14 +668,30 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 5,
+        "apps": 6,
         "goals": 0,
         "asts": 0,
         "motm": 0,
         "cleanSheets": 1,
         "lowConcedeGames": 0
       },
-      "matches": []
+      "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": false,
+          "position": "FW",
+          "onMinute": 60,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
     },
     {
       "playerId": 12,
@@ -568,7 +705,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 11,
+        "apps": 12,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -576,6 +713,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": 60,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-11-09-eleven-yanjiusheng",
           "date": "2026-11-09",
@@ -635,7 +787,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 7,
+        "apps": 8,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -643,6 +795,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": false,
+          "position": "MF",
+          "onMinute": 35,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-10-16-eleven-material",
           "date": "2026-10-16",
@@ -693,14 +860,29 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 13,
+        "apps": 14,
         "goals": 1,
-        "asts": 2,
+        "asts": 4,
         "motm": 0,
         "cleanSheets": 1,
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 2,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-11-09-eleven-yanjiusheng",
           "date": "2026-11-09",
@@ -802,14 +984,29 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 3,
-        "goals": 2,
-        "asts": 1,
-        "motm": 2,
+        "apps": 4,
+        "goals": 7,
+        "asts": 3,
+        "motm": 3,
         "cleanSheets": 0,
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": true,
+          "position": "FW",
+          "onMinute": 0,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 5,
+          "asts": 2,
+          "motm": 1,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-11-09-eleven-yanjiusheng",
           "date": "2026-11-09",
@@ -890,7 +1087,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 3,
+        "apps": 4,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -898,6 +1095,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": 35,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-11-09-eleven-yanjiusheng",
           "date": "2026-11-09",
@@ -1083,7 +1295,7 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 3,
+        "apps": 4,
         "goals": 0,
         "asts": 0,
         "motm": 0,
@@ -1091,6 +1303,21 @@
         "lowConcedeGames": 0
       },
       "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": 35,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        },
         {
           "matchId": "2026-11-09-eleven-yanjiusheng",
           "date": "2026-11-09",
@@ -1150,14 +1377,30 @@
         "lowConcedeGames": 0
       },
       "totals": {
-        "apps": 0,
+        "apps": 1,
         "goals": 0,
         "asts": 0,
         "motm": 0,
         "cleanSheets": 0,
         "lowConcedeGames": 0
       },
-      "matches": []
+      "matches": [
+        {
+          "matchId": "2026-11-24-eleven-fangzhi",
+          "date": "2026-11-24",
+          "opponent": "纺织学院",
+          "started": false,
+          "position": "FW",
+          "onMinute": 60,
+          "offMinute": null,
+          "apps": 1,
+          "goals": 0,
+          "asts": 0,
+          "motm": 0,
+          "cleanSheets": 0,
+          "lowConcedeGames": 0
+        }
+      ]
     },
     {
       "playerId": 29,

@@ -845,7 +845,7 @@
       "year": "2026",
       "name": "十一人制纺大杯",
       "label": "十一人制纺大杯",
-      "status": "进行中",
+      "status": "已结束",
       "description": "2026 年十一人制纺大杯，生康与材料、管理同在 D 组，小组赛 1 胜 1 负出线；淘汰赛 0:2 不敌研究生，之后进行两场排位赛。"
     }
   ],
@@ -1578,6 +1578,278 @@
       ],
       "photographers": [],
       "photos": [],
+      "missingInfo": []
+    },
+    {
+      "id": "2026-11-24-eleven-fangzhi",
+      "competitionId": "2026-eleven-fangda",
+      "season": "2026-2027",
+      "date": "2026-11-24",
+      "kickoff": "12:00",
+      "venue": "武汉纺织大学足球场",
+      "fullTimeMinutes": 70,
+      "opponent": "纺织学院",
+      "status": "played",
+      "goalsFor": 8,
+      "goalsAgainst": 2,
+      "formation": "4-4-2",
+      "captainId": 1,
+      "appearances": [
+        {
+          "playerId": 4,
+          "started": true,
+          "position": "GK",
+          "onMinute": 0,
+          "offMinute": null
+        },
+        {
+          "playerId": 12,
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": 60
+        },
+        {
+          "playerId": 1,
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": 60
+        },
+        {
+          "playerId": 10,
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": null
+        },
+        {
+          "playerId": 27,
+          "started": true,
+          "position": "DF",
+          "onMinute": 0,
+          "offMinute": 35
+        },
+        {
+          "playerId": 8,
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null
+        },
+        {
+          "playerId": 15,
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null
+        },
+        {
+          "playerId": 7,
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": null
+        },
+        {
+          "playerId": 20,
+          "started": true,
+          "position": "MF",
+          "onMinute": 0,
+          "offMinute": 35
+        },
+        {
+          "playerId": 9,
+          "started": true,
+          "position": "FW",
+          "onMinute": 0,
+          "offMinute": 60
+        },
+        {
+          "playerId": 18,
+          "started": true,
+          "position": "FW",
+          "onMinute": 0,
+          "offMinute": null
+        },
+        {
+          "playerId": 3,
+          "started": false,
+          "position": "DF",
+          "onMinute": 35,
+          "offMinute": null
+        },
+        {
+          "playerId": 13,
+          "started": false,
+          "position": "MF",
+          "onMinute": 35,
+          "offMinute": null
+        },
+        {
+          "playerId": 28,
+          "started": false,
+          "position": "FW",
+          "onMinute": 60,
+          "offMinute": null
+        },
+        {
+          "playerId": 2,
+          "started": false,
+          "position": "DF",
+          "onMinute": 60,
+          "offMinute": null
+        },
+        {
+          "playerId": 11,
+          "started": false,
+          "position": "FW",
+          "onMinute": 60,
+          "offMinute": null
+        }
+      ],
+      "events": [
+        {
+          "type": "goal",
+          "minute": 5,
+          "exactTime": "5:55",
+          "playerId": 18,
+          "assistId": 15
+        },
+        {
+          "type": "goal",
+          "minute": 20,
+          "exactTime": "20:43",
+          "playerId": 18,
+          "assistId": 8
+        },
+        {
+          "type": "goal",
+          "minute": 22,
+          "exactTime": "22:03",
+          "playerId": 18,
+          "assistId": 15
+        },
+        {
+          "type": "goal",
+          "minute": 28,
+          "exactTime": "28:05",
+          "playerId": 7,
+          "assistId": 9
+        },
+        {
+          "type": "goal",
+          "minute": 46,
+          "exactTime": "46:00",
+          "playerId": 18,
+          "assistId": 8
+        },
+        {
+          "type": "goal",
+          "minute": 50,
+          "exactTime": "50:52",
+          "playerId": 7,
+          "assistId": 18
+        },
+        {
+          "type": "goal",
+          "minute": 70,
+          "exactTime": "70:12",
+          "playerId": 18,
+          "assistId": 7
+        },
+        {
+          "type": "goal",
+          "minute": 74,
+          "exactTime": "74:13",
+          "playerId": 7,
+          "assistId": 18
+        },
+        {
+          "type": "substitution",
+          "minute": 35,
+          "playerInId": 3,
+          "playerOutId": 27
+        },
+        {
+          "type": "substitution",
+          "minute": 35,
+          "playerInId": 13,
+          "playerOutId": 20
+        },
+        {
+          "type": "substitution",
+          "minute": 60,
+          "playerInId": 28,
+          "playerOutId": 12
+        },
+        {
+          "type": "substitution",
+          "minute": 60,
+          "playerInId": 2,
+          "playerOutId": 9
+        },
+        {
+          "type": "substitution",
+          "minute": 60,
+          "playerInId": 11,
+          "playerOutId": 1
+        }
+      ],
+      "mvpId": 18,
+      "mvpReview": "五子登科，本场最佳",
+      "quote": "五子登科、帽子戏法，8:2 把卫冕冠军斩于马下",
+      "reportTitle": "8:2 大胜纺织，生康拿下队史首场大胜",
+      "report": [
+        "11 月 24 日中午，生康在 2026 年十一人制纺大杯第五名争夺战中对阵纺织学院。8:2——建队以来第一场大胜，赢的是去年的冠军。",
+        "段世添独中五元（5′55″、20′43″、22′03″、46′00″、70′12″），吴宇泽上演帽子戏法（28′05″、50′52″、74′13″）。何嗣承、彭卓伦、段世添各送出两次助攻，吴宇泽、周霄旭各一次。",
+        "中场休息时肖思博、田杨洋被换下，王伯涵、吴全银登场；第 60 分钟李傲、周霄旭、吴宇成下场，段德浩、代育锐、岑烨上场。刘航宇与何嗣承互换位置，何嗣承客串门将；岑烨顶到锋线，段世添回撤中场，吴宇泽退到中后卫——这场球的后半段几乎是一次轮转。",
+        "段世添兑现了他自我介绍里的那句「改变纺大历史的人真的来了」；吴宇泽连续三年在十一人制纺大杯都打进三球，大一帽子戏法，大三又是帽子戏法，有始有终。大量大三队员在这一场出场，很多人接下来要考研，这可能是他们最后一次代表生康出战。",
+        "请不要相信，胜利就像山坡上的蒲公英一样唾手可得。但是请相信，世上总有一些美好值得我们全力以赴，哪怕粉身碎骨。"
+      ],
+      "photographers": [
+        "刘雨莹",
+        "赵慰冉",
+        "赵明馨"
+      ],
+      "photos": [
+        {
+          "src": "assets/photos/match-2026-11-24-01.jpg",
+          "caption": "大二全体合照"
+        },
+        {
+          "src": "assets/photos/match-2026-11-24-02.jpg",
+          "caption": "送别李斌：签满名字的球衣"
+        },
+        {
+          "src": "assets/photos/match-2026-11-24-03.jpg",
+          "caption": "大二全体合照 · 其二"
+        },
+        {
+          "src": "assets/photos/match-2026-11-24-04.jpg",
+          "caption": "新王登基：所有的手都指向段世添"
+        },
+        {
+          "src": "assets/photos/match-2026-11-24-05.jpg",
+          "caption": "大三全体合照"
+        },
+        {
+          "src": "assets/photos/match-2026-11-24-06.jpg",
+          "caption": "九张拍立得摊在草地上"
+        },
+        {
+          "src": "assets/photos/match-2026-11-24-07.jpg",
+          "caption": "大二集体合照"
+        },
+        {
+          "src": "assets/photos/match-2026-11-24-08.jpg",
+          "caption": "大三集体合照"
+        },
+        {
+          "src": "assets/photos/match-2026-11-24-09.jpg",
+          "caption": "终场哨响，像王者归来"
+        }
+      ],
       "missingInfo": []
     }
   ],

@@ -14,18 +14,18 @@ test('逐场比赛的出场、进球、助攻、MVP和零封从明细正确汇�
     assert.equal(match.appearances.filter(a => a.started).length, 11);
     assert.equal(match.appearances.length, 12);
     const byName = Object.fromEntries(data.players.map(p => [p.name, p]));
-    const expected = { '吴宇成': 14, '刘航宇': 11, '田杨洋': 3, '张俊': 9, '李傲': 11, '彭卓伦': 11, '肖思博': 3, '段世添': 3, '何嗣承': 13, '吴宇泽': 14, '周霄旭': 13, '吴全银': 7, '王伯涵': 10, '曹维嘉': 10 };
+    const expected = { '吴宇成': 15, '刘航宇': 12, '田杨洋': 4, '张俊': 10, '李傲': 12, '彭卓伦': 12, '肖思博': 4, '段世添': 4, '何嗣承': 14, '吴宇泽': 15, '周霄旭': 14, '吴全银': 8, '王伯涵': 11, '曹维嘉': 10, '代育锐': 5, '岑烨': 6, '段德浩': 1 };
     for (const [name, apps] of Object.entries(expected)) {
         assert.equal(byName[name].apps, apps, name);
     }
     assert.equal(byName['彭卓伦'].goals, 3);
-    assert.equal(byName['段世添'].goals, 2);
-    assert.equal(byName['段世添'].motm, 2);
-    assert.equal(byName['何嗣承'].asts, 2);
+    assert.equal(byName['段世添'].goals, 7);
+    assert.equal(byName['段世添'].motm, 3);
+    assert.equal(byName['何嗣承'].asts, 4);
     assert.equal(byName['刘航宇'].cleanSheets, 2);
-    assert.equal(data.players.reduce((n, p) => n + p.apps - p.baseline.apps, 0), 37);
-    assert.equal(data.players.reduce((n, p) => n + p.goals - p.baseline.goals, 0), 4);
-    assert.equal(data.players.reduce((n, p) => n + p.asts - p.baseline.asts, 0), 3);
+    assert.equal(data.players.reduce((n, p) => n + p.apps - p.baseline.apps, 0), 53);
+    assert.equal(data.players.reduce((n, p) => n + p.goals - p.baseline.goals, 0), 12);
+    assert.equal(data.players.reduce((n, p) => n + p.asts - p.baseline.asts, 0), 11);
     for (const p of data.players.filter(p => !Object.hasOwn(expected, p.name))) {
         for (const key of statKeys) assert.equal(p[key], p.baseline[key], `${p.name}.${key}`);
     }
@@ -60,13 +60,13 @@ test('纠正进球归属和补充出场会重新计算，不叠加旧数值', ()
     const edit = structuredClone(source);
     edit.matches[0].events[1].playerId = 7;
     const data = build(edit);
-    assert.equal(data.players.find(p => p.name === '段世添').goals, 1);
-    assert.equal(data.players.find(p => p.id === 7).goals, 7);
-    assert.equal(data.players.find(p => p.name === '段世添').apps, 3);
+    assert.equal(data.players.find(p => p.name === '段世添').goals, 6);
+    assert.equal(data.players.find(p => p.id === 7).goals, 10);
+    assert.equal(data.players.find(p => p.name === '段世添').apps, 4);
     edit.matches[0].appearances.push({playerId:2,started:false,position:'DF',onMinute:55,offMinute:null});
     edit.matches[0].appearances.find(a=>a.playerId===10).offMinute=55;
     edit.matches[0].events.push({type:'substitution',minute:55,playerInId:2,playerOutId:10});
-    assert.equal(build(edit).players.find(p=>p.id===2).apps, 5);
+    assert.equal(build(edit).players.find(p=>p.id===2).apps, 6);
 });
 test('拒绝重复比赛、重复赛程、重复出场、未知球员、比分冲突及错误换人', () => {
     const corruptions = [
@@ -110,7 +110,7 @@ test('2026-11-17 南湖弃权：判 3:0 胜，无出场与事件，不计个人�
     assert.deepEqual(match.appearances, []);
     assert.deepEqual(match.events, []);
     assert.equal(match.scorers, '对手弃权，判 3 : 0');
-    assert.equal(data.players.find(p => p.name === '段世添').apps, 3);
+    assert.equal(data.players.find(p => p.name === '段世添').apps, 4);
 });
 test('弃权场次填了出场会被拒', () => {
     const edit = structuredClone(source);
