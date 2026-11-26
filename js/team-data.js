@@ -1824,6 +1824,36 @@ window.PONYTAIL_DATA = {
             "matchHistory": [],
             "rating": 6,
             "memory": "累计出场 0 场"
+        },
+        {
+            "id": 30,
+            "name": "张浩",
+            "nickname": "",
+            "number": 87,
+            "pos": "TBD",
+            "role": "",
+            "avatarIcon": "fa-futbol",
+            "traits": [],
+            "reviews": [],
+            "bio": "2026 级新队员，惯用右脚，场上位置待定。",
+            "photo": "assets/players/zhanghao.webp",
+            "baseline": {
+                "apps": 0,
+                "goals": 0,
+                "asts": 0,
+                "motm": 0,
+                "cleanSheets": 0,
+                "lowConcedeGames": 0
+            },
+            "apps": 0,
+            "goals": 0,
+            "asts": 0,
+            "motm": 0,
+            "cleanSheets": 0,
+            "lowConcedeGames": 0,
+            "matchHistory": [],
+            "rating": 6,
+            "memory": "累计出场 0 场"
         }
     ],
     "startingLineup": {

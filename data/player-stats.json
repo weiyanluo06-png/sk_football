@@ -1422,6 +1422,27 @@
         "lowConcedeGames": 0
       },
       "matches": []
+    },
+    {
+      "playerId": 30,
+      "name": "张浩",
+      "baseline": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "totals": {
+        "apps": 0,
+        "goals": 0,
+        "asts": 0,
+        "motm": 0,
+        "cleanSheets": 0,
+        "lowConcedeGames": 0
+      },
+      "matches": []
     }
   ]
 }
