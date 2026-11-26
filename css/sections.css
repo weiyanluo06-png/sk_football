@@ -37,6 +37,10 @@
 .notice-members span { margin-top:6px; font-size:12px; color:var(--muted); }
 .notice-detail figure img { width:100%; border-radius:12px; }
 .notice-detail figcaption { margin:8px 0 28px; color:var(--muted); font-size:12px; }
+.notice-photos { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:8px 0 28px; align-items:start; }
+.notice-photos figure { margin:0; }
+.notice-photos figcaption { margin:6px 0 0; }
+@media (max-width:760px) { .notice-photos { grid-template-columns:1fr; } }
 .notice-action { display:inline-block; background:var(--green-dark); color:var(--paper); padding:12px 20px; border-radius:8px; }
 .team-directory { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:20px; }
 .lineup-archive { width:90%; margin:20px auto; border:1px solid var(--line); border-radius:12px; }
