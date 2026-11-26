@@ -1501,37 +1501,6 @@ window.PONYTAIL_DATA = {
             "memory": "累计出场 0 场"
         },
         {
-            "id": 22,
-            "name": "雷振廷",
-            "number": 12,
-            "pos": "DF",
-            "role": "后卫/中场",
-            "nickname": "2026级 · 右脚",
-            "photo": "assets/players/leizhenting.png",
-            "photoPosition": "50% 50%",
-            "avatarIcon": "fa-futbol",
-            "traits": [],
-            "reviews": [],
-            "bio": "欢迎加入生康足球队。",
-            "baseline": {
-                "apps": 0,
-                "goals": 0,
-                "asts": 0,
-                "motm": 0,
-                "cleanSheets": 0,
-                "lowConcedeGames": 0
-            },
-            "apps": 0,
-            "goals": 0,
-            "asts": 0,
-            "motm": 0,
-            "cleanSheets": 0,
-            "lowConcedeGames": 0,
-            "matchHistory": [],
-            "rating": 6,
-            "memory": "累计出场 0 场"
-        },
-        {
             "id": 23,
             "name": "蔡照",
             "number": 6,
